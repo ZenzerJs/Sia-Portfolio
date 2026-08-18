@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Marimba Designs Design System",
+  "version": "1.0.0",
+  "source": "https://marimba.design/",
+  "typography": {
+    "fonts": {
+      "heading": {
+        "family": "\"Instrument Serif\", Georgia, serif",
+        "fallback": "Georgia, serif",
+        "weights": [400],
+        "style": "normal | italic"
+      },
+      "body": {
+        "family": "Geist, Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "fallback": "sans-serif",
+        "weights": [300, 400, 500, 600],
+        "style": "normal"
+      },
+      "mono": {
+        "family": "\"Roboto Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+        "fallback": "monospace",
+        "weights": [400, 500],
+        "style": "normal"
+      }
+    },
+    "scale": {
+      "heroHeadline": {
+        "fontSize": "clamp(2.5rem, 5.5vw, 5.25rem)",
+        "lineHeight": "1.12",
+        "letterSpacing": "-0.03em",
+        "fontWeight": "400",
+        "fontFamily": "heading"
+      },
+      "sectionHeadline": {
+        "fontSize": "clamp(2rem, 3.8vw, 3.75rem)",
+        "lineHeight": "1.18",
+        "letterSpacing": "-0.025em",
+        "fontWeight": "400",
+        "fontFamily": "heading"
+      },
+      "diskTitle": {
+        "fontSize": "clamp(1.5rem, 2.2vw, 2.25rem)",
+        "lineHeight": "1.25",
+        "letterSpacing": "-0.015em",
+        "fontWeight": "400",
+        "fontFamily": "heading"
+      },
+      "bodyLarge": {
+        "fontSize": "1.125rem",
+        "lineHeight": "1.5",
+        "letterSpacing": "-0.01em",
+        "fontWeight": "400",
+        "fontFamily": "body"
+      },
+      "bodyRegular": {
+        "fontSize": "1rem",
+        "lineHeight": "1.5",
+        "letterSpacing": "normal",
+        "fontWeight": "400",
+        "fontFamily": "body"
+      },
+      "bodySmall": {
+        "fontSize": "0.875rem",
+        "lineHeight": "1.4",
+        "letterSpacing": "normal",
+        "fontWeight": "400",
+        "fontFamily": "body"
+      },
+      "tagPill": {
+        "fontSize": "0.75rem",
+        "lineHeight": "1",
+        "letterSpacing": "0.04em",
+        "fontWeight": "500",
+        "textTransform": "none",
+        "fontFamily": "body"
+      },
+      "cursorLabel": {
+        "fontSize": "0.75rem",
+        "lineHeight": "1",
+        "letterSpacing": "0.02em",
+        "fontWeight": "500",
+        "textTransform": "lowercase",
+        "fontFamily": "body"
+      }
+    }
+  },
+  "colors": {
+    "background": {
+      "canvas": "#F0EFE9",
+      "canvasRgb": "rgb(240, 239, 233)",
+      "card": "#F1F0EA",
+      "pure": "#FFFFFF",
+      "surfaceMuted": "#EBEBEB"
+    },
+    "text": {
+      "primary": "#3A4A16",
+      "primaryRgb": "rgb(58, 74, 22)",
+      "secondary": "#212E02",
+      "muted": "#8F8F8E",
+      "dark": "#020202",
+      "inverse": "#F0EFE9",
+      "white": "#FFFFFF"
+    },
+    "borders": {
+      "primary": "#3A4A16",
+      "primaryAlpha15": "rgba(58, 74, 22, 0.15)",
+      "ringAccent": "rgba(45, 80, 22, 0.35)",
+      "ringLight": "rgba(45, 80, 22, 0.05)",
+      "light": "rgba(0, 0, 0, 0.1)"
+    },
+    "processDisks": {
+      "disk1_buildTest": {
+        "name": "Build & test",
+        "from": "#F46732",
+        "to": "#DAC6EB",
+        "gradient": "conic-gradient(from 90deg, #F46732 0deg, #DAC6EB 360deg)"
+      },
+      "disk2_designRefine": {
+        "name": "Design & refine",
+        "from": "#DAC6EB",
+        "to": "#93DD89",
+        "gradient": "conic-gradient(from 180deg, #DAC6EB 0deg, #93DD89 360deg)"
+      },
+      "disk3_strategyPlan": {
+        "name": "Strategy & plan",
+        "from": "#93DD89",
+        "to": "#FC6A00",
+        "gradient": "conic-gradient(#93DD89 0deg, #FC6A00 360deg)"
+      },
+      "disk4_listenDefine": {
+        "name": "Listen & define",
+        "from": "#C1E4F7",
+        "to": "#DAC6EB",
+        "gradient": "conic-gradient(from 90deg, #C1E4F7 0deg, #DAC6EB 360deg)"
+      }
+    }
+  },
+  "layout": {
+    "maxContainerWidth": "1700px",
+    "contentMaxWidth": "1280px",
+    "sectionPadding": {
+      "desktop": "140px 48px",
+      "processDesktop": "225px 48px",
+      "mobile": "80px 24px"
+    },
+    "headerHeight": "88px",
+    "borderRadius": {
+      "pill": "9999px",
+      "card": "16px",
+      "disk": "50%"
+    },
+    "zIndex": {
+      "background": 0,
+      "shapes": 2,
+      "content": 10,
+      "cursor": 999,
+      "header": 1000,
+      "loader": 9999
+    }
+  },
+  "motion": {
+    "easings": {
+      "smooth": [0.25, 0.1, 0.25, 1],
+      "power3Out": [0.215, 0.61, 0.355, 1],
+      "power4Out": [0.165, 0.84, 0.44, 1],
+      "expoInOut": [0.87, 0, 0.13, 1],
+      "springBouncy": { "type": "spring", "damping": 15, "stiffness": 150 },
+      "springSmooth": { "type": "spring", "damping": 25, "stiffness": 250 }
+    },
+    "timings": {
+      "quick": 0.2,
+      "medium": 0.4,
+      "slow": 0.8,
+      "drift": 4.5
+    },
+    "animations": {
+      "ambientFloat": {
+        "y": [0, -12, 0],
+        "rotate": [0, 4, -4, 0],
+        "transition": {
+          "duration": 5,
+          "repeat": Infinity,
+          "ease": "easeInOut"
+        }
+      },
+      "astrixRotate": {
+        "rotate": 360,
+        "transition": {
+          "duration": 20,
+          "repeat": Infinity,
+          "ease": "linear"
+        }
+      },
+      "badgeExpand": {
+        "widthHover": "8vw",
+        "widthDefault": "6.5vw",
+        "transition": { "duration": 0.3, "ease": [0.25, 0.1, 0.25, 1] }
+      },
+      "cursorFollower": {
+        "stiffness": 300,
+        "damping": 28,
+        "mass": 0.5
+      }
+    }
+  },
+  "assets": {
+    "brandLogo": "marimba. designs.svg",
+    "shapes": {
+      "astrixTexture": "texture-astrix.png",
+      "circle1_visualDesign": "shape-circle1.webp",
+      "starburst": "shape-star1.webp",
+      "circle2_interactionDesign": "shape-circle2.webp",
+      "leaf": "shape-leaf1.webp",
+      "starBox": "shape-star-box1.webp",
+      "circle3_uiUx": "shape-circle3.webp"
+    },
+    "work": {
+      "laptopFrame": "laptop-sequence-_00073.webp",
+      "showreelVideo": "assets/showReel_1-opt.mp4",
+      "expertiseMobileVideo": "assets/expertise-ring-mobile.mp4"
+    },
+    "awards": {
+      "cssWinner": "sotd-white-2.png",
+      "awwwardsRibbon": "awwwards.svg"
+    }
+  }
+}
