@@ -13,12 +13,16 @@
     --bg-light: #F0EFE9;
     --text-dark: #3A4A16;
     --loader-bg: #212E02;
-    --gradient-orange: #ff6b5a;
-    --gradient-purple: #c084d1;
-    --gradient-pink: #e8a5c4;
-    --gradient-blue: #a8d8ea;
-    --gradient-green: #c5e1a5;
-    --gradient-yellow: #fff9c4;
+    /* Brand accent palette — the pastels used across the hero shapes, orbit
+       ring, project cards, and process disks. Centralized so a future re-skin
+       can shift the whole template from one place. */
+    --accent-sky: #C1E4F7;    /* light blue */
+    --accent-lilac: #DAC6EB;  /* lavender */
+    --accent-mint: #93DD89;   /* green */
+    --accent-coral: #F46732;  /* orange */
+    --accent-leaf: #C5E1A5;   /* pale green (secondary) */
+    --accent-amber: #FC6A00;  /* deep orange (secondary) */
+    --text-muted: #8F8F8E;
     
     --font-sans: var(--font-sans, 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
     --font-display: var(--font-display, 'Fraunces', Georgia, serif);
@@ -34,11 +38,12 @@ html {
 
 body {
     font-family: var(--font-sans);
+    font-optical-sizing: auto;
     font-weight: 300;
     font-size: 15pt;
     background-color: var(--bg-light);
     color: var(--text-dark);
-    line-height: 1.4;
+    line-height: 1.5;
     overflow-x: hidden;
     position: relative;
     scrollbar-width: none;
@@ -594,6 +599,10 @@ main {
     font-weight: 400;
     line-height: 1.12;
     letter-spacing: -0.02em;
+    /* Soften Fraunces' terminals for a warmer, crafted editorial look using
+       the SOFT/WONK axes loaded in app/layout.tsx (opsz is handled by
+       font-optical-sizing on the body). */
+    font-variation-settings: "SOFT" 60, "WONK" 0;
     color: var(--text-dark);
     margin: 0;
     text-align: center;
@@ -1431,6 +1440,7 @@ main {
     font-weight: 400;
     line-height: 1.12;
     letter-spacing: -0.02em;
+    font-variation-settings: "SOFT" 60, "WONK" 0;
 }
 
 /* Process Disks Section */
@@ -1560,11 +1570,11 @@ main {
     inset: 0;
     border-radius: 50%;
     background:
-        radial-gradient(42% 42% at 32% 30%, rgba(218, 198, 235, 0.5), transparent 70%),
-        radial-gradient(38% 38% at 68% 26%, rgba(147, 221, 137, 0.38), transparent 70%),
-        radial-gradient(44% 44% at 66% 72%, rgba(193, 228, 247, 0.5), transparent 70%),
-        radial-gradient(34% 34% at 28% 70%, rgba(252, 106, 0, 0.16), transparent 70%),
-        radial-gradient(circle at 50% 50%, rgba(240, 239, 233, 0.55), rgba(240, 239, 233, 0) 74%);
+        radial-gradient(42% 42% at 32% 30%, color-mix(in srgb, var(--accent-lilac) 50%, transparent), transparent 70%),
+        radial-gradient(38% 38% at 68% 26%, color-mix(in srgb, var(--accent-mint) 38%, transparent), transparent 70%),
+        radial-gradient(44% 44% at 66% 72%, color-mix(in srgb, var(--accent-sky) 50%, transparent), transparent 70%),
+        radial-gradient(34% 34% at 28% 70%, color-mix(in srgb, var(--accent-amber) 16%, transparent), transparent 70%),
+        radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--bg-light) 55%, transparent), transparent 74%);
     filter: blur(26px) saturate(1.1);
 }
 
