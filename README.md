@@ -11,7 +11,7 @@ Award-style creative portfolio built with **Next.js 15 (App Router)**, **GSAP + 
 | Framework | Next.js 15 (App Router, React 19) |
 | Motion | GSAP 3 + ScrollTrigger, Lenis, framer-motion (subpages) |
 | Styling | Tailwind CSS 3 + CSS custom properties |
-| Fonts | Fraunces (display), Geist (body/UI), Roboto Mono (meta) via `next/font` |
+| Fonts | Instrument Serif (display), Geist (body/UI), Roboto Mono (meta) via `next/font` |
 
 ## Getting started
 
@@ -93,7 +93,7 @@ Swap the files and keep the names — zero code changes.
 ### 4. Colors & type
 
 - **Tokens**: `:root` variables in `app/globals.css` (`--bg-light`, `--text-dark`, `--loader-bg`, …).
-- **Tailwind colors**: `tailwind.config.ts` (`canvas`, `surface`, `olive`).
+- **Tailwind colors**: `tailwind.config.ts` (`canvas`, `surface`, `navy`).
 - **Fonts**: swap `next/font/google` imports in `app/layout.tsx`.
 - **Palette reference**: `design-system.json`.
 

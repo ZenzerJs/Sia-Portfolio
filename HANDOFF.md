@@ -1,110 +1,170 @@
-# Marimba.Designs — Engineering Handoff & Gap Analysis
+# HANDOFF — Portfolio Template
 
-Comprehensive technical audit and feature roadmap comparing the current Next.js implementation against the live production site [marimba.design](https://marimba.design/).
-
----
-
-## 1. Feature Status & Matrix Overview
-
-| Module / Surface | Current Status | Remaining Gap / Required Implementation | Priority |
-| :--- | :--- | :--- | :--- |
-| **Home: Entrance & Loader** | 🟢 Complete (10/10) | None. Bar fill, curtain exit, blur clearance verified. | Done |
-| **Home: Hero Section** | 🟢 Complete | None. Headline, inline media badges, ambient shapes active. | Done |
-| **Home: Orbit Trigonometry** | 🟢 Complete | Mobile fallback toggle polish (breakpoint `< 768px`). | Low |
-| **Home: Work Showcase** | 🟡 Partial | Replace single showcase with interactive showreel switcher. | Medium |
-| **Home: 3D Process Disks** | 🟢 Complete | 4-layer conic gradients, isometric angle, pinning active. | Done |
-| **Home: Contact Inversion** | 🟢 Complete | Theme transition (`#212E02` bg, `#F0EFE9` text) verified. | Done |
-| **Custom Magnetic Cursor** | 🟢 Complete | `lerp: 0.18`, work hover scale (`112px`), click scale (`120px`). | Done |
-| **Work Index Page (`/work`)** | 🔴 Not Built | Multi-project slider, counter (`01/04`), pagination bars. | **High** |
-| **About Page (`/about`)** | 🔴 Not Built | About hero, selfie layered graphics, experience timeline. | **High** |
-| **Case Study Detail Pages** | 🔴 Not Built | 3D iPad tilt video, asymmetric gallery, phase switcher. | **High** |
-| **Page-to-Page Transitions** | 🟡 Partial | Curtain slide wrapper between route navigations. | Medium |
+Handoff doc for the polish-phase state of the portfolio template (created Aug 18, 2026).
+The polish phase is complete and the template is ready for final customization
+(brand name, location, real projects, real links).
 
 ---
 
-## 2. Detailed Work Packages Still Needed
+## 1. Quick status
 
-### Work Package 1: Work Index Page (`/work`)
-**File Target**: `app/work/page.tsx` & `components/WorkSlider.tsx`
+- **Stack:** Next.js 15 (App Router, React 19), GSAP 3 + ScrollTrigger, Lenis, Tailwind 3.
+- **Theme:** cream-free **white canvas + navy** — canvas `#FFFFFF`, text `#1E3A5F`,
+  dark sections `#142A4A`, muted `#7C8AA0`, pastel accents (sky/lilac/powder blue/
+  coral/peach/amber).
+- **Fonts:** **Instrument Serif** (display), Geist (body/UI), Roboto Mono (meta) via `next/font`.
+- **Homepage:** loader + shape "throw-out" intro, pinned orbit hero, MacBook showreel,
+  tools marquee, testimonials rotator, process disks, contact/footer — all in
+  `components/MarimbaExactPortfolio.tsx` + `lib/*` GSAP engines.
+- **Git:** clean checkpoint chain (see §7). Run `npm run dev` / `npm run build` to verify.
 
-1. **Interactive Multi-Project Slider**:
-   - 4 Featured Projects:
-     1. **Hannah Macready**: Copywriter & Content Strategist Portfolio.
-     2. **Mountain Mindset Therapy (MMT)**: Mental Health & Counseling Practice.
-     3. **Charlie Holley**: Creative Direction & Brand Studio.
-     4. **Precision Archery (PABC)**: Athletic Platform & Community.
-2. **Fixed Numeric Counter**:
-   - Format: `<span class="work-slider__counter-current">01</span> / 04`.
-   - GSAP / Framer Motion vertical slide transition on project change.
-3. **Interactive Pagination Pill Indicators**:
-   - 4 vertical pill dots in the bottom left.
-   - Active dot expands from `8px` to `32px` with animated progress fill bar (`--fill-height: 0% -> 100%`).
-4. **Project Descriptions & CTA**:
-   - Client title, category tags, project summary, and magnetic pill button `"View case study →"`.
+### Still needed from the owner (template placeholders)
 
----
-
-### Work Package 2: About Page (`/about`)
-**File Target**: `app/about/page.tsx` & `components/AboutHero.tsx`
-
-1. **Hero Headline & Ambient Stars**:
-   - Headline: `"Crafting digital experiences with character, clarity, and craft."`
-   - Floating SVG starbursts and half-circle graphic backdrop.
-2. **Layered Portrait & Shape Collage**:
-   - Portrait photo (`/assets/title-selfie.jpg`) with floating ring texture (`about__image-shape-ring`) and starburst badge.
-3. **Stats Counter Grid**:
-   - `7+` Years Experience
-   - `30+` Websites Launched
-   - `10+` Industry Awards (Awwwards, CSS Winner, FWA)
-4. **Experience & Career Timeline**:
-   - 2-Column editorial layout:
-     - Independent Digital Designer & Developer (`2021 – Present`)
-     - Lead UI/UX Designer (`2019 – 2021`)
-     - Digital Art Director (`2017 – 2019`)
-5. **Personal Interests & Design Values**:
-   - Editorial serif quotes, typography passion, outdoor/hiking inspirations.
+| Item | Where | Current value |
+| :--- | :--- | :--- |
+| Brand name | `lib/siteConfig.ts` (`name`, `legalName`) | "Marimba Designs" (template) |
+| Location | `lib/siteConfig.ts` (`location`) | `"Based in [Your City], [Country]"` |
+| Projects | `lib/projects.ts` | Template placeholders |
+| Showreel video | `siteConfig.showreel.src` | `https://marimba.design/assets/showReel_1-opt.mp4` |
+| Email / socials / awards | `siteConfig` | marimba.design placeholders |
+| Resume PDF | `public/assets/resume.pdf` | Placeholder |
+| Deployed domain | `siteConfig.domain` / `metadataBase` | `https://marimba.design` |
+| Favicon | `app/layout.tsx` icons | `/assets/asset 0.svg` |
+| Tool marquee list | `siteConfig.toolMarquee` | 19 icons in `public/assets/tools/*.svg` |
 
 ---
 
-### Work Package 3: Case Study Template Architecture (`/work/[slug]`)
-**File Target**: `app/work/[slug]/page.tsx` & `components/case-study/*`
+## 2. Commands
 
-1. **Case Study Hero Section**:
-   - Large 5vw serif project title.
-   - Metadata grid: Role, Timeline, Tools, Client.
-   - Full-bleed 16:9 hero video player.
-2. **5-Column Editorial Layout Grid**:
-   - Strict CSS grid alignment (`50px repeat(5, 1fr) 50px`).
-   - Context, problem statement, client quote.
-3. **Interactive Design Evolution Timeline**:
-   - Interactive phase switcher (Discovery -> Wireframing -> Visual Design -> Development).
-   - **3D Isometric iPad Mockup**:
-     - Custom CSS 3D transform on nested video:
-       ```css
-       transform: perspective(4051px) rotateX(22deg) rotateY(28deg) rotateZ(-15deg) skew(2deg) rotate(-1deg);
-       ```
-4. **Asymmetric Off-Edge Image Galleries**:
-   - Left/right bleed images extending beyond container margins (`margin-left: -144%`, `margin-right: -144%`).
-   - Mobile mockup side-by-side floating carousels.
-5. **Next Project Navigation**:
-   - 2-Column bottom footer cards with auto-playing video hover previews.
+```bash
+npm install
+npm run dev          # http://localhost:3000
+npm run build        # production build (type-checks via next build)
+npx tsc --noEmit     # fast typecheck
+npm run start        # serve production build
+```
+
+Windows note: terminal commands run in Git Bash (POSIX syntax).
 
 ---
 
-### Work Package 4: Global Motion & Page Transition Engine
-**File Target**: `components/PageTransitionProvider.tsx`
+## 3. Theme — where the tokens live
 
-1. **Curtain Route Transitions**:
-   - Intercept route changes via Next.js `useRouter` / `usePathname`.
-   - Slide `#loader` curtain down (`yPercent: 0`), swap route, and slide up (`yPercent: -100`).
-2. **Smooth Scroll Recalibration**:
-   - On route change, execute `lenis.scrollTo(0, { immediate: true })` and `ScrollTrigger.refresh()`.
+Single-source truth is the `:root` block in `app/globals.css`:
+
+```css
+--bg-light: #FFFFFF;  --text-dark: #1E3A5F;  --loader-bg: #142A4A;
+--accent-sky: #A8CBE8;   /* light blue */
+--accent-lilac: #C3C6E8; /* lavender */
+--accent-mint: #8FB6D8;  /* powder blue (was green) */
+--accent-coral: #EFAF8C; /* orange */
+--accent-leaf: #EFD0B4;  /* pale peach (was green) */
+--accent-amber: #E0AE62; /* deep orange */
+--text-muted: #7C8AA0;
+```
+
+- **Tailwind mirror:** `tailwind.config.ts` — `canvas`, `surface`, `navy` (+ `navy.dark`, `navy.muted`).
+- **TS mirror:** `siteConfig.theme` in `lib/siteConfig.ts` (used for `themeColor` metadata).
+- **Palette reference doc:** `design-system.json` (documentation only, not wired).
+- **Fonts:** swap the `next/font/google` imports in `app/layout.tsx` (currently
+  `Instrument_Serif`, `Geist`, `Roboto_Mono`).
+- Hardcoded accent hexes in components were tokenized during theming; the hero
+  asset tints (hue-rotate filters on `.shape-* .shape-img` in `globals.css`) are the
+  remaining "recolor" knobs for the baked `.webp` shapes.
 
 ---
 
-## 3. Recommended Implementation Plan
+## 4. Homepage motion systems (`lib/`)
 
-1. **Step 1**: Scaffold `/work` page with the full 4-project slider and progress dot animations.
-2. **Step 2**: Scaffold `/about` page with the portrait collage and experience timeline.
-3. **Step 3**: Implement dynamic `/work/[slug]` template for Hannah Macready and MMT case studies.
-4. **Step 4**: Integrate the global curtain page-transition coordinator.
+| Engine | Job |
+| :--- | :--- |
+| `heroExplode.ts` | Loader curtain, logo fill, then the shape **throw-out** intro. **Only the two asterisks tumble in 3D** (`#shape-astrix`, `#shape-astrix-2`); circles/leaf/starburst pop flat. Astrix #1 keeps its continuous idle z-spin; #2 has its own opposite-direction idle loop. |
+| `orbitEngine.ts` | Scroll-scrubbed orbit convergence of the hero shapes. **The "My design practice" center label is deliberately NOT tracked** — it stays fixed and centered. |
+| `processStack.ts` | Process disk stack lift on scroll. |
+| `workSlider.ts` | `/work` slider. |
+| `testimonialRotator.ts` | Testimonials autoplay + drag/swipe, prev/next, keyboard. |
+| `beforeAfter.ts`, `caseStudy.ts` | Case-study before/after scrub + hero. |
+| `themeScroll.ts` | Header/hero theme inversion as you scroll. |
+| `cursor.ts` | Custom cursor. |
+| `smoothScroll.ts` | Lenis smooth scroll. |
+
+All engines mount in `useEffect` with full cleanup (StrictMode-safe) and honor
+`prefers-reduced-motion` (intro skipped, orbit spin disabled, showreel paused,
+global CSS kills transitions).
+
+**Do not remove** the `.hero .pin-spacer { position: absolute !important; }` rule
+in `globals.css` — it keeps the pinned hero background out of the flex flow, or
+`.hero-content` falls below the fold.
+
+---
+
+## 5. Layout notes (current state)
+
+- **Header:** brand left, nav right, center column pinned to the 5-column grid
+  (`50px` gutters, cells `(100vw − 100px)/5`). The **role sits on grid line 2/5**
+  and the **location stacks beneath it** (muted, smaller) — it was moved off the
+  3/5 line because the 48-char role collided with it on laptop widths.
+- **Hero text:** centered; headline `clamp(2.6rem → 5.25rem)` Instrument Serif,
+  `text-wrap: balance`; tag pill above it.
+- **Marquee:** infinite scroll, **no hover pause** (pauses only on keyboard focus).
+  Duplicated track loops at exactly −50% — each tile carries its own right margin
+  so there's no seam jump.
+- **Grid lines** (`body::before`): decorative 5-column overlay at `rgba(30,58,95,…)`.
+- Mobile (≤768px): header center hidden, orbit shapes + ring hidden, mobile video
+  replaces the MacBook, grid lines off.
+
+---
+
+## 6. File map (key files)
+
+| Area | Files |
+| :--- | :--- |
+| Routes | `app/page.tsx` (home), `app/about/page.tsx`, `app/work/page.tsx`, `app/work/[slug]/page.tsx`, `app/layout.tsx` |
+| Homepage | `components/MarimbaExactPortfolio.tsx`, `components/ToolMarquee.tsx`, `components/MacbookLaptop.tsx`, `components/BeforeAfterSlider.tsx` |
+| Subpages | `components/AboutPage.tsx`, `components/WorkPage.tsx`, `components/CaseStudyPage.tsx`, `components/SiteHeader.tsx` |
+| Shell | `components/SmoothScrollProvider.tsx`, `components/PageTransitionProvider.tsx`, `components/CursorDot.tsx`, `components/BlindsLightingOverlay.tsx` |
+| Content | `lib/siteConfig.ts` (identity/contact), `lib/projects.ts` (projects), `lib/about.ts` |
+| Motion | `lib/*.ts` — see §4 |
+| Styling | `app/globals.css` (design system), `tailwind.config.ts` |
+| Assets | `public/assets/` — `logo.svg`, `shape-*.webp`, `shape-astrix.svg`, `shape-astrix-2.svg`, `tools/*.svg`, `resume.pdf` |
+| Reference (not in build) | `pulled-css&js/` (original site CSS/JS), `marimba.design-svg/`, `design-system.json` |
+| Component surface | `components/index.ts` — exports only route-wired components |
+
+**Legacy components kept for reference, NOT exported:** `Header.tsx`,
+`HeroSection.tsx`, `MarimbaPortfolio.tsx`, `ExpertiseRing.tsx`, `ProcessSection.tsx`,
+`WorkSection.tsx`, `ContactSection.tsx`, `Footer.tsx`, `CustomCursor.tsx`.
+
+**Hero asset gotcha:** `shape-astrix.png` (the original mask) was byte-identical to
+`texture-astrix.png`, so the asterisk rendered as a rectangle. It was replaced by
+hand-built SVGs (`shape-astrix.svg`, `shape-astrix-2.svg`) with themed gradients.
+
+---
+
+## 7. Git checkpoints (newest first)
+
+```
+c6d7082  Polish: marquee never pauses on hover, fix header text collision, purge remaining greens
+bf83509  Polish: navy tool icons, true white canvas, green assets recolored
+68b1253  Polish: navy logo, white canvas, cool-tinted hero assets
+a14ded8  Customize: navy blue theme, Instrument Serif, new role
+096b10b  Theming: tokenize remaining accent colors into CSS vars
+9654595  Polish: centralize palette, enable Fraunces axes, refine type rhythm
+f3f865a  Checkpoint: portfolio template baseline before polish phase
+```
+
+`.gitignore` excludes `node_modules/` and `.next/`.
+
+---
+
+## 8. Customization checklist (the next session)
+
+1. `lib/siteConfig.ts` — name, legalName, location, email, socials, awards, showreel,
+   education, skills, testimonials, `domain`/`metadataBase`.
+2. `lib/projects.ts` — replace placeholder projects; media can be `placeholder`
+   gradients until real videos exist.
+3. `public/assets/` — swap `logo.svg` to the owner's wordmark (single-color navy
+   fill works for both header and loader — the loader lightens it via a filter),
+   replace `resume.pdf`, add project media.
+4. Re-skin knobs: `:root` tokens in `globals.css`, hue-rotate filters on the hero
+   `.webp` shapes, `tailwind.config.ts` navy scale.
+5. Verify: `npm run build` + `npx tsc --noEmit`, then check reduced-motion mode.

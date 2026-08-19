@@ -155,17 +155,17 @@ export const siteConfig = {
   theme: {
     canvas: "#FFFFFF",
     surface: "#FAFAFA",
-    olive: "#1E3A5F",
-    oliveDark: "#142A4A",
+    navy: "#1E3A5F",
+    navyDark: "#142A4A",
     muted: "#7C8AA0",
     loaderBackground: "#142A4A",
     /** Brand accent pastels — used by the hero shapes, orbit ring, and
         placeholder project tiles. Change these to re-skin the template. */
     accentSky: "#A8CBE8",
     accentLilac: "#C3C6E8",
-    accentMint: "#A9C6A4",
+    accentMint: "#8FB6D8",
     accentCoral: "#EFAF8C",
-    accentLeaf: "#C9D9B6",
+    accentLeaf: "#EFD0B4",
     accentAmber: "#E0AE62",
   },
 } as const;
