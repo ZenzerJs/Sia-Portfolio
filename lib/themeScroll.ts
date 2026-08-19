@@ -18,10 +18,10 @@ export function initThemeScroll(): () => void {
   if (!contactSection) return () => {};
 
   const tween = gsap.to("body", {
-    backgroundColor: "#212E02",
+    backgroundColor: "#142A4A",
     color: "#F0EFE9",
     "--text-dark": "#F0EFE9",
-    "--bg-light": "#3A4A16",
+    "--bg-light": "#1E3A5F",
     ease: "none",
     scrollTrigger: {
       trigger: "#contact",

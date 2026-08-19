@@ -18,7 +18,7 @@ export function WorkSection() {
       id="work"
       ref={containerRef}
       data-cursor="work"
-      className="relative w-full py-20 md:py-36 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden bg-[#F0EFE9] text-[#3A4A16] cursor-pointer"
+      className="relative w-full py-20 md:py-36 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden bg-[#F0EFE9] text-[#1E3A5F] cursor-pointer"
     >
       <div className="max-w-6xl w-full mx-auto flex flex-col items-center">
         <motion.div
@@ -38,7 +38,7 @@ export function WorkSection() {
 
         <motion.div
           style={{ scale, opacity }}
-          className="relative w-full max-w-4xl aspect-[16/10] rounded-2xl bg-[#0E0E0E] p-3 md:p-6 shadow-2xl border border-[#3A4A16]/20 flex items-center justify-center group overflow-hidden"
+          className="relative w-full max-w-4xl aspect-[16/10] rounded-2xl bg-[#0E0E0E] p-3 md:p-6 shadow-2xl border border-[#1E3A5F]/20 flex items-center justify-center group overflow-hidden"
         >
           <div className="relative w-full h-full rounded-lg overflow-hidden bg-black flex items-center justify-center">
             <video
@@ -50,8 +50,8 @@ export function WorkSection() {
               src="https://marimba.design/assets/showReel_1-opt.mp4"
             />
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-40" />
-            <div className="absolute inset-0 bg-[#3A4A16]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="text-sm font-mono bg-[#3A4A16] text-[#F0EFE9] px-4 py-2 rounded-full shadow-lg">
+            <div className="absolute inset-0 bg-[#1E3A5F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="text-sm font-mono bg-[#1E3A5F] text-[#F0EFE9] px-4 py-2 rounded-full shadow-lg">
                 Click to explore case studies →
               </span>
             </div>

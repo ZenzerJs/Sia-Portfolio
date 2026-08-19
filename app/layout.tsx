@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Geist, Roboto_Mono } from "next/font/google";
+import { Instrument_Serif, Geist, Roboto_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { PageTransitionProvider } from "@/components/PageTransitionProvider";
 import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
 
-// Display / headlines: Fraunces — a distinctive, high-contrast editorial serif
-// with optical sizing (opsz) and the SOFT/WONK variable axes for a designed,
-// non-default look. Loaded as a single variable font (one file, all weights).
-const fraunces = Fraunces({
+// Display / headlines: Instrument Serif — a high-contrast editorial serif with
+// a sharp, magazine-style voice that pairs cleanly with Geist and the navy
+// palette.
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
   variable: "--font-display",
   display: "swap",
 });
@@ -71,11 +71,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${geist.variable} ${robotoMono.variable}`}
+      className={`${instrumentSerif.variable} ${geist.variable} ${robotoMono.variable}`}
     >
       <body
         suppressHydrationWarning
-        className="bg-[#F0EFE9] text-[#3A4A16] font-sans antialiased selection:bg-[#3A4A16] selection:text-[#F0EFE9]"
+        className="bg-[#F0EFE9] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#F0EFE9]"
       >
         <SmoothScrollProvider>
           <PageTransitionProvider>{children}</PageTransitionProvider>

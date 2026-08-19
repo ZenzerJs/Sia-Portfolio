@@ -92,7 +92,7 @@ export function CustomCursor() {
       animate={{
         width: isWork ? 96 : isLink ? 24 : 10,
         height: isWork ? 96 : isLink ? 24 : 10,
-        backgroundColor: isWork ? "#3A4A16" : isLink ? "rgba(58, 74, 22, 0.2)" : "#3A4A16",
+        backgroundColor: isWork ? "#1E3A5F" : isLink ? "rgba(30, 58, 95, 0.2)" : "#1E3A5F",
         scale: isWork ? 1 : isLink ? 1.2 : 1,
       }}
       transition={{ type: "spring", stiffness: 350, damping: 25 }}

@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "A warm, editorial portfolio for a copywriter who helps brands find their voice — built to feel like reading a well-crafted essay.",
     media: {
       type: "placeholder",
-      gradient: "linear-gradient(135deg, #C1E4F7 0%, #DAC6EB 100%)",
+      gradient: "linear-gradient(135deg, #A8CBE8 0%, #C3C6E8 100%)",
     },
     role: "Design & Development",
     timeline: "6 weeks",
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     client: "Hannah Macready",
     heroDescription:
       "Giving a words-first brand a digital home that reads as beautifully as it writes.",
-    accent: "#C1E4F7",
+    accent: "#A8CBE8",
     results: [
       { value: "+38%", label: "Client inquiries" },
       { value: "2.1×", label: "Time on page" },
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     },
     beforeAfter: {
       before: "linear-gradient(135deg, #8F9BB3 0%, #C1C9D9 100%)",
-      after: "linear-gradient(135deg, #C1E4F7 0%, #DAC6EB 100%)",
+      after: "linear-gradient(135deg, #A8CBE8 0%, #C3C6E8 100%)",
       beforeLabel: "Before",
       afterLabel: "After",
     },
@@ -127,7 +127,7 @@ export const projects: Project[] = [
       "A calm, grounding website for a counseling practice — designed to feel safe, human, and reassuring from the first visit.",
     media: {
       type: "placeholder",
-      gradient: "linear-gradient(135deg, #93DD89 0%, #C5E1A5 100%)",
+      gradient: "linear-gradient(135deg, #A9C6A4 0%, #C9D9B6 100%)",
     },
     role: "Design & Development",
     timeline: "8 weeks",
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     detailVideo: "https://marimba.design/assets/MMT/MMT-V1-opt2.mp4",
     heroDescription:
       "Making mental health support feel approachable through warm, human-centered design.",
-    accent: "#93DD89",
+    accent: "#A9C6A4",
     results: [
       { value: "+45%", label: "Booking inquiries" },
       { value: "−32%", label: "Bounce rate" },
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     },
     beforeAfter: {
       before: "linear-gradient(135deg, #6d7a86 0%, #9aa7b0 100%)",
-      after: "linear-gradient(135deg, #93DD89 0%, #C5E1A5 100%)",
+      after: "linear-gradient(135deg, #A9C6A4 0%, #C9D9B6 100%)",
       beforeLabel: "Before",
       afterLabel: "After",
     },
@@ -260,7 +260,7 @@ export const projects: Project[] = [
       "An energetic hub for an archery community — scheduling, events, and member stories in one focused, fast experience.",
     media: {
       type: "placeholder",
-      gradient: "linear-gradient(135deg, #F46732 0%, #FC6A00 100%)",
+      gradient: "linear-gradient(135deg, #EFAF8C 0%, #E0AE62 100%)",
     },
     role: "Design & Development",
     timeline: "6 weeks",
@@ -268,7 +268,7 @@ export const projects: Project[] = [
     client: "Precision Archery & Bowhunting Club",
     heroDescription:
       "A digital clubhouse that brings an athletic community together — schedules, events, and stories in one place.",
-    accent: "#F46732",
+    accent: "#EFAF8C",
     results: [
       { value: "+60%", label: "Event registrations" },
       { value: "12k+", label: "Monthly visitors" },

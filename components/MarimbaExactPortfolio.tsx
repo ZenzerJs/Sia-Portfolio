@@ -84,7 +84,7 @@ export function MarimbaExactPortfolio() {
     window.addEventListener("scroll", updateActiveNav, { passive: true });
     updateActiveNav();
 
-    // 5. Right-side nav: green curtain swipe transition. The #212E02 overlay
+    // 5. Right-side nav: green curtain swipe transition. The #142A4A overlay
     //    (same green as the bottom-of-page theme) swipes up from below the
     //    viewport to cover the page, the view jumps to the target section, then
     //    the curtain keeps swiping up and out the top to reveal it.
@@ -184,7 +184,7 @@ export function MarimbaExactPortfolio() {
               <span className="loader-logo-fill-bar"></span>
             </div>
           </div>
-          <div className="loader-text">Digital designer</div>
+          <div className="loader-text">{siteConfig.role}</div>
         </div>
       </div>
 
@@ -313,7 +313,7 @@ export function MarimbaExactPortfolio() {
                   height="464"
                   rx="120"
                   transform="rotate(14 400 400)"
-                  stroke="rgba(58, 74, 22, 0.16)"
+                  stroke="rgba(30, 58, 95, 0.16)"
                   strokeWidth="1.5"
                 />
                 <rect
@@ -323,21 +323,21 @@ export function MarimbaExactPortfolio() {
                   height="536"
                   rx="120"
                   transform="rotate(-16 400 400)"
-                  stroke="rgba(58, 74, 22, 0.1)"
+                  stroke="rgba(30, 58, 95, 0.1)"
                   strokeWidth="1.5"
                 />
                 <circle
                   cx="400"
                   cy="400"
                   r="292"
-                  stroke="rgba(58, 74, 22, 0.08)"
+                  stroke="rgba(30, 58, 95, 0.08)"
                   strokeWidth="1.5"
                   strokeDasharray="2 12"
                   strokeLinecap="round"
                 />
                 <path
                   d="M400 108v72M400 620v72M108 400h72M620 400h72"
-                  stroke="rgba(58, 74, 22, 0.12)"
+                  stroke="rgba(30, 58, 95, 0.12)"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                 />

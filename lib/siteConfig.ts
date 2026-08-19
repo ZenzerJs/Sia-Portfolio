@@ -14,8 +14,8 @@ export const siteConfig = {
   name: "Marimba Designs",
   legalName: "Marimba. Designs",
   domain: "https://marimba.design",
-  role: "Digital designer",
-  location: "Based in Calgary, Canada",
+  role: "Communications, Marketing & Project Coordination",
+  location: "Based in [Your City], [Country]",
   tagline:
     "I create living, breathing websites for brands that want to be felt, not just seen.",
 
@@ -155,17 +155,17 @@ export const siteConfig = {
   theme: {
     canvas: "#F0EFE9",
     surface: "#F1F0EA",
-    olive: "#3A4A16",
-    oliveDark: "#212E02",
-    muted: "#8F8F8E",
-    loaderBackground: "#212E02",
+    olive: "#1E3A5F",
+    oliveDark: "#142A4A",
+    muted: "#7C8AA0",
+    loaderBackground: "#142A4A",
     /** Brand accent pastels — used by the hero shapes, orbit ring, and
         placeholder project tiles. Change these to re-skin the template. */
-    accentSky: "#C1E4F7",
-    accentLilac: "#DAC6EB",
-    accentMint: "#93DD89",
-    accentCoral: "#F46732",
-    accentLeaf: "#C5E1A5",
-    accentAmber: "#FC6A00",
+    accentSky: "#A8CBE8",
+    accentLilac: "#C3C6E8",
+    accentMint: "#A9C6A4",
+    accentCoral: "#EFAF8C",
+    accentLeaf: "#C9D9B6",
+    accentAmber: "#E0AE62",
   },
 } as const;

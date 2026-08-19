@@ -10,10 +10,10 @@ const config: Config = {
       colors: {
         canvas: "#F0EFE9",
         surface: "#F1F0EA",
-        olive: {
-          DEFAULT: "#3A4A16",
-          dark: "#212E02",
-          muted: "rgba(58, 74, 22, 0.35)",
+        navy: {
+          DEFAULT: "#1E3A5F",
+          dark: "#142A4A",
+          muted: "rgba(30, 58, 95, 0.35)",
         },
       },
       fontFamily: {

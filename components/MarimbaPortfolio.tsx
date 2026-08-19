@@ -39,7 +39,7 @@ export function MarimbaPortfolio() {
     <motion.div
       ref={containerRef}
       style={{ backgroundColor }}
-      className="relative min-h-screen w-full text-[#3A4A16] selection:bg-[#3A4A16] selection:text-[#F0EFE9] font-sans antialiased overflow-x-hidden transition-colors duration-700 ease-out"
+      className="relative min-h-screen w-full text-[#1E3A5F] selection:bg-[#1E3A5F] selection:text-[#F0EFE9] font-sans antialiased overflow-x-hidden transition-colors duration-700 ease-out"
     >
       {/* Blinds Window Shadow Lighting Overlay */}
       <BlindsLightingOverlay scrollYProgress={scrollYProgress} />

@@ -52,11 +52,11 @@ function InlineMediaBadge({ id, href, title, imageSrc, label }: InlineBadgeProps
         onMouseEnter={() => setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative group inline-flex items-center justify-center rounded-full border border-[#3A4A16] overflow-hidden select-none transition-all duration-300"
+        className="relative group inline-flex items-center justify-center rounded-full border border-[#1E3A5F] overflow-hidden select-none transition-all duration-300"
         style={{
           width: isHovered ? "clamp(5rem, 8.5vw, 8.5rem)" : "clamp(3.75rem, 6.5vw, 6.5rem)",
           height: "clamp(2rem, 3.2vw, 3.25rem)",
-          backgroundColor: "#3A4A16",
+          backgroundColor: "#1E3A5F",
         }}
       >
         {/* Dynamic 3D Card Inner */}
@@ -119,7 +119,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden px-6 md:px-12 pt-32 pb-20 select-none text-[#3A4A16]"
+      className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden px-6 md:px-12 pt-32 pb-20 select-none text-[#1E3A5F]"
     >
       {/* Meta Top Info */}
       <motion.div
@@ -141,8 +141,8 @@ export function HeroSection() {
           animate={{ rotate: 360 }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         >
-          <div className="w-full h-full rounded-full border border-[#3A4A16]/20 flex items-center justify-center">
-            <span className="text-3xl text-[#3A4A16] select-none">✱</span>
+          <div className="w-full h-full rounded-full border border-[#1E3A5F]/20 flex items-center justify-center">
+            <span className="text-3xl text-[#1E3A5F] select-none">✱</span>
           </div>
         </motion.div>
 
@@ -152,15 +152,15 @@ export function HeroSection() {
           animate={{ y: [0, -12, 0], rotate: [0, 3, -3, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-14 h-14 md:w-20 md:h-20 rounded-full bg-gradient-to-tr from-[#93DD89] to-[#C1E4F7] shadow-sm border border-[#3A4A16]/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" />
-          <span className="text-xs md:text-sm font-mono bg-[#3A4A16] text-[#F0EFE9] px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="w-14 h-14 md:w-20 md:h-20 rounded-full bg-gradient-to-tr from-[#A9C6A4] to-[#A8CBE8] shadow-sm border border-[#1E3A5F]/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" />
+          <span className="text-xs md:text-sm font-mono bg-[#1E3A5F] text-[#F0EFE9] px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             Visual design
           </span>
         </motion.div>
 
         {/* Starburst Shape Top Right */}
         <motion.div
-          className="absolute top-[20%] right-[10%] md:right-[15%] w-12 h-12 md:w-16 md:h-16 text-[#3A4A16]/60"
+          className="absolute top-[20%] right-[10%] md:right-[15%] w-12 h-12 md:w-16 md:h-16 text-[#1E3A5F]/60"
           animate={{ rotate: -360, scale: [1, 1.1, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
@@ -175,10 +175,10 @@ export function HeroSection() {
           animate={{ y: [0, 14, 0], rotate: [0, -4, 4, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
-          <span className="text-xs md:text-sm font-mono bg-[#3A4A16] text-[#F0EFE9] px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <span className="text-xs md:text-sm font-mono bg-[#1E3A5F] text-[#F0EFE9] px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             Interaction design
           </span>
-          <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#DAC6EB] to-[#F46732] shadow-sm border border-[#3A4A16]/10 transition-transform duration-300 group-hover:scale-110" />
+          <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#C3C6E8] to-[#EFAF8C] shadow-sm border border-[#1E3A5F]/10 transition-transform duration-300 group-hover:scale-110" />
         </motion.div>
 
         {/* Floating Leaf / Organic Form */}
@@ -187,7 +187,7 @@ export function HeroSection() {
           animate={{ y: [0, -10, 0], rotate: [0, 15, -15, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-full h-full rounded-tr-[50px] rounded-bl-[50px] bg-[#93DD89]/60 border border-[#3A4A16]/20" />
+          <div className="w-full h-full rounded-tr-[50px] rounded-bl-[50px] bg-[#A9C6A4]/60 border border-[#1E3A5F]/20" />
         </motion.div>
 
         {/* Planet 3: UI/UX */}
@@ -196,8 +196,8 @@ export function HeroSection() {
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#C1E4F7] to-[#DAC6EB] shadow-sm border border-[#3A4A16]/10 transition-transform duration-300 group-hover:scale-110" />
-          <span className="text-xs md:text-sm font-mono bg-[#3A4A16] text-[#F0EFE9] px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#A8CBE8] to-[#C3C6E8] shadow-sm border border-[#1E3A5F]/10 transition-transform duration-300 group-hover:scale-110" />
+          <span className="text-xs md:text-sm font-mono bg-[#1E3A5F] text-[#F0EFE9] px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             UI/UX
           </span>
         </motion.div>
@@ -212,7 +212,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-8"
         >
-          <span className="inline-block px-5 py-2 rounded-full border border-[#3A4A16]/30 text-xs md:text-sm font-medium tracking-wide uppercase bg-[#F1F0EA]/60 backdrop-blur-sm shadow-sm">
+          <span className="inline-block px-5 py-2 rounded-full border border-[#1E3A5F]/30 text-xs md:text-sm font-medium tracking-wide uppercase bg-[#F1F0EA]/60 backdrop-blur-sm shadow-sm">
             Web design &amp; development
           </span>
         </motion.div>

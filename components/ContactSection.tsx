@@ -7,7 +7,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full py-28 md:py-44 px-6 md:px-12 bg-[#F0EFE9] text-[#3A4A16] border-t border-[#3A4A16]/10"
+      className="relative w-full py-28 md:py-44 px-6 md:px-12 bg-[#F0EFE9] text-[#1E3A5F] border-t border-[#1E3A5F]/10"
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         <motion.h2
@@ -41,7 +41,7 @@ export function ContactSection() {
           <span className="text-sm font-mono opacity-60">Myranda Wicks</span>
           <a
             href="mailto:hello@marimba.design"
-            className="font-serif text-2xl sm:text-4xl text-[#3A4A16] hover:opacity-75 transition-opacity underline decoration-1 underline-offset-8"
+            className="font-serif text-2xl sm:text-4xl text-[#1E3A5F] hover:opacity-75 transition-opacity underline decoration-1 underline-offset-8"
           >
             hello@marimba.design
           </a>

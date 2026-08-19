@@ -58,7 +58,7 @@ export function ProcessSection() {
     <section
       id="process"
       ref={containerRef}
-      className="relative w-full py-28 md:py-44 px-6 md:px-12 bg-[#F0EFE9] text-[#3A4A16] overflow-hidden"
+      className="relative w-full py-28 md:py-44 px-6 md:px-12 bg-[#F0EFE9] text-[#1E3A5F] overflow-hidden"
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         <motion.h2
@@ -83,17 +83,17 @@ export function ProcessSection() {
                 delay: index * 0.18,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="w-full flex flex-col md:flex-row items-center justify-between gap-6 my-4 p-6 md:p-8 rounded-2xl bg-[#F1F0EA]/80 backdrop-blur-md border border-[#3A4A16]/15 hover:border-[#3A4A16]/30 transition-all duration-300 shadow-sm"
+              className="w-full flex flex-col md:flex-row items-center justify-between gap-6 my-4 p-6 md:p-8 rounded-2xl bg-[#F1F0EA]/80 backdrop-blur-md border border-[#1E3A5F]/15 hover:border-[#1E3A5F]/30 transition-all duration-300 shadow-sm"
             >
               <div className="relative w-48 h-20 md:w-56 md:h-24 shrink-0 flex items-center justify-center">
                 <div
-                  className="w-full h-full rounded-[50%] shadow-lg border border-[#3A4A16]/20 transition-transform duration-500 hover:rotate-45"
+                  className="w-full h-full rounded-[50%] shadow-lg border border-[#1E3A5F]/20 transition-transform duration-500 hover:rotate-45"
                   style={{
                     background: disk.gradient,
                     transform: "perspective(400px) rotateX(45deg)",
                   }}
                 />
-                <span className="absolute font-mono text-xs font-bold text-[#3A4A16] px-2 py-0.5 rounded bg-white/70 backdrop-blur-sm">
+                <span className="absolute font-mono text-xs font-bold text-[#1E3A5F] px-2 py-0.5 rounded bg-white/70 backdrop-blur-sm">
                   STEP {disk.step}
                 </span>
               </div>

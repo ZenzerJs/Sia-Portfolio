@@ -15,7 +15,7 @@ export function Header() {
       <div className="pointer-events-auto flex items-center">
         <Link href="/" className="group flex items-center gap-2 focus:outline-none">
           <svg
-            className="h-7 w-auto text-[#3A4A16] transition-transform duration-300 group-hover:scale-105"
+            className="h-7 w-auto text-[#1E3A5F] transition-transform duration-300 group-hover:scale-105"
             viewBox="0 0 348.3 117"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
@@ -32,10 +32,10 @@ export function Header() {
         </Link>
       </div>
 
-      <nav className="pointer-events-auto flex items-center gap-6 md:gap-8 text-sm font-medium text-[#3A4A16]">
+      <nav className="pointer-events-auto flex items-center gap-6 md:gap-8 text-sm font-medium text-[#1E3A5F]">
         <Link
           href="/"
-          className="relative py-1 border-b border-[#3A4A16] hover:opacity-80 transition-opacity"
+          className="relative py-1 border-b border-[#1E3A5F] hover:opacity-80 transition-opacity"
         >
           Home
         </Link>

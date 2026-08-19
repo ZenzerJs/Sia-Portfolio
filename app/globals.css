@@ -11,18 +11,18 @@
 
 :root {
     --bg-light: #F0EFE9;
-    --text-dark: #3A4A16;
-    --loader-bg: #212E02;
+    --text-dark: #1E3A5F;
+    --loader-bg: #142A4A;
     /* Brand accent palette — the pastels used across the hero shapes, orbit
        ring, project cards, and process disks. Centralized so a future re-skin
        can shift the whole template from one place. */
-    --accent-sky: #C1E4F7;    /* light blue */
-    --accent-lilac: #DAC6EB;  /* lavender */
-    --accent-mint: #93DD89;   /* green */
-    --accent-coral: #F46732;  /* orange */
-    --accent-leaf: #C5E1A5;   /* pale green (secondary) */
-    --accent-amber: #FC6A00;  /* deep orange (secondary) */
-    --text-muted: #8F8F8E;
+    --accent-sky: #A8CBE8;    /* light blue */
+    --accent-lilac: #C3C6E8;  /* lavender */
+    --accent-mint: #A9C6A4;   /* green */
+    --accent-coral: #EFAF8C;  /* orange */
+    --accent-leaf: #C9D9B6;   /* pale green (secondary) */
+    --accent-amber: #E0AE62;  /* deep orange (secondary) */
+    --text-muted: #7C8AA0;
     
     --font-sans: var(--font-sans, 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
     --font-display: var(--font-display, 'Fraunces', Georgia, serif);
@@ -259,7 +259,7 @@ body.is-loading {
 .loader-logo-fill-bar {
     position: absolute;
     inset: 0;
-    background: radial-gradient(85.09% 85.09% at 77.49% 19.47%, #DAC6EB 15.38%, #EFE9D7 90.87%); 
+    background: radial-gradient(85.09% 85.09% at 77.49% 19.47%, #C3C6E8 15.38%, #EFE9D7 90.87%); 
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -599,10 +599,6 @@ main {
     font-weight: 400;
     line-height: 1.12;
     letter-spacing: -0.02em;
-    /* Soften Fraunces' terminals for a warmer, crafted editorial look using
-       the SOFT/WONK axes loaded in app/layout.tsx (opsz is handled by
-       font-optical-sizing on the body). */
-    font-variation-settings: "SOFT" 60, "WONK" 0;
     color: var(--text-dark);
     margin: 0;
     text-align: center;
@@ -650,7 +646,7 @@ main {
     max-width: 100%;
     margin: -2rem auto 0;
     padding-top: 2rem;
-    filter: drop-shadow(0 30px 70px rgba(58, 74, 22, 0.22));
+    filter: drop-shadow(0 30px 70px rgba(30, 58, 95, 0.22));
 }
 
 .macbook-scene {
@@ -1416,7 +1412,7 @@ main {
     position: fixed;
     inset: 0;
     z-index: 1500;
-    background-color: #212E02;
+    background-color: #142A4A;
     transform: translateY(-101%);
     pointer-events: none;
     will-change: transform;
@@ -1440,7 +1436,6 @@ main {
     font-weight: 400;
     line-height: 1.12;
     letter-spacing: -0.02em;
-    font-variation-settings: "SOFT" 60, "WONK" 0;
 }
 
 /* Process Disks Section */
@@ -1717,7 +1712,7 @@ main {
     gap: 1rem;
     margin-right: 1.5rem;
     padding: 0.9rem 1.7rem 0.9rem 1.2rem;
-    border: 2px solid rgba(58, 74, 22, 0.45);
+    border: 2px solid rgba(30, 58, 95, 0.45);
     border-radius: 20px;
     background-color: rgba(241, 240, 234, 0.72);
     white-space: nowrap;
@@ -1844,7 +1839,7 @@ main {
     padding: 0;
     border: none;
     border-radius: 50%;
-    background-color: rgba(58, 74, 22, 0.3);
+    background-color: rgba(30, 58, 95, 0.3);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -1875,7 +1870,7 @@ main {
     width: 40px;
     height: 40px;
     padding: 0;
-    border: 1.5px solid rgba(58, 74, 22, 0.45);
+    border: 1.5px solid rgba(30, 58, 95, 0.45);
     border-radius: 50%;
     background-color: transparent;
     color: var(--text-dark);
@@ -1886,7 +1881,7 @@ main {
 
 .testimonials__nav:hover {
     border-color: var(--text-dark);
-    background-color: rgba(58, 74, 22, 0.06);
+    background-color: rgba(30, 58, 95, 0.06);
     transform: translateY(-1px);
 }
 
@@ -1926,7 +1921,7 @@ main {
     aspect-ratio: 16 / 9;
     border-radius: 24px;
     overflow: hidden;
-    border: 1px solid rgba(58, 74, 22, 0.18);
+    border: 1px solid rgba(30, 58, 95, 0.18);
     --reveal: 50%;
     user-select: none;
 }
@@ -2024,7 +2019,7 @@ main {
 
 .case-study-quote__text {
     margin: 0;
-    border-top: 1px solid rgba(58, 74, 22, 0.2);
+    border-top: 1px solid rgba(30, 58, 95, 0.2);
     padding-top: 4rem;
     font-family: var(--font-display);
     font-size: clamp(1.6rem, 2.8vw, 2.4rem);
@@ -2099,7 +2094,7 @@ main {
 }
 
 .about-skills__chip {
-    border: 1px solid rgba(58, 74, 22, 0.45);
+    border: 1px solid rgba(30, 58, 95, 0.45);
     border-radius: 50px;
     padding: 0.3rem 1rem;
     font-family: var(--font-mono);
@@ -2348,8 +2343,8 @@ main {
     border-radius: 40px;
     overflow: hidden;
     align-self: center;
-    border: 1px solid rgba(58, 74, 22, 0.18);
-    box-shadow: 0 24px 80px rgba(58, 74, 22, 0.14);
+    border: 1px solid rgba(30, 58, 95, 0.18);
+    box-shadow: 0 24px 80px rgba(30, 58, 95, 0.14);
 }
 
 .work-slider__media-container {
@@ -2540,7 +2535,7 @@ main {
     width: 8px;
     height: 8px;
     border-radius: 4px;
-    background-color: rgba(58, 74, 22, 0.3);
+    background-color: rgba(30, 58, 95, 0.3);
     transition: height 0.3s ease, background-color 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -2563,7 +2558,7 @@ main {
 
 .work-slider__dot.is-active {
     height: 32px;
-    background-color: rgba(58, 74, 22, 0.12);
+    background-color: rgba(30, 58, 95, 0.12);
 }
 
 .work-page .contact-block {
@@ -2648,7 +2643,7 @@ main {
     border-radius: 20px;
     display: block;
     margin-top: 10vh;
-    border: 1px solid rgba(58, 74, 22, 0.2);
+    border: 1px solid rgba(30, 58, 95, 0.2);
 }
 
 .about-intro__image-shape-burst {
@@ -2967,7 +2962,7 @@ main {
     overflow: hidden;
     background-color: var(--bg-light);
     aspect-ratio: 16 / 9;
-    border: 1px solid rgba(58, 74, 22, 0.18);
+    border: 1px solid rgba(30, 58, 95, 0.18);
 }
 
 .case-study-hero__media .work-slider__media {
@@ -3280,8 +3275,8 @@ main {
     place-items: center;
     transform: perspective(4051px) rotateX(22deg) rotateY(28deg) rotateZ(-15deg) skew(2deg) rotate(-1deg);
     transform-style: preserve-3d;
-    box-shadow: 0 40px 120px rgba(58, 74, 22, 0.25);
-    border: 1px solid rgba(58, 74, 22, 0.2);
+    box-shadow: 0 40px 120px rgba(30, 58, 95, 0.25);
+    border: 1px solid rgba(30, 58, 95, 0.2);
 }
 
 .case-study-evolution__screen video {
@@ -3330,7 +3325,7 @@ main {
     border-radius: 20px;
     overflow: hidden;
     display: flex;
-    border: 1px solid rgba(58, 74, 22, 0.18);
+    border: 1px solid rgba(30, 58, 95, 0.18);
 }
 
 .project-thumbnail video,
