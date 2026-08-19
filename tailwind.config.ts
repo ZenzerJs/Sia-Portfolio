@@ -8,8 +8,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        canvas: "#F0EFE9",
-        surface: "#F1F0EA",
+        canvas: "#FFFFFF",
+        surface: "#FAFAFA",
         navy: {
           DEFAULT: "#1E3A5F",
           dark: "#142A4A",

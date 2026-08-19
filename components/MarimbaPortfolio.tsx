@@ -20,18 +20,18 @@ export function MarimbaPortfolio() {
   });
 
   // 3 Primary Section Background Color Shifts
-  // 1. Hero / Intro (0.0 - 0.33): Warm Linen #F0EFE9
+  // 1. Hero / Intro (0.0 - 0.33): Warm Linen #FFFFFF
   // 2. Work Showcase (0.33 - 0.66): Organic Sage Green #DCE7D6
-  // 3. Process / Contact (0.66 - 1.0): Lavender Mist #EAE3F2 -> Warm Linen #F0EFE9
+  // 3. Process / Contact (0.66 - 1.0): Lavender Mist #EAE3F2 -> Warm Linen #FFFFFF
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75, 1],
     [
-      "#F0EFE9", // Section 1: Hero Linen
+      "#FFFFFF", // Section 1: Hero Linen
       "#EAF1E4", // Section 1 -> 2 transition
       "#DCE7D6", // Section 2: Work Sage
       "#EAE3F2", // Section 3: Process Lavender
-      "#F0EFE9", // Return: Contact Warm Linen
+      "#FFFFFF", // Return: Contact Warm Linen
     ]
   );
 
@@ -39,7 +39,7 @@ export function MarimbaPortfolio() {
     <motion.div
       ref={containerRef}
       style={{ backgroundColor }}
-      className="relative min-h-screen w-full text-[#1E3A5F] selection:bg-[#1E3A5F] selection:text-[#F0EFE9] font-sans antialiased overflow-x-hidden transition-colors duration-700 ease-out"
+      className="relative min-h-screen w-full text-[#1E3A5F] selection:bg-[#1E3A5F] selection:text-[#FFFFFF] font-sans antialiased overflow-x-hidden transition-colors duration-700 ease-out"
     >
       {/* Blinds Window Shadow Lighting Overlay */}
       <BlindsLightingOverlay scrollYProgress={scrollYProgress} />

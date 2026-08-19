@@ -10,7 +10,7 @@
 }
 
 :root {
-    --bg-light: #F0EFE9;
+    --bg-light: #FFFFFF;
     --text-dark: #1E3A5F;
     --loader-bg: #142A4A;
     /* Brand accent palette — the pastels used across the hero shapes, orbit
@@ -516,6 +516,18 @@ main {
     height: 100%;
     object-fit: contain;
     display: block;
+}
+
+/* Navy-theme tint for the baked pastel shape assets (circles, leaf,
+   starburst): softens and cool-shifts them so they sit with the navy
+   palette on the white canvas. The asterisk SVGs are already themed
+   in the accent tokens, so they're excluded. */
+.shape-circle-left .shape-img,
+.shape-circle-right .shape-img,
+.shape-circle-bottom .shape-img,
+.shape-leaf .shape-img,
+.shape-starburst .shape-img {
+    filter: saturate(0.8) hue-rotate(20deg) brightness(1.06);
 }
 
 .shape-circle-left {

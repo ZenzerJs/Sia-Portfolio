@@ -18,7 +18,7 @@ export function WorkSection() {
       id="work"
       ref={containerRef}
       data-cursor="work"
-      className="relative w-full py-20 md:py-36 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden bg-[#F0EFE9] text-[#1E3A5F] cursor-pointer"
+      className="relative w-full py-20 md:py-36 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden bg-[#FFFFFF] text-[#1E3A5F] cursor-pointer"
     >
       <div className="max-w-6xl w-full mx-auto flex flex-col items-center">
         <motion.div
@@ -51,7 +51,7 @@ export function WorkSection() {
             />
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-40" />
             <div className="absolute inset-0 bg-[#1E3A5F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="text-sm font-mono bg-[#1E3A5F] text-[#F0EFE9] px-4 py-2 rounded-full shadow-lg">
+              <span className="text-sm font-mono bg-[#1E3A5F] text-[#FFFFFF] px-4 py-2 rounded-full shadow-lg">
                 Click to explore case studies →
               </span>
             </div>

@@ -102,7 +102,7 @@ export function CustomCursor() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          className="flex flex-col items-center justify-center text-[#F0EFE9] p-2"
+          className="flex flex-col items-center justify-center text-[#FFFFFF] p-2"
         >
           <svg
             className="w-8 h-5 mb-1"
@@ -112,19 +112,19 @@ export function CustomCursor() {
           >
             <path
               d="M43.6466 13.3979C32.8541 13.3979 25.712 9.10371 22.228 1.00019"
-              stroke="#F0EFE9"
+              stroke="#FFFFFF"
               strokeWidth="2"
               strokeLinecap="round"
             />
             <path
               d="M43.6466 13.398C32.8541 13.3979 25.712 17.6922 22.228 25.7957"
-              stroke="#F0EFE9"
+              stroke="#FFFFFF"
               strokeWidth="2"
               strokeLinecap="round"
             />
             <path
               d="M42.8208 13.398L1 13.3979"
-              stroke="#F0EFE9"
+              stroke="#FFFFFF"
               strokeWidth="2"
               strokeLinecap="round"
             />

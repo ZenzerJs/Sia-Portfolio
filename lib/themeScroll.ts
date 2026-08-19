@@ -19,8 +19,8 @@ export function initThemeScroll(): () => void {
 
   const tween = gsap.to("body", {
     backgroundColor: "#142A4A",
-    color: "#F0EFE9",
-    "--text-dark": "#F0EFE9",
+    color: "#FFFFFF",
+    "--text-dark": "#FFFFFF",
     "--bg-light": "#1E3A5F",
     ease: "none",
     scrollTrigger: {

@@ -7,7 +7,7 @@ export function ExpertiseRing() {
   return (
     <section
       id="expertise"
-      className="relative w-full py-24 md:py-36 flex items-center justify-center overflow-hidden bg-[#F0EFE9] text-[#1E3A5F]"
+      className="relative w-full py-24 md:py-36 flex items-center justify-center overflow-hidden bg-[#FFFFFF] text-[#1E3A5F]"
     >
       <div className="relative w-[320px] h-[320px] md:w-[480px] md:h-[480px] flex items-center justify-center">
         <motion.div

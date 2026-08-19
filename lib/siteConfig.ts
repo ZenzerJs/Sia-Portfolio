@@ -153,8 +153,8 @@ export const siteConfig = {
 
   /** Design tokens (mirrors `:root` in app/globals.css) */
   theme: {
-    canvas: "#F0EFE9",
-    surface: "#F1F0EA",
+    canvas: "#FFFFFF",
+    surface: "#FAFAFA",
     olive: "#1E3A5F",
     oliveDark: "#142A4A",
     muted: "#7C8AA0",

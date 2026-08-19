@@ -7,7 +7,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full py-28 md:py-44 px-6 md:px-12 bg-[#F0EFE9] text-[#1E3A5F] border-t border-[#1E3A5F]/10"
+      className="relative w-full py-28 md:py-44 px-6 md:px-12 bg-[#FFFFFF] text-[#1E3A5F] border-t border-[#1E3A5F]/10"
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         <motion.h2

@@ -75,7 +75,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="bg-[#F0EFE9] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#F0EFE9]"
+        className="bg-[#FFFFFF] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
       >
         <SmoothScrollProvider>
           <PageTransitionProvider>{children}</PageTransitionProvider>
