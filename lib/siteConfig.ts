@@ -159,5 +159,13 @@ export const siteConfig = {
     oliveDark: "#212E02",
     muted: "#8F8F8E",
     loaderBackground: "#212E02",
+    /** Brand accent pastels — used by the hero shapes, orbit ring, and
+        placeholder project tiles. Change these to re-skin the template. */
+    accentSky: "#C1E4F7",
+    accentLilac: "#DAC6EB",
+    accentMint: "#93DD89",
+    accentCoral: "#F46732",
+    accentLeaf: "#C5E1A5",
+    accentAmber: "#FC6A00",
   },
 } as const;

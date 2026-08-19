@@ -341,10 +341,10 @@ export function MarimbaExactPortfolio() {
                   strokeWidth="1.5"
                   strokeLinecap="round"
                 />
-                <circle cx="272" cy="232" r="7" fill="rgba(147, 221, 137, 0.55)" />
-                <circle cx="560" cy="300" r="5" fill="rgba(218, 198, 235, 0.7)" />
-                <circle cx="512" cy="548" r="8" fill="rgba(193, 228, 247, 0.6)" />
-                <circle cx="288" cy="560" r="4.5" fill="rgba(252, 106, 0, 0.35)" />
+                <circle cx="272" cy="232" r="7" fill="var(--accent-mint)" fillOpacity="0.55" />
+                <circle cx="560" cy="300" r="5" fill="var(--accent-lilac)" fillOpacity="0.7" />
+                <circle cx="512" cy="548" r="8" fill="var(--accent-sky)" fillOpacity="0.6" />
+                <circle cx="288" cy="560" r="4.5" fill="var(--accent-amber)" fillOpacity="0.35" />
               </svg>
             </div>
           </div>

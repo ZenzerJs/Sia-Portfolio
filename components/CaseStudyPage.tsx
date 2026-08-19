@@ -16,7 +16,7 @@ function GalleryPlaceholder({ label, gradient }: { label: string; gradient?: str
     <div
       className="gallery-placeholder"
       style={{
-        background: gradient ?? "linear-gradient(135deg, #C1E4F7 0%, #DAC6EB 100%)",
+        background: gradient ?? "linear-gradient(135deg, var(--accent-sky) 0%, var(--accent-lilac) 100%)",
       }}
     >
       {label}
@@ -47,7 +47,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
     };
   }, []);
 
-  const gradient = project.media.gradient ?? `linear-gradient(135deg, #C1E4F7 0%, #DAC6EB 100%)`;
+  const gradient = project.media.gradient ?? `linear-gradient(135deg, var(--accent-sky) 0%, var(--accent-lilac) 100%)`;
 
   return (
     <>
