@@ -278,28 +278,28 @@ body::before {
     background-image:
     linear-gradient(to right,
       transparent 50px,
-      rgba(45, 80, 22, 0.05) 50px,
-      rgba(45, 80, 22, 0.05) calc(50px + 1px),
+      rgba(30, 58, 95, 0.05) 50px,
+      rgba(30, 58, 95, 0.05) calc(50px + 1px),
       transparent calc(50px + 1px),
       transparent calc(50px + ((100vw - 100px) / 5) - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5)),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) - 1px),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5)),
       transparent calc(50px + ((100vw - 100px) / 5)),
       transparent calc(50px + ((100vw - 100px) / 5) * 2 - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) * 2 - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) * 2),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) * 2 - 1px),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) * 2),
       transparent calc(50px + ((100vw - 100px) / 5) * 2),
       transparent calc(50px + ((100vw - 100px) / 5) * 3 - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) * 3 - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) * 3),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) * 3 - 1px),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) * 3),
       transparent calc(50px + ((100vw - 100px) / 5) * 3),
       transparent calc(50px + ((100vw - 100px) / 5) * 4 - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) * 4 - 1px),
-      rgba(45, 80, 22, 0.08) calc(50px + ((100vw - 100px) / 5) * 4),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) * 4 - 1px),
+      rgba(30, 58, 95, 0.08) calc(50px + ((100vw - 100px) / 5) * 4),
       transparent calc(50px + ((100vw - 100px) / 5) * 4),
       transparent calc(100vw - 50px - 1px),
-      rgba(45, 80, 22, 0.08) calc(100vw - 50px - 1px),
-      rgba(45, 80, 22, 0.08) calc(100vw - 50px),
+      rgba(30, 58, 95, 0.08) calc(100vw - 50px - 1px),
+      rgba(30, 58, 95, 0.08) calc(100vw - 50px),
       transparent calc(100vw - 50px)
     ); 
     pointer-events: none;
@@ -518,16 +518,24 @@ main {
     display: block;
 }
 
-/* Navy-theme tint for the baked pastel shape assets (circles, leaf,
-   starburst): softens and cool-shifts them so they sit with the navy
-   palette on the white canvas. The asterisk SVGs are already themed
-   in the accent tokens, so they're excluded. */
+/* Navy-theme tint for the baked pastel shape assets: softens and brightens
+   them so they sit on the white canvas, and recolors the green-dominant
+   assets — the bottom circle rotates toward blue, the leaf toward warm
+   amber/orange as a complementary balance. The asterisk SVGs are already
+   themed in the accent tokens, so they're excluded. Tune the hue-rotate
+   values to taste. */
 .shape-circle-left .shape-img,
 .shape-circle-right .shape-img,
-.shape-circle-bottom .shape-img,
-.shape-leaf .shape-img,
 .shape-starburst .shape-img {
-    filter: saturate(0.8) hue-rotate(20deg) brightness(1.06);
+    filter: saturate(0.85) brightness(1.06);
+}
+
+.shape-circle-bottom .shape-img {
+    filter: saturate(0.85) hue-rotate(105deg) brightness(1.06);
+}
+
+.shape-leaf .shape-img {
+    filter: saturate(0.85) hue-rotate(-80deg) brightness(1.06);
 }
 
 .shape-circle-left {
@@ -1726,7 +1734,7 @@ main {
     padding: 0.9rem 1.7rem 0.9rem 1.2rem;
     border: 2px solid rgba(30, 58, 95, 0.45);
     border-radius: 20px;
-    background-color: rgba(241, 240, 234, 0.72);
+    background-color: rgba(255, 255, 255, 0.72);
     white-space: nowrap;
     font-family: var(--font-sans);
     font-size: 1.3rem;
@@ -1955,7 +1963,7 @@ main {
     bottom: 0;
     left: var(--reveal);
     width: 2px;
-    background-color: rgba(240, 239, 233, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     transform: translateX(-50%);
     pointer-events: none;
 }
@@ -1969,7 +1977,7 @@ main {
     color: var(--text-dark);
     padding: 0.3rem 0.9rem;
     border-radius: 50px;
-    background-color: rgba(240, 239, 233, 0.85);
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 .before-after__label--before {
