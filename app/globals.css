@@ -18,9 +18,9 @@
        can shift the whole template from one place. */
     --accent-sky: #A8CBE8;    /* light blue */
     --accent-lilac: #C3C6E8;  /* lavender */
-    --accent-mint: #A9C6A4;   /* green */
+    --accent-mint: #8FB6D8;   /* powder blue */
     --accent-coral: #EFAF8C;  /* orange */
-    --accent-leaf: #C9D9B6;   /* pale green (secondary) */
+    --accent-leaf: #EFD0B4;   /* pale peach (secondary) */
     --accent-amber: #E0AE62;  /* deep orange (secondary) */
     --text-muted: #7C8AA0;
     
@@ -259,7 +259,7 @@ body.is-loading {
 .loader-logo-fill-bar {
     position: absolute;
     inset: 0;
-    background: radial-gradient(85.09% 85.09% at 77.49% 19.47%, #C3C6E8 15.38%, #EFE9D7 90.87%); 
+    background: radial-gradient(85.09% 85.09% at 77.49% 19.47%, #C3C6E8 15.38%, #DCE9F6 90.87%); 
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -355,22 +355,30 @@ main {
     width: 100%;
     padding: 35px 50px;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
     pointer-events: none;
 }
 
+/* Role sits on grid line 2/5; the location stacks beneath it on the same
+   line so the two never collide at laptop widths with a long role string. */
 .header-tag {
     margin-left: calc(((100vw - 100px)/5) * 2 );
     font-weight: 400;
-    font-size: .85rem;
+    font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+    letter-spacing: 0.01em;
     color: var(--text-dark);
+    white-space: nowrap;
 }
 
 .header-location {
+    margin-left: calc(((100vw - 100px)/5) * 2 );
     font-weight: 400;
-    font-size: .85rem;
-    color: var(--text-dark);
-    position: absolute;
-    left: calc(((100vw - 100px)/5) * 3 + 50px );
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
+    color: var(--text-muted);
+    white-space: nowrap;
 }
 
 .navigation {
@@ -502,7 +510,7 @@ main {
     pointer-events: none;
     white-space: nowrap;
     z-index: 2;
-    text-shadow: 0 0 30px #212e0288;
+    text-shadow: 0 0 30px rgba(30, 58, 95, 0.53);
     line-height: 1.2;
     opacity: 0;
 }
@@ -1718,8 +1726,7 @@ main {
     padding: 0.75rem 0;
 }
 
-/* Pause the row while the user is hovering or interacting with it */
-.marquee--tools:hover .marquee__track,
+/* Keep scrolling on hover; pause only while a tile holds keyboard focus */
 .marquee--tools:focus-within .marquee__track {
     animation-play-state: paused;
 }

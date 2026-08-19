@@ -106,7 +106,7 @@ All in one file — `components/MarimbaExactPortfolio.tsx`:
 | Loader + intro | Timing in `lib/heroExplode.ts` (loader bar fill, curtain, shape explosion) |
 | Hero orbit | `lib/orbitEngine.ts` (scroll-scrubbed shape convergence) |
 | Work showcase | Showreel clipped to the laptop screen (config via `siteConfig.showreel`) |
-| Tools marquee | `components/ToolMarquee.tsx` (icon tiles, pauses on hover) |
+| Tools marquee | `components/ToolMarquee.tsx` (icon tiles, infinite scroll — no hover pause) |
 | Kind words | `lib/testimonialRotator.ts` (autoplay + drag/swipe, prev/next, keyboard) |
 | Process disks | `lib/processStack.ts` + markup in the section |
 | Contact / Footer | Powered by `siteConfig` |
