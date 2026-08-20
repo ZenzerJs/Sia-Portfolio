@@ -14,9 +14,45 @@ gsap.registerPlugin(ScrollTrigger);
 export function initThemeScroll(): () => void {
   if (typeof window === "undefined") return () => {};
 
-  resetBodyTheme();
+  const contactSection = document.getElementById("contact");
+  if (!contactSection) return () => {};
+
+  const tween = gsap.to("body", {
+    backgroundColor: "#112239",
+    color: "#FFFFFF",
+    "--text-dark": "#FFFFFF",
+    "--bg-light": "#112239",
+    "--text-muted": "rgba(255, 255, 255, 0.7)",
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#contact",
+      start: "top 75%",
+      end: "top 25%",
+      scrub: 0.5,
+    },
+  });
+
+  // Also invert brand logos and monogram icons when entering contact dark theme
+  const logoTween = gsap.to(".brand-logo, .brand, .contact-monogram-img, .footer-monogram-img", {
+    filter: "brightness(0) invert(1)",
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#contact",
+      start: "top 75%",
+      end: "top 25%",
+      scrub: 0.5,
+    },
+  });
 
   return () => {
+    tween.scrollTrigger?.kill();
+    tween.kill();
+    logoTween.scrollTrigger?.kill();
+    logoTween.kill();
+
+    // If the scrub left <body> in a dark state (e.g. the visitor navigated away
+    // while scrolled to #contact), restore the default light theme so the next
+    // route doesn't inherit an inverted navy canvas and near-white text.
     resetBodyTheme();
   };
 }
