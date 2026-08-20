@@ -3,43 +3,43 @@
 Testing Viewport: desktop (1440x900)
   Checking route: /...
     ✓ Blinds overlay is absent on /
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: desktop-home.png
   Checking route: /about...
     ✓ Blinds overlay is absent on /about
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: desktop-about.png
   Checking route: /work...
     ✓ Blinds overlay is absent on /work
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: desktop-work.png
   Checking route: /work/mass-culture-dna...
     ✓ Blinds overlay is absent on /work/mass-culture-dna
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: desktop-work-mass-culture-dna.png
 
 Testing Viewport: mobile (375x812)
   Checking route: /...
     ✓ Blinds overlay is absent on /
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: mobile-home.png
   Checking route: /about...
     ✓ Blinds overlay is absent on /about
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: mobile-about.png
   Checking route: /work...
     ✓ Blinds overlay is absent on /work
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: mobile-work.png
   Checking route: /work/mass-culture-dna...
     ✓ Blinds overlay is absent on /work/mass-culture-dna
-    ✓ Body Background: rgb(248, 249, 250)
+    ✓ Body Background: rgba(0, 0, 0, 0)
     ✓ Body::before background-image: none
     ✓ Captured screenshot: mobile-work-mass-culture-dna.png

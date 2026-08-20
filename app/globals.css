@@ -81,7 +81,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 300;
     font-size: 15pt;
-    background-color: var(--bg-light);
+    background-color: transparent;
     color: var(--text-dark);
     line-height: 1.5;
     overflow-x: hidden;

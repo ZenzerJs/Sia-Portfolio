@@ -361,7 +361,7 @@ export function MarimbaExactPortfolio() {
         </section>
 
         {/* Work Showcase — 3D MacBook with Motion Reels */}
-        <section className="section" id="work" data-cursor="work">
+        <section className="section pb-2 md:pb-4" id="work" data-cursor="work">
           <div className="section-content">
             <div className="text-center mb-12">
               <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
@@ -376,31 +376,34 @@ export function MarimbaExactPortfolio() {
         </section>
 
         {/* Tools marquee divider — software + AI tools */}
-        <div className="py-6 md:py-10">
+        <div className="my-16 md:my-24 py-4">
           <ToolMarquee />
         </div>
 
         {/* Bento Grid: Featured Campaigns & Presentation Decks */}
-        <section className="section py-24 md:py-32 px-4 md:px-8" id="campaigns">
-          <div className="max-w-7xl mx-auto mb-16">
-            <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+        <section className="section pt-8 md:pt-14 pb-28 md:pb-36 px-6 md:px-12" id="campaigns">
+          <div className="max-w-[1380px] mx-auto mb-14 md:mb-16">
+            <span className="text-xs md:text-sm font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
               Strategic Campaigns
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[var(--text-dark)] leading-tight">
               Impact Through Storytelling
             </h2>
+            <p className="text-base md:text-lg text-[var(--text-muted)] mt-4 max-w-2xl font-light">
+              Transforming multi-institutional research and strategic initiatives into compelling, high-reach visual campaigns.
+            </p>
           </div>
 
           <BentoGrid>
             {/* Mass Culture DNA */}
             <BentoGridItem
               title="Mass Culture DNA"
-              description="Arts data → visual narratives. 74K+ reach."
+              description="Arts data → visual narratives. 74K+ national audience reach."
               tag="Arts & Research"
               href="/work/mass-culture-dna"
               header={
                 <div
-                  className="aspect-[16/10] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-xl"
+                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
                   onClick={(e) => {
                     e.preventDefault();
                     setActiveDeck({
@@ -433,12 +436,12 @@ export function MarimbaExactPortfolio() {
             {/* FIFA 2026 Challenge */}
             <BentoGridItem
               title="FIFA 2026 Challenge"
-              description="Multicultural fan engagement. Global runner-up."
+              description="Multicultural fan engagement. Global hackathon runner-up."
               tag="Hackathon Runner-Up"
               href="/work/fifa-2026-challenge"
               header={
                 <div
-                  className="aspect-[16/10] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-xl"
+                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
                   onClick={(e) => {
                     e.preventDefault();
                     setActiveDeck({
@@ -471,12 +474,12 @@ export function MarimbaExactPortfolio() {
             {/* Mastercard Sustainable Rebrand */}
             <BentoGridItem
               title="Mastercard Eco-Rebrand"
-              description="Sustainable brand identity. Multi-channel rollout."
+              description="Sustainable brand identity & multi-channel campaign rollout."
               tag="Brand Strategy"
               href="/work/mastercard-sustainability"
               header={
                 <div
-                  className="aspect-[16/10] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-xl"
+                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
                   onClick={(e) => {
                     e.preventDefault();
                     setActiveDeck({

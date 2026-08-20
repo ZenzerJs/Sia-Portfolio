@@ -101,7 +101,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="bg-[#F8F9FA] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
+        className="text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
       >
         <AuroraGlow />
         <SmoothScrollProvider>
