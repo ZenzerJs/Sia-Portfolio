@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Geist, Roboto_Mono, Bodoni_Moda, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { PageTransitionProvider } from "@/components/PageTransitionProvider";
-import { AuroraGlow } from "@/components/ui/AuroraGlow";
 import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
 
@@ -101,9 +100,8 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
+        className="bg-[var(--bg-light)] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
       >
-        <AuroraGlow />
         <SmoothScrollProvider>
           <PageTransitionProvider>{children}</PageTransitionProvider>
         </SmoothScrollProvider>

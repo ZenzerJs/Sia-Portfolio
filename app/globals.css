@@ -29,46 +29,6 @@
     --font-mono: 'Roboto Mono', monospace;
 }
 
-/* Ambient Aurora Keyframes */
-@keyframes aurora-slow {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-    50% {
-        transform: translate3d(30px, 20px, 0) scale(1.08);
-    }
-}
-
-@keyframes aurora-reverse {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-    50% {
-        transform: translate3d(-25px, -30px, 0) scale(1.06);
-    }
-}
-
-@keyframes aurora-drift {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-    50% {
-        transform: translate3d(20px, -25px, 0) scale(1.05);
-    }
-}
-
-.animate-aurora-slow {
-    animation: aurora-slow 16s ease-in-out infinite;
-}
-
-.animate-aurora-reverse {
-    animation: aurora-reverse 18s ease-in-out infinite;
-}
-
-.animate-aurora-drift {
-    animation: aurora-drift 20s ease-in-out infinite;
-}
-
 html {
     background-color: var(--bg-light);
     overscroll-behavior-y: none;
@@ -81,7 +41,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 300;
     font-size: 15pt;
-    background-color: transparent;
+    background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.5;
     overflow-x: hidden;
@@ -1629,8 +1589,8 @@ main {
 }
 
 .marquee--tools .marquee__track {
-    animation: marquee-scroll 42s linear infinite;
-    padding: 1rem 0;
+    animation: marquee-scroll 56s linear infinite;
+    padding: 0.85rem 0;
 }
 
 /* Keep scrolling on hover; pause only while a tile holds keyboard focus */
@@ -1643,16 +1603,16 @@ main {
 .marquee__tool {
     display: inline-flex;
     align-items: center;
-    gap: 1.35rem;
-    margin-right: 2.2rem;
-    padding: 1.25rem 2.2rem 1.25rem 1.6rem;
+    gap: 1.15rem;
+    margin-right: 1.85rem;
+    padding: 1.05rem 1.85rem 1.05rem 1.35rem;
     border: 2px solid rgba(30, 58, 95, 0.45);
-    border-radius: 26px;
+    border-radius: 22px;
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     white-space: nowrap;
     font-family: var(--font-sans);
-    font-size: 1.7rem;
+    font-size: 1.45rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     color: var(--text-dark);
@@ -1671,8 +1631,8 @@ main {
 .marquee__tool-icon {
     display: grid;
     place-items: center;
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
     flex: 0 0 auto;
 }
 

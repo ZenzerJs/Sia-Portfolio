@@ -376,7 +376,7 @@ export function MarimbaExactPortfolio() {
         </section>
 
         {/* Tools marquee divider — software + AI tools */}
-        <div className="my-16 md:my-24 py-4">
+        <div className="mt-28 md:mt-36 mb-14 md:mb-18 py-4">
           <ToolMarquee />
         </div>
 

@@ -41,9 +41,6 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
       history.scrollRestoration = "manual";
     }
 
-    // Hide ambient aurora during transition curtain
-    gsap.set(".aurora-glow-container", { opacity: 0 });
-
     // Establish a clean baseline: the stylesheet's `transform: translateY(100%)`
     // is parsed by GSAP as a percentage `y`, which would otherwise stack on top
     // of the `yPercent` tweens below and double-translate the curtain. Pinning
@@ -63,7 +60,6 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
       delay: 0.15,
       onComplete: () => {
         window.scrollTo(0, 0);
-        gsap.to(".aurora-glow-container", { opacity: 1, duration: 0.5, ease: "power2.out" });
         gsap.set(curtain, { y: 0, yPercent: 100 });
         if (typeof ScrollTrigger !== "undefined") {
           ScrollTrigger.refresh();
