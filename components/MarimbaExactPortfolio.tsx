@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { initCursor } from "@/lib/cursor";
@@ -13,39 +13,82 @@ import { initTestimonialRotator } from "@/lib/testimonialRotator";
 import { ToolMarquee } from "@/components/ToolMarquee";
 import { MacbookLaptop } from "@/components/MacbookLaptop";
 import { siteConfig } from "@/lib/siteConfig";
+import { DualScramble } from "@/components/ui/DualScramble";
+import { ScaleSlider } from "@/components/ui/ScaleSlider";
+import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
+import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
+import { SiteHeader } from "@/components/SiteHeader";
+import { projects } from "@/lib/projects";
+
+const showcasePhotos = [
+  {
+    src: "/assets/cicu/events/001152030003.jpg",
+    alt: "Showcase 35mm film capture",
+    caption: "35mm Analog Documentation · Showcase Night",
+  },
+  {
+    src: "/assets/cicu/showcase/showcase-slide-1.jpg",
+    alt: "Creative Industries Showcase Campaign",
+    caption: "Creative Industries Annual Showcase Campaign",
+  },
+  {
+    src: "/assets/cicu/events/IMG_1071.JPG",
+    alt: "Live Event & Student Community",
+    caption: "Creative Community & Student Creators",
+  },
+  {
+    src: "/assets/cicu/events/001152030008.jpg",
+    alt: "Student Artist Showcase",
+    caption: "Live Exhibition Floor · The Creative School",
+  },
+  {
+    src: "/assets/cicu/showcase/showcase-post-1.jpg",
+    alt: "Social Campaign Visual",
+    caption: "Digital Teaser & Speaker Announcement",
+  },
+  {
+    src: "/assets/cicu/events/IMG_1082.JPG",
+    alt: "Networking & Alum Gathering",
+    caption: "Alum Networking & Industry Floor",
+  },
+  {
+    src: "/assets/cicu/merch/cicu-merch.jpg",
+    alt: "CICU Merch Line",
+    caption: "Sold-Out Student Merchandise Collection",
+  },
+  {
+    src: "/assets/cicu/events/001152030023.jpg",
+    alt: "Film Photography Capture",
+    caption: "Event Atmosphere & Candid Moments",
+  },
+];
 
 export function MarimbaExactPortfolio() {
+  const [activeDeck, setActiveDeck] = useState<{
+    title: string;
+    tagline?: string;
+    slides: string[];
+    pdfUrl?: string;
+  } | null>(null);
+
   useEffect(() => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
     window.scrollTo(0, 0);
 
-    // Pause the auto-playing showreel for vestibular safety when the user
-    // prefers reduced motion (WCAG 2.2.2 — no uninterrupted motion > 5s).
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const showreel = document.querySelector(".work__laptop-video") as HTMLVideoElement | null;
       if (showreel) showreel.pause();
     }
 
-    // 1. Initialize Lenis Smooth Scroll
     const { lenis, cleanup: cleanupScroll } = initSmoothScroll();
-
-    // Lock scrolling until the entrance animation finishes — scrolling
-    // mid-loader makes the staged ScrollTrigger pin/scrub measurements
-    // desync, which breaks the orbit/process effects once you do scroll.
     lenis.stop();
 
-    // 2. Initialize Magnetic Cursor
     const cleanupCursor = initCursor();
 
-    // 3. Initialize Loader and Hero Entrance Timeline.
-    //    (Scroll-driven effects are staged until the entrance completes so the
-    //    pin/scrub triggers measure the final layout.)
     let cleanupStaged: (() => void) | null = null;
     const cleanupHero = initHeroExplode(() => {
-      // Entrance finished: unlock scrolling and reset to the top before the
-      // scroll-driven effects start measuring.
       lenis.start();
       lenis.scrollTo(0, { immediate: true });
 
@@ -61,12 +104,10 @@ export function MarimbaExactPortfolio() {
       };
     });
 
-    // Scroll-spy: keep the top-right nav in sync with the current section so
-    // the active item stays visually distinct after clicking / scrolling.
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".navigation .nav-link")
     );
-    const sectionIds = ["home", "work", "process", "contact"];
+    const sectionIds = ["home", "work", "campaigns", "process", "contact"];
     const updateActiveNav = () => {
       let current = "home";
       const probe = window.innerHeight * 0.4;
@@ -84,11 +125,7 @@ export function MarimbaExactPortfolio() {
     window.addEventListener("scroll", updateActiveNav, { passive: true });
     updateActiveNav();
 
-    // 5. Right-side nav: green curtain swipe transition. The #142A4A overlay
-    //    (same green as the bottom-of-page theme) swipes up from below the
-    //    viewport to cover the page, the view jumps to the target section, then
-    //    the curtain keeps swiping up and out the top to reveal it.
-    const navSwipe = document.querySelector<HTMLElement>(".nav-swipe");
+    const navSwipe = document.querySelector<HTMLElement>("nav-swipe");
     let swiping = false;
     const handleNavClick = (e: MouseEvent) => {
       const link = (e.target as HTMLElement).closest<HTMLAnchorElement>(
@@ -96,35 +133,22 @@ export function MarimbaExactPortfolio() {
       );
       if (!link) return;
       const href = link.getAttribute("href") ?? "";
-      if (!href.startsWith("#")) return; // "/" navigates normally
-      // Handled in the capture phase before Next Link's own onClick fires, and
-      // we stop propagation so the page cannot scroll to the section before the
-      // green curtain covers it.
+      if (!href.startsWith("#")) return;
       e.preventDefault();
       e.stopPropagation();
       const target = document.querySelector<HTMLElement>(href);
       if (!target || swiping) return;
       swiping = true;
 
-      // Fallback (no overlay in DOM): smooth-scroll directly.
-      if (!navSwipe) {
+      const swipeEl = document.querySelector<HTMLElement>(".nav-swipe");
+      if (!swipeEl) {
         lenis.scrollTo(target, { duration: 1.2 });
         swiping = false;
         return;
       }
 
-      // Bulletproof sequence: cover -> jump to section -> reveal. A single
-      // timeline guarantees the reveal always runs (even if a step errors or
-      // the tween is interrupted), so the overlay can never get stuck covering
-      // the page as a green screen.
-      gsap.killTweensOf(navSwipe);
-      // Establish a clean baseline: the stylesheet's `transform: translateY(-101%)`
-      // is parsed by GSAP as a percentage `y`, which stacks on top of the
-      // `yPercent` tweens below (so the cover tween never actually covers).
-      // Pinning `y: 0` keeps the whole sequence in `yPercent`. Start the
-      // curtain below the viewport so it swipes up to cover, then swipes up
-      // again to reveal the jumped-to section.
-      gsap.set(navSwipe, { y: 0, yPercent: 101 });
+      gsap.killTweensOf(swipeEl);
+      gsap.set(swipeEl, { y: 0, yPercent: 101 });
       const tl = gsap.timeline({
         onComplete: () => {
           swiping = false;
@@ -133,17 +157,15 @@ export function MarimbaExactPortfolio() {
           swiping = false;
         },
       });
-      tl.to(navSwipe, { yPercent: 0, duration: 0.5, ease: "power3.inOut" })
+      tl.to(swipeEl, { yPercent: 0, duration: 0.5, ease: "power3.inOut" })
         .add(() => {
           try {
             lenis.scrollTo(target, { immediate: true });
             history.replaceState(null, "", href);
-          } catch {
-            // Never let a scroll error block the reveal.
-          }
+          } catch {}
         })
         .to(
-          navSwipe,
+          swipeEl,
           {
             yPercent: -101,
             duration: 0.6,
@@ -174,24 +196,23 @@ export function MarimbaExactPortfolio() {
       {/* Fullscreen Loader Curtain */}
       <div className="loader" id="loader" aria-hidden="true">
         <div className="loader-inner">
-          <div className="loader-logo">
-            <img
-              src="/assets/logo.svg"
-              alt="marimba. designs"
-              className="loader-logo-outline"
-            />
-            <div className="loader-logo-fill" aria-hidden="true">
-              <span className="loader-logo-fill-bar"></span>
+          <div className="loader-box text-center">
+            <h1 className="loader-name font-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white mb-4">
+              {siteConfig.person.fullName}
+            </h1>
+            <div className="loader-track w-48 sm:w-64 h-[3px] bg-white/20 rounded-full overflow-hidden mx-auto mb-3">
+              <div className="loader-progress-bar w-full h-full bg-gradient-to-r from-[#A8CBE8] via-[#C3C6E8] to-[#8FB6D8] origin-left scale-x-0"></div>
+            </div>
+            <div className="loader-subtitle text-[11px] font-mono tracking-widest uppercase text-white/70">
+              {siteConfig.location}
             </div>
           </div>
-          <div className="loader-text">{siteConfig.role}</div>
         </div>
       </div>
 
-      {/* Window Blinds Shadow Overlay */}
-      <div className="blinds-overlay" id="blinds-overlay"></div>
 
-      {/* Green curtain swipe overlay (animated by the right-side nav clicks) */}
+
+      {/* Curtain swipe overlay */}
       <div className="nav-swipe" aria-hidden="true"></div>
 
       {/* Magnetic Cursor Dot */}
@@ -222,42 +243,16 @@ export function MarimbaExactPortfolio() {
               strokeLinecap="round"
             />
           </svg>
-          <div className="cursor-dot__label">View work</div>
+          <div className="cursor-dot__label">Explore</div>
         </div>
       </div>
 
-      {/* Fixed Header */}
-      <header className="header">
-        <div className="header-container">
-          <div className="brand">
-            <img src="/assets/logo.svg" alt="marimba. designs" className="brand-logo" />
-          </div>
+      {/* Shared responsive top navigation */}
+      <SiteHeader homeSections />
 
-          <div className="header-center">
-            <span className="header-tag">{siteConfig.role}</span>
-            <span className="header-location">{siteConfig.location}</span>
-          </div>
-
-          <nav className="navigation">
-            <Link href="/" className="nav-link nav-link--active">
-              Home
-            </Link>
-            <Link href="#work" className="nav-link">
-              Work
-            </Link>
-            <Link href="#process" className="nav-link">
-              Process
-            </Link>
-            <Link href="#contact" className="nav-link">
-              Contact
-            </Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* Main Content Sections */}
+      {/* Main Content */}
       <main id="main-content">
-        {/* Hero Section with Pinned Trigonometric Orbit Background */}
+        {/* Hero Section */}
         <section className="hero" id="home">
           <div className="hero-background">
             <div className="shape shape-astrix" id="shape-astrix" style={{ inset: "20% auto auto 23%" }}>
@@ -267,7 +262,7 @@ export function MarimbaExactPortfolio() {
             <div className="shape shape-circle-left" id="shape-circle-left" style={{ inset: "12% auto auto -8%" }}>
               <img src="/assets/shape-circle1.webp" alt="" className="shape-img" />
               <span className="shape-label">
-                Visual <br /> design
+                Digital <br /> Strategy
               </span>
             </div>
 
@@ -278,7 +273,7 @@ export function MarimbaExactPortfolio() {
             <div className="shape shape-circle-right" id="shape-circle-right" style={{ inset: "10% -12% auto auto" }}>
               <img src="/assets/shape-circle2.webp" alt="" className="shape-img" />
               <span className="shape-label">
-                Interaction<br />design
+                Data Storytelling<br />&amp; Campaigns
               </span>
             </div>
 
@@ -292,20 +287,14 @@ export function MarimbaExactPortfolio() {
 
             <div className="shape shape-circle-bottom" id="shape-circle-bottom" style={{ inset: "auto auto -20% 50%" }}>
               <img src="/assets/shape-circle3.webp" alt="" className="shape-img" />
-              <span className="shape-label">UI/UX</span>
+              <span className="shape-label">Project Coordination</span>
             </div>
           </div>
 
           <div className="expertise-ring" aria-hidden="true">
-            {/* Soft gradient mesh + grain field, layered behind the orbit shapes */}
             <div className="expertise-field" aria-hidden="true"></div>
-            {/* Editorial line-work — layered geometric field, not a flat ring */}
             <div className="expertise-field-lines" aria-hidden="true">
-              <svg
-                viewBox="0 0 800 800"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect
                   x="140"
                   y="168"
@@ -349,43 +338,198 @@ export function MarimbaExactPortfolio() {
             </div>
           </div>
 
-          {/* "My design practice" label sits above the field but stays clear of
-              the orbit shapes (shapes paint above the field, below this text). */}
           <div className="expertise-center-text" aria-hidden="true">
-            My design<br />practice
+            Strategic<br />Communications
           </div>
 
           <div className="hero-content">
             <div className="hero-tag">
-              <span className="pill-button">Web design &amp; development</span>
+              <span className="pill-button">
+                <DualScramble text="Communications · Marketing · Project Coordination" trigger="load" duration={0.9} />
+              </span>
             </div>
             <h1 className="hero-headline">
-              I create living, breathing
+              Translating complex data
               <br />
-              websites for brands that want
+              into human stories, digital campaigns,
               <br />
-              to be felt, not just seen.
+              and cross-institutional impact.
             </h1>
           </div>
         </section>
 
-        {/* Expertise Section (Orbit Runway) */}
+        {/* Orbit Runway */}
         <section className="section" id="expertise">
           <div className="section-content"></div>
         </section>
 
-        {/* Work Showcase — 3D CSS MacBook Pro with the showreel on its screen */}
+        {/* Work Showcase — 3D MacBook with Motion Reels */}
         <section className="section" id="work" data-cursor="work">
           <div className="section-content">
+            <div className="text-center mb-12">
+              <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+                Showreel
+              </span>
+              <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
+                Selected Work
+              </h2>
+            </div>
             <MacbookLaptop />
+            <div className="text-center mt-10">
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--text-dark)] text-white text-xs font-mono tracking-wider uppercase hover:opacity-90 transition-opacity"
+              >
+                <span>View All Projects</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* 3D Process Conic Gradient Stack Section */}
+        {/* ScaleSlider: Event Photography & Visual Highlights */}
+        <section className="section bg-slate-50/50 py-20 md:py-28" id="gallery">
+          <ScaleSlider
+            images={showcasePhotos}
+            title="Event & Showcase Photography"
+            subtitle="35mm Film · Digital"
+            minScale={0.35}
+            autoplaySpeed={0.0012}
+          />
+        </section>
+
+        {/* Bento Grid: Featured Campaigns & Presentation Decks */}
+        <section className="section py-24 md:py-32 px-4 md:px-8" id="campaigns">
+          <div className="max-w-7xl mx-auto mb-16">
+            <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+              Strategic Campaigns
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
+              Impact Through Storytelling
+            </h2>
+          </div>
+
+          <BentoGrid>
+            {/* Mass Culture DNA */}
+            <BentoGridItem
+              title="Mass Culture DNA"
+              description="Arts data → visual narratives. 74K+ reach."
+              tag="Arts & Research"
+              href="/work/mass-culture-dna"
+              header={
+                <div
+                  className="aspect-[16/10] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-xl"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveDeck({
+                      title: "Mass Culture Canada: DNA Initiative",
+                      tagline: "Brenau University Presentation · Research Priorities",
+                      slides: [
+                        "/assets/decks/slides/mass-culture-slide-1.jpg",
+                        "/assets/decks/slides/mass-culture-slide-3.jpg",
+                        "/assets/decks/slides/mass-culture-slide-4.jpg",
+                        "/assets/decks/slides/mass-culture-slide-5.jpg",
+                        "/assets/decks/slides/mass-culture-slide-8.jpg",
+                        "/assets/decks/slides/river-clyde-slide-1.jpg",
+                      ],
+                      pdfUrl: "/assets/decks/mass-culture-slide-deck.pdf",
+                    });
+                  }}
+                >
+                  <img
+                    src="/assets/decks/slides/mass-culture-slide-1.jpg"
+                    alt="Mass Culture Presentation Deck"
+                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
+                    Preview Deck ↗
+                  </div>
+                </div>
+              }
+            />
+
+            {/* FIFA 2026 Challenge */}
+            <BentoGridItem
+              title="FIFA 2026 Challenge"
+              description="Multicultural fan engagement. Global runner-up."
+              tag="Hackathon Runner-Up"
+              href="/work/fifa-2026-challenge"
+              header={
+                <div
+                  className="aspect-[16/10] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-xl"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveDeck({
+                      title: "FIFA World Cup 2026: Our Neighborhood, Your Nation",
+                      tagline: "Global Hackathon Challenge · Fan Engagement Pitch",
+                      slides: [
+                        "/assets/decks/slides/fifa-slide-1.jpg",
+                        "/assets/decks/slides/fifa-slide-2.jpg",
+                        "/assets/decks/slides/fifa-slide-5.jpg",
+                        "/assets/decks/slides/fifa-slide-7.jpg",
+                        "/assets/decks/slides/fifa-slide-10.jpg",
+                        "/assets/decks/slides/fifa-slide-15.jpg",
+                      ],
+                      pdfUrl: "/assets/decks/fifa-2026-slide-deck.pdf",
+                    });
+                  }}
+                >
+                  <img
+                    src="/assets/decks/slides/fifa-slide-1.jpg"
+                    alt="FIFA World Cup 2026 Pitch Deck"
+                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
+                    Preview Deck ↗
+                  </div>
+                </div>
+              }
+            />
+
+            {/* Mastercard Sustainable Rebrand */}
+            <BentoGridItem
+              title="Mastercard Eco-Rebrand"
+              description="Sustainable brand identity. Multi-channel rollout."
+              tag="Brand Strategy"
+              href="/work/mastercard-sustainability"
+              header={
+                <div
+                  className="aspect-[16/10] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-xl"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveDeck({
+                      title: "Mastercard: Sustainable Rebranding Campaign",
+                      tagline: "RTA The Creative School · Brand Guidelines",
+                      slides: [
+                        "/assets/decks/slides/mastercard-slide-1.jpg",
+                        "/assets/decks/slides/mastercard-slide-3.jpg",
+                        "/assets/decks/slides/mastercard-slide-4.jpg",
+                        "/assets/decks/slides/mastercard-slide-6.jpg",
+                        "/assets/decks/slides/mastercard-slide-8.jpg",
+                      ],
+                      pdfUrl: "/assets/decks/rta-mastercard-slide-deck.pdf",
+                    });
+                  }}
+                >
+                  <img
+                    src="/assets/decks/slides/mastercard-slide-1.jpg"
+                    alt="Mastercard Rebrand Deck"
+                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
+                    Preview Deck ↗
+                  </div>
+                </div>
+              }
+            />
+          </BentoGrid>
+        </section>
+
+        {/* 3D Process Stack Section */}
         <section className="section process" id="process">
           <div className="section-content process__content">
             <h2 className="process__headline">
-              Designing, building, and refining as one continuous process
+              Research, strategy, and creative execution as one continuous process
             </h2>
             <div className="process__stack">
               <div className="process__disks">
@@ -395,9 +539,9 @@ export function MarimbaExactPortfolio() {
                     <div className="disk-gradient"></div>
                   </div>
                   <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Listen &amp; define</h3>
+                    <h3 className="process__disk-label-headline">Listen &amp; Audit</h3>
                     <p className="process__disk-label-text">
-                      Understanding your business, users, and real goals.
+                      Stakeholder interviews, content audits, and audience research.
                     </p>
                   </div>
                 </div>
@@ -408,9 +552,9 @@ export function MarimbaExactPortfolio() {
                     <div className="disk-gradient"></div>
                   </div>
                   <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Strategy &amp; plan</h3>
+                    <h3 className="process__disk-label-headline">Strategy &amp; Framework</h3>
                     <p className="process__disk-label-text">
-                      Turning insight into structure, flows, and priorities.
+                      Multi-channel campaign structures, messaging pillars, and KPI setting.
                     </p>
                   </div>
                 </div>
@@ -421,9 +565,9 @@ export function MarimbaExactPortfolio() {
                     <div className="disk-gradient"></div>
                   </div>
                   <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Design &amp; refine</h3>
+                    <h3 className="process__disk-label-headline">Creative Direction</h3>
                     <p className="process__disk-label-text">
-                      Visual language, UX, and iteration.
+                      Visual language, copywriting, motion design, and deck production.
                     </p>
                   </div>
                 </div>
@@ -434,9 +578,9 @@ export function MarimbaExactPortfolio() {
                     <div className="disk-gradient"></div>
                   </div>
                   <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Build &amp; test</h3>
+                    <h3 className="process__disk-label-headline">Coordinate &amp; Measure</h3>
                     <p className="process__disk-label-text">
-                      WordPress, motion, and real-world use.
+                      Stakeholder alignment, cross-platform rollout, and performance optimization.
                     </p>
                   </div>
                 </div>
@@ -445,7 +589,7 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* Tools marquee divider — software + AI tool icons */}
+        {/* Tools marquee divider — software + AI tools */}
         <ToolMarquee />
 
         {/* Testimonials */}
@@ -534,19 +678,16 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* Contact Section with Theme Inversion */}
+        {/* Contact Section */}
         <section className="section" id="contact">
           <div className="section-content">
-            <h2>Let&apos;s work together</h2>
-            <p>
-              I&apos;m always looking for new projects and collaborations. If you have a
-              project in mind, or just want to say hello, please get in touch.
-            </p>
+            <h2>Let&apos;s collaborate</h2>
             <div className="contact__info">
               <p>{siteConfig.person.fullName}</p>
               <p>
                 <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
               </p>
+              <p className="text-xs font-mono text-white/60 mt-1">{siteConfig.location}</p>
             </div>
             <div className="contact__links">
               {Object.values(siteConfig.socials).map((social) => (
@@ -568,20 +709,23 @@ export function MarimbaExactPortfolio() {
           <p>
             © {siteConfig.copyrightStartYear} {siteConfig.legalName}
           </p>
-          <a
-            href={siteConfig.awards.cssWinner.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/assets/sotd-white-2.png"
-              alt={siteConfig.awards.cssWinner.label}
-              className="css-winner-logo"
-              style={{ width: "125px", height: "auto" }}
-            />
-          </a>
+          <span className="text-xs font-mono text-[var(--text-muted)]">
+            London, UK · Toronto, CA
+          </span>
         </footer>
       </main>
+
+      {/* Slide Deck Modal Viewer */}
+      {activeDeck && (
+        <DeckViewerModal
+          isOpen={true}
+          onClose={() => setActiveDeck(null)}
+          title={activeDeck.title}
+          tagline={activeDeck.tagline}
+          slides={activeDeck.slides}
+          pdfUrl={activeDeck.pdfUrl}
+        />
+      )}
     </>
   );
 }
