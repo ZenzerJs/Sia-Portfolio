@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { initCursor } from "@/lib/cursor";
 import { initHeroExplode } from "@/lib/heroExplode";
 import { initOrbitEngine } from "@/lib/orbitEngine";
-import { initProcessStack } from "@/lib/processStack";
 import { initThemeScroll } from "@/lib/themeScroll";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initTestimonialRotator } from "@/lib/testimonialRotator";
@@ -93,12 +92,10 @@ export function MarimbaExactPortfolio() {
       lenis.scrollTo(0, { immediate: true });
 
       const cleanupOrbit = initOrbitEngine();
-      const cleanupProcess = initProcessStack();
       const cleanupTheme = initThemeScroll();
       const cleanupTestimonials = initTestimonialRotator();
       cleanupStaged = () => {
         cleanupOrbit();
-        cleanupProcess();
         cleanupTheme();
         cleanupTestimonials();
       };
@@ -107,7 +104,7 @@ export function MarimbaExactPortfolio() {
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".navigation .nav-link")
     );
-    const sectionIds = ["home", "work", "campaigns", "process", "contact"];
+    const sectionIds = ["home", "work", "campaigns", "gallery", "testimonials", "contact"];
     const updateActiveNav = () => {
       let current = "home";
       const probe = window.innerHeight * 0.4;
@@ -385,16 +382,8 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* ScaleSlider: Event Photography & Visual Highlights */}
-        <section className="section bg-slate-50/50 py-20 md:py-28" id="gallery">
-          <ScaleSlider
-            images={showcasePhotos}
-            title="Event & Showcase Photography"
-            subtitle="35mm Film · Digital"
-            minScale={0.35}
-            autoplaySpeed={0.0012}
-          />
-        </section>
+        {/* Tools marquee divider — software + AI tools */}
+        <ToolMarquee />
 
         {/* Bento Grid: Featured Campaigns & Presentation Decks */}
         <section className="section py-24 md:py-32 px-4 md:px-8" id="campaigns">
@@ -523,72 +512,16 @@ export function MarimbaExactPortfolio() {
           </BentoGrid>
         </section>
 
-        {/* 3D Process Stack Section */}
-        <section className="section process" id="process">
-          <div className="section-content process__content">
-            <h2 className="process__headline">
-              Research, strategy, and creative execution as one continuous process
-            </h2>
-            <div className="process__stack">
-              <div className="process__disks">
-                {/* Disk 4 */}
-                <div className="process__disk" data-disk="4">
-                  <div className="process__disk-graphic" aria-hidden="true">
-                    <div className="disk-gradient"></div>
-                  </div>
-                  <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Listen &amp; Audit</h3>
-                    <p className="process__disk-label-text">
-                      Stakeholder interviews, content audits, and audience research.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Disk 3 */}
-                <div className="process__disk" data-disk="3">
-                  <div className="process__disk-graphic" aria-hidden="true">
-                    <div className="disk-gradient"></div>
-                  </div>
-                  <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Strategy &amp; Framework</h3>
-                    <p className="process__disk-label-text">
-                      Multi-channel campaign structures, messaging pillars, and KPI setting.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Disk 2 */}
-                <div className="process__disk" data-disk="2">
-                  <div className="process__disk-graphic" aria-hidden="true">
-                    <div className="disk-gradient"></div>
-                  </div>
-                  <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Creative Direction</h3>
-                    <p className="process__disk-label-text">
-                      Visual language, copywriting, motion design, and deck production.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Disk 1 */}
-                <div className="process__disk" data-disk="1">
-                  <div className="process__disk-graphic" aria-hidden="true">
-                    <div className="disk-gradient"></div>
-                  </div>
-                  <div className="process__disk-label">
-                    <h3 className="process__disk-label-headline">Coordinate &amp; Measure</h3>
-                    <p className="process__disk-label-text">
-                      Stakeholder alignment, cross-platform rollout, and performance optimization.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* ScaleSlider: Event Photography & Visual Highlights */}
+        <section className="section bg-slate-50/50 py-20 md:py-28" id="gallery">
+          <ScaleSlider
+            images={showcasePhotos}
+            title="Event & Showcase Photography"
+            subtitle="35mm Film · Digital"
+            minScale={0.35}
+            autoplaySpeed={0.0012}
+          />
         </section>
-
-        {/* Tools marquee divider — software + AI tools */}
-        <ToolMarquee />
 
         {/* Testimonials */}
         <section className="section testimonials" id="testimonials" aria-label="Kind words">

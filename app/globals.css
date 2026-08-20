@@ -1430,108 +1430,7 @@ main {
     letter-spacing: -0.02em;
 }
 
-/* Process Disks Section */
-.process {
-    padding: 10rem 2rem;
-    min-height: 100vh;
-    position: relative;
-    z-index: 20;
-}
 
-.process__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.process__headline {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 4rem;
-}
-
-.process__stack {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-/* The disk stack animates upward (negative GSAP y offsets), so it needs top
-   clearance to never cover the section headline — "pie charts" stay below text. */
-.process__disks {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: 440px;
-    margin: 10rem auto 0;
-}
-
-.process__disk {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-}
-
-.process__disk-graphic {
-    width: clamp(280px, 26vw, 400px);
-    height: clamp(160px, 20vw, 220px);
-    border-radius: 50%;
-    overflow: hidden;
-    display: grid;
-    place-items: center;
-    transform: perspective(900px) rotateX(30deg) translateX(-50%); 
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    will-change: transform;
-    transform-origin: center;
-    position: relative;
-    left: 50%;
-}
-
-.process__disk[data-disk="4"] .process__disk-graphic .disk-gradient{
-    background: conic-gradient(from 90deg, rgba(193, 228, 247, 1) 0deg, rgba(218, 198, 235, 1) 360deg);
-}
-.process__disk[data-disk="3"] .process__disk-graphic .disk-gradient{
-    background: conic-gradient(from 0deg, rgba(147, 221, 137, 1) 0deg, rgba(252, 106, 0, 1) 360deg);
-}
-.process__disk[data-disk="2"] .process__disk-graphic .disk-gradient{
-    background: conic-gradient(from 180deg, rgba(218, 198, 235, 1) 0deg, rgba(147, 221, 137, 1) 360deg);
-}
-.process__disk[data-disk="1"] .process__disk-graphic .disk-gradient{
-    background: conic-gradient(from 90deg, rgba(244, 103, 50, 1) 0deg, rgba(218, 198, 235, 1) 360deg);
-}
-
-.disk-gradient {
-    height: 100%;
-    width: 100%;
-    opacity: 1;
-}
-
-.process__disk-label {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(0, -50%);
-    margin-left: calc(clamp(280px, 26vw, 400px) / 2 + 2rem);
-    min-width: 320px;
-    text-align: left;
-}
-
-.process__disk-label-headline {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--text-dark);
-}
-
-.process__disk-label-text {
-    font-size: 0.95rem;
-    opacity: 0.85;
-}
 
 /* "My design practices" orbit field — a layered background graphic (gradient
    mesh + grain + editorial line-work) that sits BEHIND the .webp orbit shapes
@@ -2063,19 +1962,6 @@ main {
     .header-center { display: none; }
 
     .hero-headline { font-size: 2.5rem; }
-    .process { padding: 5rem 1rem; }
-    .process__disks {
-        height: 380px;
-        margin-top: 9rem;
-    }
-    .process__disk-label {
-        margin-left: 0;
-        margin-top: 0;
-        text-align: center;
-        font-size: 0.9rem;
-        transform: translate(-50%, -180%);
-    }
-    .process__disk-label-text { display: none; }
 }
 
 /* ============================================================
@@ -2956,22 +2842,6 @@ main {
     -webkit-backdrop-filter: blur(8px);
 }
 
-.process__disk-label {
-    z-index: 5;
-    padding: 0.85rem 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.84);
-    box-shadow: 0 10px 30px rgba(30, 58, 95, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-/* Case-study media uses normal, front-facing frames. `contain` ensures slide
-   decks and social artwork remain fully visible instead of being cropped by
-   the old 3D/overflow combination. */
-
-
 @media (max-width: 768px) {
     .site-header { padding: 0.7rem 0; }
     .site-header__container { gap: 0.75rem; padding: 0 1rem; }
@@ -2983,18 +2853,14 @@ main {
     .hero { padding: 0 1rem; }
     .hero-content { padding: 1.25rem 1rem; border-radius: 1.25rem; }
     .hero-headline { font-size: clamp(2.25rem, 10vw, 3.3rem); }
-    .section#work .section-content > .text-center, .section#campaigns > .max-w-7xl, .process__headline { width: auto; padding: 0.9rem 1rem; }
-    .process__disk-label { margin-left: 0; margin-top: 0; text-align: center; font-size: 0.9rem; transform: translate(-50%, -180%); }
-    .process__disk-label-text { display: none; }
+    .section#work .section-content > .text-center, .section#campaigns > .max-w-7xl { width: auto; padding: 0.9rem 1rem; }
 }
 
 /* Keep the header glass treatment, but let all page copy sit directly on the
    canvas. Contrast is handled by typography, spacing, and the artwork itself. */
 .hero-content,
 .section#work .section-content > .text-center,
-.section#campaigns > .max-w-7xl,
-.process__headline,
-.process__disk-label {
+.section#campaigns > .max-w-7xl {
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -3007,7 +2873,6 @@ main {
 .hero-content { max-width: 1080px; }
 .section#work .section-content > .text-center,
 .section#campaigns > .max-w-7xl { width: auto; }
-.process__disk-label { padding: 0; }
 .hero-headline { text-shadow: 0 1px 18px rgba(255, 255, 255, 0.42); }
 
 /* Shared top bar → flat editorial masthead bar (no glass, no shadow). */

@@ -16,7 +16,6 @@ const homeNavItems = [
   { href: "/work", label: "Work", match: () => false },
   { href: "#campaigns", label: "Campaigns", match: () => false },
   { href: "/about", label: "About", match: () => false },
-  { href: "#process", label: "Process", match: () => false },
   { href: "#contact", label: "Contact", match: () => false },
 ];
 
