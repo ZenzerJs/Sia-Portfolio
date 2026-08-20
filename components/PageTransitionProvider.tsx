@@ -40,6 +40,17 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     // Reset scroll state immediately for the incoming page.
     resetScrollToTop();
 
+    // When transitioning to Home ("/"), Home has its own full intro screen (.loader)
+    // with the progress bar, name, and monogram. Skip the curtain transition to prevent
+    // a double loading screen.
+    if (pathname === "/") {
+      gsap.set(curtain, { y: 0, yPercent: 100, autoAlpha: 0 });
+      if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.refresh();
+      }
+      return;
+    }
+
     const logo = logoRef.current;
     if (logo) {
       gsap.set(logo, { scale: 0.9, opacity: 1 });

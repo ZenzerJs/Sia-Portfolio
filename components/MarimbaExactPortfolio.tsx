@@ -188,10 +188,6 @@ export function MarimbaExactPortfolio() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-
       {/* Fullscreen Loader Curtain */}
       <div className="loader" id="loader" aria-hidden="true">
         <div className="loader-inner flex items-center justify-center">
@@ -339,9 +335,16 @@ export function MarimbaExactPortfolio() {
         {/* Bento Grid: Featured Campaigns & Presentation Decks */}
         <section className="section pt-8 md:pt-14 pb-28 md:pb-36 px-6 md:px-12" id="campaigns">
           <div className="max-w-[1380px] mx-auto mb-14 md:mb-16">
-            <span className="text-xs md:text-sm font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
-              Strategic Campaigns
-            </span>
+            <div className="flex items-center gap-3 mb-3">
+              <img
+                src="/assets/logo-monogram-navy.png"
+                alt=""
+                className="w-6 h-6 object-contain opacity-80"
+              />
+              <span className="text-xs md:text-sm font-mono tracking-widest uppercase text-[var(--text-muted)]">
+                Strategic Campaigns
+              </span>
+            </div>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[var(--text-dark)] leading-tight">
               Impact Through Storytelling
             </h2>
@@ -574,6 +577,13 @@ export function MarimbaExactPortfolio() {
         {/* Contact Section */}
         <section className="section" id="contact">
           <div className="section-content">
+            <div className="flex items-center justify-center mb-6">
+              <img
+                src="/assets/logo-monogram-navy.png"
+                alt=""
+                className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-sm transition-transform hover:scale-105"
+              />
+            </div>
             <h2>Let&apos;s collaborate</h2>
             <div className="contact__info">
               <p>{siteConfig.person.fullName}</p>

@@ -8,6 +8,7 @@ import { resetScrollToTop } from "@/lib/smoothScroll";
 const pageNavItems = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
   { href: "/work", label: "Work", match: (p: string) => p === "/work" || p.startsWith("/work/") },
+  { href: "/#campaigns", label: "Campaigns", match: () => false },
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
   { href: "/#contact", label: "Contact", match: () => false },
 ];
