@@ -149,7 +149,7 @@ export function WorkPage() {
                       </span>
                     ))}
                   </div>
-                  <p className="work-slider__description text-xs md:text-sm text-gray-600 line-clamp-3">
+                  <p className="work-slider__description text-xs md:text-sm text-gray-600 leading-relaxed">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap items-center gap-3 pt-2">
