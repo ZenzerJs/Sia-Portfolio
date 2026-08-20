@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { resetBodyTheme } from "@/lib/themeScroll";
+import { resetScrollToTop } from "@/lib/smoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,11 +36,8 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     // canvas instead of inheriting the previous page's navy background.
     resetBodyTheme();
 
-    // Reset scroll state for the incoming page.
-    window.scrollTo(0, 0);
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
+    // Reset scroll state immediately for the incoming page.
+    resetScrollToTop();
 
     // Establish a clean baseline: the stylesheet's `transform: translateY(100%)`
     // is parsed by GSAP as a percentage `y`, which would otherwise stack on top
@@ -48,7 +46,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     gsap.set(curtain, { y: 0, yPercent: 100, autoAlpha: 1, force3D: true });
     const tl = gsap.timeline({
       onComplete: () => {
-        window.scrollTo(0, 0);
+        resetScrollToTop();
         gsap.set(curtain, { y: 0, yPercent: 100, autoAlpha: 0 });
         if (typeof ScrollTrigger !== "undefined") {
           ScrollTrigger.refresh();
