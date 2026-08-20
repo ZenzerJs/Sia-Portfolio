@@ -247,7 +247,7 @@ export function AccordionGallery({
         return (
           <Tag
             key={i}
-            ref={(el) => {
+            ref={(el: HTMLAnchorElement | HTMLDivElement | null) => {
               panelRefs.current[i] = el as HTMLElement;
             }}
             className={`ag-panel${isActive ? " ag-panel--active" : ""}`}
