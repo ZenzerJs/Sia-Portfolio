@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
+import { ConnectModal } from "@/components/ui/ConnectModal";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { initAboutAnimations } from "@/lib/about";
@@ -44,6 +45,8 @@ const stats = [
 ];
 
 export function AboutPage() {
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
+
   useEffect(() => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
@@ -228,6 +231,17 @@ export function AboutPage() {
             <a className="about-contact__email" href={`mailto:${siteConfig.email}`}>
               {siteConfig.email}
             </a>
+            <div className="my-5 text-center">
+              <button
+                type="button"
+                onClick={() => setConnectModalOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--text-dark)] text-white hover:opacity-90 text-xs font-mono tracking-widest uppercase transition-all shadow-md"
+                aria-label="Open contact and collaboration pop-out modal"
+              >
+                <span>Open Connect Pop-out</span>
+                <span>↗</span>
+              </button>
+            </div>
             <div className="about-contact__social">
               {Object.values(siteConfig.socials).map((social) => (
                 <a
@@ -250,6 +264,11 @@ export function AboutPage() {
           </p>
         </footer>
       </main>
+
+      <ConnectModal
+        isOpen={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
     </>
   );
 }

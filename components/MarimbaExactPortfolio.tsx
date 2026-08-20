@@ -16,6 +16,7 @@ import { DualScramble } from "@/components/ui/DualScramble";
 import { AccordionGallery, type AccordionGalleryItem } from "@/components/AccordionGallery";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
+import { ConnectModal } from "@/components/ui/ConnectModal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { projects } from "@/lib/projects";
 
@@ -69,6 +70,7 @@ export function MarimbaExactPortfolio() {
     slides: string[];
     pdfUrl?: string;
   } | null>(null);
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
 
   useEffect(() => {
     if ("scrollRestoration" in history) {
@@ -619,6 +621,17 @@ export function MarimbaExactPortfolio() {
               </p>
               <p className="text-xs font-mono text-white/60 mt-1">{siteConfig.location}</p>
             </div>
+            <div className="mt-6 mb-8 text-center">
+              <button
+                type="button"
+                onClick={() => setConnectModalOpen(true)}
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-[#1E3A5F] hover:bg-white/90 text-xs font-mono tracking-widest uppercase shadow-xl transition-all hover:scale-105"
+                aria-label="Open contact and collaboration pop-out modal"
+              >
+                <span>Get in Touch</span>
+                <span>↗</span>
+              </button>
+            </div>
             <div className="contact__links">
               {Object.values(siteConfig.socials).map((social) => (
                 <a
@@ -656,6 +669,12 @@ export function MarimbaExactPortfolio() {
           pdfUrl={activeDeck.pdfUrl}
         />
       )}
+
+      {/* Connect / Collaborate Pop-out Modal */}
+      <ConnectModal
+        isOpen={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
     </>
   );
 }
