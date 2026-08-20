@@ -20,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function PageTransitionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const curtainRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
   const firstRender = useRef(true);
 
   useEffect(() => {
@@ -38,6 +39,11 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
 
     // Reset scroll state immediately for the incoming page.
     resetScrollToTop();
+
+    const logo = logoRef.current;
+    if (logo) {
+      gsap.set(logo, { scale: 0.9, opacity: 1 });
+    }
 
     // Establish a clean baseline: the stylesheet's `transform: translateY(100%)`
     // is parsed by GSAP as a percentage `y`, which would otherwise stack on top
@@ -63,18 +69,43 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
         }
       },
     });
+
+    // 1. Curtain slides up to cover viewport
     tl.to(curtain, {
       yPercent: 0,
-      duration: 0.6,
+      duration: 0.5,
       ease: "power3.out",
       force3D: true,
-    }).to(curtain, {
-      yPercent: -100,
-      duration: 0.9,
-      ease: "power3.inOut",
-      force3D: true,
-      delay: 0.15,
     });
+
+    // 2. Centered monogram logo subtle breath/pulse
+    if (logo) {
+      tl.to(
+        logo,
+        {
+          scale: 1.05,
+          duration: 0.25,
+          ease: "power1.out",
+        },
+        "-=0.15"
+      ).to(logo, {
+        scale: 1,
+        duration: 0.2,
+        ease: "power1.inOut",
+      });
+    }
+
+    // 3. Curtain continues upward to reveal destination page
+    tl.to(
+      curtain,
+      {
+        yPercent: -100,
+        duration: 0.65,
+        ease: "power3.inOut",
+        force3D: true,
+      },
+      "+=0.1"
+    );
 
     return () => {
       tl.kill();
@@ -84,7 +115,20 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
   return (
     <>
       {children}
-      <div ref={curtainRef} className="page-transition-curtain" aria-hidden="true" />
+      <div
+        ref={curtainRef}
+        className="page-transition-curtain flex flex-col items-center justify-center pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="flex flex-col items-center justify-center p-8">
+          <img
+            ref={logoRef}
+            src="/assets/logo-monogram-light.png"
+            alt=""
+            className="w-24 h-24 sm:w-32 sm:h-32 object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.35)] select-none pointer-events-none"
+          />
+        </div>
+      </div>
     </>
   );
 }

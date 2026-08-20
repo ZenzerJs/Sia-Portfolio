@@ -114,7 +114,7 @@ export function AboutPage() {
             {/* Text Bio Column */}
             <div className="md:col-span-7 lg:col-span-8 lg:pl-4">
               <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-2">
-                About Shanesia
+                About Me
               </span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#1E3A5F] mb-6 tracking-tight">
                 Hi, I&apos;m {siteConfig.person.firstName}.

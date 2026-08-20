@@ -36,16 +36,9 @@ export function SiteHeader({ homeSections = false }: { homeSections?: boolean })
               }
             }}
             aria-label={`${siteConfig.person.fullName} — home`}
-            className="site-header__brand-link flex flex-row items-center gap-3 md:gap-3.5 group whitespace-nowrap"
+            className="site-header__brand-link font-serif text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[var(--text-dark)] leading-none select-none hover:opacity-80 transition-opacity"
           >
-            <img
-              src="/assets/logo-monogram-navy.png"
-              alt=""
-              className="h-8 sm:h-10 md:h-12 w-auto max-h-[48px] object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
-            />
-            <span className="font-serif text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-[var(--text-dark)] leading-none inline-block">
-              {siteConfig.person.fullName}
-            </span>
+            {siteConfig.person.fullName}
           </Link>
         </div>
 
