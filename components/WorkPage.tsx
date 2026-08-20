@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
@@ -8,8 +8,17 @@ import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { initWorkSlider } from "@/lib/workSlider";
 import { projects } from "@/lib/projects";
+import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
+import { LiveScreenPlayer } from "@/components/ui/LiveScreenPlayer";
 
 export function WorkPage() {
+  const [activeDeck, setActiveDeck] = useState<{
+    title: string;
+    tagline?: string;
+    slides: string[];
+    pdfUrl?: string;
+  } | null>(null);
+
   useEffect(() => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
@@ -32,46 +41,77 @@ export function WorkPage() {
       <SiteHeader />
       <CursorDot />
 
-      <main id="main-content" className="work-page">
-        {/* Intro */}
-        <section className="work-intro">
-          <div className="work-intro__container">
-            <h1 className="work-intro__heading">Selected work</h1>
-            <p className="work-intro__description">
-              Websites for brands that want to be felt, not just seen — from
-              copywriters to healthcare platforms.
+      <main id="main-content" className="work-page relative overflow-hidden">
+        {/* Intro Section */}
+        <section className="work-intro pt-36 pb-12 relative z-10">
+          <div className="work-intro__container max-w-7xl mx-auto px-6 md:px-12">
+            <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+              Portfolio
+            </span>
+            <h1 className="work-intro__heading text-4xl md:text-6xl font-serif text-[var(--text-dark)] mb-4">
+              Selected Work
+            </h1>
+            <p className="work-intro__description text-sm md:text-base text-gray-600 max-w-2xl">
+              Digital communications campaigns, interactive data storytelling platforms, and multicultural
+              marketing strategies.
             </p>
           </div>
         </section>
 
-        {/* Slider */}
-        <section className="work-slider" aria-label="Featured projects">
-          <div className="work-slider__laptop">
+        {/* Slider Showcase with Live Studio Screen Player */}
+        <section className="work-slider relative z-10" aria-label="Featured projects">
+          {/* Dynamic Ambient Background Slider Stack */}
+          <div className="work-slider__backdrop-container absolute inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+            {projects.map((project, index) => (
+              <div
+                key={project.slug}
+                className="work-slider__backdrop-item absolute inset-0 will-change-transform will-change-opacity"
+                data-project={index + 1}
+              >
+                <div
+                  className="absolute inset-0 opacity-40 mix-blend-multiply"
+                  style={{
+                    background: `radial-gradient(ellipse at 35% 50%, ${project.accent}66 0%, ${project.accent}25 45%, transparent 75%)`,
+                  }}
+                />
+                <div
+                  className="absolute -top-[15%] -left-[10%] w-[60vw] h-[60vw] rounded-full blur-3xl opacity-30"
+                  style={{ backgroundColor: project.accent }}
+                />
+                <div
+                  className="absolute -bottom-[20%] -right-[10%] w-[55vw] h-[55vw] rounded-full blur-3xl opacity-25"
+                  style={{ backgroundColor: project.accent }}
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(30,58,95,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,58,95,0.04)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+              </div>
+            ))}
+          </div>
+
+          <div className="work-slider__laptop shadow-2xl relative z-10">
             <div className="work-slider__media-container">
-              {projects.map((project, index) =>
-                project.media.type === "video" ? (
-                  <video
-                    key={project.slug}
-                    className="work-slider__media"
-                    data-project={index + 1}
-                    preload="auto"
-                    muted
-                    playsInline
-                    loop
-                    autoPlay
-                    src={project.media.src}
+              {projects.map((project, index) => (
+                <div
+                  key={project.slug}
+                  className="work-slider__media overflow-hidden"
+                  data-project={index + 1}
+                >
+                  <LiveScreenPlayer
+                    project={project}
+                    isActive={true}
+                    onOpenDeck={
+                      project.slides && project.slides.length > 0
+                        ? () =>
+                            setActiveDeck({
+                              title: project.title,
+                              tagline: project.tagline,
+                              slides: project.slides!,
+                              pdfUrl: project.deckPdf,
+                            })
+                        : undefined
+                    }
                   />
-                ) : (
-                  <div
-                    key={project.slug}
-                    className="work-slider__media work-slider__media--placeholder"
-                    data-project={index + 1}
-                    style={{ background: project.media.gradient }}
-                  >
-                    <span className="work-slider__placeholder-text">{project.name}</span>
-                  </div>
-                )
-              )}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -101,7 +141,7 @@ export function WorkPage() {
                   className="work-slider__content"
                   data-project={index + 1}
                 >
-                  <h2 className="work-slider__title">{project.title}</h2>
+                  <h2 className="work-slider__title font-serif">{project.title}</h2>
                   <div className="work-slider__meta">
                     {project.categories.map((category) => (
                       <span key={category} className="work-slider__tag">
@@ -109,10 +149,30 @@ export function WorkPage() {
                       </span>
                     ))}
                   </div>
-                  <p className="work-slider__description">{project.description}</p>
-                  <Link href={`/work/${project.slug}`} className="work-slider__button">
-                    View case study →
-                  </Link>
+                  <p className="work-slider__description text-xs md:text-sm text-gray-600 line-clamp-3">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
+                    <Link href={`/work/${project.slug}`} className="work-slider__button">
+                      View Case Study →
+                    </Link>
+                    {project.slides && project.slides.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setActiveDeck({
+                            title: project.title,
+                            tagline: project.tagline,
+                            slides: project.slides!,
+                            pdfUrl: project.deckPdf,
+                          })
+                        }
+                        className="px-4 py-2 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-wider uppercase hover:bg-slate-50 transition-colors"
+                      >
+                        Open Presentation ({project.slides.length} Slides) ↗
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -132,11 +192,23 @@ export function WorkPage() {
         </section>
 
         {/* Footer contact */}
-        <footer className="footer" id="contact">
-          <p>© 2026 Marimba. Designs</p>
-          <a href="mailto:hello@marimba.design">hello@marimba.design</a>
+        <footer className="footer relative z-10" id="contact">
+          <p>© 2026 Shanesia Saha</p>
+          <a href="mailto:shanesiasaha@yahoo.ca">shanesiasaha@yahoo.ca</a>
         </footer>
       </main>
+
+      {/* Slide Deck Modal Viewer */}
+      {activeDeck && (
+        <DeckViewerModal
+          isOpen={true}
+          onClose={() => setActiveDeck(null)}
+          title={activeDeck.title}
+          tagline={activeDeck.tagline}
+          slides={activeDeck.slides}
+          pdfUrl={activeDeck.pdfUrl}
+        />
+      )}
     </>
   );
 }

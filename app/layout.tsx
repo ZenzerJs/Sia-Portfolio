@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Geist, Roboto_Mono } from "next/font/google";
+import { Instrument_Serif, Geist, Roboto_Mono, Bodoni_Moda, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { PageTransitionProvider } from "@/components/PageTransitionProvider";
+import { AuroraGlow } from "@/components/ui/AuroraGlow";
 import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
 
@@ -25,6 +26,31 @@ const robotoMono = Roboto_Mono({
   weight: ["400", "500"],
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+});
+
+// Editorial (case-study) typefaces — the Stitch "Narrative Studio" system.
+// Kept separate from the global Instrument Serif / Geist / Roboto Mono so the
+// case-study pages can adopt the high-contrast editorial look without touching
+// the home/about typography.
+const bodoniModa = Bodoni_Moda({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-editorial-display",
+  display: "swap",
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  weight: ["400", "600"],
+  subsets: ["latin"],
+  variable: "--font-editorial-sans",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-editorial-mono",
   display: "swap",
 });
 
@@ -71,12 +97,13 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${instrumentSerif.variable} ${geist.variable} ${robotoMono.variable}`}
+      className={`${instrumentSerif.variable} ${geist.variable} ${robotoMono.variable} ${bodoniModa.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body
         suppressHydrationWarning
-        className="bg-[#FFFFFF] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
+        className="bg-[#F8F9FA] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
       >
+        <AuroraGlow />
         <SmoothScrollProvider>
           <PageTransitionProvider>{children}</PageTransitionProvider>
         </SmoothScrollProvider>

@@ -161,7 +161,7 @@ export const siteConfig = {
 
   /** Design tokens (mirrors `:root` in app/globals.css) */
   theme: {
-    canvas: "#FFFFFF",
+    canvas: "#F8F9FA",
     surface: "#FAFAFA",
     navy: "#1E3A5F",
     navyDark: "#142A4A",

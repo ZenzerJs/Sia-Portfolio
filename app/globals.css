@@ -10,7 +10,7 @@
 }
 
 :root {
-    --bg-light: #FFFFFF;
+    --bg-light: #F8F9FA;
     --text-dark: #1E3A5F;
     --loader-bg: #142A4A;
     /* Brand accent palette — the pastels used across the hero shapes, orbit
@@ -27,6 +27,46 @@
     --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Instrument Serif', Georgia, serif;
     --font-mono: 'Roboto Mono', monospace;
+}
+
+/* Ambient Aurora Keyframes */
+@keyframes aurora-slow {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(30px, 20px, 0) scale(1.08);
+    }
+}
+
+@keyframes aurora-reverse {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-25px, -30px, 0) scale(1.06);
+    }
+}
+
+@keyframes aurora-drift {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(20px, -25px, 0) scale(1.05);
+    }
+}
+
+.animate-aurora-slow {
+    animation: aurora-slow 16s ease-in-out infinite;
+}
+
+.animate-aurora-reverse {
+    animation: aurora-reverse 18s ease-in-out infinite;
+}
+
+.animate-aurora-drift {
+    animation: aurora-drift 20s ease-in-out infinite;
 }
 
 html {
