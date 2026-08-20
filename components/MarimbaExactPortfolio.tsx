@@ -606,7 +606,7 @@ export function MarimbaExactPortfolio() {
               <img
                 src="/assets/logo-monogram-navy.png"
                 alt=""
-                className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-sm transition-transform hover:scale-105"
+                className="contact-monogram-img w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-sm transition-transform hover:scale-105"
               />
             </div>
             <h2>Let&apos;s collaborate</h2>
@@ -615,13 +615,13 @@ export function MarimbaExactPortfolio() {
               <p>
                 <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
               </p>
-              <p className="text-xs font-mono text-white/60 mt-1">{siteConfig.location}</p>
+              <p className="text-xs font-mono text-[var(--text-muted)] mt-1">{siteConfig.location}</p>
             </div>
             <div className="mt-6 mb-8 text-center">
               <button
                 type="button"
                 onClick={() => setConnectModalOpen(true)}
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-[#1E3A5F] hover:bg-white/90 text-xs font-mono tracking-widest uppercase shadow-xl transition-all hover:scale-105"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[var(--text-dark)] text-[var(--bg-light)] hover:opacity-90 text-xs font-mono tracking-widest uppercase shadow-xl transition-all hover:scale-105"
                 aria-label="Open contact and collaboration pop-out modal"
               >
                 <span>Get in Touch</span>
@@ -649,7 +649,7 @@ export function MarimbaExactPortfolio() {
             <img
               src="/assets/logo-monogram-navy.png"
               alt=""
-              className="w-6 h-6 object-contain opacity-70"
+              className="footer-monogram-img w-6 h-6 object-contain opacity-70"
             />
             <p className="m-0">
               © {siteConfig.copyrightStartYear} {siteConfig.legalName}

@@ -14,44 +14,9 @@ gsap.registerPlugin(ScrollTrigger);
 export function initThemeScroll(): () => void {
   if (typeof window === "undefined") return () => {};
 
-  const contactSection = document.getElementById("contact");
-  if (!contactSection) return () => {};
-
-  const tween = gsap.to("body", {
-    backgroundColor: "#142A4A",
-    color: "#FFFFFF",
-    "--text-dark": "#FFFFFF",
-    "--bg-light": "#1E3A5F",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#contact",
-      start: "top 50%",
-      end: "top+=40% 50%",
-      scrub: 0.6,
-    },
-  });
-
-  // Also invert brand logo brightness when entering contact dark theme
-  const brandLogoTween = gsap.to(".brand-logo, .brand", {
-    filter: "brightness(0) invert(1)",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#contact",
-      start: "top 50%",
-      end: "top+=40% 50%",
-      scrub: 0.6,
-    },
-  });
+  resetBodyTheme();
 
   return () => {
-    tween.scrollTrigger?.kill();
-    tween.kill();
-    brandLogoTween.scrollTrigger?.kill();
-    brandLogoTween.kill();
-
-    // If the scrub left <body> in a dark state (e.g. the visitor navigated away
-    // while scrolled to #contact), restore the default light theme so the next
-    // route doesn't inherit an inverted navy canvas and near-white text.
     resetBodyTheme();
   };
 }
@@ -70,8 +35,9 @@ export function resetBodyTheme(): void {
   body.style.removeProperty("color");
   body.style.removeProperty("--text-dark");
   body.style.removeProperty("--bg-light");
+  body.style.removeProperty("--text-muted");
 
   document
-    .querySelectorAll<HTMLElement>(".brand-logo, .brand")
+    .querySelectorAll<HTMLElement>(".brand-logo, .brand, .contact-monogram-img, .footer-monogram-img")
     .forEach((el) => el.style.removeProperty("filter"));
 }
