@@ -349,11 +349,9 @@ export function MarimbaExactPortfolio() {
               </span>
             </div>
             <h1 className="hero-headline">
-              Translating complex data
-              <br />
-              into human stories, digital campaigns,
-              <br />
-              and cross-institutional impact.
+              Connecting data, research, and community
+              <br className="hidden md:block" />
+              through strategic storytelling and digital media.
             </h1>
           </div>
         </section>

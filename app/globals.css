@@ -2058,6 +2058,9 @@ main {
         width: 100%;
         max-width: 500px;
         margin: 0 auto;
+        border-radius: 20px;
+    }
+    .header-center { display: none; }
 
     .hero-headline { font-size: 2.5rem; }
     .process { padding: 5rem 1rem; }
@@ -2889,19 +2892,6 @@ main {
 
 .site-header__brand { flex: 0 0 auto; }
 
-.site-header__location {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
 .site-nav {
     display: flex;
     flex-direction: row !important;
@@ -2980,9 +2970,7 @@ main {
 /* Case-study media uses normal, front-facing frames. `contain` ensures slide
    decks and social artwork remain fully visible instead of being cropped by
    the old 3D/overflow combination. */
-@media (max-width: 1200px) {
-    .site-header__location { display: none; }
-}
+
 
 @media (max-width: 768px) {
     .site-header { padding: 0.7rem 0; }
