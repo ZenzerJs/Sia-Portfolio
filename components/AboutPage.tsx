@@ -73,39 +73,26 @@ export function AboutPage() {
       if (heroHeadingRef.current) {
         gsap.fromTo(
           heroHeadingRef.current,
-          { filter: "blur(25px)", y: 40, opacity: 0 },
+          { filter: "blur(25px)", y: 30, opacity: 0 },
           { filter: "blur(0px)", y: 0, opacity: 1, duration: 1.2, ease: "power2.out" }
         );
       }
 
-      // 2. Hero Scroll Compression: As user scrolls, big hero smoothly scales down to normal size
-      if (heroSectionRef.current && heroHeadingRef.current && introSectionRef.current) {
+      // 2. Hero Scroll Compression: Centered scaling as user scrolls
+      if (heroSectionRef.current && heroHeadingRef.current) {
         const isMobile = window.innerWidth < 768;
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: heroSectionRef.current,
-              start: "top top",
-              end: "bottom top",
-              scrub: 0.8,
-            },
-          })
-          .to(
-            heroHeadingRef.current,
-            {
-              scale: isMobile ? 0.82 : 0.72,
-              y: -20,
-              transformOrigin: "top left",
-              ease: "power1.inOut",
-            },
-            0
-          )
-          .fromTo(
-            introSectionRef.current,
-            { opacity: 0.3, y: 50 },
-            { opacity: 1, y: 0, ease: "power1.out" },
-            0.2
-          );
+        gsap.to(heroHeadingRef.current, {
+          scale: isMobile ? 0.88 : 0.8,
+          y: -15,
+          transformOrigin: "center center",
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: heroSectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        });
       }
 
       // 3. Infinite continuous rotation on decorative ring behind portrait
@@ -237,18 +224,18 @@ export function AboutPage() {
       <CursorDot />
 
       <main id="main-content" className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 relative z-10">
-        {/* Editorial Hero Statement (Big Hero that compresses on scroll) */}
+        {/* Editorial Hero Statement (Centered Big Hero) */}
         <section
           ref={heroSectionRef}
-          className="about-hero min-h-[75vh] flex flex-col justify-center py-16 relative border-b border-gray-100/70 mb-12 will-change-transform"
+          className="about-hero min-h-[70vh] flex flex-col justify-center items-center text-center py-16 relative border-b border-gray-100/70 mb-12 will-change-transform"
         >
-          <div className="max-w-5xl relative">
-            <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-4">
+          <div className="max-w-4xl mx-auto text-center relative">
+            <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-4 text-center">
               Editorial Statement
             </span>
             <h1
               ref={heroHeadingRef}
-              className="about-hero__heading font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-[1.1] tracking-tight text-[#1E3A5F] origin-top-left will-change-transform"
+              className="about-hero__heading font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.14] tracking-tight text-[#1E3A5F] text-center mx-auto will-change-transform"
             >
               Connecting ideas, data, and people through intentional communication.
             </h1>
@@ -257,8 +244,7 @@ export function AboutPage() {
 
         {/* Intro Section: Portrait + Bio + Metrics */}
         <section
-          ref={introSectionRef}
-          className="about-intro py-8 md:py-12 border-b border-gray-100 mb-16 will-change-transform"
+          className="about-bio-section py-8 md:py-12 border-b border-gray-100 mb-16"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
             {/* Portrait Image Column with Continuous Spin Ring & Dynamic Tilt */}
