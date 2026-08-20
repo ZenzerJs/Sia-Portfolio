@@ -290,53 +290,6 @@ export function MarimbaExactPortfolio() {
             </div>
           </div>
 
-          <div className="expertise-ring" aria-hidden="true">
-            <div className="expertise-field" aria-hidden="true"></div>
-            <div className="expertise-field-lines" aria-hidden="true">
-              <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect
-                  x="140"
-                  y="168"
-                  width="520"
-                  height="464"
-                  rx="120"
-                  transform="rotate(14 400 400)"
-                  stroke="rgba(30, 58, 95, 0.16)"
-                  strokeWidth="1.5"
-                />
-                <rect
-                  x="172"
-                  y="132"
-                  width="456"
-                  height="536"
-                  rx="120"
-                  transform="rotate(-16 400 400)"
-                  stroke="rgba(30, 58, 95, 0.1)"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx="400"
-                  cy="400"
-                  r="292"
-                  stroke="rgba(30, 58, 95, 0.08)"
-                  strokeWidth="1.5"
-                  strokeDasharray="2 12"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M400 108v72M400 620v72M108 400h72M620 400h72"
-                  stroke="rgba(30, 58, 95, 0.12)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-                <circle cx="272" cy="232" r="7" fill="var(--accent-mint)" fillOpacity="0.55" />
-                <circle cx="560" cy="300" r="5" fill="var(--accent-lilac)" fillOpacity="0.7" />
-                <circle cx="512" cy="548" r="8" fill="var(--accent-sky)" fillOpacity="0.6" />
-                <circle cx="288" cy="560" r="4.5" fill="var(--accent-amber)" fillOpacity="0.35" />
-              </svg>
-            </div>
-          </div>
-
           <div className="expertise-center-text" aria-hidden="true">
             Strategic<br />Communications
           </div>

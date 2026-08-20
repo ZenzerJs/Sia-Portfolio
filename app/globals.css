@@ -1436,63 +1436,6 @@ main {
 
 
 
-/* "My design practices" orbit field — a layered background graphic (gradient
-   mesh + grain + editorial line-work) that sits BEHIND the .webp orbit shapes
-   (hero-background is z-index 1, so the shapes occlude the field where they
-   overlap). No flat decorative ring. */
-.expertise-ring {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(120vmin, 980px);
-    height: min(120vmin, 980px);
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    overflow: visible;
-}
-
-/* Soft gradient mesh (blurred brand-tone orbs) + grain */
-.expertise-field {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background:
-        radial-gradient(42% 42% at 32% 30%, color-mix(in srgb, var(--accent-lilac) 50%, transparent), transparent 70%),
-        radial-gradient(38% 38% at 68% 26%, color-mix(in srgb, var(--accent-mint) 38%, transparent), transparent 70%),
-        radial-gradient(44% 44% at 66% 72%, color-mix(in srgb, var(--accent-sky) 50%, transparent), transparent 70%),
-        radial-gradient(34% 34% at 28% 70%, color-mix(in srgb, var(--accent-amber) 16%, transparent), transparent 70%),
-        radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--bg-light) 55%, transparent), transparent 74%);
-    filter: blur(26px) saturate(1.1);
-}
-
-/* Grain texture over the field */
-.expertise-field::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-}
-
-/* Editorial line-work: layered geometric field */
-.expertise-field-lines {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-}
-
-.expertise-field-lines svg {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
 .expertise-center-text {
     position: fixed;
     top: 50%;
@@ -1958,7 +1901,7 @@ main {
 
 @media (max-width: 768px) {
     body { font-size: 12pt; }
-    .expertise-ring, .shape-circle-left, .shape-circle-right, .shape-circle-bottom { display: none; }
+    .shape-circle-left, .shape-circle-right, .shape-circle-bottom { display: none; }
     .expertise-mobile-video {
         display: block !important;
         width: 100%;
