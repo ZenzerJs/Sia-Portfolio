@@ -411,7 +411,7 @@ export function AboutPage() {
         </section>
 
         {/* Core Values */}
-        <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
+        <section className="py-12 md:py-16 mb-8 md:mb-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4 lg:col-span-3">
               <h2 className="font-serif text-3xl md:text-4xl text-[#1E3A5F] md:sticky md:top-28">

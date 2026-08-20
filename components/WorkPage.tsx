@@ -25,6 +25,7 @@ export function WorkPage() {
   } | null>(null);
 
   const workHeroRef = useRef<HTMLElement>(null);
+  const workContainerRef = useRef<HTMLDivElement>(null);
   const workHeadingRef = useRef<HTMLHeadingElement>(null);
   const workDescRef = useRef<HTMLParagraphElement>(null);
 
@@ -55,13 +56,13 @@ export function WorkPage() {
         );
       }
 
-      // 2. Scroll compression: Zoom heading down to regular size as user scrolls down to projects
-      if (workHeroRef.current && workHeadingRef.current) {
+      // 2. Scroll compression: Zoom entire container down symmetrically in exact center
+      if (workHeroRef.current && workContainerRef.current) {
         const isMobile = window.innerWidth < 768;
-        gsap.to(workHeadingRef.current, {
+        gsap.to(workContainerRef.current, {
           scale: isMobile ? 0.82 : 0.75,
-          y: -15,
-          transformOrigin: "center center",
+          y: -20,
+          transformOrigin: "50% 50%",
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: workHeroRef.current,
@@ -90,15 +91,18 @@ export function WorkPage() {
         {/* Intro Section: Full-height Big Hero on Entrance */}
         <section
           ref={workHeroRef}
-          className="work-intro min-h-[70vh] flex flex-col justify-center items-center text-center pt-32 pb-16 relative z-10 will-change-transform"
+          className="work-intro min-h-[75vh] flex flex-col justify-center items-center text-center pt-32 pb-16 relative z-10 w-full"
         >
-          <div className="work-intro__container max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center">
+          <div
+            ref={workContainerRef}
+            className="work-intro__container w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center will-change-transform"
+          >
             <span className="text-sm font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3 text-center">
               Portfolio
             </span>
             <h1
               ref={workHeadingRef}
-              className="work-intro__heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[var(--text-dark)] mb-4 text-center mx-auto will-change-transform"
+              className="work-intro__heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-[var(--text-dark)] mb-4 text-center w-full leading-none"
             >
               Selected Work
             </h1>
