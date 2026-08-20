@@ -281,10 +281,10 @@ export function AboutPage() {
 
             {/* Text Bio Column */}
             <div className="md:col-span-7 lg:col-span-8 lg:pl-4">
-              <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-2">
+              <span className="text-sm font-mono tracking-widest uppercase text-[#718096] block mb-3">
                 About Me
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#1E3A5F] mb-6 tracking-tight">
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal text-[#1E3A5F] mb-6 tracking-tight">
                 Hi, I&apos;m {siteConfig.person.firstName}.
               </h2>
 
@@ -308,7 +308,7 @@ export function AboutPage() {
               >
                 {stats.map((stat, idx) => (
                   <div key={idx} className="about-stat-card space-y-1">
-                    <div className="font-serif text-3xl md:text-4xl text-[#1E3A5F] font-semibold">
+                    <div className="font-serif text-4xl md:text-5xl text-[#1E3A5F] font-normal">
                       <CountUp end={stat.end} decimals={0} suffix={stat.suffix} />
                     </div>
                     <p className="text-xs font-mono uppercase tracking-wider text-[#718096]">
@@ -325,7 +325,7 @@ export function AboutPage() {
         <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4 lg:col-span-3">
-              <h2 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] md:sticky md:top-28">
+              <h2 className="font-serif text-3xl md:text-4xl text-[#1E3A5F] md:sticky md:top-28">
                 Professional Experience
               </h2>
             </div>
@@ -336,17 +336,17 @@ export function AboutPage() {
                   className="about-experience-card border-b border-gray-100/60 pb-10 last:border-0 last:pb-0"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                    <h3 className="text-xl font-serif font-medium text-[#1E3A5F]">
+                    <h3 className="text-2xl md:text-3xl font-serif font-normal text-[#1E3A5F]">
                       {item.role}
                     </h3>
                     <span className="text-xs font-mono text-[#718096] uppercase tracking-wider">
                       {item.period}
                     </span>
                   </div>
-                  <p className="text-xs font-mono text-[#1E3A5F]/80 uppercase tracking-widest mb-3">
+                  <p className="text-xs font-mono text-[#1E3A5F]/85 uppercase tracking-widest mb-3">
                     {item.company}
                   </p>
-                  <p className="text-sm md:text-base text-[#4A5568] leading-relaxed">
+                  <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -359,17 +359,17 @@ export function AboutPage() {
         <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4 lg:col-span-3">
-              <h2 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] md:sticky md:top-28">
+              <h2 className="font-serif text-3xl md:text-4xl text-[#1E3A5F] md:sticky md:top-28">
                 Education &amp; Credentials
               </h2>
             </div>
             <div className="md:col-span-8 lg:col-span-9 space-y-10">
               {siteConfig.education.map((entry, idx) => (
-                <div key={idx} className="space-y-1.5">
-                  <h3 className="text-lg md:text-xl font-serif font-medium text-[#1E3A5F]">
+                <div key={idx} className="space-y-2">
+                  <h3 className="text-2xl md:text-3xl font-serif font-normal text-[#1E3A5F]">
                     {entry.school}
                   </h3>
-                  <p className="text-sm md:text-base text-[#4A5568]">
+                  <p className="text-base md:text-lg text-[#4A5568] font-light">
                     {entry.degree}
                   </p>
                   <p className="text-xs font-mono text-[#718096] uppercase tracking-wider">
@@ -380,14 +380,14 @@ export function AboutPage() {
 
               {/* Key Competencies */}
               <div className="pt-6 border-t border-gray-100">
-                <h4 className="text-xs font-mono uppercase tracking-widest text-[#1E3A5F] mb-4">
+                <h4 className="text-sm font-mono uppercase tracking-widest text-[#1E3A5F] mb-4">
                   Key Competencies
                 </h4>
                 <div className="flex flex-wrap gap-2.5">
                   {siteConfig.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 text-xs font-medium text-[#4A5568] border border-gray-200 rounded-full bg-white/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm hover:border-[#1E3A5F] cursor-default"
+                      className="px-4 py-2 text-sm font-medium text-[#4A5568] border border-gray-200 rounded-full bg-white/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm hover:border-[#1E3A5F] cursor-default"
                     >
                       {skill}
                     </span>
@@ -414,37 +414,49 @@ export function AboutPage() {
         <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4 lg:col-span-3">
-              <h2 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] md:sticky md:top-28">
+              <h2 className="font-serif text-3xl md:text-4xl text-[#1E3A5F] md:sticky md:top-28">
                 Core Values
               </h2>
             </div>
-            <div className="md:col-span-8 lg:col-span-9 space-y-6 text-sm md:text-base text-[#4A5568] leading-relaxed">
-              <p>
-                <strong className="text-[#1E3A5F] font-semibold">Data with Heart</strong> — Numbers only make an impact when they connect with people.
-                I believe in translating analytics and research into empathetic narratives that inspire action.
-              </p>
-              <p>
-                <strong className="text-[#1E3A5F] font-semibold">Cross-Institutional Collaboration</strong> — The best outcomes happen when diverse perspectives
-                unite. Having coordinated projects across Canada, the US, and the UK, I thrive in bridging multidisciplinary teams.
-              </p>
-              <p>
-                <strong className="text-[#1E3A5F] font-semibold">Craft &amp; Accessibility</strong> — From typography and visual balance to WCAG compliance,
-                I ensure every deliverable is both beautiful and accessible to all audiences.
-              </p>
+            <div ref={valuesRef} className="md:col-span-8 lg:col-span-9 space-y-8">
+              <div className="space-y-2">
+                <h3 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] font-normal">
+                  Data with Heart
+                </h3>
+                <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
+                  Numbers only make an impact when they connect with people. I believe in translating analytics and research into empathetic narratives that inspire action.
+                </p>
+              </div>
+              <div className="space-y-2 pt-2">
+                <h3 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] font-normal">
+                  Cross-Institutional Collaboration
+                </h3>
+                <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
+                  The best outcomes happen when diverse perspectives unite. Having coordinated projects across Canada, the US, and the UK, I thrive in bridging multidisciplinary teams.
+                </p>
+              </div>
+              <div className="space-y-2 pt-2">
+                <h3 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] font-normal">
+                  Craft &amp; Accessibility
+                </h3>
+                <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
+                  From typography and visual balance to WCAG compliance, I ensure every deliverable is both beautiful and accessible to all audiences.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Contact */}
         <section className="py-16 text-center" id="contact">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#718096] block mb-3">
+          <span className="text-sm font-mono uppercase tracking-widest text-[#718096] block mb-3">
             Get in Touch
           </span>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#1E3A5F] mb-6">
             Let&apos;s connect
           </h2>
           <a
-            className="text-lg md:text-xl font-mono text-[#4A5568] hover:text-[#1E3A5F] transition-colors border-b border-transparent hover:border-[#1E3A5F] pb-1 inline-block mb-8"
+            className="text-xl md:text-2xl font-mono text-[#4A5568] hover:text-[#1E3A5F] transition-colors border-b border-transparent hover:border-[#1E3A5F] pb-1 inline-block mb-8"
             href={`mailto:${siteConfig.email}`}
           >
             {siteConfig.email}
