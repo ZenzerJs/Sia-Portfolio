@@ -30,9 +30,16 @@ export function SiteHeader({ homeSections = false }: { homeSections?: boolean })
           <Link
             href="/"
             aria-label={`${siteConfig.person.fullName} — home`}
-            className="font-serif text-xl md:text-2xl font-bold tracking-tight text-[var(--text-dark)]"
+            className="brand-logo flex items-center gap-2.5 group"
           >
-            {siteConfig.person.fullName}
+            <img
+              src="/assets/logo-monogram-navy.png"
+              alt=""
+              className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-[var(--text-dark)]">
+              {siteConfig.person.fullName}
+            </span>
           </Link>
         </div>
 

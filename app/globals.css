@@ -1926,6 +1926,7 @@ main {
     background-color: var(--loader-bg);
     z-index: 5000;
     pointer-events: none;
+    visibility: hidden;
     transform: translateY(100%);
     will-change: transform;
 }

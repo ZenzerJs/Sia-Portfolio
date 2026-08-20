@@ -21,6 +21,7 @@ export function initWorkSlider(lenis?: Lenis): () => void {
   const contentEls = gsap.utils.toArray<HTMLElement>(".work-slider__content");
   const counterEls = gsap.utils.toArray<HTMLElement>(".work-slider__counter-current");
   const dots = gsap.utils.toArray<HTMLElement>(".work-slider__dot");
+  const backdropEls = gsap.utils.toArray<HTMLElement>(".work-slider__backdrop-item");
 
   const total = mediaEls.length;
   if (!total) return () => {};
@@ -28,10 +29,18 @@ export function initWorkSlider(lenis?: Lenis): () => void {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ---- Initial states -------------------------------------------------------
+  backdropEls.forEach((bg, index) => {
+    gsap.set(bg, {
+      opacity: index === 0 ? 1 : 0,
+      scale: index === 0 ? 1 : 1.08,
+      visibility: index === 0 ? "visible" : "hidden",
+    });
+  });
+
   mediaEls.forEach((media, index) => {
     gsap.set(media, {
       clipPath: index === 0 ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
-      scale: 1.2,
+      scale: 1,
       zIndex: index + 1,
       visibility: "visible",
     });
@@ -94,9 +103,17 @@ export function initWorkSlider(lenis?: Lenis): () => void {
       const pos = i + 1;
       const next = i + 1;
 
+      // Backdrop transition
+      if (backdropEls[i] && backdropEls[next]) {
+        tl.to(backdropEls[i], { opacity: 0, scale: 0.95, duration: 0.8, ease: "power2.inOut" }, pos);
+        tl.set(backdropEls[i], { visibility: "hidden" }, pos + 0.8);
+        tl.set(backdropEls[next], { visibility: "visible" }, pos);
+        tl.fromTo(backdropEls[next], { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.inOut" }, pos);
+      }
+
       // Media curtain reveal + settle.
       tl.to(mediaEls[next], { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, pos);
-      tl.fromTo(mediaEls[next], { scale: 1.2 }, { scale: 1, duration: 1, ease: "power2.inOut" }, pos);
+      tl.fromTo(mediaEls[next], { scale: 1.04 }, { scale: 1, duration: 1, ease: "power2.inOut" }, pos);
 
       // Counter crossfade.
       tl.to(counterEls[i], { opacity: 0, duration: 0.3, ease: "power2.in" }, pos);

@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
 import { ConnectModal } from "@/components/ui/ConnectModal";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
-import { initAboutAnimations } from "@/lib/about";
 import { siteConfig } from "@/lib/siteConfig";
 import { CountUp } from "@/components/ui/CountUp";
 
@@ -15,33 +15,32 @@ const experience = [
     role: "Project Coordinator",
     company: "Mass Culture Canada",
     period: "Dec 2024 — Apr 2025",
-    desc: "Led digital communications strategy, DNA platform launch, and Brenau University partnership. Expanded national reach to 74K+ readers.",
-  },
-  {
-    role: "Communications & Digital Content Creator",
-    company: "Toronto Metropolitan University · Bridging Divides",
-    period: "Aug 2023 — Apr 2024",
-    desc: "Designed and launched centralized LMS platform for academic researchers, managing content architecture and accessibility compliance.",
+    desc: "Developed multi-platform content strategies, newsletters and data-driven campaigns across LinkedIn, Facebook, X and Instagram. Coordinated a U.S. university partnership, translating brand research into an adopted communications strategy. Led the launch of the Data Narrative for the Arts platform, defined KPIs, analysed performance and managed concurrent projects, schedules and approvals.",
   },
   {
     role: "Digital Communications Assistant",
-    company: "Government of Canada · Parks Canada",
+    company: "Government of Canada — Parks Canada",
     period: "Jun 2022 — Dec 2022",
-    desc: "Coordinated digital knowledge repositories and staff tutorial resources during agency-wide Microsoft 365 migration.",
+    desc: "Served as a liaison between researchers, Communications/IT and the Bridging Divides community, translating stakeholder needs into platform requirements. Supported the design, development and launch of a centralised LMS website for academic research and digital seminars, conducting content audits and usability testing to improve accessibility and navigation. Coordinated timelines, feedback, quality control and platform updates while supporting launch promotion through email marketing.",
+  },
+  {
+    role: "Communications & Digital Content Creator",
+    company: "Toronto Metropolitan University — Bridging Divides",
+    period: "Aug 2023 — Apr 2024",
+    desc: "Led digital content coordination for Parks Canada’s agency-wide Microsoft 365 transition, ensuring clear, consistent and compliant communications. Developed training and onboarding materials, including infographics, tutorial videos and presentations, while collaborating cross-functionally to support digital adoption. Designed and maintained SharePoint knowledge hubs, conducted content audits and analysed user behaviour to improve resource accessibility, discoverability and workflow efficiency.",
   },
   {
     role: "VP Marketing & Creative Director",
     company: "Creative Industries Course Union (CICU)",
     period: "2023 — 2025",
-    desc: "Directed multichannel promotional campaigns, live 35mm film photography, and annual showcase events for 500+ attendees.",
+    desc: "Led marketing and creative communications for a 300+ student community, developing promotional campaigns, visual branding, social media content and event communications. Directed digital and print creative, while producing live event photography and visual content for showcases, workshops and community initiatives.",
   },
 ];
 
 const stats = [
-  { end: 74, suffix: "K+", label: "Audience Campaign Reach" },
-  { end: 4.0, decimals: 1, suffix: "/4.2", label: "CGPA · Graduated with Distinction" },
+  { end: 74, suffix: "K+", label: "MULTIPLE Campaign Reach" },
   { end: 10, suffix: "+", label: "Cross-Institutional Projects" },
-  { end: 500, suffix: "+", label: "Showcase Event Attendees" },
+  { end: 300, suffix: "+", label: "Showcase Event Attendees" },
 ];
 
 export function AboutPage() {
@@ -55,12 +54,10 @@ export function AboutPage() {
 
     const { cleanup: cleanupScroll } = initSmoothScroll();
     const cleanupCursor = initCursor();
-    const cleanupAbout = initAboutAnimations();
 
     return () => {
       cleanupScroll();
       cleanupCursor();
-      cleanupAbout();
     };
   }, []);
 
@@ -69,199 +66,258 @@ export function AboutPage() {
       <SiteHeader />
       <CursorDot />
 
-      <main id="main-content" className="about-page">
-        {/* Hero */}
-        <section className="about-hero">
-          <img
-            src="/assets/shape-star1.webp"
-            alt=""
-            className="about-hero__star"
-            aria-hidden="true"
-          />
-          <h1 className="about-hero__heading">
-            Connecting ideas, data, and people through intentional communication.
-          </h1>
-        </section>
-
-        {/* Intro */}
-        <section className="about-intro">
-          <div className="about-intro__content">
-            <div className="about-intro__image-wrapper">
-              <img
-                src="/assets/shape-circle2.webp"
-                alt=""
-                className="about-intro__image-shape-ring"
-                aria-hidden="true"
-              />
-              <img
-                src="/assets/social-campaigns/654651294_18520046998073873_8861659328534541782_n.jpg"
-                alt={siteConfig.person.portraitAlt}
-                className="about-intro__image-selfie-2"
-              />
-              <img
-                src="/assets/shape-star1.webp"
-                alt=""
-                className="about-intro__image-shape-burst"
-                aria-hidden="true"
-              />
-            </div>
-
-            <div className="about-intro__text">
-              <h2 className="about-intro__title">Hi, I&apos;m {siteConfig.person.firstName}.</h2>
-              <p>
-                I&apos;m a Communications, Marketing &amp; Project Coordination professional based between
-                London, United Kingdom and Toronto, Canada. I specialise in turning complex research, institutional
-                goals, and creative briefs into clear, compelling campaigns.
-              </p>
-              <p>
-                My background spans public sector digital rollouts, higher education knowledge hubs, non-profit
-                arts platforms, and international marketing challenges. I bring analytical rigour, eye for visual craft,
-                and structured workflow management to every partnership.
-              </p>
-            </div>
-
-            <div className="about-intro__stats">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="about-intro__stat">
-                  <div className="about-intro__stat-number">
-                    <CountUp end={stat.end} decimals={stat.decimals || 0} suffix={stat.suffix} />
-                  </div>
-                  <div className="about-intro__stat-label">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+      <main id="main-content" className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 relative z-10">
+        {/* Editorial Hero Statement */}
+        <section className="py-12 md:py-16 relative border-b border-gray-100 mb-12">
+          <div className="max-w-4xl relative">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.18] tracking-tight text-[#1E3A5F]">
+              Connecting ideas, data, and people through intentional communication.
+            </h1>
+            <img
+              src="/assets/shape-star1.webp"
+              alt=""
+              className="absolute -right-4 -bottom-6 w-16 h-16 md:w-24 md:h-24 opacity-60 pointer-events-none"
+              aria-hidden="true"
+            />
           </div>
         </section>
 
-        {/* Experience */}
-        <section className="about-experience">
-          <h2 className="about-experience__heading">Professional Experience</h2>
-          <div className="about-experience__grid">
-            <div className="about-experience__column">
-              {experience.slice(0, 2).map((item, idx) => (
-                <div key={idx} className="about-experience__item">
-                  <div className="about-experience__role">{item.role}</div>
-                  <div className="about-experience__period">
-                    {item.company} · {item.period}
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
+        {/* Intro Section: Portrait + Bio + Metrics */}
+        <section className="py-8 md:py-12 border-b border-gray-100 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
+            {/* Portrait Image Column */}
+            <div className="md:col-span-5 lg:col-span-4 relative flex justify-center md:justify-start">
+              <div className="relative group max-w-sm w-full">
+                <div className="relative z-10 overflow-hidden rounded-2xl border border-[#1E3A5F]/15 shadow-xl bg-white transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                  <img
+                    src="/assets/headshots/shanesia-primary.jpg"
+                    alt={siteConfig.person.portraitAlt}
+                    className="w-full h-auto aspect-[3/4] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
-              ))}
-            </div>
-            <div className="about-experience__column">
-              {experience.slice(2).map((item, idx) => (
-                <div key={idx} className="about-experience__item">
-                  <div className="about-experience__role">{item.role}</div>
-                  <div className="about-experience__period">
-                    {item.company} · {item.period}
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Education & Skills */}
-        <section className="about-education">
-          <div className="about-education__content">
-            <h2 className="about-education__heading">Education &amp; Credentials</h2>
-            <div className="about-education__list">
-              {siteConfig.education.map((entry) => (
-                <div key={entry.school} className="about-education__item">
-                  <div className="about-education__school">{entry.school}</div>
-                  <div className="about-education__degree">{entry.degree}</div>
-                  <div className="about-education__period">
-                    {entry.period} {entry.note ? `· ${entry.note}` : ""}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-4">
-              <h3 className="text-xl font-serif text-[var(--text-dark)] mb-3">Key Competencies</h3>
-              <div className="about-skills">
-                {siteConfig.skills.map((skill) => (
-                  <span key={skill} className="about-skills__chip">
-                    {skill}
-                  </span>
-                ))}
+                {/* Decorative Elements */}
+                <img
+                  src="/assets/shape-circle2.webp"
+                  alt=""
+                  className="absolute -top-6 -left-6 w-20 h-20 md:w-28 md:h-28 opacity-40 pointer-events-none z-0"
+                  aria-hidden="true"
+                />
+                <img
+                  src="/assets/shape-star1.webp"
+                  alt=""
+                  className="absolute -bottom-6 -right-6 w-16 h-16 md:w-20 md:h-20 opacity-50 pointer-events-none z-20"
+                  aria-hidden="true"
+                />
               </div>
             </div>
 
-            <div className="about-resume">
-              <a
-                className="about-resume__link"
-                href={siteConfig.resumeUrl}
-                download
-              >
-                Download Complete Résumé (PDF)
-              </a>
+            {/* Text Bio Column */}
+            <div className="md:col-span-7 lg:col-span-8 lg:pl-4">
+              <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-2">
+                About Shanesia
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#1E3A5F] mb-6 tracking-tight">
+                Hi, I&apos;m {siteConfig.person.firstName}.
+              </h2>
+
+              <div className="space-y-5 text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
+                <p>
+                  I work at the intersection of communications, marketing, and digital media building authentic
+                  engagement for public sector, higher education, and non-profit organisations through intentional
+                  strategy and storytelling.
+                </p>
+                <p>
+                  Over the past few years I&apos;ve grown audience engagement through data-driven content strategy,
+                  translated complex information into clear, audience-first messaging, and led cross-institutional
+                  projects in fast-paced, deadline-driven environments.
+                </p>
+              </div>
+
+              {/* Key Metrics */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 mt-10 border-t border-gray-100">
+                {stats.map((stat, idx) => (
+                  <div key={idx} className="space-y-1">
+                    <div className="font-serif text-3xl md:text-4xl text-[#1E3A5F] font-semibold">
+                      <CountUp end={stat.end} decimals={0} suffix={stat.suffix} />
+                    </div>
+                    <p className="text-xs font-mono uppercase tracking-wider text-[#718096]">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Experience */}
+        <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div className="md:col-span-4 lg:col-span-3">
+              <h2 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] md:sticky md:top-28">
+                Professional Experience
+              </h2>
+            </div>
+            <div className="md:col-span-8 lg:col-span-9 space-y-12">
+              {experience.map((item, idx) => (
+                <div key={idx} className="border-b border-gray-100/60 pb-10 last:border-0 last:pb-0">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                    <h3 className="text-xl font-serif font-medium text-[#1E3A5F]">
+                      {item.role}
+                    </h3>
+                    <span className="text-xs font-mono text-[#718096] uppercase tracking-wider">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p className="text-xs font-mono text-[#1E3A5F]/80 uppercase tracking-widest mb-3">
+                    {item.company}
+                  </p>
+                  <p className="text-sm md:text-base text-[#4A5568] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Education & Credentials */}
+        <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div className="md:col-span-4 lg:col-span-3">
+              <h2 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] md:sticky md:top-28">
+                Education &amp; Credentials
+              </h2>
+            </div>
+            <div className="md:col-span-8 lg:col-span-9 space-y-10">
+              {siteConfig.education.map((entry, idx) => (
+                <div key={idx} className="space-y-1.5">
+                  <h3 className="text-lg md:text-xl font-serif font-medium text-[#1E3A5F]">
+                    {entry.school}
+                  </h3>
+                  <p className="text-sm md:text-base text-[#4A5568]">
+                    {entry.degree}
+                  </p>
+                  <p className="text-xs font-mono text-[#718096] uppercase tracking-wider">
+                    {entry.period} {entry.note ? `· ${entry.note}` : ""}
+                  </p>
+                </div>
+              ))}
+
+              {/* Key Competencies */}
+              <div className="pt-6 border-t border-gray-100">
+                <h4 className="text-xs font-mono uppercase tracking-widest text-[#1E3A5F] mb-4">
+                  Key Competencies
+                </h4>
+                <div className="flex flex-wrap gap-2.5">
+                  {siteConfig.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 text-xs font-medium text-[#4A5568] border border-gray-200 rounded-full bg-white/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm hover:border-[#1E3A5F] cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Resume Button */}
+              <div className="pt-4">
+                <a
+                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-[#1E3A5F] border border-[#1E3A5F] rounded-full hover:bg-[#1E3A5F] hover:text-white transition-all duration-300 hover:shadow-lg"
+                  href={siteConfig.resumeUrl}
+                  download
+                >
+                  <span>Download Complete Résumé (PDF)</span>
+                  <span>↓</span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Core Values */}
-        <section className="about-interests">
-          <h2 className="about-interests__heading">Core Values</h2>
-          <div className="about-interests__content">
-            <p>
-              <strong>Data with Heart</strong> — Numbers only make an impact when they connect with people.
-              I believe in translating analytics and research into empathetic narratives that inspire action.
-            </p>
-            <p>
-              <strong>Cross-Institutional Collaboration</strong> — The best outcomes happen when diverse perspectives
-              unite. Having coordinated projects across Canada, the US, and the UK, I thrive in bridging multidisciplinary teams.
-            </p>
-            <p>
-              <strong>Craft &amp; Accessibility</strong> — From typography and motion pacing to WCAG compliance,
-              I ensure every deliverable is both beautiful and accessible to all audiences.
-            </p>
-            <p>
-              When I&apos;m not coordinating campaigns, you&apos;ll find me exploring contemporary art galleries,
-              experimenting with analog 35mm film photography, or exploring emerging AI creative tools.
-            </p>
+        <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div className="md:col-span-4 lg:col-span-3">
+              <h2 className="font-serif text-2xl md:text-3xl text-[#1E3A5F] md:sticky md:top-28">
+                Core Values
+              </h2>
+            </div>
+            <div className="md:col-span-8 lg:col-span-9 space-y-6 text-sm md:text-base text-[#4A5568] leading-relaxed">
+              <p>
+                <strong className="text-[#1E3A5F] font-semibold">Data with Heart</strong> — Numbers only make an impact when they connect with people.
+                I believe in translating analytics and research into empathetic narratives that inspire action.
+              </p>
+              <p>
+                <strong className="text-[#1E3A5F] font-semibold">Cross-Institutional Collaboration</strong> — The best outcomes happen when diverse perspectives
+                unite. Having coordinated projects across Canada, the US, and the UK, I thrive in bridging multidisciplinary teams.
+              </p>
+              <p>
+                <strong className="text-[#1E3A5F] font-semibold">Craft &amp; Accessibility</strong> — From typography and visual balance to WCAG compliance,
+                I ensure every deliverable is both beautiful and accessible to all audiences.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Contact */}
-        <section className="about-contact" id="contact">
-          <h2 className="about-contact__heading">Let&apos;s connect</h2>
-          <div className="about-contact__content">
-            <a className="about-contact__email" href={`mailto:${siteConfig.email}`}>
-              {siteConfig.email}
-            </a>
-            <div className="my-5 text-center">
-              <button
-                type="button"
-                onClick={() => setConnectModalOpen(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--text-dark)] text-white hover:opacity-90 text-xs font-mono tracking-widest uppercase transition-all shadow-md"
-                aria-label="Open contact and collaboration pop-out modal"
+        <section className="py-16 text-center" id="contact">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#718096] block mb-3">
+            Get in Touch
+          </span>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#1E3A5F] mb-6">
+            Let&apos;s connect
+          </h2>
+          <a
+            className="text-lg md:text-xl font-mono text-[#4A5568] hover:text-[#1E3A5F] transition-colors border-b border-transparent hover:border-[#1E3A5F] pb-1 inline-block mb-8"
+            href={`mailto:${siteConfig.email}`}
+          >
+            {siteConfig.email}
+          </a>
+
+          <div className="mb-10">
+            <button
+              type="button"
+              onClick={() => setConnectModalOpen(true)}
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#1E3A5F] text-white hover:bg-[#2A4D7A] text-xs font-mono tracking-widest uppercase transition-all shadow-md hover:scale-105"
+              aria-label="Open contact and collaboration pop-out modal"
+            >
+              <span>Open Connect Pop-out</span>
+              <span>↗</span>
+            </button>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {Object.values(siteConfig.socials).map((social) => (
+              <a
+                key={social.href}
+                className="px-5 py-2 text-xs font-mono tracking-wider text-[#4A5568] border border-gray-200 rounded-full hover:border-[#1E3A5F] hover:text-[#1E3A5F] transition-all bg-white hover:shadow-sm"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span>Open Connect Pop-out</span>
-                <span>↗</span>
-              </button>
-            </div>
-            <div className="about-contact__social">
-              {Object.values(siteConfig.socials).map((social) => (
-                <a
-                  key={social.href}
-                  className="about-contact__link"
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {social.label}
-                </a>
-              ))}
-            </div>
+                {social.label}
+              </a>
+            ))}
           </div>
         </section>
 
-        <footer className="footer">
-          <p>
-            © {siteConfig.copyrightStartYear} {siteConfig.legalName}
-          </p>
+        {/* Sub-page Footer */}
+        <footer className="pt-16 mt-16 border-t border-gray-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              src="/assets/logo-monogram-navy.png"
+              alt=""
+              className="w-6 h-6 object-contain opacity-80"
+            />
+            <p className="m-0 text-xs font-mono text-[#718096]">
+              © {siteConfig.copyrightStartYear} {siteConfig.legalName}
+            </p>
+          </div>
+          <span className="text-xs font-mono text-[#718096]">
+            London, UK · Toronto, CA
+          </span>
         </footer>
       </main>
 

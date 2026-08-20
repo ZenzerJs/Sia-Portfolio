@@ -45,22 +45,11 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     // is parsed by GSAP as a percentage `y`, which would otherwise stack on top
     // of the `yPercent` tweens below and double-translate the curtain. Pinning
     // `y: 0` to an explicit pixel value keeps the whole timeline in `yPercent`.
-    gsap.set(curtain, { y: 0, yPercent: 100, force3D: true });
-    const tl = gsap.timeline();
-    tl.to(curtain, {
-      yPercent: 0,
-      duration: 0.6,
-      ease: "power3.out",
-      force3D: true,
-    }).to(curtain, {
-      yPercent: -100,
-      duration: 0.9,
-      ease: "power3.inOut",
-      force3D: true,
-      delay: 0.15,
+    gsap.set(curtain, { y: 0, yPercent: 100, autoAlpha: 1, force3D: true });
+    const tl = gsap.timeline({
       onComplete: () => {
         window.scrollTo(0, 0);
-        gsap.set(curtain, { y: 0, yPercent: 100 });
+        gsap.set(curtain, { y: 0, yPercent: 100, autoAlpha: 0 });
         if (typeof ScrollTrigger !== "undefined") {
           ScrollTrigger.refresh();
         }
@@ -75,6 +64,18 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
           });
         }
       },
+    });
+    tl.to(curtain, {
+      yPercent: 0,
+      duration: 0.6,
+      ease: "power3.out",
+      force3D: true,
+    }).to(curtain, {
+      yPercent: -100,
+      duration: 0.9,
+      ease: "power3.inOut",
+      force3D: true,
+      delay: 0.15,
     });
 
     return () => {

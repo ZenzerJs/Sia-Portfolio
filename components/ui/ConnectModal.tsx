@@ -72,9 +72,16 @@ export function ConnectModal({ isOpen, onClose }: ConnectModalProps) {
 
         {/* Modal Header */}
         <div className="mb-6">
-          <span className="text-xs font-mono tracking-widest uppercase text-[#A8CBE8] block mb-2">
-            Start a Conversation
-          </span>
+          <div className="flex items-center gap-3 mb-2">
+            <img
+              src="/assets/logo-monogram-light.png"
+              alt=""
+              className="w-8 h-8 object-contain"
+            />
+            <span className="text-xs font-mono tracking-widest uppercase text-[#A8CBE8] block">
+              Start a Conversation
+            </span>
+          </div>
           <h2 id="connect-modal-title" className="text-2xl sm:text-3xl font-serif font-normal">
             Let&apos;s collaborate
           </h2>

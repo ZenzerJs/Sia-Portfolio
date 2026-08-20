@@ -1,9 +1,5 @@
 /**
  * Public component surface — everything here is wired into a route.
- *
- * Note: `Header`, `HeroSection`, `MarimbaPortfolio`, etc. (the alternate
- * framer-motion build) are kept in this folder but intentionally NOT
- * re-exported here; the live site uses `MarimbaExactPortfolio` + `lib/*`.
  */
 export * from "./types";
 export * from "./MarimbaExactPortfolio";
@@ -15,3 +11,9 @@ export * from "./SiteHeader";
 export * from "./CursorDot";
 export * from "./SmoothScrollProvider";
 export * from "./PageTransitionProvider";
+export * from "./ui/ScaleSlider";
+export * from "./ui/FeatureDialog";
+export * from "./ui/DualScramble";
+export * from "./ui/CountUp";
+export * from "./ui/DeckViewerModal";
+export * from "./ui/BentoGrid";

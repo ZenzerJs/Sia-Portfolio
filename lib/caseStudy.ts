@@ -4,8 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Case study page motion: staggered fade-up reveals for the hero, context,
- * gallery, evolution, and next-project cards.
+ * Case study page motion: staggered fade-up reveals for the masthead, hero
+ * media, brief, evolution phases, gallery, and navigator cards.
  */
 export function initCaseStudyAnimations(): () => void {
   if (typeof window === "undefined") return () => {};
@@ -22,7 +22,7 @@ export function initCaseStudyAnimations(): () => void {
     targets: string | Element,
     vars: gsap.TweenVars = {},
     trigger?: string | Element,
-    start = "top 75%"
+    start = "top 80%"
   ) => {
     const tween = gsap.from(targets, {
       opacity: 0,
@@ -42,18 +42,22 @@ export function initCaseStudyAnimations(): () => void {
     });
   };
 
-  reveal(".case-study-hero__grid", { y: 40 }, ".case-study-hero");
-  reveal(".case-study-hero__media", { y: 60, scale: 0.97 }, ".case-study-hero__media", "top 80%");
-  reveal(".case-study-context__grid", { y: 40 }, ".case-study-context", "top 70%");
-  reveal(".case-study-evolution__grid", { y: 30 }, ".case-study-evolution", "top 70%");
-  reveal(".case-study-evolution__media", { y: 50 }, ".case-study-evolution__media", "top 80%");
+  reveal(".cs-masthead__content", { y: 40 }, ".cs-masthead");
+  reveal(".cs-masthead__meta", { y: 40, delay: 0.1 }, ".cs-masthead");
+  reveal(".cs-hero-media__frame", { y: 60, scale: 0.98 }, ".cs-hero-media", "top 85%");
+  reveal(".cs-brief__grid", { y: 40 }, ".cs-brief", "top 70%");
+  reveal(".cs-evolution__header", { y: 30 }, ".cs-evolution", "top 70%");
 
-  gsap.utils.toArray<HTMLElement>(".case-study-gallery__item").forEach((item, index) => {
-    reveal(item, { y: 30, delay: 0.08 * index }, ".case-study-gallery", "top 70%");
+  gsap.utils.toArray<HTMLElement>(".cs-phase").forEach((item, index) => {
+    reveal(item, { y: 40, delay: 0.06 * index }, ".cs-evolution__content", "top 75%");
   });
 
-  gsap.utils.toArray<HTMLElement>(".project-card").forEach((card, index) => {
-    reveal(card, { y: 40, delay: 0.1 * index }, ".next-projects", "top 80%");
+  gsap.utils.toArray<HTMLElement>(".cs-gallery__item").forEach((item, index) => {
+    reveal(item, { y: 30, delay: 0.08 * index }, ".cs-gallery", "top 75%");
+  });
+
+  gsap.utils.toArray<HTMLElement>(".cs-nav-card").forEach((card, index) => {
+    reveal(card, { y: 40, delay: 0.1 * index }, ".cs-navigator", "top 85%");
   });
 
   return () => {

@@ -337,11 +337,20 @@ export function CaseStudyPage({ project }: { project: Project }) {
           </Link>
         </section>
 
-        <footer className="footer">
-          <p>
-            © {siteConfig.copyrightStartYear} {siteConfig.legalName}
-          </p>
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        <footer className="footer flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img
+              src="/assets/logo-monogram-navy.png"
+              alt=""
+              className="w-6 h-6 object-contain opacity-70"
+            />
+            <p className="m-0">
+              © {siteConfig.copyrightStartYear} {siteConfig.legalName}
+            </p>
+          </div>
+          <a href={`mailto:${siteConfig.email}`} className="text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors">
+            {siteConfig.email}
+          </a>
         </footer>
       </main>
 

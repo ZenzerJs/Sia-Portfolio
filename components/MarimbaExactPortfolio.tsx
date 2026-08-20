@@ -606,10 +606,17 @@ export function MarimbaExactPortfolio() {
         </section>
 
         {/* Footer */}
-        <footer className="footer">
-          <p>
-            © {siteConfig.copyrightStartYear} {siteConfig.legalName}
-          </p>
+        <footer className="footer flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img
+              src="/assets/logo-monogram-navy.png"
+              alt=""
+              className="w-6 h-6 object-contain opacity-70"
+            />
+            <p className="m-0">
+              © {siteConfig.copyrightStartYear} {siteConfig.legalName}
+            </p>
+          </div>
           <span className="text-xs font-mono text-[var(--text-muted)]">
             London, UK · Toronto, CA
           </span>

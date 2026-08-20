@@ -28,7 +28,7 @@ export function initHeroExplode(onComplete?: () => void): () => void {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.body.classList.remove("is-loading");
     hideLoader();
-    gsap.set([".header", ".header-center", ".hero-content"], { clearProps: "all" });
+    gsap.set([".site-header", ".site-header__location", ".hero-content"], { clearProps: "all" });
     if (onComplete) onComplete();
     return () => {
       restoreLoader();
@@ -49,26 +49,31 @@ export function initHeroExplode(onComplete?: () => void): () => void {
   });
 
   // 1. Loader Bar Fill
-  masterTl.to(".loader-logo-fill-bar", {
-    scaleX: 1,
-    duration: 1.0,
-    ease: "power3.inOut",
-  });
+  masterTl.fromTo(
+    ".loader-progress-bar",
+    { scaleX: 0 },
+    { scaleX: 1, duration: 1.0, ease: "power3.inOut" }
+  );
+  masterTl.to(
+    ".loader-box",
+    { opacity: 0, y: -15, duration: 0.35, ease: "power2.in" },
+    "+=0.1"
+  );
 
   // 2. Curtain Exit
   masterTl.to(
     "#loader",
     {
       yPercent: -100,
-      duration: 1.0,
+      duration: 0.9,
       ease: "power3.inOut",
     },
-    "+=0.05"
+    "-=0.1"
   );
 
   // 3. Hero Text & Header Intro
   masterTl.fromTo(
-    ".header, .header-center",
+    ".site-header, .site-header__location",
     { opacity: 0, y: -20 },
     { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
     "-=0.6"
@@ -187,7 +192,7 @@ export function initHeroExplode(onComplete?: () => void): () => void {
     // left stuck in their hidden "from" states.
     document.body.classList.remove("is-loading");
     restoreLoader();
-    gsap.set([".hero-content", ".header", ".header-center"], {
+    gsap.set([".hero-content", ".site-header", ".site-header__location"], {
       clearProps: "all",
     });
   };
