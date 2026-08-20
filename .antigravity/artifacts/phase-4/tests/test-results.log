@@ -3,20 +3,6 @@
 Testing Viewport: desktop (1440x900)
   ✓ Process section and all disk components are completely removed from DOM
   Evaluating DOM sequence indices:
-    [1] #home -> DOM Index: 72
-    [2] #expertise -> DOM Index: 101
-    [3] #work -> DOM Index: 103
-    [4] .marquee--tools -> DOM Index: 258
-    [5] #campaigns -> DOM Index: 412
-    [6] #gallery -> DOM Index: 462
-    [7] #testimonials -> DOM Index: 531
-    [8] #contact -> DOM Index: 559
-  ✓ Section hierarchy matches strict specification: Hero -> Orbit -> Laptop -> Marquee -> Campaigns -> Gallery -> Testimonials -> Contact
-  ✓ Captured full-page screenshot: desktop-full-hierarchy.png
-
-Testing Viewport: mobile (375x812)
-  ✓ Process section and all disk components are completely removed from DOM
-  Evaluating DOM sequence indices:
     [1] #home -> DOM Index: 74
     [2] #expertise -> DOM Index: 103
     [3] #work -> DOM Index: 105
@@ -25,5 +11,19 @@ Testing Viewport: mobile (375x812)
     [6] #gallery -> DOM Index: 464
     [7] #testimonials -> DOM Index: 533
     [8] #contact -> DOM Index: 561
+  ✓ Section hierarchy matches strict specification: Hero -> Orbit -> Laptop -> Marquee -> Campaigns -> Gallery -> Testimonials -> Contact
+  ✓ Captured full-page screenshot: desktop-full-hierarchy.png
+
+Testing Viewport: mobile (375x812)
+  ✓ Process section and all disk components are completely removed from DOM
+  Evaluating DOM sequence indices:
+    [1] #home -> DOM Index: 72
+    [2] #expertise -> DOM Index: 101
+    [3] #work -> DOM Index: 103
+    [4] .marquee--tools -> DOM Index: 258
+    [5] #campaigns -> DOM Index: 412
+    [6] #gallery -> DOM Index: 462
+    [7] #testimonials -> DOM Index: 531
+    [8] #contact -> DOM Index: 559
   ✓ Section hierarchy matches strict specification: Hero -> Orbit -> Laptop -> Marquee -> Campaigns -> Gallery -> Testimonials -> Contact
   ✓ Captured full-page screenshot: mobile-full-hierarchy.png
