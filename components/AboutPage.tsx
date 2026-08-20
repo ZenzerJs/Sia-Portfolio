@@ -52,7 +52,9 @@ export function AboutPage() {
   const ringRef = useRef<HTMLImageElement>(null);
   const burstRef = useRef<HTMLImageElement>(null);
   const portraitRef = useRef<HTMLDivElement>(null);
+  const heroSectionRef = useRef<HTMLElement>(null);
   const heroHeadingRef = useRef<HTMLHeadingElement>(null);
+  const introSectionRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const valuesRef = useRef<HTMLDivElement>(null);
@@ -71,12 +73,42 @@ export function AboutPage() {
       if (heroHeadingRef.current) {
         gsap.fromTo(
           heroHeadingRef.current,
-          { filter: "blur(20px)", y: 40, opacity: 0 },
-          { filter: "blur(0px)", y: 0, opacity: 1, duration: 1.1, ease: "power2.out" }
+          { filter: "blur(25px)", y: 40, opacity: 0 },
+          { filter: "blur(0px)", y: 0, opacity: 1, duration: 1.2, ease: "power2.out" }
         );
       }
 
-      // 2. Infinite continuous rotation on decorative ring behind portrait
+      // 2. Hero Scroll Compression: As user scrolls, big hero smoothly scales down to normal size
+      if (heroSectionRef.current && heroHeadingRef.current && introSectionRef.current) {
+        const isMobile = window.innerWidth < 768;
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: heroSectionRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.8,
+            },
+          })
+          .to(
+            heroHeadingRef.current,
+            {
+              scale: isMobile ? 0.82 : 0.72,
+              y: -20,
+              transformOrigin: "top left",
+              ease: "power1.inOut",
+            },
+            0
+          )
+          .fromTo(
+            introSectionRef.current,
+            { opacity: 0.3, y: 50 },
+            { opacity: 1, y: 0, ease: "power1.out" },
+            0.2
+          );
+      }
+
+      // 3. Infinite continuous rotation on decorative ring behind portrait
       if (ringRef.current) {
         gsap.to(ringRef.current, {
           rotate: 360,
@@ -86,7 +118,7 @@ export function AboutPage() {
         });
       }
 
-      // 3. Starburst shape reveal on scroll
+      // 4. Starburst shape reveal on scroll
       if (burstRef.current) {
         gsap.fromTo(
           burstRef.current,
@@ -205,12 +237,18 @@ export function AboutPage() {
       <CursorDot />
 
       <main id="main-content" className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 relative z-10">
-        {/* Editorial Hero Statement (Clean without background element) */}
-        <section className="py-12 md:py-16 relative border-b border-gray-100 mb-12">
-          <div className="max-w-4xl relative">
+        {/* Editorial Hero Statement (Big Hero that compresses on scroll) */}
+        <section
+          ref={heroSectionRef}
+          className="about-hero min-h-[75vh] flex flex-col justify-center py-16 relative border-b border-gray-100/70 mb-12 will-change-transform"
+        >
+          <div className="max-w-5xl relative">
+            <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-4">
+              Editorial Statement
+            </span>
             <h1
               ref={heroHeadingRef}
-              className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.18] tracking-tight text-[#1E3A5F]"
+              className="about-hero__heading font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-[1.1] tracking-tight text-[#1E3A5F] origin-top-left will-change-transform"
             >
               Connecting ideas, data, and people through intentional communication.
             </h1>
@@ -218,7 +256,10 @@ export function AboutPage() {
         </section>
 
         {/* Intro Section: Portrait + Bio + Metrics */}
-        <section className="py-8 md:py-12 border-b border-gray-100 mb-16">
+        <section
+          ref={introSectionRef}
+          className="about-intro py-8 md:py-12 border-b border-gray-100 mb-16 will-change-transform"
+        >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
             {/* Portrait Image Column with Continuous Spin Ring & Dynamic Tilt */}
             <div className="md:col-span-5 lg:col-span-4 relative flex justify-center md:justify-start">

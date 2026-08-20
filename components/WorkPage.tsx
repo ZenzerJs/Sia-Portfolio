@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
 import { initSmoothScroll } from "@/lib/smoothScroll";
@@ -11,6 +13,8 @@ import { projects } from "@/lib/projects";
 import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
 import { LiveScreenPlayer } from "@/components/ui/LiveScreenPlayer";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function WorkPage() {
   const [activeDeck, setActiveDeck] = useState<{
     title: string;
@@ -18,6 +22,10 @@ export function WorkPage() {
     slides: string[];
     pdfUrl?: string;
   } | null>(null);
+
+  const workHeroRef = useRef<HTMLElement>(null);
+  const workHeadingRef = useRef<HTMLHeadingElement>(null);
+  const workDescRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if ("scrollRestoration" in history) {
@@ -29,7 +37,43 @@ export function WorkPage() {
     const cleanupCursor = initCursor();
     const cleanupSlider = initWorkSlider(lenis);
 
+    const ctx = gsap.context(() => {
+      // 1. Entrance blur-to-sharp & rise
+      if (workHeadingRef.current) {
+        gsap.fromTo(
+          workHeadingRef.current,
+          { filter: "blur(25px)", y: 40, opacity: 0 },
+          { filter: "blur(0px)", y: 0, opacity: 1, duration: 1.2, ease: "power2.out" }
+        );
+      }
+      if (workDescRef.current) {
+        gsap.fromTo(
+          workDescRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.0, delay: 0.2, ease: "power2.out" }
+        );
+      }
+
+      // 2. Scroll compression: Zoom heading down to regular size as user scrolls down to projects
+      if (workHeroRef.current && workHeadingRef.current) {
+        const isMobile = window.innerWidth < 768;
+        gsap.to(workHeadingRef.current, {
+          scale: isMobile ? 0.8 : 0.7,
+          y: -15,
+          transformOrigin: "top left",
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: workHeroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        });
+      }
+    });
+
     return () => {
+      ctx.revert();
       cleanupScroll();
       cleanupCursor();
       cleanupSlider();
@@ -42,16 +86,25 @@ export function WorkPage() {
       <CursorDot />
 
       <main id="main-content" className="work-page relative overflow-hidden">
-        {/* Intro Section */}
-        <section className="work-intro pt-36 pb-12 relative z-10">
+        {/* Intro Section: Full-height Big Hero on Entrance */}
+        <section
+          ref={workHeroRef}
+          className="work-intro min-h-[65vh] flex flex-col justify-center pt-32 pb-12 relative z-10 will-change-transform"
+        >
           <div className="work-intro__container max-w-7xl mx-auto px-6 md:px-12">
             <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
               Portfolio
             </span>
-            <h1 className="work-intro__heading text-4xl md:text-6xl font-serif text-[var(--text-dark)] mb-4">
+            <h1
+              ref={workHeadingRef}
+              className="work-intro__heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[var(--text-dark)] mb-4 origin-top-left will-change-transform"
+            >
               Selected Work
             </h1>
-            <p className="work-intro__description text-sm md:text-base text-gray-600 max-w-2xl">
+            <p
+              ref={workDescRef}
+              className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl"
+            >
               Digital communications campaigns, interactive data storytelling platforms, and multicultural
               marketing strategies.
             </p>
