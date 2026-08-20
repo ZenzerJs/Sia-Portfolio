@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { resetBodyTheme } from "@/lib/themeScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,11 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     const curtain = curtainRef.current;
     if (!curtain) return;
 
+    // Any page that scrubbed <body> to a dark theme (the home contact section)
+    // must be reset here as well, so the incoming route starts on a clean light
+    // canvas instead of inheriting the previous page's navy background.
+    resetBodyTheme();
+
     // Reset scroll state for the incoming page.
     window.scrollTo(0, 0);
     if ("scrollRestoration" in history) {
@@ -53,6 +59,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
       force3D: true,
       delay: 0.15,
       onComplete: () => {
+        window.scrollTo(0, 0);
         gsap.set(curtain, { y: 0, yPercent: 100 });
         if (typeof ScrollTrigger !== "undefined") {
           ScrollTrigger.refresh();

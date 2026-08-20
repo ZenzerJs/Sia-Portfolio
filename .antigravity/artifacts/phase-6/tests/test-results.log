@@ -1,0 +1,24 @@
+=== PHASE 6 TEST: ROUTE TRANSITIONS & SCROLL RESTORATION ===
+
+1. Loading Home Page (/)...
+  Scrolled Home Y: 3000px
+
+2. Navigating to /about via header link...
+  /about scroll position: 0px
+  ✓ Scroll position successfully reset to (0, 0) on /about
+  ✓ Captured screenshot: route-about-top.png
+
+3. Scrolling down on /about and navigating to /work...
+  /work scroll position: 0px
+  ✓ Scroll position successfully reset to (0, 0) on /work
+  ✓ Captured screenshot: route-work-top.png
+
+4. Navigating to Case Study /work/mass-culture-dna...
+  Case Study scroll position: 0px
+  ✓ Scroll position successfully reset to (0, 0) on Case Study
+  ✓ Captured screenshot: route-casestudy-top.png
+
+5. Navigating back to Home (/) from Case Study...
+  Home return scroll position: 0px
+  ✓ Scroll position successfully reset to (0, 0) on return to Home
+  ✓ Captured screenshot: route-home-returned-top.png
