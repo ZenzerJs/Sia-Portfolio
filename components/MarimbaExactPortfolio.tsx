@@ -376,7 +376,9 @@ export function MarimbaExactPortfolio() {
         </section>
 
         {/* Tools marquee divider — software + AI tools */}
-        <ToolMarquee />
+        <div className="py-6 md:py-10">
+          <ToolMarquee />
+        </div>
 
         {/* Bento Grid: Featured Campaigns & Presentation Decks */}
         <section className="section py-24 md:py-32 px-4 md:px-8" id="campaigns">

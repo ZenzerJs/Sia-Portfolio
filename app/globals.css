@@ -1619,7 +1619,7 @@ main {
    enlarged so the software logos are easy to recognize) */
 .marquee {
     overflow: hidden;
-    padding: 5.5rem 0;
+    padding: 3rem 0;
 }
 
 .marquee__track {
@@ -1629,8 +1629,8 @@ main {
 }
 
 .marquee--tools .marquee__track {
-    animation: marquee-scroll 40s linear infinite;
-    padding: 0.75rem 0;
+    animation: marquee-scroll 42s linear infinite;
+    padding: 1rem 0;
 }
 
 /* Keep scrolling on hover; pause only while a tile holds keyboard focus */
@@ -1643,33 +1643,36 @@ main {
 .marquee__tool {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    margin-right: 1.5rem;
-    padding: 0.9rem 1.7rem 0.9rem 1.2rem;
+    gap: 1.35rem;
+    margin-right: 2.2rem;
+    padding: 1.25rem 2.2rem 1.25rem 1.6rem;
     border: 2px solid rgba(30, 58, 95, 0.45);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.72);
+    border-radius: 26px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
     white-space: nowrap;
     font-family: var(--font-sans);
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     color: var(--text-dark);
+    box-shadow: 0 4px 20px -2px rgba(30, 58, 95, 0.06);
     transition: border-color 0.25s ease-out, transform 0.25s ease-out,
-        background-color 0.25s ease-out;
+        background-color 0.25s ease-out, box-shadow 0.25s ease-out;
 }
 
 .marquee__tool:hover {
     border-color: var(--text-dark);
     background-color: var(--bg-light);
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px -3px rgba(30, 58, 95, 0.12);
 }
 
 .marquee__tool-icon {
     display: grid;
     place-items: center;
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     flex: 0 0 auto;
 }
 

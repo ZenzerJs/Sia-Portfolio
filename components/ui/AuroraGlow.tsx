@@ -1,11 +1,17 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import WebGL AuroraBlur to preserve SSR performance
+const AuroraBlur = dynamic(() => import("@/components/ui/aurora-blur"), {
+  ssr: false,
+});
 
 /**
- * Ambient Aurora Glow — a subtle, ethereal multi-color atmospheric glow
- * that sits fixed behind page content, adding organic depth and elegance
- * to the off-white canvas.
+ * Ambient Atmospheric Aurora & Window Shadow Glow
+ * Uses custom pastel gradient tones (Morning Glow / Soft Bloom / Deep Horizon)
+ * and atmospheric sunlight projection from /assets/asset 20.jpeg behind content.
  */
 export function AuroraGlow() {
   return (
@@ -13,24 +19,34 @@ export function AuroraGlow() {
       className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden select-none"
       aria-hidden="true"
     >
-      {/* Top-left soft sky/lilac aurora orb */}
+      {/* 1. WebGL Dynamic Aurora Shader */}
+      <div className="absolute inset-0 z-[1] opacity-75">
+        <AuroraBlur
+          speed={0.65}
+          bloomIntensity={1.2}
+          noiseScale={2.6}
+          movementX={-0.6}
+          movementY={-1.2}
+          verticalFade={0.3}
+          brightness={0.96}
+          saturation={1.08}
+          opacity={0.48}
+          showWindowShadow={true}
+          windowShadowOpacity={0.20}
+        />
+      </div>
+
+      {/* 2. Layered CSS Ambient Glow Orbs (Morning Glow, Soft Bloom, Deep Horizon) */}
       <div
-        className="absolute -top-[15%] -left-[10%] w-[60vw] h-[60vw] max-w-[900px] max-h-[900px] rounded-full bg-gradient-to-br from-[#A8CBE8]/22 via-[#C3C6E8]/18 to-transparent blur-[90px] animate-aurora-slow"
+        className="absolute -top-[12%] -left-[8%] w-[60vw] h-[60vw] max-w-[850px] max-h-[850px] rounded-full bg-gradient-to-br from-[#FFB5D8]/20 via-[#FFD1A0]/16 to-transparent blur-[95px] animate-aurora-slow z-[0]"
       />
 
-      {/* Center-right soft peach/coral glow orb */}
       <div
-        className="absolute top-[35%] -right-[15%] w-[55vw] h-[55vw] max-w-[800px] max-h-[800px] rounded-full bg-gradient-to-bl from-[#EFD0B4]/20 via-[#EFAF8C]/12 to-transparent blur-[100px] animate-aurora-reverse"
+        className="absolute top-[32%] -right-[12%] w-[58vw] h-[58vw] max-w-[800px] max-h-[800px] rounded-full bg-gradient-to-bl from-[#A0C4FF]/22 via-[#FFD1A0]/15 to-transparent blur-[105px] animate-aurora-reverse z-[0]"
       />
 
-      {/* Bottom-left soft mint/sky glow orb */}
       <div
-        className="absolute -bottom-[10%] -left-[12%] w-[65vw] h-[65vw] max-w-[950px] max-h-[950px] rounded-full bg-gradient-to-tr from-[#8FB6D8]/20 via-[#A8CBE8]/14 to-transparent blur-[110px] animate-aurora-drift"
-      />
-
-      {/* Subtle ambient radial fill */}
-      <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(195,198,232,0.08),transparent_70%)]"
+        className="absolute -bottom-[8%] -left-[10%] w-[62vw] h-[62vw] max-w-[900px] max-h-[900px] rounded-full bg-gradient-to-tr from-[#A0C4FF]/20 via-[#FFB5D8]/14 to-transparent blur-[115px] animate-aurora-drift z-[0]"
       />
     </div>
   );

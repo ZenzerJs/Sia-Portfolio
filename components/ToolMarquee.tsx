@@ -31,8 +31,8 @@ export function ToolMarquee() {
               <img
                 src={tool.icon}
                 alt=""
-                width="24"
-                height="24"
+                width="34"
+                height="34"
                 loading="lazy"
                 decoding="async"
               />
