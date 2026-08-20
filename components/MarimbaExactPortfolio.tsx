@@ -91,7 +91,19 @@ export function MarimbaExactPortfolio() {
     let cleanupStaged: (() => void) | null = null;
     const cleanupHero = initHeroExplode(() => {
       lenis.start();
-      lenis.scrollTo(0, { immediate: true });
+      const hash = window.location.hash;
+      if (hash && hash.length > 1) {
+        const target = document.querySelector<HTMLElement>(hash);
+        if (target) {
+          setTimeout(() => {
+            lenis.scrollTo(target, { immediate: false, duration: 1.0 });
+          }, 60);
+        } else {
+          lenis.scrollTo(0, { immediate: true });
+        }
+      } else {
+        lenis.scrollTo(0, { immediate: true });
+      }
 
       const cleanupOrbit = initOrbitEngine();
       const cleanupTheme = initThemeScroll();
@@ -102,6 +114,17 @@ export function MarimbaExactPortfolio() {
         cleanupTestimonials();
       };
     });
+
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash && hash.length > 1) {
+        const target = document.querySelector<HTMLElement>(hash);
+        if (target) {
+          lenis.scrollTo(target, { immediate: false, duration: 1.0 });
+        }
+      }
+    };
+    window.addEventListener("hashchange", handleHashChange);
 
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".navigation .nav-link")
@@ -132,10 +155,11 @@ export function MarimbaExactPortfolio() {
       );
       if (!link) return;
       const href = link.getAttribute("href") ?? "";
-      if (!href.startsWith("#")) return;
+      const targetSelector = href.startsWith("/#") ? href.slice(1) : href.startsWith("#") ? href : null;
+      if (!targetSelector) return;
       e.preventDefault();
       e.stopPropagation();
-      const target = document.querySelector<HTMLElement>(href);
+      const target = document.querySelector<HTMLElement>(targetSelector);
       if (!target || swiping) return;
       swiping = true;
 
@@ -160,7 +184,7 @@ export function MarimbaExactPortfolio() {
         .add(() => {
           try {
             lenis.scrollTo(target, { immediate: true });
-            history.replaceState(null, "", href);
+            history.replaceState(null, "", targetSelector);
           } catch {}
         })
         .to(
@@ -178,6 +202,7 @@ export function MarimbaExactPortfolio() {
 
     return () => {
       window.removeEventListener("scroll", updateActiveNav);
+      window.removeEventListener("hashchange", handleHashChange);
       document.removeEventListener("click", handleNavClick, { capture: true });
       cleanupScroll();
       cleanupCursor();

@@ -25,15 +25,22 @@ export function initHeroExplode(onComplete?: () => void): () => void {
   // Accessibility: users who prefer reduced motion get the content instantly —
   // no loader bar, curtain, blur, or shape explosion. Scroll-driven effects are
   // still staged afterwards so the page behaves the same once you scroll.
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const hasHash = typeof window !== "undefined" && Boolean(window.location.hash && window.location.hash.length > 1);
+  const alreadyVisited = typeof window !== "undefined" && Boolean(sessionStorage.getItem("visited_home"));
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || hasHash || alreadyVisited) {
     document.body.classList.remove("is-loading");
     hideLoader();
     gsap.set([".site-header", ".site-header__location", ".hero-content"], { clearProps: "all" });
+    gsap.set(".hero-background", { opacity: 1 });
+    ScrollTrigger.refresh();
     if (onComplete) onComplete();
     return () => {
       restoreLoader();
     };
   }
+
+  sessionStorage.setItem("visited_home", "true");
 
   document.body.classList.add("is-loading");
 

@@ -53,8 +53,18 @@ export function SiteHeader({ homeSections = false }: { homeSections?: boolean })
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => {
-                  if (item.href.startsWith("/") && item.href !== pathname) {
+                onClick={(e) => {
+                  if (item.href.includes("#")) {
+                    const hash = item.href.slice(item.href.indexOf("#"));
+                    if (pathname === "/") {
+                      e.preventDefault();
+                      const el = document.querySelector(hash);
+                      if (el) {
+                        el.scrollIntoView({ behavior: "smooth", block: "start" });
+                        history.pushState(null, "", hash);
+                      }
+                    }
+                  } else if (item.href.startsWith("/") && item.href !== pathname) {
                     resetScrollToTop();
                   }
                 }}
