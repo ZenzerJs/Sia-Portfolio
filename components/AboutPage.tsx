@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
 import { ConnectModal } from "@/components/ui/ConnectModal";
@@ -9,6 +11,8 @@ import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { siteConfig } from "@/lib/siteConfig";
 import { CountUp } from "@/components/ui/CountUp";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const experience = [
   {
@@ -45,6 +49,13 @@ const stats = [
 
 export function AboutPage() {
   const [connectModalOpen, setConnectModalOpen] = useState(false);
+  const ringRef = useRef<HTMLImageElement>(null);
+  const burstRef = useRef<HTMLImageElement>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const heroHeadingRef = useRef<HTMLHeadingElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  const valuesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if ("scrollRestoration" in history) {
@@ -55,7 +66,134 @@ export function AboutPage() {
     const { cleanup: cleanupScroll } = initSmoothScroll();
     const cleanupCursor = initCursor();
 
+    const ctx = gsap.context(() => {
+      // 1. Hero Entrance: Blur-to-sharp & upward glide
+      if (heroHeadingRef.current) {
+        gsap.fromTo(
+          heroHeadingRef.current,
+          { filter: "blur(20px)", y: 40, opacity: 0 },
+          { filter: "blur(0px)", y: 0, opacity: 1, duration: 1.1, ease: "power2.out" }
+        );
+      }
+
+      // 2. Infinite continuous rotation on decorative ring behind portrait
+      if (ringRef.current) {
+        gsap.to(ringRef.current, {
+          rotate: 360,
+          duration: 20,
+          ease: "none",
+          repeat: -1,
+        });
+      }
+
+      // 3. Starburst shape reveal on scroll
+      if (burstRef.current) {
+        gsap.fromTo(
+          burstRef.current,
+          { opacity: 0, scale: 0.8, rotate: -15 },
+          {
+            opacity: 0.6,
+            scale: 1,
+            rotate: 0,
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: burstRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      // 4. Tilting portrait reveal on scroll
+      if (portraitRef.current) {
+        gsap.fromTo(
+          portraitRef.current,
+          { rotate: 4, opacity: 0, scale: 0.95, y: 30 },
+          {
+            rotate: -2.5,
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 1.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: portraitRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      // 5. Elastic overshoot on metric stat cards
+      if (statsRef.current) {
+        const statCards = statsRef.current.querySelectorAll(".about-stat-card");
+        gsap.fromTo(
+          statCards,
+          { opacity: 0, y: 35, scale: 0.94 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "back.out(1.4)",
+            scrollTrigger: {
+              trigger: statsRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      // 6. Experience items horizontal glide-in
+      if (experienceRef.current) {
+        const expCards = experienceRef.current.querySelectorAll(".about-experience-card");
+        gsap.fromTo(
+          expCards,
+          { opacity: 0, x: -24 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: experienceRef.current,
+              start: "top 75%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      // 7. Core values stagger
+      if (valuesRef.current) {
+        const valueParas = valuesRef.current.querySelectorAll("p");
+        gsap.fromTo(
+          valueParas,
+          { opacity: 0, x: -18 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: valuesRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+
     return () => {
+      ctx.revert();
       cleanupScroll();
       cleanupCursor();
     };
@@ -67,42 +205,45 @@ export function AboutPage() {
       <CursorDot />
 
       <main id="main-content" className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 relative z-10">
-        {/* Editorial Hero Statement */}
+        {/* Editorial Hero Statement (Clean without background element) */}
         <section className="py-12 md:py-16 relative border-b border-gray-100 mb-12">
           <div className="max-w-4xl relative">
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.18] tracking-tight text-[#1E3A5F]">
+            <h1
+              ref={heroHeadingRef}
+              className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.18] tracking-tight text-[#1E3A5F]"
+            >
               Connecting ideas, data, and people through intentional communication.
             </h1>
-            <img
-              src="/assets/shape-star1.webp"
-              alt=""
-              className="absolute -right-4 -bottom-6 w-16 h-16 md:w-24 md:h-24 opacity-60 pointer-events-none"
-              aria-hidden="true"
-            />
           </div>
         </section>
 
         {/* Intro Section: Portrait + Bio + Metrics */}
         <section className="py-8 md:py-12 border-b border-gray-100 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
-            {/* Portrait Image Column */}
+            {/* Portrait Image Column with Continuous Spin Ring & Dynamic Tilt */}
             <div className="md:col-span-5 lg:col-span-4 relative flex justify-center md:justify-start">
               <div className="relative group max-w-sm w-full">
-                <div className="relative z-10 overflow-hidden rounded-2xl border border-[#1E3A5F]/15 shadow-xl bg-white transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                <div
+                  ref={portraitRef}
+                  className="relative z-10 overflow-hidden rounded-2xl border border-[#1E3A5F]/15 shadow-xl bg-white transition-transform duration-500 hover:!rotate-0 group-hover:scale-[1.02] group-hover:shadow-2xl"
+                >
                   <img
                     src="/assets/headshots/shanesia-primary.jpg"
                     alt={siteConfig.person.portraitAlt}
                     className="w-full h-auto aspect-[3/4] object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                {/* Decorative Elements */}
+                {/* Decorative Continuous Rotating Ring */}
                 <img
+                  ref={ringRef}
                   src="/assets/shape-circle2.webp"
                   alt=""
                   className="absolute -top-6 -left-6 w-20 h-20 md:w-28 md:h-28 opacity-40 pointer-events-none z-0"
                   aria-hidden="true"
                 />
+                {/* Decorative Starburst */}
                 <img
+                  ref={burstRef}
                   src="/assets/shape-star1.webp"
                   alt=""
                   className="absolute -bottom-6 -right-6 w-16 h-16 md:w-20 md:h-20 opacity-50 pointer-events-none z-20"
@@ -133,10 +274,13 @@ export function AboutPage() {
                 </p>
               </div>
 
-              {/* Key Metrics */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 mt-10 border-t border-gray-100">
+              {/* Key Metrics with Elastic Bounce */}
+              <div
+                ref={statsRef}
+                className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 mt-10 border-t border-gray-100"
+              >
                 {stats.map((stat, idx) => (
-                  <div key={idx} className="space-y-1">
+                  <div key={idx} className="about-stat-card space-y-1">
                     <div className="font-serif text-3xl md:text-4xl text-[#1E3A5F] font-semibold">
                       <CountUp end={stat.end} decimals={0} suffix={stat.suffix} />
                     </div>
@@ -150,7 +294,7 @@ export function AboutPage() {
           </div>
         </section>
 
-        {/* Professional Experience */}
+        {/* Professional Experience with Staggered Slide-In */}
         <section className="py-12 md:py-16 border-b border-gray-100 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4 lg:col-span-3">
@@ -158,9 +302,12 @@ export function AboutPage() {
                 Professional Experience
               </h2>
             </div>
-            <div className="md:col-span-8 lg:col-span-9 space-y-12">
+            <div ref={experienceRef} className="md:col-span-8 lg:col-span-9 space-y-12">
               {experience.map((item, idx) => (
-                <div key={idx} className="border-b border-gray-100/60 pb-10 last:border-0 last:pb-0">
+                <div
+                  key={idx}
+                  className="about-experience-card border-b border-gray-100/60 pb-10 last:border-0 last:pb-0"
+                >
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
                     <h3 className="text-xl font-serif font-medium text-[#1E3A5F]">
                       {item.role}
