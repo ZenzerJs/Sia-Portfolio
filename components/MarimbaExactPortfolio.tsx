@@ -196,11 +196,9 @@ export function MarimbaExactPortfolio() {
       <div className="loader" id="loader" aria-hidden="true">
         <div className="loader-inner flex items-center justify-center">
           <div className="loader-box text-center flex flex-col items-center">
-            <img
-              src="/assets/logo-monogram-light.png"
-              alt=""
-              className="loader-logo w-20 h-20 sm:w-24 sm:h-24 object-contain mb-5 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] animate-pulse"
-            />
+            <div className="shiny-monogram-container mb-5">
+              <div className="shiny-monogram" />
+            </div>
             <h1 className="loader-name font-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white mb-4">
               {siteConfig.person.fullName}
             </h1>

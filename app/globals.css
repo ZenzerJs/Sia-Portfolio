@@ -489,11 +489,11 @@ main {
     text-align: center;
     display: block;
     font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-    color: #ffffff;
+    color: var(--text-dark);
+    font-weight: 500;
     pointer-events: none;
     white-space: nowrap;
     z-index: 2;
-    text-shadow: 0 0 30px rgba(30, 58, 95, 0.53);
     line-height: 1.2;
     opacity: 0;
 }
@@ -507,6 +507,47 @@ main {
     height: 100%;
     object-fit: contain;
     display: block;
+}
+
+/* Monogram Logo Light Shine Effect */
+.shiny-monogram-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shiny-monogram {
+    width: 6.5rem;
+    height: 6.5rem;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.72) 0%,
+        rgba(255, 255, 255, 0.72) 30%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.72) 70%,
+        rgba(255, 255, 255, 0.72) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-mask-image: url('/assets/logo-monogram-light.png');
+    mask-image: url('/assets/logo-monogram-light.png');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    animation: monogramShine 2.4s infinite linear;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.35));
+}
+
+@keyframes monogramShine {
+    0% {
+        background-position: 150% center;
+    }
+    100% {
+        background-position: -50% center;
+    }
 }
 
 /* Navy-theme tint for the baked pastel shape assets: softens and brightens

@@ -78,24 +78,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
       force3D: true,
     });
 
-    // 2. Centered monogram logo subtle breath/pulse
-    if (logo) {
-      tl.to(
-        logo,
-        {
-          scale: 1.05,
-          duration: 0.25,
-          ease: "power1.out",
-        },
-        "-=0.15"
-      ).to(logo, {
-        scale: 1,
-        duration: 0.2,
-        ease: "power1.inOut",
-      });
-    }
-
-    // 3. Curtain continues upward to reveal destination page
+    // 2. Curtain holds gracefully to let the light shine sweep across, then glides upward
     tl.to(
       curtain,
       {
@@ -104,7 +87,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
         ease: "power3.inOut",
         force3D: true,
       },
-      "+=0.1"
+      "+=0.2"
     );
 
     return () => {
@@ -121,12 +104,9 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
         aria-hidden="true"
       >
         <div className="flex flex-col items-center justify-center p-8">
-          <img
-            ref={logoRef}
-            src="/assets/logo-monogram-light.png"
-            alt=""
-            className="w-24 h-24 sm:w-32 sm:h-32 object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.35)] select-none pointer-events-none"
-          />
+          <div className="shiny-monogram-container">
+            <div className="shiny-monogram w-24 h-24 sm:w-28 sm:h-28" />
+          </div>
         </div>
       </div>
     </>
