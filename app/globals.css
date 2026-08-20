@@ -193,6 +193,7 @@ body.is-loading {
     z-index: 2000;
     will-change: transform;
     box-sizing: border-box;
+    pointer-events: none;
 }
 
 .loader-inner {
@@ -720,7 +721,7 @@ main {
 }
 
 .work__macbook .lid .inner {
-    pointer-events: none;
+    pointer-events: auto;
     display: block;
     position: relative;
     border-radius: 20px;
@@ -730,9 +731,11 @@ main {
     height: 100%;
     padding: 21px;
     background-color: #262626;
+    z-index: 10;
 }
 
 .work__macbook .lid .inner .screen {
+    pointer-events: auto;
     display: block;
     width: 100%;
     height: 100%;
@@ -1150,6 +1153,7 @@ main {
 }
 
 .work__macbook .facet {
+    pointer-events: none;
     display: block;
     position: absolute;
     top: 0;

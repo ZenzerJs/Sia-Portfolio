@@ -13,52 +13,52 @@ import { ToolMarquee } from "@/components/ToolMarquee";
 import { MacbookLaptop } from "@/components/MacbookLaptop";
 import { siteConfig } from "@/lib/siteConfig";
 import { DualScramble } from "@/components/ui/DualScramble";
-import { ScaleSlider } from "@/components/ui/ScaleSlider";
+import { AccordionGallery, type AccordionGalleryItem } from "@/components/AccordionGallery";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { projects } from "@/lib/projects";
 
-const showcasePhotos = [
+const showcaseGalleryItems: AccordionGalleryItem[] = [
   {
-    src: "/assets/cicu/events/001152030003.jpg",
+    image: "/assets/cicu/events/001152030003.jpg",
+    label: "35mm Analog Documentation · Showcase Night",
     alt: "Showcase 35mm film capture",
-    caption: "35mm Analog Documentation · Showcase Night",
   },
   {
-    src: "/assets/cicu/showcase/showcase-slide-1.jpg",
+    image: "/assets/cicu/showcase/showcase-slide-1.jpg",
+    label: "Creative Industries Annual Showcase Campaign",
     alt: "Creative Industries Showcase Campaign",
-    caption: "Creative Industries Annual Showcase Campaign",
   },
   {
-    src: "/assets/cicu/events/IMG_1071.JPG",
+    image: "/assets/cicu/events/IMG_1071.JPG",
+    label: "Creative Community & Student Creators",
     alt: "Live Event & Student Community",
-    caption: "Creative Community & Student Creators",
   },
   {
-    src: "/assets/cicu/events/001152030008.jpg",
+    image: "/assets/cicu/events/001152030008.jpg",
+    label: "Live Exhibition Floor · The Creative School",
     alt: "Student Artist Showcase",
-    caption: "Live Exhibition Floor · The Creative School",
   },
   {
-    src: "/assets/cicu/showcase/showcase-post-1.jpg",
+    image: "/assets/cicu/showcase/showcase-post-1.jpg",
+    label: "Digital Teaser & Speaker Announcement",
     alt: "Social Campaign Visual",
-    caption: "Digital Teaser & Speaker Announcement",
   },
   {
-    src: "/assets/cicu/events/IMG_1082.JPG",
+    image: "/assets/cicu/events/IMG_1082.JPG",
+    label: "Alum Networking & Industry Floor",
     alt: "Networking & Alum Gathering",
-    caption: "Alum Networking & Industry Floor",
   },
   {
-    src: "/assets/cicu/merch/cicu-merch.jpg",
+    image: "/assets/cicu/merch/cicu-merch.jpg",
+    label: "Sold-Out Student Merchandise Collection",
     alt: "CICU Merch Line",
-    caption: "Sold-Out Student Merchandise Collection",
   },
   {
-    src: "/assets/cicu/events/001152030023.jpg",
+    image: "/assets/cicu/events/001152030023.jpg",
+    label: "Event Atmosphere & Candid Moments",
     alt: "Film Photography Capture",
-    caption: "Event Atmosphere & Candid Moments",
   },
 ];
 
@@ -370,15 +370,6 @@ export function MarimbaExactPortfolio() {
               </h2>
             </div>
             <MacbookLaptop />
-            <div className="text-center mt-10">
-              <Link
-                href="/work"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--text-dark)] text-white text-xs font-mono tracking-wider uppercase hover:opacity-90 transition-opacity"
-              >
-                <span>View All Projects</span>
-                <span>→</span>
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -512,14 +503,22 @@ export function MarimbaExactPortfolio() {
           </BentoGrid>
         </section>
 
-        {/* ScaleSlider: Event Photography & Visual Highlights */}
-        <section className="section bg-slate-50/50 py-20 md:py-28" id="gallery">
-          <ScaleSlider
-            images={showcasePhotos}
-            title="Event & Showcase Photography"
-            subtitle="35mm Film · Digital"
-            minScale={0.35}
-            autoplaySpeed={0.0012}
+        {/* AccordionGallery: Event & Showcase Photography */}
+        <section className="section py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto" id="gallery">
+          <div className="text-center mb-12">
+            <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+              35mm Film · Digital
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
+              Event &amp; Showcase Photography
+            </h2>
+          </div>
+          <AccordionGallery
+            items={showcaseGalleryItems}
+            defaultIndex={1}
+            height={480}
+            expandRatio={0.46}
+            trigger="hover"
           />
         </section>
 
