@@ -1,141 +1,149 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- * SITE CONFIG — the single source of truth for content across the template.
- *
- * Everything below is safe to edit without touching component markup:
- * identity, contact details, socials, showreel, award links, year, and the
- * design tokens used for metadata.
- *
+ * SITE CONFIG — the single source of truth for Shanesia Saha's portfolio.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 export const siteConfig = {
   /** Brand & identity */
-  name: "Marimba Designs",
-  legalName: "Marimba. Designs",
-  domain: "https://marimba.design",
+  name: "Shanesia Saha",
+  legalName: "Shanesia Saha",
+  domain: "https://shanesiasaha.com",
   role: "Communications, Marketing & Project Coordination",
-  location: "Based in [Your City], [Country]",
+  location: "London, United Kingdom · Toronto, Canada",
   tagline:
-    "I create living, breathing websites for brands that want to be felt, not just seen.",
+    "Translating complex ideas into resonant stories, data-driven marketing campaigns, and cross-institutional creative impact.",
 
   /** Owner — used on the About page and image alt text */
   person: {
-    firstName: "Myranda",
-    fullName: "Myranda Wicks",
-    portraitAlt: "Portrait of Myranda Wicks",
+    firstName: "Shanesia",
+    fullName: "Shanesia Saha",
+    portraitAlt: "Portrait of Shanesia Saha",
   },
 
   /** SEO */
   description:
-    "Digital designer crafting living, breathing websites for brands that want to be felt, not just seen. Web design and development with clarity, character, and craft.",
-  metadataBase: new URL("https://marimba.design"),
+    "Communications and Project Coordination professional specialising in digital campaigns, audience growth, brand strategy, and multi-stakeholder initiatives across arts, higher education, and public sector.",
+  metadataBase: new URL("https://shanesiasaha.com"),
   keywords: [
-    "web design",
-    "web development",
-    "digital designer",
-    "creative portfolio",
-    "branding",
+    "Shanesia Saha",
+    "Communications",
+    "Digital Marketing",
+    "Project Coordination",
+    "Content Strategy",
+    "Brand Messaging",
+    "Stakeholder Engagement",
+    "Toronto Metropolitan University",
+    "Mass Culture Canada",
+    "London UK",
+    "Creative Direction",
   ],
 
   /** Contact */
-  email: "hello@marimba.design",
+  email: "shanesiasaha@yahoo.ca",
 
   /** Socials (used in contact + footer sections) */
   socials: {
-    instagram: {
-      label: "Instagram",
-      href: "https://www.instagram.com/marimba.design/",
-    },
     linkedin: {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/myrandawicks/",
+      href: "https://www.linkedin.com/in/shanesiasaha/",
     },
-    behance: {
-      label: "Behance",
-      href: "https://www.behance.net/marimba-designs",
+    instagram: {
+      label: "Instagram",
+      href: "https://www.instagram.com/criunion/",
+    },
+    massculture: {
+      label: "Mass Culture DNA",
+      href: "https://massculture.ca/",
     },
   },
 
   /** Awards / recognition links */
   awards: {
-    cssWinner: {
-      label: "CSS Winner 2026",
-      href: "https://www.csswinner.com/details/marimbadesigns-portfolio-website/19149",
+    fifaHackathon: {
+      label: "FIFA World Cup Global Challenge — Runner Up (2025)",
+      note: "Global Marketing Hackathon alongside UK, Chile, Saudi Arabia & Netherlands",
     },
-    awwwards: {
-      label: "Awwwards Site of the Day",
-      href: "https://www.awwwards.com/sites/marimba-designs-portfolio",
+    distinction: {
+      label: "Graduated with Distinction & Dean's List (2022–2025)",
+      note: "Toronto Metropolitan University, CGPA: 4.0 / 4.2",
+    },
+    westminsterExchange: {
+      label: "Summer UK Intensive Scholar (2023)",
+      note: "1 of 20 students selected for Westminster London AI & Emerging Tech Programme",
     },
   },
 
   /** Home showreel (work showcase section) */
   showreel: {
-    src: "https://marimba.design/assets/showReel_1-opt.mp4",
-    title: "Showreel — selected work",
+    src: "/assets/cicu/showcase/showcase-reel.mp4",
+    fallbackReel: "/assets/cicu/alum/alum-reel.mp4",
+    title: "Selected Campaign & Motion Visuals",
   },
 
   /** Education (About page) */
   education: [
     {
-      school: "University of Calgary",
-      degree: "B.A. Communications & Design",
-      period: "2023 — 2027",
-      note: "Minor in Visual Studies · Dean's List",
+      school: "Toronto Metropolitan University — The Creative School",
+      degree: "BA, Digital Communications and Business",
+      period: "2021 — 2025",
+      note: "CGPA: 4.0 / 4.2 · Graduated with Distinction · Dean's List 2022–2025",
+    },
+    {
+      school: "University of Westminster, London UK",
+      degree: "Summer UK Intensive Programme (FCD 580)",
+      period: "Jun 2023",
+      note: "Art, AI & Emerging Creative Technologies · Selected 1 of 20 Students",
     },
   ],
 
   /** Skill matrix (About page) */
   skills: [
-    "Brand voice",
-    "Copywriting",
-    "Campaign strategy",
-    "Social content",
-    "Editorial design",
-    "Typography",
-    "User research",
-    "Wireframing",
-    "Web design",
-    "Art direction",
+    "Digital Communications Strategy",
+    "Campaign Marketing & KPI Reporting",
+    "Cross-Institutional Partnerships",
+    "Project Coordination & Timelines",
+    "Copywriting & Content Creation",
+    "Brand Messaging & Visual Design",
+    "Email Marketing & Newsletters",
+    "Stakeholder Engagement",
+    "AIGC Prompting & AI Workflows",
+    "Digital Accessibility & CMS Audit",
   ],
 
-  /** Downloadable CV (About page) — drop your PDF into public/assets/. */
-  resumeUrl: "/assets/resume.pdf",
+  /** Downloadable CV (About page) */
+  resumeUrl: "/assets/Shanesia_Saha_Resume_2026.pdf",
 
   /** Testimonials rotator (home page) */
   testimonials: [
     {
       quote:
-        "One of the most thoughtful students I've worked with — she turns a vague brief into a clear story, then crafts every detail to serve it.",
-      author: "Professor, Communications Program",
+        "Shanesia possesses an extraordinary talent for translating dense research data and institutional goals into human-centred stories that captivate and convert.",
+      author: "Mass Culture Canada — Project Leadership",
     },
     {
       quote:
-        "She treated our campaign like her own — sharp copy, on-brand visuals, and a presentation the whole team wanted to steal.",
-      author: "Internship Supervisor, Brand Studio",
+        "From conceptualising multi-platform campaigns to coordinating cross-institutional teams, she brings rigorous project management and immense creative spark to every initiative.",
+      author: "Toronto Metropolitan University — Academic Project Director",
     },
     {
       quote:
-        "The site she built sounds like us and converts like crazy. Rare to find someone who cares about both the words and the pixels.",
-      author: "Client, Small Business",
+        "Her campaign strategy for our showcase brought record engagement across all digital channels. She doesn't just manage communications—she elevates the entire brand.",
+      author: "Creative Industries Course Union (CICU) — Leadership Team",
     },
   ],
 
-  /** Tools marquee (home page divider) — software + AI tools. Icons are local
-      SVGs in /public/assets/tools/ (official simple-icons marks, plus three
-      hand-drawn marks for brands simple-icons no longer ships: Midjourney,
-      Stable Diffusion, Microsoft Copilot — and a sparkle for Nano Banana,
-      which has no official mark). */
+  /** Tools marquee (home page divider) — software + AI tools */
   toolMarquee: [
-    { label: "After Effects", icon: "/assets/tools/adobeaftereffects.svg" },
-    { label: "Canva", icon: "/assets/tools/canva.svg" },
-    { label: "PowerPoint", icon: "/assets/tools/microsoftpowerpoint.svg" },
-    { label: "Word", icon: "/assets/tools/microsoftword.svg" },
-    { label: "Excel", icon: "/assets/tools/microsoftexcel.svg" },
-    { label: "Outlook", icon: "/assets/tools/microsoftoutlook.svg" },
-    { label: "Teams", icon: "/assets/tools/microsoftteams.svg" },
     { label: "Photoshop", icon: "/assets/tools/adobephotoshop.svg" },
     { label: "Illustrator", icon: "/assets/tools/adobeillustrator.svg" },
+    { label: "After Effects", icon: "/assets/tools/adobeaftereffects.svg" },
+    { label: "PowerPoint", icon: "/assets/tools/microsoftpowerpoint.svg" },
+    { label: "Excel", icon: "/assets/tools/microsoftexcel.svg" },
+    { label: "Word", icon: "/assets/tools/microsoftword.svg" },
+    { label: "Teams", icon: "/assets/tools/microsoftteams.svg" },
+    { label: "Outlook", icon: "/assets/tools/microsoftoutlook.svg" },
+    { label: "Canva", icon: "/assets/tools/canva.svg" },
     { label: "WordPress", icon: "/assets/tools/wordpress.svg" },
     { label: "Wix", icon: "/assets/tools/wix.svg" },
     { label: "Moodle", icon: "/assets/tools/moodle.svg" },
@@ -159,8 +167,6 @@ export const siteConfig = {
     navyDark: "#142A4A",
     muted: "#7C8AA0",
     loaderBackground: "#142A4A",
-    /** Brand accent pastels — used by the hero shapes, orbit ring, and
-        placeholder project tiles. Change these to re-skin the template. */
     accentSky: "#A8CBE8",
     accentLilac: "#C3C6E8",
     accentMint: "#8FB6D8",

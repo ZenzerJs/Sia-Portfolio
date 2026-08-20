@@ -7,26 +7,40 @@ import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { initAboutAnimations } from "@/lib/about";
 import { siteConfig } from "@/lib/siteConfig";
+import { CountUp } from "@/components/ui/CountUp";
 
 const experience = [
   {
-    role: "Independent Digital Designer & Developer",
-    period: "2021 — Present",
+    role: "Project Coordinator",
+    company: "Mass Culture Canada",
+    period: "Dec 2024 — Apr 2025",
+    desc: "Led digital communications strategy, DNA platform launch, and Brenau University partnership. Expanded national reach to 74K+ readers.",
   },
   {
-    role: "Lead UI/UX Designer",
-    period: "2019 — 2021",
+    role: "Communications & Digital Content Creator",
+    company: "Toronto Metropolitan University · Bridging Divides",
+    period: "Aug 2023 — Apr 2024",
+    desc: "Designed and launched centralized LMS platform for academic researchers, managing content architecture and accessibility compliance.",
   },
   {
-    role: "Digital Art Director",
-    period: "2017 — 2019",
+    role: "Digital Communications Assistant",
+    company: "Government of Canada · Parks Canada",
+    period: "Jun 2022 — Dec 2022",
+    desc: "Coordinated digital knowledge repositories and staff tutorial resources during agency-wide Microsoft 365 migration.",
+  },
+  {
+    role: "VP Marketing & Creative Director",
+    company: "Creative Industries Course Union (CICU)",
+    period: "2023 — 2025",
+    desc: "Directed multichannel promotional campaigns, live 35mm film photography, and annual showcase events for 500+ attendees.",
   },
 ];
 
 const stats = [
-  { number: "7+", label: "Years experience" },
-  { number: "30+", label: "Websites launched" },
-  { number: "10+", label: "Industry awards" },
+  { end: 74, suffix: "K+", label: "Audience Campaign Reach" },
+  { end: 4.0, decimals: 1, suffix: "/4.2", label: "CGPA · Graduated with Distinction" },
+  { end: 10, suffix: "+", label: "Cross-Institutional Projects" },
+  { end: 500, suffix: "+", label: "Showcase Event Attendees" },
 ];
 
 export function AboutPage() {
@@ -62,7 +76,7 @@ export function AboutPage() {
             aria-hidden="true"
           />
           <h1 className="about-hero__heading">
-            Crafting digital experiences with character, clarity, and craft.
+            Connecting ideas, data, and people through intentional communication.
           </h1>
         </section>
 
@@ -77,7 +91,7 @@ export function AboutPage() {
                 aria-hidden="true"
               />
               <img
-                src="/assets/title-selfie.jpg"
+                src="/assets/social-campaigns/654651294_18520046998073873_8861659328534541782_n.jpg"
                 alt={siteConfig.person.portraitAlt}
                 className="about-intro__image-selfie-2"
               />
@@ -92,20 +106,23 @@ export function AboutPage() {
             <div className="about-intro__text">
               <h2 className="about-intro__title">Hi, I&apos;m {siteConfig.person.firstName}.</h2>
               <p>
-                I&apos;m a digital designer and developer based in Calgary, Canada.
-                I help brands craft websites that feel alive — living, breathing
-                experiences with warmth, motion, and a strong point of view.
+                I&apos;m a Communications, Marketing &amp; Project Coordination professional based between
+                London, United Kingdom and Toronto, Canada. I specialise in turning complex research, institutional
+                goals, and creative briefs into clear, compelling campaigns.
               </p>
               <p>
-                My practice sits at the intersection of design and development,
-                so the work I make is both beautiful and built to last.
+                My background spans public sector digital rollouts, higher education knowledge hubs, non-profit
+                arts platforms, and international marketing challenges. I bring analytical rigour, eye for visual craft,
+                and structured workflow management to every partnership.
               </p>
             </div>
 
             <div className="about-intro__stats">
-              {stats.map((stat) => (
-                <div key={stat.label} className="about-intro__stat">
-                  <div className="about-intro__stat-number">{stat.number}</div>
+              {stats.map((stat, idx) => (
+                <div key={idx} className="about-intro__stat">
+                  <div className="about-intro__stat-number">
+                    <CountUp end={stat.end} decimals={stat.decimals || 0} suffix={stat.suffix} />
+                  </div>
                   <div className="about-intro__stat-label">{stat.label}</div>
                 </div>
               ))}
@@ -115,89 +132,98 @@ export function AboutPage() {
 
         {/* Experience */}
         <section className="about-experience">
-          <h2 className="about-experience__heading">Experience</h2>
+          <h2 className="about-experience__heading">Professional Experience</h2>
           <div className="about-experience__grid">
             <div className="about-experience__column">
-              {experience.slice(0, 2).map((item) => (
-                <div key={item.period} className="about-experience__item">
+              {experience.slice(0, 2).map((item, idx) => (
+                <div key={idx} className="about-experience__item">
                   <div className="about-experience__role">{item.role}</div>
-                  <div className="about-experience__period">{item.period}</div>
+                  <div className="about-experience__period">
+                    {item.company} · {item.period}
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
                 </div>
               ))}
             </div>
             <div className="about-experience__column">
-              {experience.slice(2).map((item) => (
-                <div key={item.period} className="about-experience__item">
+              {experience.slice(2).map((item, idx) => (
+                <div key={idx} className="about-experience__item">
                   <div className="about-experience__role">{item.role}</div>
-                  <div className="about-experience__period">{item.period}</div>
+                  <div className="about-experience__period">
+                    {item.company} · {item.period}
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Education + skills + résumé */}
+        {/* Education & Skills */}
         <section className="about-education">
           <div className="about-education__content">
-            <h2 className="about-education__heading">Education &amp; skills</h2>
+            <h2 className="about-education__heading">Education &amp; Credentials</h2>
             <div className="about-education__list">
               {siteConfig.education.map((entry) => (
                 <div key={entry.school} className="about-education__item">
                   <div className="about-education__school">{entry.school}</div>
                   <div className="about-education__degree">{entry.degree}</div>
                   <div className="about-education__period">
-                    {entry.period}
-                    {entry.note ? ` · ${entry.note}` : ""}
+                    {entry.period} {entry.note ? `· ${entry.note}` : ""}
                   </div>
                 </div>
               ))}
             </div>
-            <div className="about-skills">
-              {siteConfig.skills.map((skill) => (
-                <span key={skill} className="about-skills__chip">
-                  {skill}
-                </span>
-              ))}
+
+            <div className="pt-4">
+              <h3 className="text-xl font-serif text-[var(--text-dark)] mb-3">Key Competencies</h3>
+              <div className="about-skills">
+                {siteConfig.skills.map((skill) => (
+                  <span key={skill} className="about-skills__chip">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
+
             <div className="about-resume">
               <a
                 className="about-resume__link"
                 href={siteConfig.resumeUrl}
                 download
               >
-                Download résumé (PDF)
+                Download Complete Résumé (PDF)
               </a>
             </div>
           </div>
         </section>
 
-        {/* Interests */}
+        {/* Core Values */}
         <section className="about-interests">
-          <h2 className="about-interests__heading">Design values</h2>
+          <h2 className="about-interests__heading">Core Values</h2>
           <div className="about-interests__content">
             <p>
-              Character — every project deserves a voice of its own, not a
-              template. I sweat the details that make a brand feel authored.
+              <strong>Data with Heart</strong> — Numbers only make an impact when they connect with people.
+              I believe in translating analytics and research into empathetic narratives that inspire action.
             </p>
             <p>
-              Clarity — good design gets out of the way. Structure, hierarchy,
-              and restraint let the message land.
+              <strong>Cross-Institutional Collaboration</strong> — The best outcomes happen when diverse perspectives
+              unite. Having coordinated projects across Canada, the US, and the UK, I thrive in bridging multidisciplinary teams.
             </p>
             <p>
-              Craft — from typography to motion, I care about the small moments
-              that make an experience feel considered.
+              <strong>Craft &amp; Accessibility</strong> — From typography and motion pacing to WCAG compliance,
+              I ensure every deliverable is both beautiful and accessible to all audiences.
             </p>
             <p>
-              When I&apos;m not at my desk I&apos;m usually outdoors — hiking the
-              Rockies, chasing good light, and collecting ideas for the next
-              project.
+              When I&apos;m not coordinating campaigns, you&apos;ll find me exploring contemporary art galleries,
+              experimenting with analog 35mm film photography, or exploring emerging AI creative tools.
             </p>
           </div>
         </section>
 
         {/* Contact */}
         <section className="about-contact" id="contact">
-          <h2 className="about-contact__heading">Let&apos;s work together</h2>
+          <h2 className="about-contact__heading">Let&apos;s connect</h2>
           <div className="about-contact__content">
             <a className="about-contact__email" href={`mailto:${siteConfig.email}`}>
               {siteConfig.email}

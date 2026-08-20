@@ -1,0 +1,19 @@
+=== PHASE 3 TEST: GLOBAL UK ENGLISH AUDIT ===
+
+Auditing route: /
+  ✓ Captured spot-check screenshot: spotcheck-home.png
+
+Auditing route: /about
+  ✓ Captured spot-check screenshot: spotcheck-about.png
+
+Auditing route: /work
+  ✓ Captured spot-check screenshot: spotcheck-work.png
+
+Auditing route: /work/mass-culture-dna
+  ✓ Captured spot-check screenshot: spotcheck-work-mass-culture-dna.png
+
+Auditing route: /work/fifa-2026-challenge
+  ✓ Captured spot-check screenshot: spotcheck-work-fifa-2026-challenge.png
+
+Auditing route: /work/mastercard-sustainability
+  ✓ Captured spot-check screenshot: spotcheck-work-mastercard-sustainability.png

@@ -458,7 +458,7 @@ export function MarimbaExactPortfolio() {
                   onClick={(e) => {
                     e.preventDefault();
                     setActiveDeck({
-                      title: "FIFA World Cup 2026: Our Neighborhood, Your Nation",
+                      title: "FIFA World Cup 2026: Our Neighbourhood, Your Nation",
                       tagline: "Global Hackathon Challenge · Fan Engagement Pitch",
                       slides: [
                         "/assets/decks/slides/fifa-slide-1.jpg",
