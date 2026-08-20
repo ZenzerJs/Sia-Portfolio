@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
+import { Footer } from "./Footer";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { initWorkSlider } from "@/lib/workSlider";
@@ -58,9 +59,9 @@ export function WorkPage() {
       if (workHeroRef.current && workHeadingRef.current) {
         const isMobile = window.innerWidth < 768;
         gsap.to(workHeadingRef.current, {
-          scale: isMobile ? 0.8 : 0.7,
+          scale: isMobile ? 0.82 : 0.75,
           y: -15,
-          transformOrigin: "top left",
+          transformOrigin: "center center",
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: workHeroRef.current,
@@ -89,21 +90,21 @@ export function WorkPage() {
         {/* Intro Section: Full-height Big Hero on Entrance */}
         <section
           ref={workHeroRef}
-          className="work-intro min-h-[65vh] flex flex-col justify-center pt-32 pb-12 relative z-10 will-change-transform"
+          className="work-intro min-h-[70vh] flex flex-col justify-center items-center text-center pt-32 pb-16 relative z-10 will-change-transform"
         >
-          <div className="work-intro__container max-w-7xl mx-auto px-6 md:px-12">
-            <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+          <div className="work-intro__container max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center">
+            <span className="text-sm font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3 text-center">
               Portfolio
             </span>
             <h1
               ref={workHeadingRef}
-              className="work-intro__heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[var(--text-dark)] mb-4 origin-top-left will-change-transform"
+              className="work-intro__heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[var(--text-dark)] mb-4 text-center mx-auto will-change-transform"
             >
               Selected Work
             </h1>
             <p
               ref={workDescRef}
-              className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl"
+              className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl text-center mx-auto"
             >
               Digital communications campaigns, interactive data storytelling platforms, and multicultural
               marketing strategies.
@@ -243,13 +244,10 @@ export function WorkPage() {
             ))}
           </div>
         </section>
-
-        {/* Footer contact */}
-        <footer className="footer relative z-10" id="contact">
-          <p>© 2026 Shanesia Saha</p>
-          <a href="mailto:shanesiasaha@yahoo.ca">shanesiasaha@yahoo.ca</a>
-        </footer>
       </main>
+
+      {/* Standardized Contact & Blue Scroll Theme Footer */}
+      <Footer />
 
       {/* Slide Deck Modal Viewer */}
       {activeDeck && (

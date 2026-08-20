@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
+import { Footer } from "./Footer";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { initCaseStudyAnimations } from "@/lib/caseStudy";
@@ -336,23 +337,10 @@ export function CaseStudyPage({ project }: { project: Project }) {
             <span className="cs-nav-card__title">{nextProject.name}</span>
           </Link>
         </section>
-
-        <footer className="footer flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img
-              src="/assets/logo-monogram-navy.png"
-              alt=""
-              className="w-6 h-6 object-contain opacity-70"
-            />
-            <p className="m-0">
-              © {siteConfig.copyrightStartYear} {siteConfig.legalName}
-            </p>
-          </div>
-          <a href={`mailto:${siteConfig.email}`} className="text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors">
-            {siteConfig.email}
-          </a>
-        </footer>
       </main>
+
+      {/* Standardized Contact & Blue Scroll Theme Footer */}
+      <Footer />
 
       {/* Slide Deck Modal */}
       {deckModalOpen && project.slides && (

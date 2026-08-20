@@ -321,7 +321,7 @@ export function MarimbaExactPortfolio() {
           <div className="hero-content">
             <div className="hero-tag">
               <span className="pill-button">
-                <DualScramble text="Communications · Marketing · Project Coordination" trigger="load" duration={0.9} />
+                Communications · Marketing · Project Coordination
               </span>
             </div>
             <h1 className="hero-headline">

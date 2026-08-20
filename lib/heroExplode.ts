@@ -26,9 +26,8 @@ export function initHeroExplode(onComplete?: () => void): () => void {
   // no loader bar, curtain, blur, or shape explosion. Scroll-driven effects are
   // still staged afterwards so the page behaves the same once you scroll.
   const hasHash = typeof window !== "undefined" && Boolean(window.location.hash && window.location.hash.length > 1);
-  const alreadyVisited = typeof window !== "undefined" && Boolean(sessionStorage.getItem("visited_home"));
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || hasHash || alreadyVisited) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || hasHash) {
     document.body.classList.remove("is-loading");
     hideLoader();
     gsap.set([".site-header", ".site-header__location", ".hero-content"], { clearProps: "all" });
@@ -39,8 +38,6 @@ export function initHeroExplode(onComplete?: () => void): () => void {
       restoreLoader();
     };
   }
-
-  sessionStorage.setItem("visited_home", "true");
 
   document.body.classList.add("is-loading");
 

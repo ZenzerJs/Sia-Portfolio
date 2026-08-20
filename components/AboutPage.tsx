@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiteHeader } from "./SiteHeader";
 import { CursorDot } from "./CursorDot";
-import { ConnectModal } from "@/components/ui/ConnectModal";
+import { Footer } from "./Footer";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { initCursor } from "@/lib/cursor";
 import { siteConfig } from "@/lib/siteConfig";
@@ -446,71 +446,10 @@ export function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* Contact */}
-        <section className="py-16 text-center" id="contact">
-          <span className="text-sm font-mono uppercase tracking-widest text-[#718096] block mb-3">
-            Get in Touch
-          </span>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#1E3A5F] mb-6">
-            Let&apos;s connect
-          </h2>
-          <a
-            className="text-xl md:text-2xl font-mono text-[#4A5568] hover:text-[#1E3A5F] transition-colors border-b border-transparent hover:border-[#1E3A5F] pb-1 inline-block mb-8"
-            href={`mailto:${siteConfig.email}`}
-          >
-            {siteConfig.email}
-          </a>
-
-          <div className="mb-10">
-            <button
-              type="button"
-              onClick={() => setConnectModalOpen(true)}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#1E3A5F] text-white hover:bg-[#2A4D7A] text-xs font-mono tracking-widest uppercase transition-all shadow-md hover:scale-105"
-              aria-label="Open contact and collaboration pop-out modal"
-            >
-              <span>Open Connect Pop-out</span>
-              <span>↗</span>
-            </button>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {Object.values(siteConfig.socials).map((social) => (
-              <a
-                key={social.href}
-                className="px-5 py-2 text-xs font-mono tracking-wider text-[#4A5568] border border-gray-200 rounded-full hover:border-[#1E3A5F] hover:text-[#1E3A5F] transition-all bg-white hover:shadow-sm"
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {social.label}
-              </a>
-            ))}
-          </div>
-        </section>
-
-        {/* Sub-page Footer */}
-        <footer className="pt-16 mt-16 border-t border-gray-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img
-              src="/assets/logo-monogram-navy.png"
-              alt=""
-              className="w-6 h-6 object-contain opacity-80"
-            />
-            <p className="m-0 text-xs font-mono text-[#718096]">
-              © {siteConfig.copyrightStartYear} {siteConfig.legalName}
-            </p>
-          </div>
-          <span className="text-xs font-mono text-[#718096]">
-            London, UK · Toronto, CA
-          </span>
-        </footer>
       </main>
 
-      <ConnectModal
-        isOpen={connectModalOpen}
-        onClose={() => setConnectModalOpen(false)}
-      />
+      {/* Standardized Contact & Blue Scroll Theme Footer */}
+      <Footer />
     </>
   );
 }

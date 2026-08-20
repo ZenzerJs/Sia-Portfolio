@@ -105,8 +105,8 @@ async function run() {
     await page.locator("#contact").scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
 
-    const aboutTrigger = page.locator('#contact button:has-text("Open Connect Pop-out")');
-    await aboutTrigger.click();
+    const aboutTrigger = page.locator('#contact button:has-text("Get in Touch"), #contact button:has-text("Open Connect Pop-out")');
+    await aboutTrigger.first().click();
     await page.waitForTimeout(400);
 
     const modal = page.locator('div[role="dialog"][aria-modal="true"]');
