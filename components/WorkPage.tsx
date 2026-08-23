@@ -108,9 +108,9 @@ export function WorkPage() {
             </h1>
             <p
               ref={workDescRef}
-              className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl text-center mx-auto"
+              className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl text-center mx-auto leading-relaxed"
             >
-              digital communications campaigns, interactive data storytelling platforms, and marketing strategies.
+              A collection of brand strategy, digital campaigns, and communications projects.
             </p>
           </div>
         </section>
@@ -206,14 +206,25 @@ export function WorkPage() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Project In-Page Meta Details */}
+                  <div className="grid grid-cols-2 gap-2 my-3 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
+                    <div>
+                      <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Role</span>
+                      <span className="font-medium text-slate-800 truncate block">{project.role}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Client / Scope</span>
+                      <span className="font-medium text-slate-800 truncate block">{project.client}</span>
+                    </div>
+                  </div>
+
                   <p className="work-slider__description text-xs md:text-sm text-gray-600 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap items-center gap-3 pt-2">
-                    <Link href={`/work/${project.slug}`} className="work-slider__button">
-                      View Case Study →
-                    </Link>
-                    {project.slides && project.slides.length > 0 && (
+
+                  <div className="flex flex-wrap items-center gap-3 pt-3">
+                    {project.slides && project.slides.length > 0 ? (
                       <button
                         type="button"
                         onClick={() =>
@@ -224,10 +235,26 @@ export function WorkPage() {
                             pdfUrl: project.deckPdf,
                           })
                         }
+                        className="work-slider__button inline-flex items-center gap-1.5"
+                      >
+                        <span>Open Presentation Deck ({project.slides.length} Slides)</span>
+                        <span>↗</span>
+                      </button>
+                    ) : (
+                      <span className="px-4 py-2 rounded-full bg-[#1E3A5F] text-white text-xs font-mono tracking-wider uppercase">
+                        Interactive Showcase
+                      </span>
+                    )}
+
+                    {project.deckPdf && (
+                      <a
+                        href={project.deckPdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-4 py-2 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-wider uppercase hover:bg-slate-50 transition-colors"
                       >
-                        Open Presentation ({project.slides.length} Slides) ↗
-                      </button>
+                        PDF Deck ↓
+                      </a>
                     )}
                   </div>
                 </div>

@@ -313,18 +313,13 @@ export function MarimbaExactPortfolio() {
                 Communications · Marketing · Project Coordination
               </span>
             </div>
-            <h1 className="hero-headline text-base sm:text-lg md:text-xl font-normal leading-relaxed text-left sm:text-justify max-w-2xl mx-auto">
+            <h1 className="hero-headline text-xl sm:text-2xl md:text-3xl font-normal leading-relaxed text-left sm:text-justify max-w-3xl mx-auto">
               Connecting data, research, and community
               <br className="hidden md:block" />
               through strategic storytelling and digital media.
             </h1>
           </div>
         </section>
-
-        {/* Tools marquee divider — software + AI tools */}
-        <div className="mt-12 mb-8 py-4">
-          <ToolMarquee />
-        </div>
 
         {/* Editorial About Section */}
         <AboutSection />
@@ -343,6 +338,11 @@ export function MarimbaExactPortfolio() {
             <MacbookLaptop />
           </div>
         </section>
+
+        {/* Tools marquee divider — software + AI tools */}
+        <div className="mt-20 md:mt-28 mb-12 md:mb-16 py-4">
+          <ToolMarquee />
+        </div>
 
         {/* Bento Grid: Featured Campaigns & Presentation Decks */}
         <section className="section pt-8 md:pt-14 pb-28 md:pb-36 px-6 md:px-12" id="campaigns">

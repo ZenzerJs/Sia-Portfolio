@@ -74,6 +74,44 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "tmu-fifa-world-cup-challenge",
+    variant: "sport",
+    name: "FIFA World Cup Campaign",
+    title: "FIFA World Cup Campaign & Motion Graphics",
+    tagline: "Brand Strategy & Interactive Motion Asset",
+    categories: ["Digital Marketing", "Motion Graphics", "Brand Strategy"],
+    description:
+      "Strategic campaign and dynamic motion asset developed for the TMU FIFA World Cup Challenge, translating event analytics into high-impact visual storytelling.",
+    media: {
+      type: "video",
+      src: "/assets/videos/good-gift-visual.mov",
+      gradient: "linear-gradient(135deg, #0047FF 0%, #D4FF00 100%)",
+      alt: "FIFA World Cup Campaign & Motion Graphics Preview",
+    },
+    role: "Digital Marketing & Creative Strategist",
+    timeline: "Mar 2025",
+    tools: "Figma, PowerPoint, Social Media Analytics, Brand Strategy",
+    client: "Toronto Metropolitan University · FIFA World Cup Challenge",
+    heroDescription:
+      "Strategic campaign and dynamic motion asset developed for the TMU FIFA World Cup Challenge, translating event analytics into high-impact visual storytelling.",
+    challenge:
+      "Connecting millions of visiting international soccer supporters with Toronto's authentic diaspora communities in a meaningful, decentralized way.",
+    strategy:
+      "Transforming neighbourhood cultural enclaves into immersive live viewing hubs powered by international creator partnerships and 360° digital engagement.",
+    accent: "#0047FF",
+    accentBlue: "#0047FF",
+    deckPdf: "/assets/decks/fifa-2026-slide-deck.pdf",
+    slides: [
+      "/assets/decks/slides/fifa-slide-1.jpg",
+      "/assets/decks/slides/fifa-slide-2.jpg",
+      "/assets/decks/slides/fifa-slide-5.jpg",
+      "/assets/decks/slides/fifa-slide-7.jpg",
+      "/assets/decks/slides/fifa-slide-10.jpg",
+      "/assets/decks/slides/fifa-slide-15.jpg",
+    ],
+    phases: [],
+  },
+  {
     slug: "fifa-2026-challenge",
     variant: "sport",
     name: "FIFA World Cup 2026",
