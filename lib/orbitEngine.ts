@@ -205,8 +205,7 @@ export function initOrbitEngine(): () => void {
   const st = ScrollTrigger.create({
     trigger: "#home",
     start: "top top",
-    endTrigger: "#expertise",
-    end: "bottom bottom",
+    end: "bottom top",
     pin: heroBackground,
     pinSpacing: false,
     anticipatePin: 1,
@@ -215,10 +214,7 @@ export function initOrbitEngine(): () => void {
       applyTrigTransform(self.progress, 0);
     },
     onLeave: () => {
-      // Once the scroll leaves the orbit zone (the work/video section is on
-      // screen) hold the fully-scrubbed end state: hero content, background,
-      // orbit orbs, and the expertise ring are all faded out so nothing
-      // overlaps the video. Scrolling back rewinds everything into view.
+      // Once the scroll leaves the hero zone hold the fully-scrubbed end state
       applyTrigTransform(1, 0);
     },
   });

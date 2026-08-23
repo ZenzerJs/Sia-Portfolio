@@ -307,14 +307,13 @@ export function MarimbaExactPortfolio() {
               <img src="/assets/shape-circle3.webp" alt="" className="shape-img" />
             </div>
           </div>
-
           <div className="hero-content">
             <div className="hero-tag">
               <span className="pill-button">
                 Communications · Marketing · Project Coordination
               </span>
             </div>
-            <h1 className="hero-headline">
+            <h1 className="hero-headline text-base sm:text-lg md:text-xl font-normal leading-relaxed text-left sm:text-justify max-w-2xl mx-auto">
               Connecting data, research, and community
               <br className="hidden md:block" />
               through strategic storytelling and digital media.
@@ -322,10 +321,10 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* Orbit Runway */}
-        <section className="section" id="expertise">
-          <div className="section-content"></div>
-        </section>
+        {/* Tools marquee divider — software + AI tools */}
+        <div className="mt-12 mb-8 py-4">
+          <ToolMarquee />
+        </div>
 
         {/* Editorial About Section */}
         <AboutSection />
@@ -344,11 +343,6 @@ export function MarimbaExactPortfolio() {
             <MacbookLaptop />
           </div>
         </section>
-
-        {/* Tools marquee divider — software + AI tools */}
-        <div className="mt-28 md:mt-36 mb-14 md:mb-18 py-4">
-          <ToolMarquee />
-        </div>
 
         {/* Bento Grid: Featured Campaigns & Presentation Decks */}
         <section className="section pt-8 md:pt-14 pb-28 md:pb-36 px-6 md:px-12" id="campaigns">
@@ -448,10 +442,48 @@ export function MarimbaExactPortfolio() {
               }
             />
 
-            {/* Mastercard Sustainable Rebrand */}
+            {/* CICU Creative Showcase */}
             <BentoGridItem
-              title="Mastercard Eco-Rebrand"
-              description="Sustainable brand identity & multi-channel campaign rollout."
+              title="CICU Brand & Community"
+              description="Creative direction & 35mm documentation for 300+ creative student community."
+              tag="Creative Direction"
+              href="/work/cicu-creative-showcase"
+              header={
+                <div
+                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveDeck({
+                      title: "CICU: Creative Industries Course Union",
+                      tagline: "Executive Marketing & 35mm Event Coverage · Brand Identity",
+                      slides: [
+                        "/assets/cicu/showcase/showcase-slide-1.jpg",
+                        "/assets/cicu/showcase/showcase-slide-2.jpg",
+                        "/assets/cicu/showcase/showcase-slide-3.jpg",
+                        "/assets/cicu/showcase/showcase-slide-4.jpg",
+                        "/assets/cicu/showcase/showcase-slide-5.jpg",
+                        "/assets/cicu/showcase/showcase-slide-6.jpg",
+                      ],
+                      pdfUrl: "/assets/decks/mass-culture-slide-deck.pdf",
+                    });
+                  }}
+                >
+                  <img
+                    src="/assets/cicu/showcase/showcase-post-1.jpg"
+                    alt="CICU Creative Showcase"
+                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
+                    Preview Deck ↗
+                  </div>
+                </div>
+              }
+            />
+
+            {/* Mastercard Sustainability */}
+            <BentoGridItem
+              title="Mastercard Sustainability"
+              description="Sustainable rebranding & merchant ecosystem for consumer footprint awareness."
               tag="Brand Strategy"
               href="/work/mastercard-sustainability"
               header={
@@ -461,12 +493,13 @@ export function MarimbaExactPortfolio() {
                     e.preventDefault();
                     setActiveDeck({
                       title: "Mastercard: Sustainable Rebranding Campaign",
-                      tagline: "RTA The Creative School · Brand Guidelines",
+                      tagline: "RTA Brand Challenge · ESG Product Architecture",
                       slides: [
                         "/assets/decks/slides/mastercard-slide-1.jpg",
-                        "/assets/decks/slides/mastercard-slide-3.jpg",
+                        "/assets/decks/slides/mastercard-slide-2.jpg",
                         "/assets/decks/slides/mastercard-slide-4.jpg",
-                        "/assets/decks/slides/mastercard-slide-6.jpg",
+                        "/assets/decks/slides/mastercard-slide-5.jpg",
+                        "/assets/decks/slides/mastercard-slide-7.jpg",
                         "/assets/decks/slides/mastercard-slide-8.jpg",
                       ],
                       pdfUrl: "/assets/decks/rta-mastercard-slide-deck.pdf",
@@ -487,12 +520,9 @@ export function MarimbaExactPortfolio() {
           </BentoGrid>
         </section>
 
-        {/* AccordionGallery: Event & Showcase Photography */}
+        {/* AccordionGallery: Event & Showcase Photography (Clean full-bleed without caption subheadings) */}
         <section className="section py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto" id="gallery">
           <div className="text-center mb-12">
-            <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
-              35mm Film · Digital
-            </span>
             <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
               Event &amp; Showcase Photography
             </h2>
@@ -503,7 +533,13 @@ export function MarimbaExactPortfolio() {
             height={480}
             expandRatio={0.46}
             trigger="hover"
+            showLabels={false}
           />
+        </section>
+
+        {/* Process Disks / Orbit Runway (Repositioned below Photography) */}
+        <section className="section py-8" id="expertise">
+          <div className="section-content"></div>
         </section>
 
         {/* Testimonials */}

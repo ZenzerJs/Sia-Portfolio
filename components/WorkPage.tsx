@@ -104,14 +104,13 @@ export function WorkPage() {
               ref={workHeadingRef}
               className="work-intro__heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-[var(--text-dark)] mb-4 text-center w-full leading-none"
             >
-              Selected Work
+              My Work
             </h1>
             <p
               ref={workDescRef}
               className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl text-center mx-auto"
             >
-              Digital communications campaigns, interactive data storytelling platforms, and multicultural
-              marketing strategies.
+              digital communications campaigns, interactive data storytelling platforms, and marketing strategies.
             </p>
           </div>
         </section>

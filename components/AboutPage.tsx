@@ -125,17 +125,16 @@ export function AboutPage() {
         );
       }
 
-      // 4. Tilting portrait reveal on scroll
+      // 4. Straightened portrait reveal on scroll
       if (portraitRef.current) {
         gsap.fromTo(
           portraitRef.current,
-          { rotate: 4, opacity: 0, scale: 0.95, y: 30 },
+          { opacity: 0, scale: 0.96, y: 30 },
           {
-            rotate: -2.5,
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 1.1,
+            duration: 1.0,
             ease: "power2.out",
             scrollTrigger: {
               trigger: portraitRef.current,
@@ -285,19 +284,12 @@ export function AboutPage() {
                 About Me
               </span>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal text-[#1E3A5F] mb-6 tracking-tight">
-                Hi, I&apos;m {siteConfig.person.firstName}.
+                Hi, I&apos;m Shanesia
               </h2>
 
               <div className="space-y-5 text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
                 <p>
-                  I work at the intersection of communications, marketing, and digital media building authentic
-                  engagement for public sector, higher education, and non-profit organisations through intentional
-                  strategy and storytelling.
-                </p>
-                <p>
-                  Over the past few years I&apos;ve grown audience engagement through data-driven content strategy,
-                  translated complex information into clear, audience-first messaging, and led cross-institutional
-                  projects in fast-paced, deadline-driven environments.
+                  I work at the intersection of communications, marketing, and digital media building authentic engagement for public sector, higher education, and non-profit organisations through intentional strategy and storytelling. Over the past few years I&apos;ve grown audience engagement through data-driven content strategy, translated complex information into clear, audience-first messaging, and led cross-institutional projects in fast-paced, deadline-driven environments.
                 </p>
               </div>
 

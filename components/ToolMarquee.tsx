@@ -19,8 +19,12 @@ export function ToolMarquee() {
   ];
 
   return (
-    <div className="marquee marquee--tools" aria-label="Software and AI tools">
-      <div className="marquee__track marquee__track--tools">
+    <div className="w-full flex flex-col items-center">
+      <span className="font-mono text-xs uppercase tracking-widest text-[#7C8AA0] block text-center mb-3">
+        Key Skills
+      </span>
+      <div className="marquee marquee--tools w-full" aria-label="Software and AI tools">
+        <div className="marquee__track marquee__track--tools">
         {items.map((tool) => (
           <div
             key={tool.key}
@@ -42,6 +46,7 @@ export function ToolMarquee() {
         ))}
       </div>
     </div>
+  </div>
   );
 }
 
