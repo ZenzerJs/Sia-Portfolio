@@ -163,12 +163,12 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Bottom-Right Polaroid: Workspace & Matcha (Tilted) */}
+            {/* Bottom-Right Polaroid: Cafe Lifestyle (Tilted) */}
             <div className="polaroid-frame absolute -bottom-6 right-2 sm:right-8 w-36 sm:w-44 rotate-[-4deg] z-20 hover:z-30">
               <div className="overflow-hidden aspect-[4/5] bg-slate-100 rounded-sm mb-1.5">
                 <img
-                  src="/assets/headshots/IMG_2650.jpeg"
-                  alt="Creative Workspace"
+                  src="/assets/headshots/shanesia-cafe-lifestyle.jpg"
+                  alt="Shanesia Saha cafe lifestyle"
                   className="w-full h-full object-cover object-center"
                   loading="lazy"
                 />

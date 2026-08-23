@@ -20,7 +20,6 @@ import { ConnectModal } from "@/components/ui/ConnectModal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatIDoSection } from "@/components/WhatIDoSection";
 import { AboutSection } from "@/components/AboutSection";
-import { ConnectBanner } from "@/components/ConnectBanner";
 import { Footer } from "@/components/Footer";
 import { projects } from "@/lib/projects";
 
@@ -452,12 +451,9 @@ export function MarimbaExactPortfolio() {
             </div>
           </div>
         </section>
-
-        {/* 9. Pre-Footer Connect Callout Banner */}
-        <ConnectBanner onOpenConnect={() => setConnectModalOpen(true)} />
       </main>
 
-      {/* Standardized Contact & Blue Scroll Theme Footer */}
+      {/* Unified Midnight Blue Footer */}
       <Footer />
 
       {/* Slide Deck Modal Viewer */}
