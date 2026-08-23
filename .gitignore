@@ -29,3 +29,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design raw imports & temp folders
+/Zenzer's team library/
+/svg/
+/marimba.design-svg/
+/Personalize Portfolio important assets/
+/screenshots/
+/pulled-css&js/
+/stitch_portfolio_case_study_redesign/
+/colors/
+/.antigravity/
+

@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/assets/asset 0.svg",
+    icon: "/assets/logo.svg",
   },
 };
 
