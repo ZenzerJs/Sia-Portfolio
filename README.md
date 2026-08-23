@@ -1,4 +1,4 @@
-# 🎨 Marimba.Designs — Creative Engineering & Design Portfolio
+# 🎨 Sia — Creative Engineering & Design Portfolio
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
@@ -26,7 +26,7 @@
 ## 🏗️ Repository Architecture
 
 ```text
-marimba/
+sia-portfolio/
 ├── public/
 │   └── assets/                 # SVGs, WebP shapes, tool icons, & resume.pdf
 ├── src/
@@ -38,7 +38,7 @@ marimba/
 │   │   └── page.tsx            # Main landing page
 │   ├── components/             # Modular UI & animation components
 │   │   ├── CursorDot.tsx       # Custom mouse follower
-│   │   ├── MarimbaExactPortfolio.tsx # Core homepage layout container
+│   │   ├── PortfolioHome.tsx   # Core homepage layout container
 │   │   ├── PageTransitionProvider.tsx # Page-to-page curtain overlays
 │   │   ├── SiteHeader.tsx      # Persistent site navigation
 │   │   └── ToolMarquee.tsx     # Infinite scroll tool & software strip
@@ -52,3 +52,95 @@ marimba/
 ├── design-system.json          # Core palette & color token specifications
 ├── tailwind.config.ts          # Custom Tailwind canvas, surface, & font configs
 └── vercel.json                 # Vercel production hosting configuration
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js**: `v18.17.0+`
+- **Package Manager**: `npm`, `pnpm`, or `yarn`
+
+---
+
+### Local Development Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/YourUsername/sia-portfolio.git
+   cd sia-portfolio
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the local development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **View in browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 🛠️ Verification & Scripts
+
+| Command | Action |
+| :--- | :--- |
+| `npm run dev` | Starts local Next.js development server at port 3000 |
+| `npm run build` | Compiles optimized production bundle |
+| `npm run start` | Boots production build locally |
+| `npm run lint` | Runs ESLint analysis across TypeScript and React codebases |
+
+---
+
+## ⚙️ Configuration & Customization
+
+### 1. Global Identity & Socials (`lib/siteConfig.ts`)
+Update all personal information, links, and content blocks from a single file:
+- **Profile Info**: `name`, `role`, `tagline`, `person`, and `location`.
+- **Navigation & Socials**: LinkedIn, Instagram, Behance, and direct contact email.
+- **Awards & Marquee**: List recognition entries, awards, and icon SVGs for the scrolling tool ribbon.
+- **SEO & Domain**: Update `siteConfig.domain` / `metadataBase` to match your live deployment URL.
+
+### 2. Projects & Case Studies (`lib/projects.ts`)
+Add or edit project entries to automatically generate both the `/work` showcase slider and `/work/[slug]` dynamic case study pages:
+
+```ts
+{
+  slug: "custom-ai-pipeline",
+  name: "OmniArchitect",
+  tagline: "Multi-Agent AI Orchestrator",
+  categories: ["Machine Learning", "System Design"],
+  description: "Autonomous stateful multi-agent system built on LangGraph.",
+  role: "Lead Architecture & Engineering",
+  timeline: "8 weeks",
+  tools: "Python, FastAPI, Next.js, LangGraph",
+  accent: "#C1E4F7",
+  phases: [...]
+}
+```
+
+### 3. Static Assets & Media (`public/assets/`)
+Replace placeholder assets with your custom branding while keeping file names consistent:
+- `logo.svg`: Preloader and header brand icon.
+- `shape-*.webp`: Hero orbit geometry and textural shapes.
+- `laptop-sequence-_00073.webp`: Device frame wrapping the work showreel.
+- `resume.pdf`: Downloadable CV linked across the About section.
+
+---
+
+## 📐 Architecture & Engineering Notes
+
+- **StrictMode-Safe GSAP Cleanups**: All GSAP animation engines in `lib/` are mounted inside `useEffect` lifecycles with full context cleanup to avoid duplicate triggers.
+- **Absolute Pin-Spacer Rule**: The hero section pins its backdrop using ScrollTrigger. Keep `.hero .pin-spacer { position: absolute !important; }` in `app/globals.css` to prevent content below the fold from being displaced.
+- **Reduced Motion Support**: Animations automatically detect system accessibility settings via `prefers-reduced-motion` and collapse complex physics into instant, clean transitions.
+
+---
+
+*Designed & Developed for Sia.*
