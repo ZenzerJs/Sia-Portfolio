@@ -162,7 +162,6 @@ export function WorkPage() {
                               title: project.title,
                               tagline: project.tagline,
                               slides: project.slides!,
-                              pdfUrl: project.deckPdf,
                             })
                         : undefined
                     }
@@ -232,7 +231,6 @@ export function WorkPage() {
                             title: project.title,
                             tagline: project.tagline,
                             slides: project.slides!,
-                            pdfUrl: project.deckPdf,
                           })
                         }
                         className="work-slider__button inline-flex items-center gap-1.5"
@@ -276,7 +274,6 @@ export function WorkPage() {
           title={activeDeck.title}
           tagline={activeDeck.tagline}
           slides={activeDeck.slides}
-          pdfUrl={activeDeck.pdfUrl}
         />
       )}
     </>

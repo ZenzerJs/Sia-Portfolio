@@ -63,7 +63,18 @@ export function AccordionGallery({
   const firstRunRef = useRef(true);
   const mediaSizeRef = useRef(380);
 
-  const vertical = orientation === "vertical";
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const vertical = orientation === "vertical" || isMobile;
   const count = items.length;
   const [active, setActive] = useState(
     Math.min(Math.max(defaultIndex, 0), count - 1)

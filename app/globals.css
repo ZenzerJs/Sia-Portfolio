@@ -2834,8 +2834,27 @@ main {
     .site-nav .nav-link--active::before { display: none; }
     .hero { padding: 0 1rem; }
     .hero-content { padding: 1.25rem 1rem; border-radius: 1.25rem; }
-    .hero-headline { font-size: clamp(2.25rem, 10vw, 3.3rem); }
+    .hero-headline { font-size: clamp(2rem, 7vw, 2.75rem); }
     .section#work .section-content > .text-center, .section#campaigns > .max-w-7xl { width: auto; padding: 0.9rem 1rem; }
+    .work__macbook {
+        --macbook-scale: 0.64;
+        max-width: 100%;
+        margin-bottom: -150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .work__macbook {
+        --macbook-scale: 0.52;
+        margin-bottom: -220px;
+    }
+}
+
+@media (max-width: 380px) {
+    .work__macbook {
+        --macbook-scale: 0.44;
+        margin-bottom: -260px;
+    }
 }
 
 /* Keep the header glass treatment, but let all page copy sit directly on the
