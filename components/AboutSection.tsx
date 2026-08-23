@@ -181,8 +181,8 @@ export function AboutSection() {
                 aria-hidden="true"
               />
 
-              {/* Secondary Overlapping Card: Top-Left Tilted Creative Portrait */}
-              <div className="absolute -top-6 -left-6 sm:-left-10 w-28 sm:w-36 rounded-2xl p-1.5 bg-white shadow-xl rotate-[-6deg] z-20 border border-slate-200/90 hover:rotate-0 transition-transform duration-300">
+              {/* Secondary Overlapping Card: Top-Left Straightened Creative Portrait */}
+              <div className="absolute -top-6 -left-6 sm:-left-10 w-28 sm:w-36 rounded-2xl p-1.5 bg-white shadow-xl z-20 border border-slate-200/90 transition-transform duration-300">
                 <div className="rounded-xl overflow-hidden aspect-[4/5] bg-slate-100">
                   <img
                     src="/assets/headshots/shanesia-cafe.jpg"
@@ -193,7 +193,7 @@ export function AboutSection() {
                 </div>
               </div>
 
-              {/* Primary Card: Laptop Portrait Frame with Gradient Border */}
+              {/* Primary Card: Portrait Frame with Gradient Border */}
               <div className="relative rounded-3xl p-1.5 bg-gradient-to-br from-[#A8CBE8] via-[#C3C6E8] to-[#EFAF8C] shadow-2xl z-10">
                 <div className="rounded-[22px] overflow-hidden bg-white">
                   <div className="relative">
@@ -213,18 +213,15 @@ export function AboutSection() {
                     </div>
                   </div>
                   
-                  {/* Card Bottom Meta Bar — 100% Unobscured and Clear */}
+                  {/* Card Bottom Meta Bar — Clean Unobscured Name */}
                   <div className="p-4 sm:p-5 bg-white/95 backdrop-blur-sm border-t border-slate-100 flex items-center justify-between gap-3">
                     <div>
                       <span className="font-serif text-lg sm:text-xl text-[#1E3A5F] block font-medium leading-tight">
                         {siteConfig.person.fullName}
                       </span>
-                      <span className="font-mono text-xs tracking-wider uppercase text-slate-500 mt-1 block">
-                        Toronto, Canada · London, UK
-                      </span>
                     </div>
                     <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider uppercase bg-[#A8CBE8]/20 text-[#1E3A5F] border border-[#A8CBE8]/50 font-medium shrink-0">
-                      Practice
+                      Strategy
                     </span>
                   </div>
                 </div>
@@ -236,11 +233,14 @@ export function AboutSection() {
           <div ref={contentRef} className="lg:col-span-7 flex flex-col gap-6 order-1 lg:order-2">
             <div>
               <span className="text-xs font-mono tracking-widest uppercase text-[#7C8AA0] block mb-2">
-                Strategic Narrative · Digital Strategy · Creative Leadership
+                About Me
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#142A4A] leading-[1.15] tracking-tight">
-                Translating research and data into resonant campaigns and human-centred stories.
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#142A4A] leading-[1.15] tracking-tight mb-4">
+                Hi, I&apos;m Shanesia
               </h2>
+              <p className="text-sm sm:text-base text-slate-700 font-sans leading-relaxed">
+                I work at the intersection of communications, marketing, and digital media building authentic engagement for public sector, higher education, and non-profit organisations through intentional strategy and storytelling. Over the past few years I&apos;ve grown audience engagement through data-driven content strategy, translated complex information into clear, audience-first messaging, and led cross-institutional projects in fast-paced, deadline-driven environments.
+              </p>
             </div>
 
             {/* 3 Core Practice Pillars */}

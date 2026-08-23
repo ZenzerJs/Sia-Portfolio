@@ -132,7 +132,7 @@ export function MarimbaExactPortfolio() {
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".navigation .nav-link")
     );
-    const sectionIds = ["home", "work", "campaigns", "gallery", "testimonials", "contact"];
+    const sectionIds = ["home", "about-teaser", "work", "gallery", "process", "testimonials", "contact"];
     const updateActiveNav = () => {
       let current = "home";
       const probe = window.innerHeight * 0.4;
@@ -315,19 +315,23 @@ export function MarimbaExactPortfolio() {
                 Communications · Marketing · Project Coordination
               </span>
             </div>
-            <h1 className="hero-headline font-normal leading-[1.14] text-left sm:text-center max-w-4xl mx-auto">
+            <h1 className="hero-headline font-normal leading-[1.18] text-left sm:text-justify max-w-3xl mx-auto">
               Connecting data, research, and community
-              <br className="hidden md:block" />
               through strategic storytelling and digital media.
             </h1>
           </div>
         </section>
 
-        {/* Editorial About Section */}
+        {/* 2. Running Tool Marquee with Key Skills Monospace Label */}
+        <div className="my-16 md:my-24 py-4 w-full">
+          <ToolMarquee />
+        </div>
+
+        {/* 3. Editorial About Teaser Section */}
         <AboutSection />
 
-        {/* Work Showcase — 3D MacBook with Motion Reels */}
-        <section className="section pb-2 md:pb-4" id="work" data-cursor="work">
+        {/* 4. Work Showcase — 3D MacBook with Motion Reels */}
+        <section className="section py-16 md:py-24" id="work" data-cursor="work">
           <div className="section-content">
             <div className="text-center mb-12">
               <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
@@ -341,188 +345,7 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* Tools marquee divider — software + AI tools */}
-        <div className="mt-20 md:mt-28 mb-12 md:mb-16 py-4">
-          <ToolMarquee />
-        </div>
-
-        {/* Bento Grid: Featured Campaigns & Presentation Decks */}
-        <section className="section pt-8 md:pt-14 pb-28 md:pb-36 px-6 md:px-12" id="campaigns">
-          <div className="max-w-[1380px] mx-auto mb-14 md:mb-16">
-            <div className="flex items-center gap-3 mb-3">
-              <img
-                src="/assets/logo-monogram-navy.png"
-                alt=""
-                className="w-6 h-6 object-contain opacity-80"
-              />
-              <span className="text-xs md:text-sm font-mono tracking-widest uppercase text-[var(--text-muted)]">
-                Strategic Campaigns
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[var(--text-dark)] leading-tight">
-              Impact Through Storytelling
-            </h2>
-            <p className="text-base md:text-lg text-[var(--text-muted)] mt-4 max-w-2xl font-light">
-              Transforming multi-institutional research and strategic initiatives into compelling, high-reach visual campaigns.
-            </p>
-          </div>
-
-          <BentoGrid>
-            {/* Mass Culture DNA */}
-            <BentoGridItem
-              title="Mass Culture DNA"
-              description="Arts data → visual narratives. 74K+ national audience reach."
-              tag="Arts & Research"
-              href="/work/mass-culture-dna"
-              header={
-                <div
-                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveDeck({
-                      title: "Mass Culture Canada: DNA Initiative",
-                      tagline: "Brenau University Presentation · Research Priorities",
-                      slides: [
-                        "/assets/decks/slides/mass-culture-slide-1.jpg",
-                        "/assets/decks/slides/mass-culture-slide-3.jpg",
-                        "/assets/decks/slides/mass-culture-slide-4.jpg",
-                        "/assets/decks/slides/mass-culture-slide-5.jpg",
-                        "/assets/decks/slides/mass-culture-slide-8.jpg",
-                        "/assets/decks/slides/river-clyde-slide-1.jpg",
-                      ],
-                      pdfUrl: "/assets/decks/mass-culture-slide-deck.pdf",
-                    });
-                  }}
-                >
-                  <img
-                    src="/assets/decks/slides/mass-culture-slide-1.jpg"
-                    alt="Mass Culture Presentation Deck"
-                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
-                    Preview Deck ↗
-                  </div>
-                </div>
-              }
-            />
-
-            {/* FIFA 2026 Challenge */}
-            <BentoGridItem
-              title="FIFA 2026 Challenge"
-              description="Multicultural fan engagement. Global hackathon runner-up."
-              tag="Hackathon Runner-Up"
-              href="/work/fifa-2026-challenge"
-              header={
-                <div
-                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveDeck({
-                      title: "FIFA World Cup 2026: Our Neighbourhood, Your Nation",
-                      tagline: "Global Hackathon Challenge · Fan Engagement Pitch",
-                      slides: [
-                        "/assets/decks/slides/fifa-slide-1.jpg",
-                        "/assets/decks/slides/fifa-slide-2.jpg",
-                        "/assets/decks/slides/fifa-slide-5.jpg",
-                        "/assets/decks/slides/fifa-slide-7.jpg",
-                        "/assets/decks/slides/fifa-slide-10.jpg",
-                        "/assets/decks/slides/fifa-slide-15.jpg",
-                      ],
-                      pdfUrl: "/assets/decks/fifa-2026-slide-deck.pdf",
-                    });
-                  }}
-                >
-                  <img
-                    src="/assets/decks/slides/fifa-slide-1.jpg"
-                    alt="FIFA World Cup 2026 Pitch Deck"
-                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
-                    Preview Deck ↗
-                  </div>
-                </div>
-              }
-            />
-
-            {/* CICU Creative Showcase */}
-            <BentoGridItem
-              title="CICU Brand & Community"
-              description="Creative direction & 35mm documentation for 300+ creative student community."
-              tag="Creative Direction"
-              href="/work/cicu-creative-showcase"
-              header={
-                <div
-                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveDeck({
-                      title: "CICU: Creative Industries Course Union",
-                      tagline: "Executive Marketing & 35mm Event Coverage · Brand Identity",
-                      slides: [
-                        "/assets/cicu/showcase/showcase-slide-1.jpg",
-                        "/assets/cicu/showcase/showcase-slide-2.jpg",
-                        "/assets/cicu/showcase/showcase-slide-3.jpg",
-                        "/assets/cicu/showcase/showcase-slide-4.jpg",
-                        "/assets/cicu/showcase/showcase-slide-5.jpg",
-                        "/assets/cicu/showcase/showcase-slide-6.jpg",
-                      ],
-                      pdfUrl: "/assets/decks/mass-culture-slide-deck.pdf",
-                    });
-                  }}
-                >
-                  <img
-                    src="/assets/cicu/showcase/showcase-post-1.jpg"
-                    alt="CICU Creative Showcase"
-                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
-                    Preview Deck ↗
-                  </div>
-                </div>
-              }
-            />
-
-            {/* Mastercard Sustainability */}
-            <BentoGridItem
-              title="Mastercard Sustainability"
-              description="Sustainable rebranding & merchant ecosystem for consumer footprint awareness."
-              tag="Brand Strategy"
-              href="/work/mastercard-sustainability"
-              header={
-                <div
-                  className="aspect-[16/11] bg-slate-100 relative group/card cursor-pointer overflow-hidden rounded-2xl"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveDeck({
-                      title: "Mastercard: Sustainable Rebranding Campaign",
-                      tagline: "RTA Brand Challenge · ESG Product Architecture",
-                      slides: [
-                        "/assets/decks/slides/mastercard-slide-1.jpg",
-                        "/assets/decks/slides/mastercard-slide-2.jpg",
-                        "/assets/decks/slides/mastercard-slide-4.jpg",
-                        "/assets/decks/slides/mastercard-slide-5.jpg",
-                        "/assets/decks/slides/mastercard-slide-7.jpg",
-                        "/assets/decks/slides/mastercard-slide-8.jpg",
-                      ],
-                      pdfUrl: "/assets/decks/rta-mastercard-slide-deck.pdf",
-                    });
-                  }}
-                >
-                  <img
-                    src="/assets/decks/slides/mastercard-slide-1.jpg"
-                    alt="Mastercard Rebrand Deck"
-                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
-                    Preview Deck ↗
-                  </div>
-                </div>
-              }
-            />
-          </BentoGrid>
-        </section>
-
-        {/* AccordionGallery: Event & Showcase Photography (Clean full-bleed without caption subheadings) */}
+        {/* 5. AccordionGallery: 35mm Analog Photography (Clean full-bleed without caption subheadings) */}
         <section className="section py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto" id="gallery">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
@@ -539,7 +362,7 @@ export function MarimbaExactPortfolio() {
           />
         </section>
 
-        {/* Strategic Process & Methodology (Interactive GSAP Animated Section) */}
+        {/* 6. Process Disks: Strategic Process & Methodology */}
         <StrategicProcessSection />
 
         {/* Testimonials */}

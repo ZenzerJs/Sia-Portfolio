@@ -2792,7 +2792,7 @@ main {
     -webkit-backdrop-filter: blur(10px);
 }
 
-.hero-headline { font-size: 64px; }
+.hero-headline { font-size: 48px; }
 
 .section#work .section-content > .text-center,
 .section#campaigns > .max-w-7xl {

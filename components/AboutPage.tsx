@@ -226,17 +226,17 @@ export function AboutPage() {
         {/* Editorial Hero Statement (Centered Big Hero) */}
         <section
           ref={heroSectionRef}
-          className="about-hero min-h-[70vh] flex flex-col justify-center items-center text-center py-16 relative border-b border-gray-100/70 mb-12 will-change-transform"
+          className="about-hero min-h-[50vh] flex flex-col justify-center items-center text-center pt-12 pb-8 relative border-b border-gray-100/70 mb-12 will-change-transform"
         >
           <div className="max-w-4xl mx-auto text-center relative">
             <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-4 text-center">
-              Editorial Statement
+              Communications · Marketing · Digital Strategy
             </span>
             <h1
               ref={heroHeadingRef}
-              className="about-hero__heading font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.14] tracking-tight text-[#1E3A5F] text-center mx-auto will-change-transform"
+              className="about-hero__heading font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-[1.1] tracking-tight text-[#1E3A5F] text-center mx-auto will-change-transform"
             >
-              Connecting ideas, data, and people through intentional communication.
+              Hi, I&apos;m Shanesia
             </h1>
           </div>
         </section>
@@ -246,12 +246,12 @@ export function AboutPage() {
           className="about-bio-section py-8 md:py-12 border-b border-gray-100 mb-16"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
-            {/* Portrait Image Column with Continuous Spin Ring & Dynamic Tilt */}
+            {/* Portrait Image Column with Straightened Frame and Rotating Ring */}
             <div className="md:col-span-5 lg:col-span-4 relative flex justify-center md:justify-start">
               <div className="relative group max-w-sm w-full">
                 <div
                   ref={portraitRef}
-                  className="relative z-10 overflow-hidden rounded-2xl border border-[#1E3A5F]/15 shadow-xl bg-white transition-transform duration-500 hover:!rotate-0 group-hover:scale-[1.02] group-hover:shadow-2xl"
+                  className="relative z-10 overflow-hidden rounded-2xl border border-[#1E3A5F]/15 shadow-xl bg-white transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl"
                 >
                   <img
                     src="/assets/headshots/shanesia-primary.jpg"
@@ -283,8 +283,8 @@ export function AboutPage() {
               <span className="text-sm font-mono tracking-widest uppercase text-[#718096] block mb-3">
                 About Me
               </span>
-              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal text-[#1E3A5F] mb-6 tracking-tight">
-                Hi, I&apos;m Shanesia
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-normal text-[#1E3A5F] mb-6 tracking-tight">
+                Intentional Strategy &amp; Storytelling
               </h2>
 
               <div className="space-y-5 text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
