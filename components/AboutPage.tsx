@@ -22,22 +22,22 @@ const experience = [
     desc: "Developed multi-platform content strategies, newsletters and data-driven campaigns across LinkedIn, Facebook, X and Instagram. Coordinated a U.S. university partnership, translating brand research into an adopted communications strategy. Led the launch of the Data Narrative for the Arts platform, defined KPIs, analysed performance and managed concurrent projects, schedules and approvals.",
   },
   {
-    role: "Digital Communications Assistant",
-    company: "Government of Canada — Parks Canada",
-    period: "Jun 2022 — Dec 2022",
-    desc: "Served as a liaison between researchers, Communications/IT and the Bridging Divides community, translating stakeholder needs into platform requirements. Supported the design, development and launch of a centralised LMS website for academic research and digital seminars, conducting content audits and usability testing to improve accessibility and navigation. Coordinated timelines, feedback, quality control and platform updates while supporting launch promotion through email marketing.",
+    role: "VP Marketing & Creative Director",
+    company: "Creative Industries Course Union (CICU)",
+    period: "2023 — 2025",
+    desc: "Led marketing and creative communications for a 300+ student community, developing promotional campaigns, visual branding, social media content and event communications. Directed digital and print creative, while producing live event photography and visual content for showcases, workshops and community initiatives.",
   },
   {
     role: "Communications & Digital Content Creator",
     company: "Toronto Metropolitan University — Bridging Divides",
     period: "Aug 2023 — Apr 2024",
-    desc: "Led digital content coordination for Parks Canada’s agency-wide Microsoft 365 transition, ensuring clear, consistent and compliant communications. Developed training and onboarding materials, including infographics, tutorial videos and presentations, while collaborating cross-functionally to support digital adoption. Designed and maintained SharePoint knowledge hubs, conducted content audits and analysed user behaviour to improve resource accessibility, discoverability and workflow efficiency.",
+    desc: "Served as a liaison between researchers, Communications/IT and the Bridging Divides community, translating stakeholder needs into platform requirements. Supported the design, development and launch of a centralised LMS website for academic research and digital seminars, conducting content audits and usability testing to improve accessibility and navigation. Coordinated timelines, feedback, quality control and platform updates while supporting launch promotion through email marketing.",
   },
   {
-    role: "VP Marketing & Creative Director",
-    company: "Creative Industries Course Union (CICU)",
-    period: "2023 — 2025",
-    desc: "Led marketing and creative communications for a 300+ student community, developing promotional campaigns, visual branding, social media content and event communications. Directed digital and print creative, while producing live event photography and visual content for showcases, workshops and community initiatives.",
+    role: "Digital Communications Assistant",
+    company: "Government of Canada — Parks Canada",
+    period: "Jun 2022 — Dec 2022",
+    desc: "Led digital content coordination for Parks Canada’s agency-wide Microsoft 365 transition, ensuring clear, consistent and compliant communications. Developed training and onboarding materials, including infographics, tutorial videos and presentations, while collaborating cross-functionally to support digital adoption. Designed and maintained SharePoint knowledge hubs, conducted content audits and analysed user behaviour to improve resource accessibility, discoverability and workflow efficiency.",
   },
 ];
 
