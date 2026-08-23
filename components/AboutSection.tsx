@@ -87,7 +87,7 @@ export function AboutSection() {
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.12] tracking-tight text-[#1E3A5F] mb-6">
-              Hi, I&apos;m Shanesia.
+              About Me
             </h2>
             <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed mb-4">
               Strategic storytelling, creative content, and digital communication that connects.
