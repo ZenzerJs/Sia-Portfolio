@@ -285,9 +285,6 @@ export function MarimbaExactPortfolio() {
 
             <div className="shape shape-circle-left" id="shape-circle-left" style={{ inset: "12% auto auto -8%" }}>
               <img src="/assets/shape-circle1.webp" alt="" className="shape-img" />
-              <span className="shape-label">
-                Digital <br /> Strategy
-              </span>
             </div>
 
             <div className="shape shape-starburst" id="shape-starburst" style={{ inset: "23% auto auto 3%" }}>
@@ -296,9 +293,6 @@ export function MarimbaExactPortfolio() {
 
             <div className="shape shape-circle-right" id="shape-circle-right" style={{ inset: "10% -12% auto auto" }}>
               <img src="/assets/shape-circle2.webp" alt="" className="shape-img" />
-              <span className="shape-label">
-                Data Storytelling<br />&amp; Campaigns
-              </span>
             </div>
 
             <div className="shape shape-leaf" id="shape-leaf" style={{ inset: "40% 0% auto auto" }}>
@@ -311,7 +305,6 @@ export function MarimbaExactPortfolio() {
 
             <div className="shape shape-circle-bottom" id="shape-circle-bottom" style={{ inset: "auto auto -20% 50%" }}>
               <img src="/assets/shape-circle3.webp" alt="" className="shape-img" />
-              <span className="shape-label">Project Coordination</span>
             </div>
           </div>
 
