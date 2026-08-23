@@ -162,13 +162,13 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Visual Collage Layering (Using authentic brand shapes & color assets) */}
           <div ref={visualsRef} className="lg:col-span-5 relative order-2 lg:order-1 flex justify-center">
-            <div className="relative w-full max-w-[360px] sm:max-w-[420px] pb-8">
+            <div className="relative w-full max-w-[360px] sm:max-w-[420px]">
               {/* Floating Asset 1: Gradient Sphere (Lilac/Sky) */}
               <img
                 ref={floatingShape1Ref}
                 src="/assets/shape-circle2.webp"
                 alt=""
-                className="absolute -top-8 -left-8 w-24 h-24 md:w-32 md:h-32 object-contain pointer-events-none z-20 opacity-80 drop-shadow-md"
+                className="absolute -top-10 -right-6 w-24 h-24 md:w-32 md:h-32 object-contain pointer-events-none z-20 opacity-80 drop-shadow-md"
                 aria-hidden="true"
               />
 
@@ -177,39 +177,12 @@ export function AboutSection() {
                 ref={floatingShape2Ref}
                 src="/assets/shape-star1.webp"
                 alt=""
-                className="absolute -bottom-6 -right-6 w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none z-30 drop-shadow-lg"
+                className="absolute -bottom-6 -left-6 w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none z-30 drop-shadow-lg"
                 aria-hidden="true"
               />
 
-              {/* Primary Card: Laptop Portrait Frame with Gradient Border */}
-              <div className="relative rounded-3xl p-1.5 bg-gradient-to-br from-[#A8CBE8] via-[#C3C6E8] to-[#EFAF8C] shadow-2xl z-10">
-                <div className="rounded-[22px] overflow-hidden bg-white">
-                  <img
-                    src="/assets/headshots/shanesia-portrait.jpg"
-                    alt="Shanesia Saha working at desk"
-                    className="w-full aspect-[4/5] object-cover object-center"
-                    loading="lazy"
-                  />
-                  
-                  {/* Card Bottom Meta Bar */}
-                  <div className="p-4 bg-white/95 backdrop-blur-sm border-t border-slate-100 flex items-center justify-between">
-                    <div>
-                      <span className="font-serif text-base text-[#1E3A5F] block font-medium">
-                        {siteConfig.person.fullName}
-                      </span>
-                      <span className="font-mono text-[10px] tracking-wider uppercase text-slate-500">
-                        {siteConfig.location}
-                      </span>
-                    </div>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase bg-[#A8CBE8]/25 text-[#1E3A5F] border border-[#A8CBE8]/50 font-medium">
-                      Open for Roles
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Secondary Overlapping Card: Candid Creative Setting (Clean, no text badge) */}
-              <div className="absolute -bottom-4 -left-6 sm:-left-10 w-36 sm:w-44 rounded-2xl p-1.5 bg-white shadow-xl rotate-[-4deg] z-20 border border-slate-200/80 hover:rotate-0 transition-transform duration-300">
+              {/* Secondary Overlapping Card: Top-Left Tilted Creative Portrait */}
+              <div className="absolute -top-6 -left-6 sm:-left-10 w-28 sm:w-36 rounded-2xl p-1.5 bg-white shadow-xl rotate-[-6deg] z-20 border border-slate-200/90 hover:rotate-0 transition-transform duration-300">
                 <div className="rounded-xl overflow-hidden aspect-[4/5] bg-slate-100">
                   <img
                     src="/assets/headshots/shanesia-cafe.jpg"
@@ -217,6 +190,43 @@ export function AboutSection() {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
+                </div>
+              </div>
+
+              {/* Primary Card: Laptop Portrait Frame with Gradient Border */}
+              <div className="relative rounded-3xl p-1.5 bg-gradient-to-br from-[#A8CBE8] via-[#C3C6E8] to-[#EFAF8C] shadow-2xl z-10">
+                <div className="rounded-[22px] overflow-hidden bg-white">
+                  <div className="relative">
+                    <img
+                      src="/assets/headshots/shanesia-portrait.jpg"
+                      alt="Shanesia Saha working at desk"
+                      className="w-full aspect-[4/5] object-cover object-center"
+                      loading="lazy"
+                    />
+
+                    {/* Top-Right "Open for Roles" Status Pill */}
+                    <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md shadow-md border border-white/80 flex items-center gap-2 z-20">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-[10px] font-mono font-medium tracking-wider uppercase text-[#1E3A5F]">
+                        Open for Roles
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Card Bottom Meta Bar — 100% Unobscured and Clear */}
+                  <div className="p-4 sm:p-5 bg-white/95 backdrop-blur-sm border-t border-slate-100 flex items-center justify-between gap-3">
+                    <div>
+                      <span className="font-serif text-lg sm:text-xl text-[#1E3A5F] block font-medium leading-tight">
+                        {siteConfig.person.fullName}
+                      </span>
+                      <span className="font-mono text-xs tracking-wider uppercase text-slate-500 mt-1 block">
+                        Toronto, Canada · London, UK
+                      </span>
+                    </div>
+                    <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider uppercase bg-[#A8CBE8]/20 text-[#1E3A5F] border border-[#A8CBE8]/50 font-medium shrink-0">
+                      Practice
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
