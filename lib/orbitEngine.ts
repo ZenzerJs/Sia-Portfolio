@@ -205,9 +205,9 @@ export function initOrbitEngine(): () => void {
   const st = ScrollTrigger.create({
     trigger: "#home",
     start: "top top",
-    end: "bottom top",
-    pin: heroBackground,
-    pinSpacing: false,
+    end: "+=120%",
+    pin: true,
+    pinSpacing: true,
     anticipatePin: 1,
     scrub: 1,
     onUpdate: (self) => {

@@ -276,8 +276,8 @@ export function MarimbaExactPortfolio() {
 
       {/* Main Content */}
       <main id="main-content">
-        {/* Hero Section with Extended Scroll Runway */}
-        <section className="hero min-h-[175vh]" id="home">
+        {/* Hero Section */}
+        <section className="hero" id="home">
           <div className="hero-background">
             <div className="shape shape-astrix" id="shape-astrix" style={{ inset: "20% auto auto 23%" }}>
               <img src="/assets/shape-astrix.svg" alt="" className="shape-img" />

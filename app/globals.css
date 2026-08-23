@@ -440,6 +440,7 @@ main {
 /* Hero Section */
 .hero {
     position: relative;
+    height: 100vh;
     min-height: 100vh;
     display: flex;
     flex-direction: column; 
@@ -451,11 +452,11 @@ main {
 }
 
 .hero-background {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
     pointer-events: none;
     overflow: visible;
@@ -463,13 +464,6 @@ main {
     perspective-origin: center center;
     margin: 0;
     padding: 0;
-}
-
-/* GSAP wraps the pinned hero background in a pin-spacer; inside the flex-column
-   hero it would occupy layout space and push .hero-content below the fold.
-   Pull it out of flow so the headline stays centered after the intro. */
-.hero .pin-spacer {
-    position: absolute !important;
 }
 
 /* Shape Containers */
