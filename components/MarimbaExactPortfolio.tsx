@@ -313,7 +313,7 @@ export function MarimbaExactPortfolio() {
                 Communications · Marketing · Project Coordination
               </span>
             </div>
-            <h1 className="hero-headline text-xl sm:text-2xl md:text-3xl font-normal leading-relaxed text-left sm:text-justify max-w-3xl mx-auto">
+            <h1 className="hero-headline font-normal leading-[1.14] text-left sm:text-center max-w-4xl mx-auto">
               Connecting data, research, and community
               <br className="hidden md:block" />
               through strategic storytelling and digital media.
