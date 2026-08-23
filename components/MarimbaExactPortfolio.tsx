@@ -315,22 +315,20 @@ export function MarimbaExactPortfolio() {
                 Communications · Marketing · Project Coordination
               </span>
             </div>
-            <h1 className="hero-headline font-normal leading-[1.18] text-left sm:text-justify max-w-3xl mx-auto">
+            <h1 className="hero-headline font-normal leading-[1.14] text-center max-w-4xl mx-auto">
               Connecting data, research, and community
-              through strategic storytelling and digital media.
+              <br className="hidden sm:inline" />
+              {" "}through strategic storytelling
+              <br className="hidden sm:inline" />
+              {" "}and digital media.
             </h1>
           </div>
         </section>
 
-        {/* 2. Running Tool Marquee with Key Skills Monospace Label */}
-        <div className="my-16 md:my-24 py-4 w-full">
-          <ToolMarquee />
-        </div>
-
-        {/* 3. Editorial About Teaser Section */}
+        {/* Editorial About Teaser Section */}
         <AboutSection />
 
-        {/* 4. Work Showcase — 3D MacBook with Motion Reels */}
+        {/* Work Showcase — 3D MacBook with Motion Reels */}
         <section className="section py-16 md:py-24" id="work" data-cursor="work">
           <div className="section-content">
             <div className="text-center mb-12">
@@ -345,7 +343,12 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* 5. AccordionGallery: 35mm Analog Photography (Clean full-bleed without caption subheadings) */}
+        {/* Running Tool Marquee with Key Skills Monospace Label */}
+        <div className="my-16 md:my-24 py-4 w-full">
+          <ToolMarquee />
+        </div>
+
+        {/* AccordionGallery: 35mm Analog Photography (Clean full-bleed without caption subheadings) */}
         <section className="section py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto" id="gallery">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
