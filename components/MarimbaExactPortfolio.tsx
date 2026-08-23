@@ -315,10 +315,6 @@ export function MarimbaExactPortfolio() {
             </div>
           </div>
 
-          <div className="expertise-center-text" aria-hidden="true">
-            Strategic<br />Communications
-          </div>
-
           <div className="hero-content">
             <div className="hero-tag">
               <span className="pill-button">

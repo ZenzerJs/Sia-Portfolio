@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -32,7 +32,7 @@ const pillars = [
   {
     number: "03",
     tag: "Creative Direction & Culture",
-    title: "Event Production & 35mm Media",
+    title: "Event Production & Visual Media",
     description: "Leading creative direction, visual branding, analog photography, and multi-channel marketing for 300+ attendee creative industry showcases.",
     accentBg: "bg-[#EFAF8C]/20",
     accentBorder: "border-[#EFAF8C]/40",
@@ -129,7 +129,7 @@ export function AboutSection() {
       ref={sectionRef}
       id="about-teaser"
       className="home-about section relative py-20 md:py-32 px-6 md:px-12 bg-white border-y border-slate-100 overflow-hidden"
-      aria-label="Practice Snapshot and Teaser"
+      aria-label="About Shanesia Saha"
     >
       {/* Background Architectural Grid Accent */}
       <div
@@ -138,7 +138,7 @@ export function AboutSection() {
       />
 
       <div className="max-w-[1380px] mx-auto relative z-10">
-        {/* Section Teaser Header Tag */}
+        {/* Section Header Tag */}
         <div className="flex items-center justify-between gap-4 mb-12 md:mb-16">
           <div className="flex items-center gap-3">
             <span className="relative flex h-2.5 w-2.5">
@@ -146,15 +146,15 @@ export function AboutSection() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1E3A5F]" />
             </span>
             <span className="text-xs md:text-sm font-mono tracking-widest uppercase text-slate-500">
-              Practice Snapshot · Vision &amp; Capabilities
+              About · Story &amp; Capabilities
             </span>
           </div>
 
           <Link
             href="/about"
-            className="hidden sm:inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-[#1E3A5F] hover:text-[#142A4A] hover:underline underline-offset-4 transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-[#1E3A5F] hover:text-[#142A4A] hover:underline underline-offset-4 transition-colors font-medium"
           >
-            <span>Read Full Biography</span>
+            <span>About Me</span>
             <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -162,7 +162,7 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Visual Collage Layering (Using authentic brand shapes & color assets) */}
           <div ref={visualsRef} className="lg:col-span-5 relative order-2 lg:order-1 flex justify-center">
-            <div className="relative w-full max-w-[360px] sm:max-w-[420px] pb-10">
+            <div className="relative w-full max-w-[360px] sm:max-w-[420px] pb-8">
               {/* Floating Asset 1: Gradient Sphere (Lilac/Sky) */}
               <img
                 ref={floatingShape1Ref}
@@ -201,46 +201,35 @@ export function AboutSection() {
                         {siteConfig.location}
                       </span>
                     </div>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase bg-[#A8CBE8]/25 text-[#1E3A5F] border border-[#A8CBE8]/50">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase bg-[#A8CBE8]/25 text-[#1E3A5F] border border-[#A8CBE8]/50 font-medium">
                       Open for Roles
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Secondary Overlapping Card: Candid Cafe / Creative Setting */}
-              <div className="absolute -bottom-4 -left-6 sm:-left-10 w-36 sm:w-44 rounded-2xl p-1 bg-white shadow-xl rotate-[-4deg] z-20 border border-slate-200/80 hover:rotate-0 transition-transform duration-300">
-                <div className="rounded-xl overflow-hidden aspect-[4/5] bg-slate-100 relative">
+              {/* Secondary Overlapping Card: Candid Creative Setting (Clean, no text badge) */}
+              <div className="absolute -bottom-4 -left-6 sm:-left-10 w-36 sm:w-44 rounded-2xl p-1.5 bg-white shadow-xl rotate-[-4deg] z-20 border border-slate-200/80 hover:rotate-0 transition-transform duration-300">
+                <div className="rounded-xl overflow-hidden aspect-[4/5] bg-slate-100">
                   <img
                     src="/assets/headshots/shanesia-cafe.jpg"
-                    alt="Shanesia Saha creative photo"
+                    alt="Shanesia Saha creative portrait"
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute bottom-1.5 left-1.5 right-1.5 px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm text-white font-mono text-[9px] text-center tracking-wider uppercase">
-                    35mm · Culture
-                  </div>
                 </div>
-              </div>
-
-              {/* Floating Credential Chip */}
-              <div className="absolute top-6 -right-4 sm:-right-8 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200 z-20 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#E0AE62]" />
-                <span className="text-[11px] font-mono font-medium text-slate-800">
-                  4.0 CGPA · Dean&apos;s List
-                </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Teaser Thesis & 3 Core Practice Pillars */}
+          {/* Right Column: Narrative & 3 Core Practice Pillars */}
           <div ref={contentRef} className="lg:col-span-7 flex flex-col gap-6 order-1 lg:order-2">
             <div>
               <span className="text-xs font-mono tracking-widest uppercase text-[#7C8AA0] block mb-2">
                 Strategic Narrative · Digital Strategy · Creative Leadership
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#142A4A] leading-[1.15] tracking-tight">
-                Translating research and data into resonant campaigns and high-reach digital experiences.
+                Translating research and data into resonant campaigns and human-centred stories.
               </h2>
             </div>
 
@@ -276,15 +265,15 @@ export function AboutSection() {
             <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100">
               <Link
                 href="/about"
-                className="px-6 py-3 rounded-full bg-[#1E3A5F] text-white text-xs font-mono tracking-widest uppercase hover:bg-[#142A4A] transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                className="px-6 py-3 rounded-full bg-[#1E3A5F] text-white text-xs font-mono tracking-widest uppercase hover:bg-[#142A4A] transition-all shadow-md hover:shadow-lg flex items-center gap-2 font-medium"
               >
-                <span>Read Full Biography &amp; Career</span>
+                <span>About Me</span>
                 <span aria-hidden="true">→</span>
               </Link>
 
               <a
                 href="#work"
-                className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-widest uppercase hover:bg-slate-50 transition-colors flex items-center gap-2"
+                className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-widest uppercase hover:bg-slate-50 transition-colors flex items-center gap-2 font-medium"
               >
                 <span>Selected Work</span>
                 <span aria-hidden="true">↓</span>
@@ -292,7 +281,7 @@ export function AboutSection() {
 
               <a
                 href="#campaigns"
-                className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-widest uppercase hover:bg-slate-50 transition-colors flex items-center gap-2"
+                className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-widest uppercase hover:bg-slate-50 transition-colors flex items-center gap-2 font-medium"
               >
                 <span>Case Studies</span>
                 <span aria-hidden="true">↓</span>
