@@ -26,21 +26,21 @@ export function initThemeScroll(): () => void {
     ease: "none",
     scrollTrigger: {
       trigger: "#contact",
-      start: "top 75%",
-      end: "top 25%",
-      scrub: 0.5,
+      start: "top 40%",
+      end: "top 10%",
+      scrub: 0.3,
     },
   });
 
   // Also invert brand logos and monogram icons when entering contact dark theme
-  const logoTween = gsap.to(".brand-logo, .brand, .contact-monogram-img, .footer-monogram-img", {
+  const logoTween = gsap.to(".brand-logo, .brand", {
     filter: "brightness(0) invert(1)",
     ease: "none",
     scrollTrigger: {
       trigger: "#contact",
-      start: "top 75%",
-      end: "top 25%",
-      scrub: 0.5,
+      start: "top 40%",
+      end: "top 10%",
+      scrub: 0.3,
     },
   });
 
