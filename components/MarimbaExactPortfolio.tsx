@@ -130,7 +130,7 @@ export function MarimbaExactPortfolio() {
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".navigation .nav-link")
     );
-    const sectionIds = ["home", "about", "work", "campaigns", "gallery", "testimonials", "contact"];
+    const sectionIds = ["home", "work", "campaigns", "gallery", "testimonials", "contact"];
     const updateActiveNav = () => {
       let current = "home";
       const probe = window.innerHeight * 0.4;
