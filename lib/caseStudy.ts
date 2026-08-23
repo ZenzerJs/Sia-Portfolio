@@ -4,63 +4,171 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Case study page motion: staggered fade-up reveals for the masthead, hero
- * media, brief, evolution phases, gallery, and navigator cards.
+ * Case study page animations:
+ * Context-safe staggered reveals for the masthead, hero media, brief,
+ * evolution phases, curated gallery, and navigation.
  */
-export function initCaseStudyAnimations(): () => void {
+export function initCaseStudyAnimations(container?: HTMLElement | null): () => void {
   if (typeof window === "undefined") return () => {};
 
-  const page = document.querySelector(".case-study-page");
+  const page = container ?? document.querySelector<HTMLElement>(".case-study-page");
   if (!page) return () => {};
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) return () => {};
 
-  const cleanups: Array<() => void> = [];
+  const ctx = gsap.context(() => {
+    // 1. Masthead entrance (fires immediately on mount)
+    const mastheadContent = page.querySelector(".cs-masthead__content");
+    const mastheadMeta = page.querySelector(".cs-masthead__meta");
 
-  const reveal = (
-    targets: string | Element,
-    vars: gsap.TweenVars = {},
-    trigger?: string | Element,
-    start = "top 80%"
-  ) => {
-    const tween = gsap.from(targets, {
-      opacity: 0,
-      y: 36,
-      duration: 0.9,
-      ease: "power2.out",
-      ...vars,
-      scrollTrigger: {
-        trigger: trigger ?? targets,
-        start,
-        toggleActions: "play none none none",
-      },
+    if (mastheadContent) {
+      gsap.fromTo(
+        mastheadContent,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }
+      );
+    }
+    if (mastheadMeta) {
+      gsap.fromTo(
+        mastheadMeta,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: "power2.out" }
+      );
+    }
+
+    // 2. Hero media reveal
+    const heroFrame = page.querySelector(".cs-hero-media__frame");
+    if (heroFrame) {
+      gsap.fromTo(
+        heroFrame,
+        { opacity: 0, scale: 0.98, y: 20 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 1.0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: heroFrame,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // 3. Brief & Strategy reveal
+    const briefGrid = page.querySelector(".cs-brief__grid");
+    if (briefGrid) {
+      gsap.fromTo(
+        briefGrid,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: briefGrid,
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // 4. Strategic Evolution phases
+    const phaseItems = page.querySelectorAll<HTMLElement>(".cs-phase");
+    phaseItems.forEach((phase, index) => {
+      gsap.fromTo(
+        phase,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: (index % 2) * 0.08,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: phase,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
-    cleanups.push(() => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
+
+    // 5. Outputs & Gallery cards
+    const outputCards = page.querySelectorAll<HTMLElement>(".cs-output__card, .cs-gallery__item");
+    outputCards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: (index % 3) * 0.06,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
-  };
 
-  reveal(".cs-masthead__content", { y: 40 }, ".cs-masthead");
-  reveal(".cs-masthead__meta", { y: 40, delay: 0.1 }, ".cs-masthead");
-  reveal(".cs-hero-media__frame", { y: 60, scale: 0.98 }, ".cs-hero-media", "top 85%");
-  reveal(".cs-brief__grid", { y: 40 }, ".cs-brief", "top 70%");
-  reveal(".cs-evolution__header", { y: 30 }, ".cs-evolution", "top 70%");
+    // 6. Impact section
+    const impactSection = page.querySelector(".cs-impact");
+    if (impactSection) {
+      gsap.fromTo(
+        impactSection,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: impactSection,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
 
-  gsap.utils.toArray<HTMLElement>(".cs-phase").forEach((item, index) => {
-    reveal(item, { y: 40, delay: 0.06 * index }, ".cs-evolution__content", "top 75%");
-  });
+    // 7. Navigation cards
+    const navCards = page.querySelectorAll<HTMLElement>(".cs-nav-card");
+    navCards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: index * 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
 
-  gsap.utils.toArray<HTMLElement>(".cs-gallery__item").forEach((item, index) => {
-    reveal(item, { y: 30, delay: 0.08 * index }, ".cs-gallery", "top 75%");
-  });
-
-  gsap.utils.toArray<HTMLElement>(".cs-nav-card").forEach((card, index) => {
-    reveal(card, { y: 40, delay: 0.1 * index }, ".cs-navigator", "top 85%");
-  });
+    // Force refresh triggers once layout settles
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+  }, page);
 
   return () => {
-    cleanups.forEach((cleanup) => cleanup());
+    ctx.revert();
   };
 }
+

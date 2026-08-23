@@ -2,6 +2,7 @@ export interface ProjectMedia {
   type: "video" | "image" | "placeholder";
   src?: string;
   gradient?: string;
+  alt?: string;
 }
 
 export interface EvolutionPhase {
@@ -10,6 +11,23 @@ export interface EvolutionPhase {
   date: string;
   title: string;
   description: string;
+  image?: string;
+  accent?: string;
+  rotation?: string;
+}
+
+export interface OutputItem {
+  title: string;
+  category?: string;
+  image: string;
+  alt?: string;
+  type?: "image" | "video";
+}
+
+export interface ProjectResult {
+  value: string;
+  label: string;
+  sublabel?: string;
 }
 
 export type CaseStudyVariant = "data" | "sport" | "eco" | "culture" | "systems" | "cinematic";
@@ -28,16 +46,24 @@ export interface Project {
   tools: string;
   client: string;
   heroDescription: string;
+  challenge?: string;
+  strategy?: string;
   brief?: string;
   objective?: string;
   detailVideo?: string;
   deckPdf?: string;
   slides?: string[];
   gallery?: string[];
+  outputs?: OutputItem[];
   phases: EvolutionPhase[];
   accent: string;
-  results?: { value: string; label: string }[];
-  quote?: { text: string; author: string };
+  accentLime?: string;
+  accentBlue?: string;
+  accentEco?: string;
+  accentOrange?: string;
+  accentPink?: string;
+  results?: ProjectResult[];
+  quote?: { text: string; author: string; role?: string };
   beforeAfter?: {
     before: string;
     after: string;
@@ -48,176 +74,140 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "mass-culture-dna",
-    variant: "data",
-    name: "Mass Culture DNA",
-    title: "Mass Culture Canada — Data Narratives for the Arts",
-    tagline: "Mass Culture Info Session · Data Platform & Visual Storytelling",
-    categories: ["Communications", "Data Storytelling", "Project Coordination"],
-    description:
-      "Created and delivered an information session and presentation for Mass Culture at Brenau University, introducing the DNA platform and its role in supporting arts and cultural organisations through data. Developed a clear, engaging slide deck to translate complex information into an accessible data narrative, guiding the audience through the platform's purpose, insights and applications. Led the presentation and facilitated discussion, strengthening skills in visual storytelling, presentation design, stakeholder communication and data-driven communication.",
-    media: {
-      type: "image",
-      src: "/assets/decks/slides/mass-culture-slide-1.jpg",
-      gradient: "linear-gradient(135deg, #A8CBE8 0%, #C3C6E8 100%)",
-    },
-    role: "Project Coordinator & Digital Strategist",
-    timeline: "Dec 2024 — Apr 2025",
-    tools: "LinkedIn, MailerLite, Canva, PowerPoint, Data Analytics",
-    client: "Mass Culture Canada · Brenau University",
-    heroDescription:
-      "Created and delivered an information session and presentation for Mass Culture at Brenau University, introducing the DNA platform and its role in supporting arts and cultural organisations through data.",
-    brief: "Developed a clear, engaging slide deck to translate complex information into an accessible data narrative, guiding the audience through the platform's purpose, insights and applications.",
-    objective: "Led the presentation and facilitated discussion, strengthening skills in visual storytelling, presentation design, stakeholder communication and data-driven communication.",
-    accent: "#A8CBE8",
-    deckPdf: "/assets/decks/mass-culture-slide-deck.pdf",
-    slides: [
-      "/assets/decks/slides/mass-culture-slide-1.jpg",
-      "/assets/decks/slides/mass-culture-slide-3.jpg",
-      "/assets/decks/slides/mass-culture-slide-4.jpg",
-      "/assets/decks/slides/mass-culture-slide-5.jpg",
-      "/assets/decks/slides/mass-culture-slide-8.jpg",
-      "/assets/decks/slides/river-clyde-slide-1.jpg",
-    ],
-    gallery: [
-      "/assets/social-campaigns/654651294_18520046998073873_8861659328534541782_n.jpg",
-      "/assets/social-campaigns/657330996_18523546387073873_6501039019688977632_n.jpg",
-      "/assets/social-campaigns/657940324_18524237413073873_4812515398533879252_n.jpg",
-      "/assets/social-campaigns/658961156_18525005860073873_6256835132353504235_n.jpg",
-      "/assets/social-campaigns/662825545_18525195049073873_5801258258147508811_n.jpg",
-    ],
-    results: [
-      { value: "74K+", label: "Total Audience Reach" },
-      { value: "+42%", label: "Engagement Rate Increase" },
-      { value: "13K+", label: "Monthly Digital Views" },
-      { value: "5+", label: "Partner Institutions" },
-    ],
-    quote: {
-      text: "Shanesia possesses an extraordinary talent for translating dense research data and institutional goals into human-centred stories that captivate and convert.",
-      author: "Project Leadership — Mass Culture Canada",
-    },
-    beforeAfter: {
-      before: "url('/assets/social-campaigns/657330996_18523546387073873_6501039019688977632_n.jpg')",
-      after: "url('/assets/decks/slides/mass-culture-slide-1.jpg')",
-      beforeLabel: "Research Inputs",
-      afterLabel: "DNA Visual Storytelling",
-    },
-    phases: [
-      {
-        id: "discovery",
-        label: "Research & Audit",
-        date: "Dec 2024",
-        title: "Mapping Arts Sector Insights",
-        description:
-          "Conducted comprehensive content audits and reviewed Brenau University thesis research to distill key brand narratives for arts service organisations.",
-      },
-      {
-        id: "strategy",
-        label: "Campaign Strategy",
-        date: "Jan — Feb 2025",
-        title: "Multi-Platform Audience Framework",
-        description:
-          "Developed audience segmentation frameworks across LinkedIn, X, Instagram, and MailerLite newsletters with dedicated KPIs and data-coaching series.",
-      },
-      {
-        id: "launch",
-        label: "DNA Platform Launch",
-        date: "Mar 2025",
-        title: "Creative Champions Network Debut",
-        description:
-          "Led national debut of the Data Narrative for the Arts (DNA) platform at the Spring Social, coordinating presentation decks, press graphics, and live outreach.",
-      },
-      {
-        id: "optimization",
-        label: "KPI Analytics",
-        date: "Apr 2025",
-        title: "Performance Optimisation & River Clyde Rollout",
-        description:
-          "Established analytics dashboards tracking registration conversion, community feedback loops, and campaign amplification for River Clyde Arts.",
-      },
-    ],
-  },
-  {
     slug: "fifa-2026-challenge",
     variant: "sport",
-    name: "FIFA World Cup Hackathon",
-    title: "FIFA World Cup Hackathon",
-    tagline: "Global Digital Marketing Hackathon · Creative Campaign Strategy",
+    name: "FIFA World Cup 2026",
+    title: "FIFA World Cup 2026: Our Neighbourhood, Your Nation",
+    tagline: "Multicultural Fan Engagement & Digital Campaign (Hackathon Runner-Up)",
     categories: ["Campaign Strategy", "International Marketing", "Creative Direction"],
     description:
       "Competed in a global digital marketing hackathon focused on developing a creative campaign strategy for the FIFA World Cup 2026. Working alongside students from the UK, Chile, Saudi Arabia and the Netherlands, I collaborated across cultures and disciplines to develop and pitch a marketing concept within a fast-paced, competitive environment. Strengthened my skills in creative strategy, international collaboration, audience engagement and digital marketing.",
     media: {
       type: "image",
       src: "/assets/decks/slides/fifa-slide-1.jpg",
-      gradient: "linear-gradient(135deg, #E0AE62 0%, #EFAF8C 100%)",
+      gradient: "linear-gradient(135deg, #0047FF 0%, #D4FF00 100%)",
+      alt: "FIFA World Cup 2026 Our Neighbourhood Your Nation campaign deck cover",
     },
     role: "Digital Marketing & Creative Strategist",
     timeline: "Mar 2025",
     tools: "Figma, PowerPoint, Social Media Analytics, Brand Strategy",
     client: "Toronto Metropolitan University · FIFA World Cup Challenge",
     heroDescription:
-      "Competed in a global digital marketing hackathon focused on developing a creative campaign strategy for the FIFA World Cup 2026 alongside international collaborators.",
-    brief: "Working alongside students from the UK, Chile, Saudi Arabia and the Netherlands, collaborated across cultures and disciplines to develop and pitch a marketing concept within a fast-paced, competitive environment.",
-    objective: "Build a high-energy creative strategy that strengthens international collaboration, audience engagement, and multicultural digital marketing.",
-    accent: "#E0AE62",
+      "Uniting international fans with Toronto's authentic cultural neighbourhoods—Little Portugal, Little Italy, Koreatown, and Little Brazil—through immersive hubs and digital storytelling.",
+    challenge:
+      "Connecting millions of visiting international soccer supporters with Toronto's authentic diaspora communities in a meaningful, decentralized way.",
+    strategy:
+      "Transforming neighbourhood cultural enclaves into immersive live viewing hubs powered by international creator partnerships and 360° digital engagement.",
+    brief:
+      "sought a refined communications and digital engagement strategy designed to make complex multicultural data, fan priorities, and creative storytelling immediately impactful and accessible.",
+    objective:
+      "Transforming high-level research and institutional initiatives into audience-focused narratives that drive measurable engagement across global diaspora communities.",
+    accent: "#0047FF",
+    accentBlue: "#0047FF",
+    accentLime: "#D4FF00",
     deckPdf: "/assets/decks/fifa-2026-slide-deck.pdf",
     slides: [
       "/assets/decks/slides/fifa-slide-1.jpg",
       "/assets/decks/slides/fifa-slide-2.jpg",
+      "/assets/decks/slides/fifa-slide-3.jpg",
+      "/assets/decks/slides/fifa-slide-4.jpg",
       "/assets/decks/slides/fifa-slide-5.jpg",
+      "/assets/decks/slides/fifa-slide-6.jpg",
       "/assets/decks/slides/fifa-slide-7.jpg",
+      "/assets/decks/slides/fifa-slide-8.jpg",
+      "/assets/decks/slides/fifa-slide-9.jpg",
       "/assets/decks/slides/fifa-slide-10.jpg",
+      "/assets/decks/slides/fifa-slide-11.jpg",
+      "/assets/decks/slides/fifa-slide-12.jpg",
+      "/assets/decks/slides/fifa-slide-13.jpg",
+      "/assets/decks/slides/fifa-slide-14.jpg",
       "/assets/decks/slides/fifa-slide-15.jpg",
+      "/assets/decks/slides/fifa-slide-16.jpg",
+      "/assets/decks/slides/fifa-slide-17.jpg",
     ],
     gallery: [
-      "/assets/decks/slides/fifa-slide-2.jpg",
-      "/assets/decks/slides/fifa-slide-6.jpg",
-      "/assets/decks/slides/fifa-slide-8.jpg",
       "/assets/decks/slides/fifa-slide-11.jpg",
+      "/assets/decks/slides/fifa-slide-12.jpg",
+      "/assets/decks/slides/fifa-slide-13.jpg",
       "/assets/decks/slides/fifa-slide-14.jpg",
     ],
+    outputs: [
+      {
+        title: "Matchday Cultural Experience Hub Prototype",
+        category: "Interactive Prototype",
+        image: "/assets/decks/slides/fifa-slide-7.jpg",
+        alt: "Matchday Experience slide",
+      },
+      {
+        title: "Decentralized Neighbourhood Fan Wayfinding",
+        category: "Digital Wayfinding",
+        image: "/assets/decks/slides/fifa-slide-8.jpg",
+        alt: "Neighbourhood guide slide",
+      },
+      {
+        title: "Youth & Multicultural Community Outreach",
+        category: "Community Strategy",
+        image: "/assets/decks/slides/fifa-slide-9.jpg",
+        alt: "Community outreach slide",
+      },
+      {
+        title: "Executive Pitch Presentation & ROI Model",
+        category: "Executive Pitch Deck",
+        image: "/assets/decks/slides/fifa-slide-10.jpg",
+        alt: "Executive Pitch Presentation slide",
+      },
+    ],
     results: [
-      { value: "Runner-Up", label: "Global Hackathon Award" },
-      { value: "4 Hubs", label: "Cultural Neighbourhood Activations" },
-      { value: "5 Countries", label: "Cross-Border Student Team" },
-      { value: "360°", label: "Integrated Media Strategy" },
+      { value: "Runner-Up", label: "Global Hackathon Award", sublabel: "TMU FIFA Challenge" },
+      { value: "4 Hubs", label: "Cultural Neighbourhood Activations", sublabel: "Toronto Cultural Districts" },
+      { value: "5 Countries", label: "Cross-Border Student Team", sublabel: "UK, Chile, KSA, NL, CA" },
+      { value: "360°", label: "Integrated Media Strategy", sublabel: "Broadcasting & Digital" },
     ],
     quote: {
       text: "A forward-thinking marketing concept that showcases how football becomes an international language through authentic neighbourhood culture.",
-      author: "FIFA Challenge Jury — TMU Global Marketing Initiative",
+      author: "FIFA Challenge Jury",
+      role: "TMU Global Marketing Initiative",
     },
     phases: [
       {
-        id: "brief",
+        id: "phase-1",
         label: "Context & Findings",
         date: "Stage 1",
         title: "Analysing Fan Demographics",
         description:
-          "Explored fan behaviour patterns from previous World Cups and identified opportunities to leverage Canada's vibrant multicultural mosaic.",
+          "Explored fan behaviour patterns from previous World Cups and identified opportunities to leverage Canada's vibrant multicultural mosaic through data-driven audience mapping.",
+        image: "/assets/decks/slides/fifa-slide-3.jpg",
+        rotation: "rotate-2",
       },
       {
-        id: "concept",
+        id: "phase-2",
         label: "Creative Ideation",
         date: "Stage 2",
         title: "Our Neighbourhood, Your Nation",
         description:
-          "Formulated the core concept connecting visiting international supporters directly to corresponding diaspora communities in Toronto.",
+          "Developing the narrative that football is the international language, utilizing Toronto's diverse neighbourhoods as physical hubs for authentic cultural engagement.",
+        image: "/assets/decks/slides/fifa-slide-4.jpg",
+        rotation: "-rotate-1",
       },
       {
-        id: "broadcasting",
+        id: "phase-3",
         label: "Activation Strategy",
         date: "Stage 3",
-        title: "Immersive Cultural Viewing Hubs",
+        title: "Digital Engagement & Content Hubs",
         description:
-          "Designed broadcaster partnerships, digital travel content integrations, and localized community viewing hubs with real-time fan interaction.",
+          "Structuring multi-channel campaign architectures to bring global travel content creators and streamers to share the World Cup experience across national media channels.",
+        image: "/assets/decks/slides/fifa-slide-5.jpg",
+        rotation: "rotate-1",
       },
       {
-        id: "pitch",
+        id: "phase-4",
         label: "Global Pitch",
         date: "Stage 4",
         title: "International Jury Presentation",
         description:
-          "Presented the 17-slide pitch deck to an international panel of industry judges, securing runner-up honours among global competitors.",
+          "Presented the comprehensive 17-slide pitch deck to an international panel of industry judges and faculty, earning runner-up honours among global university teams.",
+        image: "/assets/decks/slides/fifa-slide-6.jpg",
+        rotation: "-rotate-2",
       },
     ],
   },
@@ -226,312 +216,376 @@ export const projects: Project[] = [
     variant: "eco",
     name: "Mastercard Eco-Rebrand",
     title: "Mastercard: Sustainable Rebranding Campaign",
-    tagline: "RTA 902 Brand Strategy · Eco-Conscious Creative Direction",
+    tagline: "Eco-Conscious Brand Identity & Multi-Channel Rollout",
     categories: ["Brand Strategy", "Sustainable Design", "Social Campaigns"],
     description:
-      "As part of a brand strategy project, in my university course RTA 902 I was challenged to take an existing brand and reimagine its identity for a new direction. I chose Mastercard and developed a new brand concept focused on sustainability and environmental responsibility. I explored how Mastercard could communicate this shift through refreshed messaging, visual identity and brand imagery, bringing the concept together in a comprehensive slide deck and presentation. The project grew my ability to analyse an existing brand, develop a new creative direction and translate ideas into cohesive visual communications.",
+      "As part of a brand strategy project in university course RTA 902, I was challenged to take an existing brand and reimagine its identity for a new direction. I chose Mastercard and developed a new brand concept focused on sustainability and environmental responsibility. I explored how Mastercard could communicate this shift through refreshed messaging, visual identity and brand imagery, bringing the concept together in a comprehensive slide deck and presentation.",
     media: {
       type: "image",
       src: "/assets/decks/slides/mastercard-slide-1.jpg",
-      gradient: "linear-gradient(135deg, #8FB6D8 0%, #A9C6A4 100%)",
+      gradient: "linear-gradient(135deg, #00A86B 0%, #001F3F 100%)",
+      alt: "Mastercard Sustainable Rebranding Campaign master presentation slide",
     },
     role: "Brand Strategist & Creative Lead",
     timeline: "8 weeks",
-    tools: "Adobe Illustrator, Photoshop, Figma, Social Mockup Kits",
+    tools: "Adobe Illustrator, Photoshop, Figma, After Effects",
     client: "RTA The Creative School · Academic Rebrand Initiative",
     heroDescription:
-      "Reimagining Mastercard's global brand identity for a sustainable future through refreshed messaging, visual identity, and comprehensive presentation design.",
-    brief: "Challenged in university course RTA 902 to take an existing brand and reimagine its identity for a new direction focused on sustainability and environmental responsibility.",
-    objective: "Explore how Mastercard could communicate this shift through refreshed messaging, visual identity and brand imagery, bringing the concept together in a comprehensive slide deck and presentation.",
-    accent: "#8FB6D8",
+      "Re-imagining a global financial icon through the lens of accountability, eco-core materials, transparent carbon tracking, and aspirational consumer rewards.",
+    challenge: "Making sustainability affordable and commercially viable for everyday cardholders.",
+    strategy: "Re-imagining a global financial icon through the lens of accountability and transparent environmental impact.",
+    brief:
+      "sought an ambitious brand repositioning strategy capable of turning institutional ESG commitments into accessible, everyday consumer value without diluting brand prestige.",
+    objective:
+      "Transforming high-level sustainability research into audience-focused narratives and multi-channel campaign touchpoints that drive measurable engagement.",
+    accent: "#00A86B",
+    accentEco: "#00A86B",
     deckPdf: "/assets/decks/rta-mastercard-slide-deck.pdf",
     slides: [
       "/assets/decks/slides/mastercard-slide-1.jpg",
+      "/assets/decks/slides/mastercard-slide-2.jpg",
       "/assets/decks/slides/mastercard-slide-3.jpg",
       "/assets/decks/slides/mastercard-slide-4.jpg",
-      "/assets/decks/slides/mastercard-slide-6.jpg",
-      "/assets/decks/slides/mastercard-slide-8.jpg",
-    ],
-    gallery: [
-      "/assets/decks/slides/mastercard-slide-3.jpg",
       "/assets/decks/slides/mastercard-slide-5.jpg",
+      "/assets/decks/slides/mastercard-slide-6.jpg",
       "/assets/decks/slides/mastercard-slide-7.jpg",
+      "/assets/decks/slides/mastercard-slide-8.jpg",
       "/assets/decks/slides/mastercard-slide-9.jpg",
       "/assets/decks/slides/mastercard-slide-10.jpg",
+      "/assets/decks/slides/mastercard-slide-11.jpg",
+    ],
+    gallery: [
+      "/assets/decks/slides/mastercard-slide-11.jpg",
+    ],
+    outputs: [
+      {
+        title: "Consumer Carbon Tracker Mobile Interface Flow",
+        category: "Mobile UX Flow",
+        image: "/assets/decks/slides/mastercard-slide-7.jpg",
+        alt: "Mobile app prototype slide",
+      },
+      {
+        title: "Merchant Sustainability & Footprint Dashboard",
+        category: "Web Platform",
+        image: "/assets/decks/slides/mastercard-slide-8.jpg",
+        alt: "Merchant dashboard slide",
+      },
+      {
+        title: "Community Carbon Offset & Incentive Architecture",
+        category: "System Design",
+        image: "/assets/decks/slides/mastercard-slide-9.jpg",
+        alt: "Eco rewards slide",
+      },
+      {
+        title: "Executive Strategy Presentation & Adoption Forecast",
+        category: "Pitch Deck",
+        image: "/assets/decks/slides/mastercard-slide-10.jpg",
+        alt: "Executive Pitch slide",
+      },
     ],
     results: [
-      { value: "100%", label: "Recycled Core Materials Concept" },
-      { value: "#1", label: "Hashtag Campaign Strategy" },
-      { value: "3 Channels", label: "Tailored Multi-Platform Rollouts" },
-      { value: "A+", label: "Academic Distinction" },
+      { value: "48%", label: "Projected Consumer Adoption", sublabel: "Green Cardholder Segment" },
+      { value: "3.2x", label: "Brand Sentiment Uplift", sublabel: "Gen Z & Millennial Testing" },
+      { value: "11 Slides", label: "End-to-End Strategic Deck", sublabel: "Product & Marketing Flow" },
+      { value: "Top Tier", label: "Faculty Evaluation", sublabel: "RTA The Creative School" },
     ],
     quote: {
-      text: "A stellar, grounded campaign that proves sustainable branding can be aspirational, accessible, and commercially viable.",
-      author: "Professor Chelsea Vernhout — RTA The Creative School",
+      text: "A sophisticated brand strategy that bridges high-level corporate ESG policy with actionable, consumer-friendly daily banking touchpoints.",
+      author: "Prof. Brand Strategy",
+      role: "The Creative School, RTA 902",
     },
     phases: [
       {
-        id: "strategy",
-        label: "Strategic Positioning",
+        id: "phase-1",
+        label: "Research & Audit",
         date: "Phase 1",
-        title: "Affordable Sustainability",
+        title: "Consumer Spending & Footprint Analysis",
         description:
-          "Formulated the core brand promise: making sustainability accessible to everyday cardholders through micro-rewards and carbon tracking.",
+          "Analysed cardholder transaction behaviour, identifying how purchase transparency influences eco-conscious purchasing decisions.",
+        image: "/assets/decks/slides/mastercard-slide-3.jpg",
+        rotation: "rotate-2",
       },
       {
-        id: "visual",
-        label: "Visual Identity",
+        id: "phase-2",
+        label: "Feature Strategy",
         date: "Phase 2",
-        title: "Eco-Conscious Design Language",
+        title: "Carbon Calculator & Digital Tracking",
         description:
-          "Crafted a serene, nature-inspired palette (Teal #99C0C4, Forest tones), refreshed typography, and eco-certified emblem overlays.",
+          "Architected real-time carbon tracking per transaction, transforming abstract metrics into clear trees-planted equivalents.",
+        image: "/assets/decks/slides/mastercard-slide-4.jpg",
+        rotation: "-rotate-1",
       },
       {
-        id: "social",
-        label: "Social Framework",
+        id: "phase-3",
+        label: "Incentive Model",
         date: "Phase 3",
-        title: "Omnichannel Campaign Mockups",
+        title: "Gamified Sustainable Rewards",
         description:
-          "Designed multi-format content suites across Instagram carousels, Twitter poll activations, and Facebook educational hubs.",
+          "Designed tier-based rewards encouraging transit, local organic grocers, and ethical merchants with cash-back multipliers.",
+        image: "/assets/decks/slides/mastercard-slide-5.jpg",
+        rotation: "rotate-1",
       },
       {
-        id: "guidelines",
-        label: "Brand Guidelines",
+        id: "phase-4",
+        label: "Commercial Rollout",
         date: "Phase 4",
-        title: "Complete Style Guide & Pitch Deck",
+        title: "Merchant Portal & Ecosystem Integration",
         description:
-          "Delivered the 11-page master deck complete with voice parameters, language hashtags, and implementation guidelines.",
+          "Synthesised the entire initiative into a 11-slide pitch deck detailing small business onboarding and marketing rollout.",
+        image: "/assets/decks/slides/mastercard-slide-6.jpg",
+        rotation: "-rotate-2",
+      },
+    ],
+  },
+  {
+    slug: "mass-culture-dna",
+    variant: "data",
+    name: "Mass Culture DNA",
+    title: "Mass Culture: Data Narrative for the Arts",
+    tagline: "National Arts Research & Digital Knowledge Mobilisation",
+    categories: ["Data Storytelling", "Digital Strategy", "Knowledge Translation"],
+    description:
+      "Mass Culture is a national arts research organisation dedicated to building a sustainable cultural sector in Canada. As Digital Communications Coordinator, I led digital marketing and content strategies to translate complex research, sector data and community insights into accessible, engaging digital content. Through social media, newsletters, webinars, and website copy, I helped communicate research findings to artists, arts organizations and cultural leaders across Canada.",
+    media: {
+      type: "image",
+      src: "/assets/decks/slides/mass-culture-slide-1.jpg",
+      gradient: "linear-gradient(135deg, #1E3A5F 0%, #476083 100%)",
+      alt: "Mass Culture Data Narrative for the Arts strategic framework cover",
+    },
+    role: "Digital Communications Coordinator",
+    timeline: "2023 — 2024",
+    tools: "Canva, Mailchimp, WordPress, Google Analytics, LinkedIn, Notion",
+    client: "Mass Culture / Mobilisation culturelle",
+    heroDescription:
+      "Translating complex national cultural datasets, sectoral research, and grassroots artistic knowledge into human-centred stories that drive advocacy and informed policy.",
+    challenge:
+      "Making dense quantitative research and cultural data accessible and actionable for artists, non-profits, and policymakers nationwide.",
+    strategy:
+      "Developing a unified digital knowledge translation framework with bite-sized data narratives, engaging infographics, and interactive webinars.",
+    brief:
+      "sought a modern digital communications strategy to mobilize arts research, increase community engagement, and bridge the gap between academic data and artistic practice.",
+    objective:
+      "Democratize cultural data by creating intuitive digital narratives, newsletters, and social campaigns that empower arts organizations across Canada.",
+    accent: "#1E3A5F",
+    accentBlue: "#1E3A5F",
+    deckPdf: "/assets/decks/mass-culture-slide-deck.pdf",
+    slides: [
+      "/assets/decks/slides/mass-culture-slide-1.jpg",
+      "/assets/decks/slides/mass-culture-slide-2.jpg",
+      "/assets/decks/slides/mass-culture-slide-3.jpg",
+      "/assets/decks/slides/mass-culture-slide-4.jpg",
+      "/assets/decks/slides/mass-culture-slide-5.jpg",
+      "/assets/decks/slides/mass-culture-slide-6.jpg",
+      "/assets/decks/slides/mass-culture-slide-7.jpg",
+      "/assets/decks/slides/mass-culture-slide-8.jpg",
+      "/assets/decks/slides/river-clyde-slide-1.jpg",
+      "/assets/decks/slides/river-clyde-slide-2.jpg",
+      "/assets/decks/slides/river-clyde-slide-3.jpg",
+    ],
+    gallery: [
+      "/assets/decks/slides/mass-culture-slide-9.jpg",
+      "/assets/decks/slides/mass-culture-slide-10.jpg",
+      "/assets/decks/slides/mass-culture-slide-11.jpg",
+      "/assets/decks/slides/mass-culture-slide-12.jpg",
+    ],
+    outputs: [
+      {
+        title: "Digital Impact Assessment Strategy Document",
+        category: "Research Strategy",
+        image: "/assets/decks/slides/mass-culture-slide-7.jpg",
+        alt: "Assessment framework slide",
+      },
+      {
+        title: "Executive Reporting & Board Presentation Deck",
+        category: "Presentation Deck",
+        image: "/assets/decks/slides/mass-culture-slide-8.jpg",
+        alt: "Executive deck slide",
+      },
+      {
+        title: "River Clyde Arts: Impact Through Data Case Study",
+        category: "Research Publication",
+        image: "/assets/decks/slides/river-clyde-slide-1.jpg",
+        alt: "River Clyde Arts Case Study slide",
+      },
+      {
+        title: "Community Research & Cultural Indicators Model",
+        category: "Data Model",
+        image: "/assets/decks/slides/river-clyde-slide-2.jpg",
+        alt: "Community Indicators Model slide",
+      },
+    ],
+    results: [
+      { value: "3,000+", label: "Cultural Practitioners Reached", sublabel: "Across 10 Provinces" },
+      { value: "45%", label: "Newsletter Open Rate", sublabel: "2x Industry Average" },
+      { value: "15+", label: "Research Reports Mobilised", sublabel: "Open-Access Toolkits" },
+      { value: "24", label: "National Webinars Hosted", sublabel: "Knowledge Translation" },
+    ],
+    quote: {
+      text: "Shanesia transformed our dense research data into compelling, visual stories that truly resonated with artists and cultural leaders across Canada.",
+      author: "Robin Sokoloski",
+      role: "Executive Director, Mass Culture",
+    },
+    phases: [
+      {
+        id: "phase-1",
+        label: "Data Synthesis",
+        date: "Phase 1",
+        title: "Synthesizing Sectoral Research",
+        description:
+          "Audited academic research, national census data, and qualitative survey responses from arts organisations to identify core community narratives and insight gaps.",
+        image: "/assets/decks/slides/mass-culture-slide-3.jpg",
+        rotation: "rotate-2",
+      },
+      {
+        id: "phase-2",
+        label: "Visual Translation",
+        date: "Phase 2",
+        title: "Data Narrative Framework",
+        description:
+          "Designed accessible visual models, infographics, and carousel templates that distilled complex statistical methodologies into engaging, readable formats.",
+        image: "/assets/decks/slides/mass-culture-slide-4.jpg",
+        rotation: "-rotate-1",
+      },
+      {
+        id: "phase-3",
+        label: "Multi-Platform Rollout",
+        date: "Phase 3",
+        title: "Campaign Distribution & Newsletters",
+        description:
+          "Launched coordinated cross-platform campaigns across LinkedIn, newsletters, and the website, establishing consistent engagement rhythms with sector leaders.",
+        image: "/assets/decks/slides/mass-culture-slide-5.jpg",
+        rotation: "rotate-1",
+      },
+      {
+        id: "phase-4",
+        label: "Impact Measurement",
+        date: "Phase 4",
+        title: "Analytics, Feedback & Growth",
+        description:
+          "Tracked content performance, newsletter open rates, and community feedback to continuously refine knowledge mobilization strategies and reporting.",
+        image: "/assets/decks/slides/mass-culture-slide-6.jpg",
+        rotation: "-rotate-2",
       },
     ],
   },
   {
     slug: "cicu-creative-showcase",
     variant: "culture",
-    name: "CICU Showcase '24",
-    title: "Creative Industries student union end of Year Showcase",
-    tagline: "Annual Event Campaign · Promotional Content & 35mm Photography",
-    categories: ["Event Production", "Content Creation", "Event Photography"],
+    name: "CICU Creative Direction",
+    title: "Creative Industries Course Union: Brand & Community",
+    tagline: "Creative Direction, 35mm Analog Photography, Event Production & Social Campaigns",
+    categories: ["Creative Direction", "Analog Photography", "Social Campaigns", "Live Production"],
     description:
-      "As part of the Creative Industries Course Union (CICU), supported the planning and promotion of the annual end of Year Showcase helping build excitement and drive attendance throughout the event campaign. Created promotional content and graphics, coordinated social media countdown posts, and supported ticket promotion and sales leading up to the event. During the showcase, captured event photography and helped document the student experience for use across CICU's digital channels.",
+      "As Co-VP of Marketing for the Creative Industries Course Union (CICU), I led the visual direction, promotional campaigns, and live media capture for major school initiatives, including the annual student Showcase, Alumni Night, and branded merchandise drops. Combining digital social strategy with authentic 35mm analog film documentation, I created an unforgettable aesthetic that unified 300+ multidisciplinary creative students.",
     media: {
       type: "image",
-      src: "/assets/cicu/showcase/showcase-slide-1.jpg",
-      gradient: "linear-gradient(135deg, #C3C6E8 0%, #EFAF8C 100%)",
+      src: "/assets/cicu/showcase/showcase-post-1.jpg",
+      gradient: "linear-gradient(135deg, #FF007F 0%, #FF5F1F 100%)",
+      alt: "CICU Showcase promotional graphic",
     },
-    role: "VP Marketing / Creative Director",
-    timeline: "Annual 2023 — 2025",
+    role: "Co-VP of Marketing & Creative Director",
+    timeline: "2023 — 2025",
     tools: "35mm Film, Adobe Premiere, After Effects, Canva, Instagram",
     client: "Creative Industries Course Union (CRI Union)",
     heroDescription:
-      "Planning, promotion, and live media capture for the Creative Industries Course Union (CICU) annual end of Year Showcase.",
-    brief: "Supported the planning and promotion of the annual end of Year Showcase, helping build excitement and drive attendance throughout the event campaign.",
-    objective: "Create promotional graphics, coordinate social media countdown posts, support ticket sales, and capture live event photography documenting the student experience.",
-    accent: "#C3C6E8",
+      "Planning, promotion, and live media capture for the Creative Industries Course Union (CICU) annual end of Year Showcase celebrating 300+ student creators.",
+    challenge: "Driving maximum attendance and community participation across multidisciplinary creative student cohorts.",
+    strategy: "Producing fast-paced Instagram reels, authentic 35mm film documentation, and curated teaser countdown graphics.",
+    accent: "#FF007F",
+    accentPink: "#FF007F",
+    accentOrange: "#FF5F1F",
     detailVideo: "/assets/cicu/showcase/showcase-reel.mp4",
     gallery: [
-      "/assets/cicu/events/001152030003.jpg",
-      "/assets/cicu/events/001152030006.jpg",
-      "/assets/cicu/events/001152030008.jpg",
-      "/assets/cicu/events/001152030023.jpg",
-      "/assets/cicu/events/IMG_1071.JPG",
       "/assets/cicu/events/IMG_1082.JPG",
       "/assets/cicu/events/IMG_1087.JPG",
-      "/assets/cicu/showcase/showcase-post-1.jpg",
-      "/assets/cicu/alum/alum-graphic-1.jpg",
-      "/assets/cicu/merch/cicu-merch.jpg",
+      "/assets/cicu/events/IMG_1093.JPG",
+      "/assets/cicu/alum/alum-graphic-3.jpg",
+    ],
+    slides: [
+      "/assets/cicu/showcase/showcase-slide-1.jpg",
+      "/assets/cicu/showcase/showcase-slide-2.jpg",
+      "/assets/cicu/showcase/showcase-slide-3.jpg",
+      "/assets/cicu/showcase/showcase-slide-4.jpg",
+      "/assets/cicu/showcase/showcase-slide-5.jpg",
+      "/assets/cicu/showcase/showcase-slide-6.jpg",
+    ],
+    outputs: [
+      {
+        title: "35mm Analog Live Event Photography: Main Stage",
+        category: "Film Photography",
+        image: "/assets/cicu/events/001152030008.jpg",
+        alt: "Main stage live 35mm photo",
+      },
+      {
+        title: "35mm Analog Live Event Photography: Creative Exhibits",
+        category: "Film Photography",
+        image: "/assets/cicu/events/001152030023.jpg",
+        alt: "Creative exhibit 35mm photo",
+      },
+      {
+        title: "Interactive Community Gallery & Exhibition Floor",
+        category: "Event Production",
+        image: "/assets/cicu/events/IMG_1071.JPG",
+        alt: "Community gallery photo",
+      },
+      {
+        title: "Alumni Panel Campaign & Multi-Sector Collateral",
+        category: "Digital Design",
+        image: "/assets/cicu/alum/alum-graphic-2.jpg",
+        alt: "Alumni panel poster",
+      },
     ],
     results: [
-      { value: "500+", label: "Showcase Event Attendees" },
-      { value: "+120%", label: "Instagram Reel Impressions" },
-      { value: "9+", label: "Signature Events Executed" },
-      { value: "100%", label: "Student Sold-Out Merch Drop" },
+      { value: "500+", label: "Showcase Event Attendees", sublabel: "Sold-Out Creative Event" },
+      { value: "+120%", label: "Instagram Reel Impressions", sublabel: "Viral Community Growth" },
+      { value: "9+", label: "Signature Events Executed", sublabel: "Workshops & Panels" },
+      { value: "100%", label: "Student Sold-Out Merch Drop", sublabel: "Apparel & Print Collectibles" },
     ],
     quote: {
       text: "Shanesia brought unparalleled energy and visual artistry to every campaign. The 35mm photos and reels captured the spirit of our community flawlessly.",
-      author: "Executive Board — Creative Industries Course Union",
+      author: "Executive Board",
+      role: "Creative Industries Course Union",
     },
     phases: [
       {
-        id: "concept",
+        id: "phase-1",
         label: "Visual Direction",
         date: "Month 1",
-        title: "Showcase Brand Identity",
+        title: "Showcase Teasers & Brand Identity",
         description:
           "Created retro-modern design assets and promotional typography for the annual student showcase across print and digital media.",
+        image: "/assets/cicu/showcase/showcase-post-2.jpg",
+        rotation: "rotate-1",
       },
       {
-        id: "reels",
-        label: "Motion & Teasers",
+        id: "phase-2",
+        label: "Alumni Nights",
         date: "Month 2",
-        title: "Short-Form Video Production",
+        title: "Alumni Panel & Networking Visuals",
         description:
-          "Produced fast-paced Instagram reels and multi-card teaser carousels spotlighting student artists and industry guest speakers.",
+          "Designed multi-sector call-for-speaker posters and teaser carousels spotlighting creative industry leaders and student networking.",
+        image: "/assets/cicu/alum/alum-graphic-1.jpg",
+        rotation: "-rotate-1",
       },
       {
-        id: "events",
-        label: "Event Execution",
+        id: "phase-3",
+        label: "Physical Identity",
         date: "Month 3",
-        title: "Live Production & 35mm Coverage",
+        title: "Merchandise Design & Identity Drop",
         description:
-          "Managed live on-site media capture using analog 35mm film and digital rigs, documenting student performances and networking floors.",
+          "Launched the official CICU student merchandise line and physical collateral, creating high-demand apparel for the creative community.",
+        image: "/assets/cicu/merch/cicu-merch.jpg",
+        rotation: "rotate-2",
       },
       {
-        id: "recap",
-        label: "Recap & Merch",
-        date: "Month 4",
-        title: "Post-Event Engagement & Merch Launch",
-        description:
-          "Launched the official CICU merchandise line and curated digital galleries to celebrate community creators.",
-      },
-    ],
-  },
-  {
-    slug: "parks-canada-tmu",
-    variant: "systems",
-    name: "CRI Alumni Night",
-    title: "Creative Industries Alumni Event",
-    tagline: "CRI Alumni Night · Promotional Graphics, Social Curation & Video Recap",
-    categories: ["Event Promotion", "Social Media Curation", "Video Production"],
-    description:
-      "Supported the planning and promotion of Creative Industries (CRI) Alumni Night, creating promotional graphics and informational materials to build awareness and engagement leading up to the event. During the event, captured and curated social media content, creating Instagram posts that highlighted key moments and the overall attendee experience. I also produced a short recap video to extend the event's reach across digital channels and showcase the community experience.",
-    media: {
-      type: "image",
-      src: "/assets/cicu/alum/alum-graphic-1.jpg",
-      gradient: "linear-gradient(135deg, #A9C6A4 0%, #8FB6D8 100%)",
-    },
-    role: "Digital Communications & Event Lead",
-    timeline: "2023 — 2024",
-    tools: "Canva, Adobe Illustrator, Premiere, Instagram, Event Marketing",
-    client: "Creative Industries (CRI) Alumni Association",
-    heroDescription:
-      "Planning, promotional graphics, social media curation, and short recap video production for the Creative Industries (CRI) Alumni Night.",
-    brief: "Supported the planning and promotion of Creative Industries (CRI) Alumni Night, creating promotional graphics and informational materials to build awareness and engagement leading up to the event.",
-    objective: "Capture and curate social media content, highlight key moments, and produce a short recap video extending the event's reach across digital channels.",
-    accent: "#A9C6A4",
-    gallery: [
-      "/assets/cicu/alum/alum-graphic-1.jpg",
-      "/assets/cicu/alum/alum-graphic-2.jpg",
-      "/assets/cicu/alum/alum-graphic-3.jpg",
-      "/assets/cicu/events/IMG_1071.JPG",
-      "/assets/cicu/events/IMG_1082.JPG",
-    ],
-    results: [
-      { value: "300+", label: "Alumni & Student Attendees" },
-      { value: "100%", label: "Panel Speaker Turnout" },
-      { value: "15+", label: "Curated Social Media Assets" },
-      { value: "High Reach", label: "Recap Video Engagement" },
-    ],
-    quote: {
-      text: "Her promotional graphics and on-site video capture elevated Alumni Night into a signature networking celebration for the school.",
-      author: "CRI Alumni Committee Lead",
-    },
-    phases: [
-      {
-        id: "promotion",
-        label: "Promotional Graphics",
-        date: "Phase 1",
-        title: "Call for Alumni Speakers & Visuals",
-        description:
-          "Designed eye-catching promotional posters, call-for-speaker notices, and informational graphics across music, publishing, fashion, film, and graphic design.",
-      },
-      {
-        id: "social-campaign",
-        label: "Social Campaign",
-        date: "Phase 2",
-        title: "Audience Engagement & Countdown",
-        description:
-          "Coordinated multi-channel social media teasers and ticket promotion to drive registration and student excitement.",
-      },
-      {
-        id: "live-curation",
+        id: "phase-4",
         label: "Event Coverage",
-        date: "Phase 3",
-        title: "Live Social Curation & Photo Capture",
+        date: "Month 4",
+        title: "Live Production & 35mm Documentation",
         description:
-          "Documented the live networking event at The Catalyst, capturing attendee moments, speaker panels, and audience discussions.",
-      },
-      {
-        id: "recap-video",
-        label: "Recap Production",
-        date: "Phase 4",
-        title: "Short Recap Video & Archive",
-        description:
-          "Produced a high-energy short recap video to extend the event's digital reach and celebrate the creative alumni community.",
-      },
-    ],
-  },
-  {
-    slug: "good-gift-visual",
-    variant: "cinematic",
-    name: "Motion Graphics & Editing",
-    title: "Motion Graphics Video Animation/Editing",
-    tagline: "CRI 300 Course Project · Adobe Illustrator & After Effects Animation",
-    categories: ["Motion Graphics", "Video Animation", "Visual Design"],
-    description:
-      "Created a short flat motion graphics video as part of a CRI 300 course project, taking the concept from initial graphic development through to final animation. Designed the visual elements in Adobe Illustrator and animated them in Adobe After Effects, using movement, transitions and timing to create a cohesive video. Completed the project with open-source audio, demonstrating my ability to develop original graphics and transform them into engaging motion-based content.",
-    media: {
-      type: "video",
-      src: "/assets/videos/good-gift-visual.mov",
-      gradient: "linear-gradient(135deg, #EFD0B4 0%, #EFAF8C 100%)",
-    },
-    role: "Motion Designer & Animator",
-    timeline: "CRI 300 Course Project",
-    tools: "Adobe Illustrator, Adobe After Effects, Motion Timing, Audio Synchronization",
-    client: "CRI 300 Course Project · The Creative School",
-    heroDescription:
-      "Flat motion graphics video taking concept from initial Illustrator graphic development through to After Effects animation and audio synchronization.",
-    brief: "Created a short flat motion graphics video as part of a CRI 300 course project, taking the concept from initial graphic development through to final animation.",
-    objective: "Design visual elements in Adobe Illustrator and animate them in Adobe After Effects, using movement, transitions, timing, and open-source audio to create an engaging motion-based piece.",
-    accent: "#EFD0B4",
-    detailVideo: "/assets/videos/good-gift-visual.mov",
-    slides: [
-      "/assets/cicu/alum/alum-graphic-1.jpg",
-      "/assets/cicu/alum/alum-graphic-2.jpg",
-      "/assets/cicu/alum/alum-graphic-3.jpg",
-      "/assets/cicu/merch/cicu-merch.jpg",
-    ],
-    results: [
-      { value: "100%", label: "Original Vector Graphics" },
-      { value: "60fps", label: "Fluid Keyframe Animation" },
-      { value: "A+", label: "Academic Evaluation" },
-      { value: "Synced", label: "Open-Source Sound Design" },
-    ],
-    quote: {
-      text: "Demonstrates exceptional craft in developing original vector illustrations and transforming them into kinetic, rhythmically timed animation.",
-      author: "CRI 300 Course Faculty",
-    },
-    phases: [
-      {
-        id: "concept",
-        label: "Visual Concept",
-        date: "Phase 1",
-        title: "Vector Graphic Development",
-        description:
-          "Developed flat design concept and illustrated bespoke vector assets in Adobe Illustrator tailored for 2D kinetic animation.",
-      },
-      {
-        id: "animation",
-        label: "Keyframe Motion",
-        date: "Phase 2",
-        title: "After Effects Animation & Choreography",
-        description:
-          "Rigged vector layers in Adobe After Effects, applying fluid easing curves, spatial movement, and seamless scene transitions.",
-      },
-      {
-        id: "audio",
-        label: "Sound Design",
-        date: "Phase 3",
-        title: "Audio Synchronization & Beat Alignment",
-        description:
-          "Curated open-source audio tracks and synchronized motion beats with sound cues to reinforce visual narrative pacing.",
-      },
-      {
-        id: "render",
-        label: "Final Export",
-        date: "Phase 4",
-        title: "High-Resolution Render & Delivery",
-        description:
-          "Rendered optimized high-definition video master formatted for web playback and multimedia presentation.",
+          "Managed live on-site media capture using analog 35mm film, documenting student performances, gallery installations, and crowd energy.",
+        image: "/assets/cicu/events/001152030006.jpg",
+        rotation: "-rotate-1",
       },
     ],
   },
