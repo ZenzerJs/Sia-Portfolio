@@ -12,47 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
  * cursor dot, footer) inverts together — no element is left dark-on-dark.
  */
 export function initThemeScroll(): () => void {
-  if (typeof window === "undefined") return () => {};
-
-  const contactSection = document.getElementById("contact");
-  if (!contactSection) return () => {};
-
-  const tween = gsap.to("body", {
-    backgroundColor: "#112239",
-    color: "#FFFFFF",
-    "--text-dark": "#FFFFFF",
-    "--bg-light": "#112239",
-    "--text-muted": "rgba(255, 255, 255, 0.7)",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#contact",
-      start: "top 40%",
-      end: "top 10%",
-      scrub: 0.3,
-    },
-  });
-
-  // Also invert brand logos and monogram icons when entering contact dark theme
-  const logoTween = gsap.to(".brand-logo, .brand", {
-    filter: "brightness(0) invert(1)",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#contact",
-      start: "top 40%",
-      end: "top 10%",
-      scrub: 0.3,
-    },
-  });
-
+  // The footer is already self-contained with its dedicated #112239 background.
+  // We keep body theme clean on the linen canvas so previous sections (Kind words / Testimonials)
+  // never flash blue prematurely.
+  resetBodyTheme();
   return () => {
-    tween.scrollTrigger?.kill();
-    tween.kill();
-    logoTween.scrollTrigger?.kill();
-    logoTween.kill();
-
-    // If the scrub left <body> in a dark state (e.g. the visitor navigated away
-    // while scrolled to #contact), restore the default light theme so the next
-    // route doesn't inherit an inverted navy canvas and near-white text.
     resetBodyTheme();
   };
 }
