@@ -1,145 +1,54 @@
-# Marimba.Designs — Portfolio Template
+# 🎨 Marimba.Designs — Creative Engineering & Design Portfolio
 
-Award-style creative portfolio built with **Next.js 15 (App Router)**, **GSAP + ScrollTrigger**, **Lenis** smooth scroll, and Tailwind CSS. Editorial serif headlines, organic conic-gradient process disks, a scroll-driven trigonometric orbit hero, and a grain-free linen aesthetic.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-3-88CE02?style=flat-square&logo=greensock&logoColor=white)](https://gsap.com/)
+[![Lenis](https://img.shields.io/badge/Smooth_Scroll-Lenis-black?style=flat-square)](https://lenis.darkroom.engineering/)
+[![Vercel](https://img.shields.io/badge/Deployment-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
 
----
-
-## Stack
-
-| Area | Tool |
-| :--- | :--- |
-| Framework | Next.js 15 (App Router, React 19) |
-| Motion | GSAP 3 + ScrollTrigger, Lenis, framer-motion (subpages) |
-| Styling | Tailwind CSS 3 + CSS custom properties |
-| Fonts | Instrument Serif (display), Geist (body/UI), Roboto Mono (meta) via `next/font` |
-
-## Getting started
-
-```bash
-npm install
-npm run dev        # http://localhost:3000
-```
-
-Production build:
-
-```bash
-npm run build
-npm run start
-```
+> An award-style creative portfolio built with Next.js 15 App Router, React 19, GSAP ScrollTrigger, and Lenis smooth scrolling. Features editorial serif typography, a scroll-driven trigonometric orbit hero, organic conic-gradient process disks, and seamless reduced-motion accessibility.
 
 ---
 
-## Customize the template
+## 🌟 Key Features
 
-### 1. Identity, contact, links — `lib/siteConfig.ts` ✔ start here
-
-Every piece of personal data lives in one file:
-
-- `name`, `legalName`, `role`, `location`, `tagline`, `person`
-- `email`, `socials` (Instagram / LinkedIn / Behance — swap or extend)
-- `showreel.src` (homepage showcase video)
-- `awards` links (CSS Winner, Awwwards)
-- `testimonials` (home rotator: quote + author)
-- `education` + `skills` + `resumeUrl` (About page; drop your PDF at `public/assets/resume.pdf`)
-- `toolMarquee` (software + AI tool icons in the scrolling divider — icon SVGs live in `public/assets/tools/`)
-- `metadataBase` / `domain` — **set to your deployed URL** (used for SEO)
-
-Metadata (title, description, Open Graph, Twitter, theme-color) is generated from this file in `app/layout.tsx`. To add a social preview image, place one in `public/assets/` and add `openGraph.images` in `app/layout.tsx`.
-
-### 2. Projects & case studies — `lib/projects.ts`
-
-Projects power both `/work` (slider) and `/work/[slug]` (case study). Add/rename an entry and the pages update automatically:
-
-```ts
-{
-  slug: "my-project",
-  name: "My Project",
-  tagline: "Subtitle",
-  categories: ["Branding", "Web Design"],
-  description: "Short slider blurb",
-  media: { type: "video" | "placeholder", src?, gradient? },
-  role: "Design & Development",
-  timeline: "6 weeks",
-  tools: "WordPress, GSAP, Figma",
-  client: "Client name",
-  heroDescription: "Case study intro",
-  detailVideo: "https://...",
-  accent: "#C1E4F7",
-  phases: [{ id,label,date,title,description }, ...],
-}
-```
-
-- `media.type: "video"` → host a file and point `src` at it.
-- `media.type: "placeholder"` → gradient tile (great for templates you haven't filmed yet).
-
-Optionally add per project:
-
-- `results: [{ value: "+38%", label: "Client inquiries" }]` → results grid on the detail page
-- `quote: { text, author }` → client/supervisor pull-quote
-- `beforeAfter: { before, after, beforeLabel, afterLabel }` → scroll-scrubbed before/after comparison (CSS gradients or `url(...)` backgrounds)
-
-### 3. Assets — `public/assets/`
-
-| File | Purpose |
-| :--- | :--- |
-| `logo.svg` | Loading-logo + header brand |
-| `shape-*.webp` | Hero orbit shapes (circles, star, leaf, asterisk texture) |
-| `laptop-sequence-_00073.webp` | Laptop frame for the work showcase (showreel is clipped to its screen) |
-| `tools/*.svg` | Software + AI tool icons for the marquee (official simple-icons marks + a few hand-drawn) |
-| `resume.pdf` | Placeholder CV — replace with your own PDF (About page download) |
-
-Swap the files and keep the names — zero code changes.
-
-### 4. Colors & type
-
-- **Tokens**: `:root` variables in `app/globals.css` (`--bg-light`, `--text-dark`, `--loader-bg`, …).
-- **Tailwind colors**: `tailwind.config.ts` (`canvas`, `surface`, `navy`).
-- **Fonts**: swap `next/font/google` imports in `app/layout.tsx`.
-- **Palette reference**: `design-system.json`.
-
-### 5. Homepage sections
-
-All in one file — `components/MarimbaExactPortfolio.tsx`:
-
-| Section | Notes |
-| :--- | :--- |
-| Loader + intro | Timing in `lib/heroExplode.ts` (loader bar fill, curtain, shape explosion) |
-| Hero orbit | `lib/orbitEngine.ts` (scroll-scrubbed shape convergence) |
-| Work showcase | Showreel clipped to the laptop screen (config via `siteConfig.showreel`) |
-| Tools marquee | `components/ToolMarquee.tsx` (icon tiles, infinite scroll — no hover pause) |
-| Kind words | `lib/testimonialRotator.ts` (autoplay + drag/swipe, prev/next, keyboard) |
-| Process disks | `lib/processStack.ts` + markup in the section |
-| Contact / Footer | Powered by `siteConfig` |
-
-Sub-pages (`/about`, `/work`, `/work/[slug]`) share `components/SiteHeader.tsx` and `components/CursorDot.tsx`.
-
-### 6. Reduced motion — automatic
-
-`prefers-reduced-motion` is respected everywhere:
-
-- Loader/intro explode is skipped; content appears instantly (`lib/heroExplode.ts`)
-- Hero scroll fade drops blur/drift; autonomous orbit spin is disabled (`lib/orbitEngine.ts`)
-- Showreel autoplay paused (`components/MarimbaExactPortfolio.tsx`)
-- Global CSS kills transitions/animations (`app/globals.css`)
-
-Verify with OS-level "reduce motion," DevTools rendering emulation, or `page.emulateMediaFeatures` in Playwright/Puppeteer.
+- **Scroll-Driven Motion & Animations**: Orchestrated using GSAP 3 and ScrollTrigger, featuring a trigonometric hero orbit convergence (`orbitEngine.ts`), conic-gradient process disks (`processStack.ts`), and Lenis smooth scrolling.
+- **Interactive Work & Case Studies**: Dynamic project showcases at `/work` with slider navigation and deep-dive case study layouts at `/work/[slug]`, driven centrally from `projects.ts`.
+- **Curtain & Page Transitions**: Frictionless route navigation powered by curtain overlay transitions (`PageTransitionProvider.tsx`) and an interactive custom mouse cursor (`CursorDot.tsx`).
+- **Centralized Site Configuration**: Single-file management for identity, social profiles, awards, dynamic tool marquees, and testimonials inside `siteConfig.ts`.
+- **Automatic Reduced Motion**: Native `prefers-reduced-motion` compliance that gracefully disables intense orbit physics, video autoplay, and explosion effects.
+- **Modern Typographic Hierarchy**: Editorial serif displays (Instrument Serif), modern body type (Geist), and clean metadata monospace (Roboto Mono) configured via `next/font`.
 
 ---
 
-## Architecture notes
+## 🏗️ Repository Architecture
 
-- **GSAP engines** live in `lib/` and are mounted inside `useEffect` with full cleanup (StrictMode-safe).
-- The homepage pins its backdrop (`hero-background` via ScrollTrigger). The pin-spacer is kept out of the flex flow with the `.hero .pin-spacer { position: absolute !important; }` rule in `app/globals.css` — do not remove it or `.hero-content` will be pushed below the fold.
-- `components/index.ts` exports only the route-wired components. The older `MarimbaPortfolio`/`HeroSection`/`Header` framer-motion variants remain in the folder as reference but are not exported.
-- Page-to-page navigations use a curtain overlay (`components/PageTransitionProvider.tsx`).
-
-## Deployment
-
-Any Node host works (Vercel, Netlify, your own server):
-
-```bash
-npm run build
-npm run start
-```
-
-Remember to update `siteConfig.domain` / `metadataBase` to your live URL before deploying.
+```text
+marimba/
+├── public/
+│   └── assets/                 # SVGs, WebP shapes, tool icons, & resume.pdf
+├── src/
+│   ├── app/                    # Next.js 15 App Router pages & metadata
+│   │   ├── about/              # About page route
+│   │   ├── work/               # Work portfolio & dynamic [slug] case studies
+│   │   ├── globals.css         # Design tokens, CSS variables, & pin-spacer rules
+│   │   ├── layout.tsx          # Font setups & dynamic Open Graph metadata
+│   │   └── page.tsx            # Main landing page
+│   ├── components/             # Modular UI & animation components
+│   │   ├── CursorDot.tsx       # Custom mouse follower
+│   │   ├── MarimbaExactPortfolio.tsx # Core homepage layout container
+│   │   ├── PageTransitionProvider.tsx # Page-to-page curtain overlays
+│   │   ├── SiteHeader.tsx      # Persistent site navigation
+│   │   └── ToolMarquee.tsx     # Infinite scroll tool & software strip
+│   └── lib/                    # Animation engines & structured content data
+│       ├── heroExplode.ts      # Intro loader & curtain timing engine
+│       ├── orbitEngine.ts      # Trigonometric scroll convergence math
+│       ├── processStack.ts     # Conic-gradient process disk logic
+│       ├── projects.ts         # Portfolio case study registry
+│       ├── siteConfig.ts       # Global profile, links, & testimonial data
+│       └── testimonialRotator.ts # Drag/swipe quote slider engine
+├── design-system.json          # Core palette & color token specifications
+├── tailwind.config.ts          # Custom Tailwind canvas, surface, & font configs
+└── vercel.json                 # Vercel production hosting configuration
