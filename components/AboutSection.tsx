@@ -151,12 +151,12 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Top-Right Polaroid: Toronto Skyline (Tilted) */}
+            {/* Top-Right Polaroid: London Design Museum (Tilted) */}
             <div className="polaroid-frame absolute -top-4 right-0 sm:right-4 w-36 sm:w-44 rotate-[6deg] z-10 hover:z-30">
               <div className="overflow-hidden aspect-[4/5] bg-slate-100 rounded-sm mb-1.5">
                 <img
-                  src="/assets/headshots/IMG_1421.jpeg"
-                  alt="Toronto Skyline"
+                  src="/assets/headshots/design-museum-london.jpg"
+                  alt="London Design Museum"
                   className="w-full h-full object-cover object-center"
                   loading="lazy"
                 />
