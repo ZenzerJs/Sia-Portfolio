@@ -658,16 +658,6 @@ main {
     width: 100%;
 }
 
-.section#expertise {
-    min-height: 160vh;
-    pointer-events: none;
-}
-
-/* Mobile video: Hidden on desktop */
-.expertise-mobile-video {
-    display: none !important;
-}
-
 /* Work Section: showreel locked inside a 3D CSS MacBook Pro screen */
 .section#work {
     min-height: 100vh;

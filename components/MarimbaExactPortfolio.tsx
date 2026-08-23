@@ -19,6 +19,7 @@ import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
 import { ConnectModal } from "@/components/ui/ConnectModal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { AboutSection } from "@/components/AboutSection";
+import { StrategicProcessSection } from "@/components/StrategicProcessSection";
 import { projects } from "@/lib/projects";
 
 const showcaseGalleryItems: AccordionGalleryItem[] = [
@@ -537,10 +538,8 @@ export function MarimbaExactPortfolio() {
           />
         </section>
 
-        {/* Process Disks / Orbit Runway (Repositioned below Photography) */}
-        <section className="section py-8" id="expertise">
-          <div className="section-content"></div>
-        </section>
+        {/* Strategic Process & Methodology (Interactive GSAP Animated Section) */}
+        <StrategicProcessSection />
 
         {/* Testimonials */}
         <section className="section testimonials" id="testimonials" aria-label="Kind words">
