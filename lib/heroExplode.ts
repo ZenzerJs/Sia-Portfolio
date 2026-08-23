@@ -90,13 +90,6 @@ export function initHeroExplode(onComplete?: () => void): () => void {
     "-=0.6"
   );
 
-  masterTl.fromTo(
-    ".polaroid-frame, .taped-memo",
-    { opacity: 0, scale: 0.9, y: 25 },
-    { opacity: 1, scale: 1, y: 0, duration: 0.9, stagger: 0.1, ease: "back.out(1.3)" },
-    "-=0.7"
-  );
-
   // 4. Shape "Pop" Sequence — each shape emerges from behind the hero headline
   //    (the viewport center) and settles outward into its layout position,
   //    rather than flying in from the edges of the screen.

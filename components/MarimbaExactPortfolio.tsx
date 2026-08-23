@@ -278,132 +278,58 @@ export function MarimbaExactPortfolio() {
 
       {/* Main Content */}
       <main id="main-content">
-        {/* 1. Hero Section: Editorial Split Layout with Polaroid & Washi-Tape Collage */}
-        <section className="hero relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 px-6 md:px-12 overflow-hidden" id="home">
-          {/* Ambient Background Glows & Marimba Floating Shapes */}
+        {/* 1. Main Exploding Hero Section */}
+        <section className="hero" id="home">
           <div className="hero-background">
-            <div className="shape shape-astrix" id="shape-astrix" style={{ inset: "15% auto auto 10%" }}>
+            <div className="shape shape-astrix" id="shape-astrix" style={{ inset: "20% auto auto 23%" }}>
               <img src="/assets/shape-astrix.svg" alt="" className="shape-img" />
             </div>
 
-            <div className="shape shape-circle-left" id="shape-circle-left" style={{ inset: "8% auto auto -6%" }}>
+            <div className="shape shape-circle-left" id="shape-circle-left" style={{ inset: "12% auto auto -8%" }}>
               <img src="/assets/shape-circle1.webp" alt="" className="shape-img" />
             </div>
 
-            <div className="shape shape-starburst" id="shape-starburst" style={{ inset: "auto auto 12% 44%" }}>
+            <div className="shape shape-starburst" id="shape-starburst" style={{ inset: "23% auto auto 3%" }}>
               <img src="/assets/shape-star1.webp" alt="" className="shape-img" />
             </div>
 
-            <div className="shape shape-leaf" id="shape-leaf" style={{ inset: "45% 2% auto auto" }}>
+            <div className="shape shape-circle-right" id="shape-circle-right" style={{ inset: "10% -12% auto auto" }}>
+              <img src="/assets/shape-circle2.webp" alt="" className="shape-img" />
+            </div>
+
+            <div className="shape shape-leaf" id="shape-leaf" style={{ inset: "40% 0% auto auto" }}>
               <img src="/assets/shape-leaf1.webp" alt="" className="shape-img" />
             </div>
 
-            <div className="shape shape-astrix shape-astrix--lg" id="shape-astrix-2" style={{ inset: "auto 8% 8% auto" }}>
+            <div className="shape shape-astrix shape-astrix--lg" id="shape-astrix-2" style={{ inset: "auto 15% 10% auto" }}>
               <img src="/assets/shape-astrix-2.svg" alt="" className="shape-img" />
             </div>
 
-            <div className="shape shape-circle-bottom" id="shape-circle-bottom" style={{ inset: "auto auto -15% 45%" }}>
+            <div className="shape shape-circle-bottom" id="shape-circle-bottom" style={{ inset: "auto auto -20% 50%" }}>
               <img src="/assets/shape-circle3.webp" alt="" className="shape-img" />
             </div>
           </div>
-
-          <div className="max-w-[1380px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-20">
-            {/* Left Column: Headline & Action Buttons */}
-            <div className="lg:col-span-6 flex flex-col items-start text-left hero-content !max-w-none !p-0">
-              <div className="hero-tag mb-6">
-                <span className="pill-button !bg-white/80 !backdrop-blur-sm !border-[#1E3A5F]/20 text-xs font-mono tracking-wider uppercase text-[#1E3A5F]">
-                  Communications · Marketing · Digital Media · Project Coordination
-                </span>
-              </div>
-              <h1 className="hero-headline font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.12] tracking-tight text-[#1E3A5F] mb-6">
-                Turning ideas into meaningful digital experiences.
-              </h1>
-              <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed max-w-xl mb-8">
-                Strategic storytelling, creative content, and digital communication that connects.
-              </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <a
-                  href="#work"
-                  className="px-8 py-3.5 rounded-full bg-[#1E3A5F] text-white hover:bg-[#142A4A] text-xs font-mono tracking-widest uppercase shadow-md hover:shadow-lg transition-all hover:scale-105"
-                >
-                  <span>VIEW MY WORK</span>
-                  <span className="ml-2">→</span>
-                </a>
-                <Link
-                  href="/about"
-                  className="px-8 py-3.5 rounded-full bg-white border border-slate-300 text-[#1E3A5F] hover:bg-slate-50 text-xs font-mono tracking-widest uppercase transition-all hover:scale-105 shadow-sm"
-                >
-                  <span>ABOUT ME</span>
-                  <span className="ml-2">→</span>
-                </Link>
-              </div>
+          <div className="hero-content">
+            <div className="hero-tag">
+              <span className="pill-button">
+                Communications · Marketing · Project Coordination
+              </span>
             </div>
-
-            {/* Right Column: Multi-Layer Polaroid & Washi-Tape Collage */}
-            <div className="lg:col-span-6 relative flex justify-center items-center min-h-[460px] sm:min-h-[520px]">
-              {/* Center Main Portrait with Washi Tape */}
-              <div className="relative z-20 w-64 sm:w-76 md:w-80 rounded-2xl bg-white p-2 shadow-2xl transition-transform duration-500 hover:scale-105">
-                <div className="washi-tape" />
-                <div className="rounded-xl overflow-hidden aspect-[4/5] bg-slate-100">
-                  <img
-                    src="/assets/headshots/shanesia-primary.jpg"
-                    alt="Shanesia Saha portrait"
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
-
-              {/* Top-Right Polaroid: Toronto Skyline (Tilted) */}
-              <div className="polaroid-frame absolute -top-4 right-0 sm:right-4 w-36 sm:w-44 rotate-[6deg] z-10 hover:z-30">
-                <div className="overflow-hidden aspect-[4/5] bg-slate-100 rounded-sm mb-1.5">
-                  <img
-                    src="/assets/headshots/IMG_1421.jpeg"
-                    alt="Toronto Skyline"
-                    className="w-full h-full object-cover object-center"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* Bottom-Right Polaroid: Workspace & Matcha (Tilted) */}
-              <div className="polaroid-frame absolute -bottom-6 right-2 sm:right-8 w-36 sm:w-44 rotate-[-4deg] z-20 hover:z-30">
-                <div className="overflow-hidden aspect-[4/5] bg-slate-100 rounded-sm mb-1.5">
-                  <img
-                    src="/assets/headshots/IMG_2650.jpeg"
-                    alt="Creative Workspace"
-                    className="w-full h-full object-cover object-center"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* Bottom-Left Taped Memo Card with Keywords & Starburst */}
-              <div className="taped-memo absolute -bottom-4 left-0 sm:left-4 w-44 sm:w-52 p-4 rounded-xl rotate-[-3deg] z-30 shadow-xl hover:rotate-0 transition-transform duration-300">
-                <div className="washi-tape !w-16 !-top-2.5" />
-                <div className="flex items-end justify-between">
-                  <div className="space-y-1 font-serif text-base sm:text-lg text-[#1E3A5F] leading-tight">
-                    <p className="m-0">Storytelling</p>
-                    <p className="m-0">Strategy</p>
-                    <p className="m-0">Design</p>
-                    <p className="m-0">Connection</p>
-                  </div>
-                  <img
-                    src="/assets/shape-astrix.svg"
-                    alt=""
-                    className="w-8 h-8 opacity-80"
-                    aria-hidden="true"
-                  />
-                </div>
-              </div>
-            </div>
+            <h1 className="hero-headline font-normal leading-[1.14] text-center max-w-4xl mx-auto">
+              Connecting data, research, and community
+              <br className="hidden sm:inline" />
+              {" "}through strategic storytelling
+              <br className="hidden sm:inline" />
+              {" "}and digital media.
+            </h1>
           </div>
         </section>
 
-        {/* 2. What I Do: 5-Pillar Core Capabilities */}
-        <WhatIDoSection />
-
-        {/* 3. Editorial About Teaser Section */}
+        {/* 2. Editorial About Section with Polaroid & Washi-Tape Collage */}
         <AboutSection />
+
+        {/* 3. What I Do: 5-Pillar Core Capabilities */}
+        <WhatIDoSection />
 
         {/* 4. Work Showcase — 3D MacBook with Motion Reels */}
         <section className="section py-16 md:py-24" id="work" data-cursor="work">

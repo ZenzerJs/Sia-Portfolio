@@ -641,13 +641,14 @@ main {
 
 .hero-headline {
     font-family: var(--font-display);
-    font-size: 56px;
+    font-size: 58px;
     font-weight: 400;
-    line-height: 1.12;
+    line-height: 1.14;
     letter-spacing: -0.02em;
     color: var(--text-dark);
     margin: 0;
-    text-align: left;
+    text-align: center;
+    text-wrap: balance;
 }
 
 /* Polaroid & Tape Aesthetic */
