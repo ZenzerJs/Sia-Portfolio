@@ -18,6 +18,7 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
 import { ConnectModal } from "@/components/ui/ConnectModal";
 import { SiteHeader } from "@/components/SiteHeader";
+import { AboutSection } from "@/components/AboutSection";
 import { projects } from "@/lib/projects";
 
 const showcaseGalleryItems: AccordionGalleryItem[] = [
@@ -129,7 +130,7 @@ export function MarimbaExactPortfolio() {
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".navigation .nav-link")
     );
-    const sectionIds = ["home", "work", "campaigns", "gallery", "testimonials", "contact"];
+    const sectionIds = ["home", "about", "work", "campaigns", "gallery", "testimonials", "contact"];
     const updateActiveNav = () => {
       let current = "home";
       const probe = window.innerHeight * 0.4;
@@ -336,6 +337,9 @@ export function MarimbaExactPortfolio() {
         <section className="section" id="expertise">
           <div className="section-content"></div>
         </section>
+
+        {/* Editorial About Section */}
+        <AboutSection />
 
         {/* Work Showcase — 3D MacBook with Motion Reels */}
         <section className="section pb-2 md:pb-4" id="work" data-cursor="work">
