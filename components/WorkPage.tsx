@@ -110,7 +110,7 @@ export function WorkPage() {
               ref={workDescRef}
               className="work-intro__description text-base md:text-lg text-gray-600 max-w-2xl text-center mx-auto leading-relaxed"
             >
-              A collection of brand strategy, digital campaigns, and communications projects.
+              Turning ideas into meaningful digital experiences.
             </p>
           </div>
         </section>
