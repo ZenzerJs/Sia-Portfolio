@@ -33,7 +33,7 @@ export function initOrbitEngine(): () => void {
   const labelRight = circleRight?.querySelector(".shape-label") as HTMLElement | null;
   const labelBottom = circleBottom?.querySelector(".shape-label") as HTMLElement | null;
 
-  if (!heroBackground || !expertiseSection || !circleLeft || !circleRight || !circleBottom) {
+  if (!heroBackground || !circleLeft || !circleRight || !circleBottom) {
     return () => {};
   }
 

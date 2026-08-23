@@ -74,21 +74,6 @@ export function DeckViewerModal({
           </div>
 
           <div className="flex items-center gap-3">
-            {pdfUrl && (
-              <a
-                href={pdfUrl}
-                download
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-mono rounded-full bg-[var(--text-dark)] text-white hover:opacity-90 transition-opacity"
-              >
-                <span>Download PDF</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-              </a>
-            )}
-
             <button
               onClick={onClose}
               className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition-colors"

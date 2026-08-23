@@ -387,14 +387,22 @@ export function AboutPage() {
                 </div>
               </div>
 
-              {/* Resume Button */}
-              <div className="pt-4">
+              {/* Resume Buttons */}
+              <div className="pt-4 flex flex-wrap items-center gap-3">
                 <a
-                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-[#1E3A5F] border border-[#1E3A5F] rounded-full hover:bg-[#1E3A5F] hover:text-white transition-all duration-300 hover:shadow-lg"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-white bg-[#1E3A5F] rounded-full hover:bg-[#142A4A] transition-all duration-300 shadow-md hover:shadow-lg"
                   href={siteConfig.resumeUrl}
                   download
                 >
-                  <span>Download Complete Résumé (PDF)</span>
+                  <span>Download Résumé (PDF)</span>
+                  <span>↓</span>
+                </a>
+                <a
+                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-[#1E3A5F] border border-[#1E3A5F] rounded-full hover:bg-slate-50 transition-all duration-300"
+                  href={siteConfig.resumeDocxUrl}
+                  download
+                >
+                  <span>Download Résumé (DOCX)</span>
                   <span>↓</span>
                 </a>
               </div>

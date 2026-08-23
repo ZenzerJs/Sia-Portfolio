@@ -118,28 +118,49 @@ export function ConnectModal({ isOpen, onClose }: ConnectModalProps) {
           </div>
         </div>
 
-        {/* Social Links */}
+        {/* Professional & Social Links */}
         <div>
           <div className="text-xs font-mono text-white/50 uppercase tracking-wider mb-3">
-            Online Presence
+            Professional Profiles &amp; Documents
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-            {Object.values(siteConfig.socials).map((social) => (
-              <a
-                key={social.href}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-              >
-                <span className="text-xs font-medium text-white/90 group-hover:text-white">
-                  {social.label}
-                </span>
-                <span className="text-xs text-white/40 group-hover:text-white/80 transition-colors">
-                  ↗
-                </span>
-              </a>
-            ))}
+            <a
+              href={siteConfig.socials.linkedin.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+            >
+              <span className="text-xs font-medium text-white/90 group-hover:text-white">
+                LinkedIn
+              </span>
+              <span className="text-xs text-white/40 group-hover:text-white/80 transition-colors">
+                ↗
+              </span>
+            </a>
+            <a
+              href={siteConfig.resumeUrl}
+              download
+              className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+            >
+              <span className="text-xs font-medium text-white/90 group-hover:text-white">
+                Résumé (PDF)
+              </span>
+              <span className="text-xs text-white/40 group-hover:text-white/80 transition-colors">
+                ↓
+              </span>
+            </a>
+            <a
+              href={siteConfig.resumeDocxUrl}
+              download
+              className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+            >
+              <span className="text-xs font-medium text-white/90 group-hover:text-white">
+                Résumé (DOCX)
+              </span>
+              <span className="text-xs text-white/40 group-hover:text-white/80 transition-colors">
+                ↓
+              </span>
+            </a>
           </div>
         </div>
 

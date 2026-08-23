@@ -42,19 +42,11 @@ export const siteConfig = {
   /** Contact */
   email: "shanesiasaha@yahoo.ca",
 
-  /** Socials (used in contact + footer sections) */
+  /** Socials (standardized across site: LinkedIn only) */
   socials: {
     linkedin: {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/shanesiasaha/",
-    },
-    instagram: {
-      label: "Instagram",
-      href: "https://www.instagram.com/criunion/",
-    },
-    massculture: {
-      label: "Mass Culture DNA",
-      href: "https://massculture.ca/",
+      href: "https://www.linkedin.com/in/shanesia-s-3286a82bb/",
     },
   },
 
@@ -111,8 +103,9 @@ export const siteConfig = {
     "Digital Accessibility & CMS Audit",
   ],
 
-  /** Downloadable CV (About page) */
-  resumeUrl: "/assets/Shanesia_Saha_Resume_2026.pdf",
+  /** Downloadable CV */
+  resumeUrl: "/assets/resume.pdf",
+  resumeDocxUrl: "/assets/Shanesia-Saha-Resume-2026.docx",
 
   /** Testimonials rotator (home page) */
   testimonials: [

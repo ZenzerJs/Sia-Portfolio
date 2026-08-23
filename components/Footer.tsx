@@ -47,17 +47,34 @@ export function Footer() {
             </button>
           </div>
           <div className="contact__links">
-            {Object.values(siteConfig.socials).map((social) => (
-              <a
-                key={social.href}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:!bg-white hover:!text-[#112239]"
-              >
-                {social.label}
-              </a>
-            ))}
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="hover:!bg-white hover:!text-[#112239]"
+            >
+              Email
+            </a>
+            <a
+              href={siteConfig.socials.linkedin.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:!bg-white hover:!text-[#112239]"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={siteConfig.resumeUrl}
+              download
+              className="hover:!bg-white hover:!text-[#112239]"
+            >
+              Résumé (PDF)
+            </a>
+            <a
+              href={siteConfig.resumeDocxUrl}
+              download
+              className="hover:!bg-white hover:!text-[#112239]"
+            >
+              Résumé (DOCX)
+            </a>
           </div>
         </div>
       </section>

@@ -245,17 +245,6 @@ export function WorkPage() {
                         Interactive Showcase
                       </span>
                     )}
-
-                    {project.deckPdf && (
-                      <a
-                        href={project.deckPdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-full border border-slate-300 text-slate-700 text-xs font-mono tracking-wider uppercase hover:bg-slate-50 transition-colors"
-                      >
-                        PDF Deck ↓
-                      </a>
-                    )}
                   </div>
                 </div>
               ))}
