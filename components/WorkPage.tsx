@@ -207,10 +207,14 @@ export function WorkPage() {
                   </div>
 
                   {/* Project In-Page Meta Details */}
-                  <div className="grid grid-cols-2 gap-2 my-3 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
+                  <div className="grid grid-cols-3 gap-2 my-3 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
                     <div>
                       <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Role</span>
                       <span className="font-medium text-slate-800 truncate block">{project.role}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Timeline</span>
+                      <span className="font-medium text-slate-800 truncate block">{project.timeline}</span>
                     </div>
                     <div>
                       <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Client / Scope</span>
@@ -218,7 +222,7 @@ export function WorkPage() {
                     </div>
                   </div>
 
-                  <p className="work-slider__description text-xs md:text-sm text-gray-600 leading-relaxed">
+                  <p className="work-slider__description text-xs md:text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                     {project.description}
                   </p>
 
