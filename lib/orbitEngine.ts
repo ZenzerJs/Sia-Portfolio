@@ -192,11 +192,11 @@ export function initOrbitEngine(): () => void {
       }
     }
 
-    // 5. Hero Background Fade Out on Exit
-    if (t > 0.85) {
-      const raw = (t - 0.85) / 0.15;
+    // 5. Hero Background Fade Out on Exit (Fully completes before the bottom)
+    if (t > 0.72) {
+      const raw = Math.min(1, (t - 0.72) / 0.18);
       const easedDecay = 1 - Math.pow(1 - raw, 1.5);
-      heroBackground.style.opacity = (1 - easedDecay).toFixed(3);
+      heroBackground.style.opacity = Math.max(0, 1 - easedDecay).toFixed(3);
     } else {
       heroBackground.style.opacity = "1";
     }
