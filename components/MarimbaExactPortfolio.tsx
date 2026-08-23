@@ -20,7 +20,6 @@ import { ConnectModal } from "@/components/ui/ConnectModal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatIDoSection } from "@/components/WhatIDoSection";
 import { AboutSection } from "@/components/AboutSection";
-import { StrategicProcessSection } from "@/components/StrategicProcessSection";
 import { ConnectBanner } from "@/components/ConnectBanner";
 import { Footer } from "@/components/Footer";
 import { projects } from "@/lib/projects";
@@ -328,10 +327,7 @@ export function MarimbaExactPortfolio() {
         {/* 2. Editorial About Section with Polaroid & Washi-Tape Collage */}
         <AboutSection />
 
-        {/* 3. What I Do: 5-Pillar Core Capabilities */}
-        <WhatIDoSection />
-
-        {/* 4. Work Showcase — 3D MacBook with Motion Reels */}
+        {/* 3. Work Showcase — 3D MacBook with Motion Reels */}
         <section className="section py-16 md:py-24" id="work" data-cursor="work">
           <div className="section-content">
             <div className="text-center mb-12">
@@ -346,12 +342,12 @@ export function MarimbaExactPortfolio() {
           </div>
         </section>
 
-        {/* 5. Running Tool Marquee with Key Skills Monospace Label */}
+        {/* 4. Running Tool Marquee with Key Skills Monospace Label */}
         <div className="my-16 md:my-24 py-4 w-full">
           <ToolMarquee />
         </div>
 
-        {/* 6. AccordionGallery: 35mm Analog Photography (Clean full-bleed without caption subheadings) */}
+        {/* 5. AccordionGallery: 35mm Analog Photography (Clean full-bleed without caption subheadings) */}
         <section className="section py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto" id="gallery">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
@@ -368,8 +364,8 @@ export function MarimbaExactPortfolio() {
           />
         </section>
 
-        {/* 7. Process Disks: Strategic Process & Methodology */}
-        <StrategicProcessSection />
+        {/* 6. What I Do: 5-Pillar Personalized Practice Areas */}
+        <WhatIDoSection />
 
         {/* 8. Testimonials */}
         <section className="section testimonials" id="testimonials" aria-label="Kind words">
