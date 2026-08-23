@@ -24,7 +24,7 @@ const experience = [
   {
     role: "VP Marketing & Creative Director",
     company: "Creative Industries Course Union (CICU)",
-    period: "2023 — 2025",
+    period: "Apr 2023 — Apr 2025",
     desc: "Led marketing and creative communications for a 300+ student community, developing promotional campaigns, visual branding, social media content and event communications. Directed digital and print creative, while producing live event photography and visual content for showcases, workshops and community initiatives.",
   },
   {

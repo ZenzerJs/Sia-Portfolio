@@ -78,7 +78,7 @@ export const siteConfig = {
     {
       school: "Toronto Metropolitan University — The Creative School",
       degree: "BA, Digital Communications and Business",
-      period: "2021 — 2025",
+      period: "Aug 2021 — May 2025",
       note: "CGPA: 4.0 / 4.2 · Graduated with Distinction · Dean's List 2022–2025",
     },
     {
