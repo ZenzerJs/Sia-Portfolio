@@ -6,10 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { siteConfig } from "@/lib/siteConfig";
 import { ConnectModal } from "@/components/ui/ConnectModal";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export function Footer() {
   const [connectModalOpen, setConnectModalOpen] = useState(false);
   const footerWrapRef = useRef<HTMLDivElement>(null);
@@ -22,29 +18,32 @@ export function Footer() {
   const bottomBarRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!footerWrapRef.current) return;
+    if (typeof window === "undefined" || !footerWrapRef.current) return;
+    gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      // Create scroll-driven timeline scrubbed from when footer enters to bottom of document
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: footerWrapRef.current,
-          start: "top 85%",
-          end: "top 25%",
-          scrub: 0.8,
+          start: "top 88%",
+          end: "bottom bottom",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
         },
       });
 
-      // 1. Blue slide-up animation (curtain reveal from bottom to top)
+      // 1. Blue slide-up animation (curtain sliding up from 100% down to 0%)
       if (blueSlideRef.current) {
         tl.fromTo(
           blueSlideRef.current,
-          { yPercent: 100, opacity: 0.6 },
+          { yPercent: 100, opacity: 0.8 },
           { yPercent: 0, opacity: 1, ease: "power1.out" },
           0
         );
       }
 
-      // 2. Monogram brightness/invert transition from dark to white
+      // 2. Monogram brightness/invert transition from dark navy to crisp white
       if (monogramRef.current) {
         tl.fromTo(
           monogramRef.current,
@@ -54,7 +53,7 @@ export function Footer() {
         );
       }
 
-      // 3. Heading color transition from navy to white
+      // 3. Heading color transition from deep navy to crisp white
       if (headingRef.current) {
         tl.fromTo(
           headingRef.current,
@@ -64,7 +63,7 @@ export function Footer() {
         );
       }
 
-      // 4. Contact info text transition
+      // 4. Contact info text transition from dark slate to white
       if (infoRef.current) {
         tl.fromTo(
           infoRef.current,
@@ -74,7 +73,7 @@ export function Footer() {
         );
       }
 
-      // 5. CTA Button transition (Navy bg / White text -> White bg / Navy text)
+      // 5. CTA Button transition (Navy bg / White text -> Glowing White bg / Navy text)
       if (ctaBtnRef.current) {
         tl.fromTo(
           ctaBtnRef.current,
@@ -86,7 +85,7 @@ export function Footer() {
           {
             backgroundColor: "#FFFFFF",
             color: "#112239",
-            boxShadow: "0 0 30px rgba(255, 255, 255, 0.35)",
+            boxShadow: "0 0 35px rgba(255, 255, 255, 0.4)",
             ease: "power1.out",
           },
           0
@@ -106,7 +105,7 @@ export function Footer() {
           {
             borderColor: "rgba(255, 255, 255, 0.35)",
             color: "#FFFFFF",
-            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
             ease: "power1.out",
           },
           0
@@ -131,7 +130,15 @@ export function Footer() {
       }
     }, footerWrapRef);
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger after DOM has fully stabilized
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -145,7 +152,7 @@ export function Footer() {
         {/* Sliding Navy Blue Layer */}
         <div
           ref={blueSlideRef}
-          className="pointer-events-none absolute inset-0 bg-[#112239] will-change-transform z-0"
+          className="pointer-events-none absolute inset-0 w-full h-full bg-[#112239] will-change-transform z-0"
           aria-hidden="true"
         />
 
