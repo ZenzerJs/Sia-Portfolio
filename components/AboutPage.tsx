@@ -19,24 +19,28 @@ const experience = [
     role: "Project Coordinator",
     company: "Mass Culture Canada",
     period: "Dec 2024 — Apr 2025",
+    logo: "/assets/logos/mass-culture.png",
     desc: "Developed multi-platform content strategies, newsletters and data-driven campaigns across LinkedIn, Facebook, X and Instagram. Coordinated a U.S. university partnership, translating brand research into an adopted communications strategy. Led the launch of the Data Narrative for the Arts platform, defined KPIs, analysed performance and managed concurrent projects, schedules and approvals.",
   },
   {
     role: "VP Marketing & Creative Director",
     company: "Creative Industries Course Union (CICU)",
     period: "Apr 2023 — Apr 2025",
+    logo: "/assets/logos/cicu.png",
     desc: "Led marketing and creative communications for a 300+ student community, developing promotional campaigns, visual branding, social media content and event communications. Directed digital and print creative, while producing live event photography and visual content for showcases, workshops and community initiatives.",
   },
   {
     role: "Communications & Digital Content Creator",
     company: "Toronto Metropolitan University — Bridging Divides",
     period: "Aug 2023 — Apr 2024",
+    logo: "/assets/logos/tmu.jpg",
     desc: "Served as a liaison between researchers, Communications/IT and the Bridging Divides community, translating stakeholder needs into platform requirements. Supported the design, development and launch of a centralised LMS website for academic research and digital seminars, conducting content audits and usability testing to improve accessibility and navigation. Coordinated timelines, feedback, quality control and platform updates while supporting launch promotion through email marketing.",
   },
   {
     role: "Digital Communications Assistant",
     company: "Government of Canada — Parks Canada",
     period: "Jun 2022 — Dec 2022",
+    logo: "/assets/logos/parks-canada.jpg",
     desc: "Led digital content coordination for Parks Canada’s agency-wide Microsoft 365 transition, ensuring clear, consistent and compliant communications. Developed training and onboarding materials, including infographics, tutorial videos and presentations, while collaborating cross-functionally to support digital adoption. Designed and maintained SharePoint knowledge hubs, conducted content audits and analysed user behaviour to improve resource accessibility, discoverability and workflow efficiency.",
   },
 ];
@@ -325,22 +329,33 @@ export function AboutPage() {
               {experience.map((item, idx) => (
                 <div
                   key={idx}
-                  className="about-experience-card border-b border-gray-100/60 pb-10 last:border-0 last:pb-0"
+                  className="about-experience-card border-b border-gray-100/60 pb-10 last:border-0 last:pb-0 flex flex-col sm:flex-row gap-5 items-start"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                    <h3 className="text-2xl md:text-3xl font-serif font-normal text-[#1E3A5F]">
-                      {item.role}
-                    </h3>
-                    <span className="text-xs font-mono text-[#718096] uppercase tracking-wider">
-                      {item.period}
-                    </span>
+                  {item.logo && (
+                    <div className="w-12 h-12 rounded-xl bg-white border border-slate-200/80 shadow-sm p-1.5 flex items-center justify-center overflow-hidden flex-shrink-0 mt-1">
+                      <img
+                        src={item.logo}
+                        alt={`${item.company} logo`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 w-full">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1.5">
+                      <h3 className="text-2xl md:text-3xl font-serif font-normal text-[#1E3A5F]">
+                        {item.role}
+                      </h3>
+                      <span className="text-xs font-mono text-[#718096] uppercase tracking-wider">
+                        {item.period}
+                      </span>
+                    </div>
+                    <p className="text-xs font-mono text-[#1E3A5F]/85 uppercase tracking-widest mb-3 font-medium">
+                      {item.company}
+                    </p>
+                    <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
-                  <p className="text-xs font-mono text-[#1E3A5F]/85 uppercase tracking-widest mb-3">
-                    {item.company}
-                  </p>
-                  <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
-                    {item.desc}
-                  </p>
                 </div>
               ))}
             </div>

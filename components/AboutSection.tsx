@@ -111,6 +111,35 @@ export function AboutSection() {
                 <span className="ml-2">→</span>
               </Link>
             </div>
+
+            {/* Featured Organizations & Experience Logos */}
+            <div className="pt-6 mt-6 border-t border-slate-200/80 w-full">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block mb-3.5">
+                Organizations &amp; Experience
+              </span>
+              <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+                <img
+                  src="/assets/logos/mass-culture.png"
+                  alt="Mass Culture Canada"
+                  className="h-8 sm:h-9 w-auto object-contain transition-transform hover:scale-105"
+                />
+                <img
+                  src="/assets/logos/cicu.png"
+                  alt="Creative Industries Course Union"
+                  className="h-8 sm:h-9 w-auto object-contain transition-transform hover:scale-105"
+                />
+                <img
+                  src="/assets/logos/tmu.jpg"
+                  alt="Toronto Metropolitan University"
+                  className="h-7 sm:h-8 w-auto object-contain rounded-sm transition-transform hover:scale-105"
+                />
+                <img
+                  src="/assets/logos/parks-canada.jpg"
+                  alt="Parks Canada"
+                  className="h-8 sm:h-9 w-auto object-contain transition-transform hover:scale-105"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Multi-Layer Polaroid & Washi-Tape Collage */}
