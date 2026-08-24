@@ -1622,7 +1622,7 @@ main {
     gap: 1.15rem;
     margin-right: 1.85rem;
     padding: 1.05rem 1.85rem 1.05rem 1.35rem;
-    border: 2px solid rgba(30, 58, 95, 0.45);
+    border: 2px solid rgba(30, 58, 95, 0.35);
     border-radius: 22px;
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
@@ -1633,15 +1633,16 @@ main {
     letter-spacing: 0.01em;
     color: var(--text-dark);
     box-shadow: 0 4px 20px -2px rgba(30, 58, 95, 0.06);
-    transition: border-color 0.25s ease-out, transform 0.25s ease-out,
-        background-color 0.25s ease-out, box-shadow 0.25s ease-out;
+    transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
 }
 
 .marquee__tool:hover {
     border-color: var(--text-dark);
-    background-color: var(--bg-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px -3px rgba(30, 58, 95, 0.12);
+    background-color: #FFFFFF;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 30px -4px rgba(30, 58, 95, 0.16);
 }
 
 .marquee__tool-icon {
@@ -1657,6 +1658,13 @@ main {
     height: 100%;
     object-fit: contain;
     display: block;
+    filter: grayscale(100%) opacity(0.72);
+    transition: filter 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.marquee__tool:hover .marquee__tool-icon img {
+    filter: grayscale(0%) opacity(1) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+    transform: scale(1.12);
 }
 
 @keyframes marquee-scroll {
