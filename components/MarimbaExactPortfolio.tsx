@@ -342,7 +342,7 @@ export function MarimbaExactPortfolio() {
         </section>
 
         {/* 4. Running Tool Marquee with Key Skills Monospace Label */}
-        <div className="my-16 md:my-24 py-4 w-full">
+        <div className="mt-20 md:mt-32 mb-16 md:mb-24 py-6 w-full">
           <ToolMarquee />
         </div>
 

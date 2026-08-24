@@ -11,7 +11,7 @@ interface Capability {
 const capabilities: Capability[] = [
   {
     icon: (
-      <svg className="w-8 h-8 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-10 h-10 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
         <path d="m3 11 18-5v12L3 13v-2z" />
         <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
       </svg>
@@ -21,7 +21,7 @@ const capabilities: Capability[] = [
   },
   {
     icon: (
-      <svg className="w-8 h-8 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-10 h-10 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
         <rect width="18" height="12" x="3" y="4" rx="2" />
         <line x1="2" x2="22" y1="20" y2="20" />
       </svg>
@@ -31,7 +31,7 @@ const capabilities: Capability[] = [
   },
   {
     icon: (
-      <svg className="w-8 h-8 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-10 h-10 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 3v18h18" />
         <path d="M18 17V9" />
         <path d="M13 17V5" />
@@ -43,7 +43,7 @@ const capabilities: Capability[] = [
   },
   {
     icon: (
-      <svg className="w-8 h-8 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-10 h-10 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
@@ -55,14 +55,14 @@ const capabilities: Capability[] = [
   },
   {
     icon: (
-      <svg className="w-8 h-8 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-10 h-10 text-[#1E3A5F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
         <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
         <path d="M9 18h6" />
         <path d="M10 22h4" />
       </svg>
     ),
     title: "CREATIVE STRATEGY",
-    subtitle: "Ideas - Research -\nImpact",
+    subtitle: "Ideas · Research ·\nImpact",
   },
 ];
 
@@ -82,7 +82,7 @@ export function WhatIDoSection() {
             </span>
             <div className="h-[1px] w-12 bg-slate-300" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[40px] text-[#1E3A5F] font-normal leading-[1.18] tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#1E3A5F] font-normal leading-[1.18] tracking-tight">
             A creative approach to communication and connection.
           </h2>
         </div>
@@ -92,15 +92,15 @@ export function WhatIDoSection() {
           {capabilities.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center text-center px-2 py-4 sm:py-2 group hover:bg-slate-50/60 rounded-xl transition-all duration-300"
+              className="flex flex-col items-center text-center px-3 py-5 sm:py-3 group hover:bg-slate-50/70 rounded-xl transition-all duration-300"
             >
-              <div className="mb-4 transform group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-300">
+              <div className="mb-4 transform group-hover:scale-110 group-hover:-translate-y-1.5 transition-transform duration-300">
                 {item.icon}
               </div>
-              <h3 className="font-mono text-[11px] font-bold tracking-wider text-[#1E3A5F] mb-2 leading-snug uppercase">
+              <h3 className="font-mono text-xs sm:text-[12px] font-bold tracking-wider text-[#1E3A5F] mb-2 leading-snug uppercase">
                 {item.title}
               </h3>
-              <p className="text-xs text-slate-500 font-sans leading-snug whitespace-pre-line">
+              <p className="text-xs sm:text-sm text-slate-500 font-sans leading-snug whitespace-pre-line">
                 {item.subtitle}
               </p>
             </div>

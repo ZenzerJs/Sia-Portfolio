@@ -71,8 +71,8 @@ export function MacbookLaptop() {
 
               <Link
                 href="/work"
-                className="screen group/screen block relative cursor-pointer"
-                aria-label="Explore selected work case studies"
+                className="screen block relative cursor-pointer"
+                aria-label="Selected work showreel"
               >
                 <video
                   className="work__laptop-video pointer-events-none"
@@ -84,12 +84,6 @@ export function MacbookLaptop() {
                   aria-label={siteConfig.showreel.title}
                   src={siteConfig.showreel.src}
                 />
-                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/screen:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--text-dark)] text-white text-xs font-mono tracking-wider uppercase shadow-xl transform group-hover/screen:scale-105 transition-transform">
-                    <span>Explore Selected Work</span>
-                    <span>→</span>
-                  </span>
-                </div>
               </Link>
 
               <div className="text">MacBook Pro</div>

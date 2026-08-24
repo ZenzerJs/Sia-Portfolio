@@ -126,27 +126,23 @@ export const siteConfig = {
     },
   ],
 
-  /** Tools marquee (home page divider) — software + AI tools */
+  /** Tools marquee (home page divider) — software + creative tools */
   toolMarquee: [
     { label: "Photoshop", icon: "/assets/tools/adobephotoshop.svg" },
     { label: "Illustrator", icon: "/assets/tools/adobeillustrator.svg" },
     { label: "After Effects", icon: "/assets/tools/adobeaftereffects.svg" },
-    { label: "PowerPoint", icon: "/assets/tools/microsoftpowerpoint.svg" },
-    { label: "Excel", icon: "/assets/tools/microsoftexcel.svg" },
-    { label: "Word", icon: "/assets/tools/microsoftword.svg" },
-    { label: "Teams", icon: "/assets/tools/microsoftteams.svg" },
-    { label: "Outlook", icon: "/assets/tools/microsoftoutlook.svg" },
     { label: "Canva", icon: "/assets/tools/canva.svg" },
+    { label: "Blender", icon: "/assets/tools/blender.svg" },
+    { label: "AutoCAD", icon: "/assets/tools/autocad.svg" },
+    { label: "MS Office", icon: "/assets/tools/msoffice.svg" },
+    { label: "Word", icon: "/assets/tools/microsoftword.svg" },
+    { label: "Excel", icon: "/assets/tools/microsoftexcel.svg" },
+    { label: "Teams", icon: "/assets/tools/microsoftteams.svg" },
     { label: "WordPress", icon: "/assets/tools/wordpress.svg" },
     { label: "Wix", icon: "/assets/tools/wix.svg" },
     { label: "Moodle", icon: "/assets/tools/moodle.svg" },
     { label: "Midjourney", icon: "/assets/tools/midjourney.svg" },
     { label: "Stable Diffusion", icon: "/assets/tools/stablediffusion.svg" },
-    { label: "ChatGPT", icon: "/assets/tools/openai.svg" },
-    { label: "Claude", icon: "/assets/tools/claude.svg" },
-    { label: "Gemini", icon: "/assets/tools/googlegemini.svg" },
-    { label: "Nano Banana", icon: "/assets/tools/nanobanana.svg" },
-    { label: "Copilot", icon: "/assets/tools/microsoftcopilot.svg" },
   ],
 
   /** Footer */

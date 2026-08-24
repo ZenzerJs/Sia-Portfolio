@@ -234,7 +234,7 @@ export function AboutPage() {
         >
           <div className="max-w-4xl mx-auto text-center relative">
             <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-4 text-center">
-              Communications · Marketing · Digital Strategy
+              About Me
             </span>
             <h1
               ref={heroHeadingRef}

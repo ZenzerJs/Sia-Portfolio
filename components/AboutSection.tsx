@@ -81,8 +81,8 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Headline, Bio & Action Buttons */}
           <div ref={contentRef} className="lg:col-span-6 flex flex-col items-start text-left">
-            <div className="mb-6">
-              <span className="pill-button !bg-white !border-[#1E3A5F]/20 text-xs font-mono tracking-wider uppercase text-[#1E3A5F] shadow-sm">
+            <div className="mb-4">
+              <span className="text-xs font-mono font-semibold tracking-wider uppercase text-[#1E3A5F]/80">
                 Communications · Marketing · Digital Media · Project Coordination
               </span>
             </div>
