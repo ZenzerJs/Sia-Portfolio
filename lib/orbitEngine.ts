@@ -192,24 +192,34 @@ export function initOrbitEngine(): () => void {
       }
     }
 
-    // 5. Hero Background Fade Out on Exit (Fully completes before the bottom)
-    if (t > 0.72) {
-      const raw = Math.min(1, (t - 0.72) / 0.18);
+    // 5. Hero Background Fade Out on Exit & About section upward drift
+    const aboutSection = document.getElementById("about-teaser");
+    if (t > 0.50) {
+      const raw = Math.min(1, (t - 0.50) / 0.45);
       const easedDecay = 1 - Math.pow(1 - raw, 1.5);
       heroBackground.style.opacity = Math.max(0, 1 - easedDecay).toFixed(3);
+      if (aboutSection) {
+        gsap.set(aboutSection, {
+          y: -80 * raw,
+          opacity: 0.8 + 0.2 * raw,
+        });
+      }
     } else {
       heroBackground.style.opacity = "1";
+      if (aboutSection) {
+        gsap.set(aboutSection, { y: 0, opacity: 1 });
+      }
     }
   };
 
   const st = ScrollTrigger.create({
     trigger: "#home",
     start: "top top",
-    end: "+=120%",
+    end: "+=60%",
     pin: true,
     pinSpacing: true,
     anticipatePin: 1,
-    scrub: 1,
+    scrub: 0.8,
     onUpdate: (self) => {
       applyTrigTransform(self.progress, 0);
     },

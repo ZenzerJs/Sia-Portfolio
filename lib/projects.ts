@@ -119,10 +119,10 @@ export const projects: Project[] = [
     description:
       "As part of the Creative Industries Course Union (CICU), I supported the planning and promotion of the annual Showcase, helping build anticipation, strengthen event visibility, and drive attendance leading up to the event.\n\nI created promotional graphics using Canva and Adobe After Effects, developing visual assets for CICU’s Instagram coordinating an countdown campaign to build excitement. I collaborated closely with CICU members to ensure that our promotional materials remained visually consistent and aligned. I also supported some live event photography, capturing the energy, atmosphere, and student experience throughout the showcase.\n\nThe project brought together event marketing, social media strategy, collaboration, and photography to create a campaign that connected the promotional experience with the live event.",
     media: {
-      type: "video",
-      src: "/assets/cicu/showcase/showcase-reel.mp4",
+      type: "image",
+      src: "/assets/cicu/showcase/showcase-slide-1.jpg",
       gradient: "linear-gradient(135deg, #FF007F 0%, #FF5F1F 100%)",
-      alt: "Creative Industries Show Case Video Reel",
+      alt: "Creative Industries Show Case",
     },
     role: "VP Marketing & Creative Director",
     timeline: "April 2024",
@@ -153,10 +153,10 @@ export const projects: Project[] = [
     description:
       "As part of the Creative Industries Course Union (CICU), I supported the promotion and execution of Creative Industries Alumni Night, creating visual and informational content to build awareness and engagement around the event.\n\nI designed these promotional assets and informational materials on Canva and Adobe illustrator to communicate key event details and maintain a consistent visual identity across CICU’s communications. During the event, I captured and made a short form video highlighting key moments and creating real-time engagement with the CICU community.\n\nThe project combined event marketing, graphic design, and video production to strengthen alumni and student engagement both during and after the event.",
     media: {
-      type: "video",
-      src: "/assets/cicu/alum/alum-reel.mp4",
+      type: "image",
+      src: "/assets/cicu/alum/alum-graphic-1.jpg",
       gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-      alt: "Creative Industries Alumni Night Video",
+      alt: "Creative Industries Alumni Night Promotion",
     },
     role: "VP Marketing & Creative Director",
     timeline: "February 2024",
@@ -257,7 +257,7 @@ export const projects: Project[] = [
       "As part of my CRI 300 university course, I created a short flat motion graphics video, taking the project from initial concept and graphic development through to the final animation.\n\nI designed the visual elements in Adobe Illustrator and brought them to life in Adobe After Effects, using movement, transitions, and timing to create a cohesive visual narrative. I completed the project with open-source audio, combining original graphics and animation into a polished motion-based piece.\n\nThe project strengthened my skills in graphic design, motion graphics, animation, and visual storytelling.",
     media: {
       type: "video",
-      src: "/assets/videos/good-gift-visual.mov",
+      src: "/assets/videos/good-gift-visual.mp4",
       gradient: "linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)",
       alt: "The Good Gift Motion Graphic Preview",
     },
@@ -268,7 +268,7 @@ export const projects: Project[] = [
     heroDescription:
       "Produced a flat motion graphics animation from initial vector illustration to final video rendering.",
     accent: "#EC4899",
-    detailVideo: "/assets/videos/good-gift-visual.mov",
+    detailVideo: "/assets/videos/good-gift-visual.mp4",
     phases: [],
   },
 ];

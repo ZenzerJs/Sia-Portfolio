@@ -38,7 +38,17 @@ export function MacbookLaptop() {
   }, []);
 
   return (
-    <div className="work__macbook" ref={rootRef}>
+    <div
+      className="work__macbook cursor-pointer select-none"
+      ref={rootRef}
+      onClick={() => router.push("/work")}
+      role="link"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") router.push("/work");
+      }}
+      aria-label="Explore Selected Work"
+    >
       <div className="macbook-scene">
         <div className="laptop">
           <div className="lid" ref={lidRef}>

@@ -55,9 +55,9 @@ export function Footer() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: footerWrapRef.current,
-          start: "top 80%",
+          start: "top 88%",
           end: "bottom bottom",
-          scrub: 0.5,
+          scrub: 0.4,
           invalidateOnRefresh: true,
         },
       });

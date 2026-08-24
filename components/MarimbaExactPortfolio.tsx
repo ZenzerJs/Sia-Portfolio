@@ -111,6 +111,15 @@ export function MarimbaExactPortfolio() {
       const cleanupOrbit = initOrbitEngine();
       const cleanupTheme = initThemeScroll();
       const cleanupTestimonials = initTestimonialRotator();
+
+      // Ensure all page ScrollTriggers (including the Footer blue slide) recalculate with exact pinned layout
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 350);
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 1000);
+
       cleanupStaged = () => {
         cleanupOrbit();
         cleanupTheme();

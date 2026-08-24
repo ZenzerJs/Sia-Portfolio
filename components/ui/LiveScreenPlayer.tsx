@@ -16,18 +16,23 @@ export function LiveScreenPlayer({
 }: LiveScreenPlayerProps) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const slides = project.slides || [];
-  const hasSlides = slides.length > 1;
+  const videoSrc = project.detailVideo || (project.media.type === "video" ? project.media.src : null);
+  const hasVideoEnding = Boolean(slides.length > 0 && videoSrc);
+  const totalItems = slides.length + (hasVideoEnding ? 1 : 0);
+  const isVideoCurrent = hasVideoEnding
+    ? currentSlideIndex === slides.length
+    : project.media.type === "video" && Boolean(project.media.src);
 
-  // Auto-advance slides smoothly every 3.2 seconds when active
+  // Auto-advance slides smoothly every 3.5 seconds when active (pauses on video)
   useEffect(() => {
-    if (!isActive || !hasSlides) return;
+    if (!isActive || totalItems <= 1 || isVideoCurrent) return;
 
     const timer = setInterval(() => {
-      setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
-    }, 3200);
+      setCurrentSlideIndex((prev) => (prev + 1) % totalItems);
+    }, 3500);
 
     return () => clearInterval(timer);
-  }, [isActive, hasSlides, slides.length]);
+  }, [isActive, totalItems, isVideoCurrent]);
 
   return (
     /* Native macOS Application Window Frame with macOS Light Mode Aesthetic */
@@ -53,31 +58,35 @@ export function LiveScreenPlayer({
 
         {/* Right Status Badge */}
         <div className="flex items-center gap-2">
-          {hasSlides && (
+          {isVideoCurrent ? (
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[#0047FF] text-[10px] font-mono font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0047FF] animate-ping"></span>
+              <span>Video Finale</span>
+            </div>
+          ) : slides.length > 0 ? (
             <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/80 border border-[#D1D1D6] text-[#1D1D1F] text-[10px] font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>
                 Slide {currentSlideIndex + 1} of {slides.length}
               </span>
             </div>
-          )}
-          {project.media.type === "video" && (
+          ) : project.media.type === "video" ? (
             <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/80 border border-[#D1D1D6] text-[#1D1D1F] text-[10px] font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0047FF] animate-ping"></span>
               <span>HD Video</span>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 
       {/* macOS Window Canvas (Expanded Scale & Maximized Visibility) */}
       <div className="relative flex-1 w-full h-full overflow-hidden flex items-center justify-center p-2 sm:p-3 md:p-4 bg-[#F5F5F7]">
-        {/* If Project has Video */}
-        {project.media.type === "video" && project.media.src ? (
+        {/* If Showing Video (either as standalone or finale) */}
+        {isVideoCurrent && videoSrc ? (
           <div className="relative w-full h-full flex items-center justify-center">
             <div className="relative z-10 w-full h-full max-h-[94%] max-w-[96%] flex items-center justify-center rounded-lg overflow-hidden shadow-md border border-[#D1D1D6] bg-black">
               <video
-                src={project.media.src}
+                src={videoSrc}
                 muted
                 playsInline
                 loop
@@ -86,8 +95,29 @@ export function LiveScreenPlayer({
                 className="w-full h-full object-contain"
               />
             </div>
+
+            {/* If part of a sequence, allow jumping back to slides */}
+            {hasVideoEnding && (
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 text-[#1D1D1F] border border-slate-300 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentSlideIndex(slides.length - 1);
+                  }}
+                  className="text-slate-600 hover:text-slate-900 text-xs px-2 py-0.5 transition-colors"
+                  aria-label="Back to slides"
+                >
+                  ◀ Back to Slides
+                </button>
+                <span className="text-[10px] font-mono text-slate-400">|</span>
+                <span className="text-[11px] font-mono font-medium text-blue-600">
+                  Video Finale ({totalItems}/{totalItems})
+                </span>
+              </div>
+            )}
           </div>
-        ) : hasSlides ? (
+        ) : slides.length > 0 ? (
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Ambient Blurred Background Glow */}
             <div
@@ -110,7 +140,7 @@ export function LiveScreenPlayer({
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentSlideIndex((prev) => (prev - 1 + slides.length) % slides.length);
+                  setCurrentSlideIndex((prev) => (prev - 1 + totalItems) % totalItems);
                 }}
                 className="text-slate-600 hover:text-slate-900 text-xs px-2 py-0.5 transition-colors"
                 aria-label="Previous slide"
@@ -124,13 +154,25 @@ export function LiveScreenPlayer({
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
+                  setCurrentSlideIndex((prev) => (prev + 1) % totalItems);
                 }}
                 className="text-slate-600 hover:text-slate-900 text-xs px-2 py-0.5 transition-colors"
                 aria-label="Next slide"
               >
                 ▶
               </button>
+              {hasVideoEnding && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentSlideIndex(slides.length);
+                  }}
+                  className="ml-1.5 text-[10px] font-mono uppercase bg-blue-600 text-white hover:bg-blue-700 px-2 py-0.5 rounded shadow-xs transition-colors"
+                >
+                  ▶ Watch Video
+                </button>
+              )}
               {onOpenDeck && (
                 <button
                   type="button"
@@ -138,7 +180,7 @@ export function LiveScreenPlayer({
                     e.stopPropagation();
                     onOpenDeck();
                   }}
-                  className="ml-2 text-[10px] font-mono uppercase bg-[#1E3A5F] text-white hover:bg-[#1E3A5F]/90 px-2.5 py-0.5 rounded shadow-sm transition-colors"
+                  className="ml-1 text-[10px] font-mono uppercase bg-[#1E3A5F] text-white hover:bg-[#1E3A5F]/90 px-2.5 py-0.5 rounded shadow-sm transition-colors"
                 >
                   Expand ↗
                 </button>
