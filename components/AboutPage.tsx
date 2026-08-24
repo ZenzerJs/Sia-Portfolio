@@ -258,7 +258,7 @@ export function AboutPage() {
                   className="relative z-10 overflow-hidden rounded-2xl border border-[#1E3A5F]/15 shadow-xl bg-white transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl"
                 >
                   <img
-                    src="/assets/headshots/shanesia-primary.jpg"
+                    src="/assets/headshots/shanesia-about-portrait.jpg"
                     alt={siteConfig.person.portraitAlt}
                     className="w-full h-auto aspect-[3/4] object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
