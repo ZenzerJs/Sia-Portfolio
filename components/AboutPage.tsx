@@ -234,13 +234,13 @@ export function AboutPage() {
         >
           <div className="max-w-4xl mx-auto text-center relative">
             <span className="text-xs font-mono tracking-widest uppercase text-[#718096] block mb-4 text-center">
-              About Me
+              Communications · Marketing · Digital Strategy
             </span>
             <h1
               ref={heroHeadingRef}
               className="about-hero__heading font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-[1.1] tracking-tight text-[#1E3A5F] text-center mx-auto will-change-transform"
             >
-              Hi, I&apos;m Shanesia
+              About Me
             </h1>
           </div>
         </section>
