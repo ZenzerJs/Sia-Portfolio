@@ -128,13 +128,6 @@ export function ContactPage() {
                 >
                   Download Résumé (PDF) ↓
                 </a>
-                <a
-                  href={siteConfig.resumeDocxUrl}
-                  download
-                  className="px-5 py-2.5 rounded-full border border-slate-300 bg-white hover:border-[#1E3A5F] text-[#1E3A5F] text-xs font-mono tracking-wider uppercase transition-all shadow-xs hover:scale-105"
-                >
-                  Résumé (DOCX) ↓
-                </a>
               </div>
             </div>
           </div>

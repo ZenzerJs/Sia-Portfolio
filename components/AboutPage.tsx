@@ -285,15 +285,24 @@ export function AboutPage() {
             {/* Text Bio Column */}
             <div className="md:col-span-7 lg:col-span-8 lg:pl-4">
               <span className="text-sm font-mono tracking-widest uppercase text-[#718096] block mb-3">
-                About Me
+                Hi, I&apos;m Shanesia
               </span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-normal text-[#1E3A5F] mb-6 tracking-tight">
                 Intentional Strategy &amp; Storytelling
               </h2>
 
-              <div className="space-y-5 text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
+              <div className="space-y-4 text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
                 <p>
-                  I work at the intersection of communications, marketing, and digital media building authentic engagement for public sector, higher education, and non-profit organisations through intentional strategy and storytelling. Over the past few years I&apos;ve grown audience engagement through data-driven content strategy, translated complex information into clear, audience-first messaging, and led cross-institutional projects in fast-paced, deadline-driven environments.
+                  I’m a digital communications and creative professional with a background in communications, marketing, media, and project coordination.
+                </p>
+                <p>
+                  My work sits at the intersection of strategy and creativity. I enjoy taking complex ideas, finding the story within them, and turning them into communications that are clear, engaging, and meaningful to the people they’re meant for.
+                </p>
+                <p>
+                  Throughout my academic and professional experience, I’ve worked across public sector, higher education, non-profit, and student-led environments, developing digital content, coordinating projects, supporting campaigns, and creating visual communications across a range of platforms.
+                </p>
+                <p>
+                  I’m particularly interested in work that brings together communication, creativity, and purpose — whether that means building a digital campaign, developing a brand identity, coordinating a project, or finding a better way to communicate an idea.
                 </p>
               </div>
 
@@ -405,19 +414,11 @@ export function AboutPage() {
               {/* Resume Buttons */}
               <div className="pt-4 flex flex-wrap items-center gap-3">
                 <a
-                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-white bg-[#1E3A5F] rounded-full hover:bg-[#142A4A] transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-white bg-[#1E3A5F] rounded-full hover:bg-[#142A4A] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
                   href={siteConfig.resumeUrl}
                   download
                 >
                   <span>Download Résumé (PDF)</span>
-                  <span>↓</span>
-                </a>
-                <a
-                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-mono tracking-widest uppercase text-[#1E3A5F] border border-[#1E3A5F] rounded-full hover:bg-slate-50 transition-all duration-300"
-                  href={siteConfig.resumeDocxUrl}
-                  download
-                >
-                  <span>Download Résumé (DOCX)</span>
                   <span>↓</span>
                 </a>
               </div>

@@ -8,7 +8,7 @@ export const siteConfig = {
   /** Brand & identity */
   name: "Shanesia Saha",
   legalName: "Shanesia Saha",
-  domain: "https://shanesiasaha.com",
+  domain: "https://shanesia-saha-portfolio.vercel.app",
   role: "Communications, Marketing & Project Coordination",
   location: "London, United Kingdom · Toronto, Canada",
   tagline:
@@ -24,7 +24,7 @@ export const siteConfig = {
   /** SEO */
   description:
     "Communications and Project Coordination professional specialising in digital campaigns, audience growth, brand strategy, and multi-stakeholder initiatives across arts, higher education, and public sector.",
-  metadataBase: new URL("https://shanesiasaha.com"),
+  metadataBase: new URL("https://shanesia-saha-portfolio.vercel.app"),
   keywords: [
     "Shanesia Saha",
     "Communications",
@@ -105,7 +105,6 @@ export const siteConfig = {
 
   /** Downloadable CV */
   resumeUrl: "/assets/resume.pdf",
-  resumeDocxUrl: "/assets/Shanesia-Saha-Resume-2026.docx",
 
   /** Testimonials rotator (home page) */
   testimonials: [

@@ -81,7 +81,7 @@ export const projects: Project[] = [
     tagline: "Data Storytelling & Presentation Design",
     categories: ["Data Storytelling", "Presentation Design"],
     description:
-      "For Mass Culture Canada, I created and delivered an information session as part of our collaboration with Brenau University, introducing the newly launched Data Narrative and Arts (DNA) platform and demonstrating how data can support arts and cultural organizations.\n\nUsing core messaging and presentation requirements provided by leadership, along with an established colour and visual theme guide, I designed the presentation in Canva. I translated complex platform information into a clear and accessible narrative, guiding the audience through DNA’s purpose, key insights, and practical applications while creating space for discussion and questions.\n\nThe project brought together presentation design, information storytelling, research, and audience engagement to make data-driven concepts approachable and relevant to a creative-sector audience.",
+      "For Mass Culture Canada, I created and delivered an information session, introducing the newly launched Data Narrative and Arts (DNA) platform and demonstrating how data can support arts and cultural organizations.\n\nUsing core messaging and presentation requirements provided by leadership, along with an established colour and visual theme guide, I designed the presentation in Canva. I translated complex platform information into a clear and accessible narrative, guiding the audience through DNA’s purpose, key insights, and practical applications while creating space for discussion and questions.\n\nThe project brought together presentation design, information storytelling, research, and audience engagement to make data-driven concepts approachable and relevant to a creative-sector audience.",
     media: {
       type: "image",
       src: "/assets/decks/slides/mass-culture-slide-1.jpg",
@@ -91,9 +91,9 @@ export const projects: Project[] = [
     role: "Project Coordinator",
     timeline: "January 2024",
     tools: "PowerPoint, Canva, Data Visualization, Slide Design",
-    client: "Mass Culture Canada · Brenau University",
+    client: "Mass Culture Canada",
     heroDescription:
-      "Created and delivered an information session and presentation for Mass Culture at Brenau University, introducing the DNA platform and its role in supporting arts and cultural organizations through data.",
+      "Created and delivered an information session and presentation for Mass Culture, introducing the DNA platform and its role in supporting arts and cultural organizations through data.",
     accent: "#1E3A5F",
     accentBlue: "#1E3A5F",
     deckPdf: "/assets/decks/mass-culture-slide-deck.pdf",
@@ -119,15 +119,15 @@ export const projects: Project[] = [
     description:
       "As part of the Creative Industries Course Union (CICU), I supported the planning and promotion of the annual Showcase, helping build anticipation, strengthen event visibility, and drive attendance leading up to the event.\n\nI created promotional graphics using Canva and Adobe After Effects, developing visual assets for CICU’s Instagram coordinating an countdown campaign to build excitement. I collaborated closely with CICU members to ensure that our promotional materials remained visually consistent and aligned. I also supported some live event photography, capturing the energy, atmosphere, and student experience throughout the showcase.\n\nThe project brought together event marketing, social media strategy, collaboration, and photography to create a campaign that connected the promotional experience with the live event.",
     media: {
-      type: "image",
-      src: "/assets/cicu/showcase/showcase-post-1.jpg",
+      type: "video",
+      src: "/assets/cicu/showcase/showcase-reel.mp4",
       gradient: "linear-gradient(135deg, #FF007F 0%, #FF5F1F 100%)",
-      alt: "Creative Industries Show Case",
+      alt: "Creative Industries Show Case Video Reel",
     },
     role: "VP Marketing & Creative Director",
     timeline: "April 2024",
     tools: "Social Media Analytics, Canva, Adobe After Effects, Event Photography",
-    client: "Toronto Metropolitan University Students",
+    client: "Toronto Metropolitan University",
     heroDescription:
       "Supported the planning and promotion of the annual End of Year Showcase for the Creative Industries Student Union (CICU) to build excitement and drive attendance.",
     accent: "#FF007F",
@@ -153,15 +153,15 @@ export const projects: Project[] = [
     description:
       "As part of the Creative Industries Course Union (CICU), I supported the promotion and execution of Creative Industries Alumni Night, creating visual and informational content to build awareness and engagement around the event.\n\nI designed these promotional assets and informational materials on Canva and Adobe illustrator to communicate key event details and maintain a consistent visual identity across CICU’s communications. During the event, I captured and made a short form video highlighting key moments and creating real-time engagement with the CICU community.\n\nThe project combined event marketing, graphic design, and video production to strengthen alumni and student engagement both during and after the event.",
     media: {
-      type: "image",
-      src: "/assets/cicu/alum/alum-graphic-1.jpg",
+      type: "video",
+      src: "/assets/cicu/alum/alum-reel.mp4",
       gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-      alt: "Creative Industries Alumni Night Promotion",
+      alt: "Creative Industries Alumni Night Video",
     },
     role: "VP Marketing & Creative Director",
     timeline: "February 2024",
     tools: "Canva, Adobe Illustrator, Video Editing, Social Graphics",
-    client: "Toronto Metropolitan University CRI Students",
+    client: "Toronto Metropolitan University",
     heroDescription:
       "Supported the promotion and execution of Creative Industries Alumni Night by designing promotional assets and informational materials.",
     accent: "#8B5CF6",
@@ -257,9 +257,9 @@ export const projects: Project[] = [
       "As part of my CRI 300 university course, I created a short flat motion graphics video, taking the project from initial concept and graphic development through to the final animation.\n\nI designed the visual elements in Adobe Illustrator and brought them to life in Adobe After Effects, using movement, transitions, and timing to create a cohesive visual narrative. I completed the project with open-source audio, combining original graphics and animation into a polished motion-based piece.\n\nThe project strengthened my skills in graphic design, motion graphics, animation, and visual storytelling.",
     media: {
       type: "video",
-      src: "/assets/cicu/showcase/showcase-reel.mp4",
+      src: "/assets/videos/good-gift-visual.mov",
       gradient: "linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)",
-      alt: "The Good Gift Video Preview",
+      alt: "The Good Gift Motion Graphic Preview",
     },
     role: "Graphic Designer / Video Editor",
     timeline: "November 2023",
@@ -268,6 +268,7 @@ export const projects: Project[] = [
     heroDescription:
       "Produced a flat motion graphics animation from initial vector illustration to final video rendering.",
     accent: "#EC4899",
+    detailVideo: "/assets/videos/good-gift-visual.mov",
     phases: [],
   },
 ];

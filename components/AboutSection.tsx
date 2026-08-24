@@ -90,11 +90,22 @@ export function AboutSection() {
               Hi, I&apos;m Shanesia!
             </h2>
             <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed mb-4">
-              Strategic storytelling, creative content, and digital communication that connects.
+              Strategic storytelling, creative content, and digital communication
             </p>
-            <p className="text-sm sm:text-base text-slate-600 font-light leading-relaxed mb-8">
-              I work at the intersection of communications, marketing, and digital media building authentic engagement for public sector, higher education, and non-profit organisations through intentional strategy and storytelling. Over the past few years I&apos;ve grown audience engagement through data-driven content strategy, translated complex information into clear, audience-first messaging, and led cross-institutional projects in fast-paced, deadline-driven environments.
-            </p>
+            <div className="text-sm sm:text-base text-slate-600 font-light leading-relaxed mb-8 space-y-3">
+              <p>
+                I’m a digital communications and creative professional with a background in communications, marketing, media, and project coordination.
+              </p>
+              <p>
+                My work sits at the intersection of strategy and creativity. I enjoy taking complex ideas, finding the story within them, and turning them into communications that are clear, engaging, and meaningful to the people they’re meant for.
+              </p>
+              <p>
+                Throughout my academic and professional experience, I’ve worked across public sector, higher education, non-profit, and student-led environments, developing digital content, coordinating projects, supporting campaigns, and creating visual communications across a range of platforms.
+              </p>
+              <p>
+                I’m particularly interested in work that brings together communication, creativity, and purpose — whether that means building a digital campaign, developing a brand identity, coordinating a project, or finding a better way to communicate an idea.
+              </p>
+            </div>
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#work"

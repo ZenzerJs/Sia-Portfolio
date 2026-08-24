@@ -159,10 +159,10 @@ export function Footer() {
         />
 
         {/* Contact Section Content */}
-        <section className="contact py-20 md:py-28 px-6 relative z-10">
-          <div className="contact__container max-w-2xl mx-auto text-center">
+        <section className="contact py-12 md:py-16 px-6 relative z-10">
+          <div className="contact__container max-w-xl mx-auto text-center">
             {/* Monogram with Cross-Fade */}
-            <div className="flex justify-center mb-6 relative w-16 h-16 sm:w-20 sm:h-20 mx-auto">
+            <div className="flex justify-center mb-4 relative w-12 h-12 sm:w-14 sm:h-14 mx-auto">
               <img
                 ref={darkMonogramRef}
                 src="/assets/logo-monogram-navy.png"
@@ -181,7 +181,7 @@ export function Footer() {
             {/* Headline */}
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-5xl font-serif text-[#1E3A5F] mb-4 tracking-tight"
+              className="text-2xl sm:text-4xl font-serif text-[#1E3A5F] mb-3 tracking-tight"
             >
               Let&apos;s collaborate
             </h2>
@@ -189,9 +189,9 @@ export function Footer() {
             {/* Metadata / Info */}
             <div
               ref={infoRef}
-              className="contact__info space-y-1 mb-6 text-slate-700"
+              className="contact__info space-y-0.5 mb-4 text-slate-700 text-sm"
             >
-              <p className="text-base font-medium">{siteConfig.person.fullName}</p>
+              <p className="font-medium text-[#1E3A5F]">{siteConfig.person.fullName}</p>
               <p>
                 <a
                   ref={emailLinkRef}
@@ -201,18 +201,18 @@ export function Footer() {
                   {siteConfig.email}
                 </a>
               </p>
-              <p ref={locationRef} className="text-xs font-mono opacity-85 mt-1">
+              <p ref={locationRef} className="text-[11px] font-mono opacity-85 mt-0.5">
                 {siteConfig.location}
               </p>
             </div>
 
             {/* Get In Touch Button */}
-            <div className="mt-6 mb-8 text-center">
+            <div className="mt-4 mb-6 text-center">
               <button
                 ref={ctaBtnRef}
                 type="button"
                 onClick={() => setConnectModalOpen(true)}
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#1E3A5F] text-white text-xs font-mono tracking-widest uppercase shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer font-semibold"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1E3A5F] text-white text-[11px] font-mono tracking-widest uppercase shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer font-semibold"
                 aria-label="Open contact and collaboration pop-out modal"
               >
                 <span>Get in Touch</span>
@@ -223,11 +223,11 @@ export function Footer() {
             {/* Links / Action Pills */}
             <div
               ref={pillsRef}
-              className="contact__links flex flex-wrap justify-center gap-3"
+              className="contact__links flex flex-wrap justify-center gap-2.5"
             >
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="footer-pill px-5 py-2 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-xs font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
+                className="footer-pill px-4 py-1.5 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
               >
                 Email
               </a>
@@ -235,23 +235,16 @@ export function Footer() {
                 href={siteConfig.socials.linkedin.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="footer-pill px-5 py-2 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-xs font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
+                className="footer-pill px-4 py-1.5 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
               >
                 LinkedIn
               </a>
               <a
                 href={siteConfig.resumeUrl}
                 download
-                className="footer-pill px-5 py-2 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-xs font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
+                className="footer-pill px-4 py-1.5 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
               >
                 Résumé (PDF)
-              </a>
-              <a
-                href={siteConfig.resumeDocxUrl}
-                download
-                className="footer-pill px-5 py-2 rounded-full border border-[#1E3A5F]/25 text-[#1E3A5F] text-xs font-mono tracking-wider uppercase backdrop-blur-sm transition-all hover:scale-105 hover:!border-white hover:!bg-white hover:!text-[#112239]"
-              >
-                Résumé (DOCX)
               </a>
             </div>
           </div>
@@ -260,13 +253,13 @@ export function Footer() {
         {/* Bottom Standardized Bar */}
         <footer
           ref={bottomBarRef}
-          className="footer flex flex-col sm:flex-row items-center justify-between px-6 md:px-12 py-6 border-t border-slate-200/80 relative z-10 gap-3 text-xs"
+          className="footer flex flex-col sm:flex-row items-center justify-between px-6 md:px-12 py-4 border-t border-slate-200/80 relative z-10 gap-2 text-[11px]"
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <img
               src="/assets/logo-monogram-light.png"
               alt=""
-              className="footer-monogram-img w-6 h-6 object-contain opacity-90"
+              className="footer-monogram-img w-5 h-5 object-contain opacity-90"
             />
             <p className="m-0 text-inherit">
               © {siteConfig.copyrightStartYear} {siteConfig.legalName}. All rights reserved.

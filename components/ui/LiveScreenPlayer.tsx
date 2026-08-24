@@ -72,8 +72,22 @@ export function LiveScreenPlayer({
 
       {/* macOS Window Canvas (Expanded Scale & Maximized Visibility) */}
       <div className="relative flex-1 w-full h-full overflow-hidden flex items-center justify-center p-2 sm:p-3 md:p-4 bg-[#F5F5F7]">
-        {/* If Project has Slides */}
-        {hasSlides ? (
+        {/* If Project has Video */}
+        {project.media.type === "video" && project.media.src ? (
+          <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative z-10 w-full h-full max-h-[94%] max-w-[96%] flex items-center justify-center rounded-lg overflow-hidden shadow-md border border-[#D1D1D6] bg-black">
+              <video
+                src={project.media.src}
+                muted
+                playsInline
+                loop
+                autoPlay
+                controls
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        ) : hasSlides ? (
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Ambient Blurred Background Glow */}
             <div
@@ -129,20 +143,6 @@ export function LiveScreenPlayer({
                   Expand ↗
                 </button>
               )}
-            </div>
-          </div>
-        ) : project.media.type === "video" ? (
-          /* Video Showcase with Inset Bounds */
-          <div className="relative w-full h-full flex items-center justify-center">
-            <div className="relative z-10 w-full h-full max-h-[94%] max-w-[96%] flex items-center justify-center rounded-lg overflow-hidden shadow-md border border-[#D1D1D6] bg-black">
-              <video
-                src={project.media.src}
-                muted
-                playsInline
-                loop
-                autoPlay
-                className="w-full h-full object-contain"
-              />
             </div>
           </div>
         ) : project.media.src ? (
