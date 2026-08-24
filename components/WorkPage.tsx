@@ -222,6 +222,47 @@ export function WorkPage() {
                     </div>
                   </div>
 
+                  {/* Project Tools & Technologies Strip */}
+                  {project.tools && (
+                    <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                      {project.tools.split(",").map((toolStr) => {
+                        const name = toolStr.trim();
+                        let icon = "";
+                        const lower = name.toLowerCase();
+                        if (lower.includes("canva")) icon = "/assets/tools/canva.svg";
+                        else if (lower.includes("illustrator")) icon = "/assets/tools/adobeillustrator.svg";
+                        else if (lower.includes("after effects")) icon = "/assets/tools/adobeaftereffects.svg";
+                        else if (lower.includes("photoshop")) icon = "/assets/tools/adobephotoshop.svg";
+                        else if (lower.includes("blender")) icon = "/assets/tools/blender.svg";
+                        else if (lower.includes("autocad")) icon = "/assets/tools/autocad.svg";
+                        else if (lower.includes("word")) icon = "/assets/tools/microsoftword.svg";
+                        else if (lower.includes("excel")) icon = "/assets/tools/microsoftexcel.svg";
+                        else if (lower.includes("teams")) icon = "/assets/tools/microsoftteams.svg";
+                        else if (lower.includes("moodle")) icon = "/assets/tools/moodle.svg";
+                        else if (lower.includes("wordpress")) icon = "/assets/tools/wordpress.svg";
+                        else if (lower.includes("wix")) icon = "/assets/tools/wix.svg";
+                        else if (lower.includes("midjourney")) icon = "/assets/tools/midjourney.svg";
+                        else if (lower.includes("stable diffusion")) icon = "/assets/tools/stablediffusion.svg";
+
+                        return (
+                          <span
+                            key={name}
+                            className="group/tool inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono text-slate-600 shadow-xs hover:border-[#1E3A5F] hover:text-[#1E3A5F] hover:bg-slate-50 transition-all cursor-default"
+                          >
+                            {icon && (
+                              <img
+                                src={icon}
+                                alt=""
+                                className="w-3.5 h-3.5 object-contain filter grayscale opacity-75 group-hover/tool:grayscale-0 group-hover/tool:opacity-100 group-hover/tool:scale-110 transition-all"
+                              />
+                            )}
+                            <span>{name}</span>
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+
                   <p className="work-slider__description text-xs md:text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                     {project.description}
                   </p>
