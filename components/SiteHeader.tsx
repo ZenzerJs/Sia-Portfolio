@@ -10,14 +10,14 @@ const pageNavItems = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
   { href: "/work", label: "Work", match: (p: string) => p === "/work" || p.startsWith("/work/") },
-  { href: "/#contact", label: "Contact", match: () => false },
+  { href: "/contact", label: "Contact", match: (p: string) => p === "/contact" },
 ];
 
 const homeNavItems = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
-  { href: "/about", label: "About", match: () => false },
-  { href: "/work", label: "Work", match: () => false },
-  { href: "#contact", label: "Contact", match: () => false },
+  { href: "/about", label: "About", match: (p: string) => p === "/about" },
+  { href: "/work", label: "Work", match: (p: string) => p.startsWith("/work") },
+  { href: "/contact", label: "Contact", match: (p: string) => p === "/contact" },
 ];
 
 export function SiteHeader({ homeSections = false }: { homeSections?: boolean }) {
@@ -28,11 +28,14 @@ export function SiteHeader({ homeSections = false }: { homeSections?: boolean })
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("menu-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
     };
   }, [mobileMenuOpen]);
 
@@ -40,13 +43,11 @@ export function SiteHeader({ homeSections = false }: { homeSections?: boolean })
     setMobileMenuOpen(false);
     if (href.includes("#")) {
       const hash = href.slice(href.indexOf("#"));
-      if (pathname === "/") {
+      const el = document.querySelector(hash);
+      if (el) {
         e.preventDefault();
-        const el = document.querySelector(hash);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          history.pushState(null, "", hash);
-        }
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.pushState(null, "", hash);
       }
     } else if (href.startsWith("/") && href !== pathname) {
       resetScrollToTop();
