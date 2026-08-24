@@ -82,7 +82,7 @@ export function WhatIDoSection() {
   return (
     <section
       id="process"
-      className="what-i-do py-20 md:py-32 px-6 md:px-12 max-w-[1440px] mx-auto border-t border-slate-200/80"
+      className="what-i-do py-20 md:py-32 px-6 md:px-12 max-w-[1380px] mx-auto border-t border-slate-200/80"
       aria-label="What I do - Areas of Practice"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">

@@ -347,7 +347,7 @@ export function MarimbaExactPortfolio() {
         </div>
 
         {/* 5. AccordionGallery: 35mm Analog Photography (Clean full-bleed without caption subheadings) */}
-        <section className="section py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto" id="gallery">
+        <section className="section py-20 md:py-28 px-6 md:px-12 max-w-[1380px] mx-auto" id="gallery">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
               Event &amp; Showcase Photography

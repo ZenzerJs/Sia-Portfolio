@@ -113,30 +113,30 @@ export function AboutSection() {
             </div>
 
             {/* Featured Organizations & Experience Logos */}
-            <div className="pt-6 mt-6 border-t border-slate-200/80 w-full">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block mb-3.5">
+            <div className="pt-8 mt-8 border-t border-slate-200/80 w-full">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-slate-400 block mb-4">
                 Organizations &amp; Experience
               </span>
-              <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+              <div className="flex flex-wrap items-center gap-7 sm:gap-10">
                 <img
                   src="/assets/logos/mass-culture.png"
                   alt="Mass Culture Canada"
-                  className="h-8 sm:h-9 w-auto object-contain transition-transform hover:scale-105"
+                  className="h-12 sm:h-14 w-auto object-contain filter grayscale opacity-75 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-default"
                 />
                 <img
                   src="/assets/logos/cicu.png"
                   alt="Creative Industries Course Union"
-                  className="h-8 sm:h-9 w-auto object-contain transition-transform hover:scale-105"
+                  className="h-12 sm:h-14 w-auto object-contain filter grayscale opacity-75 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-default"
                 />
                 <img
                   src="/assets/logos/tmu.jpg"
                   alt="Toronto Metropolitan University"
-                  className="h-7 sm:h-8 w-auto object-contain rounded-sm transition-transform hover:scale-105"
+                  className="h-11 sm:h-12 w-auto object-contain rounded-sm filter grayscale opacity-75 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-default"
                 />
                 <img
                   src="/assets/logos/parks-canada.jpg"
                   alt="Parks Canada"
-                  className="h-8 sm:h-9 w-auto object-contain transition-transform hover:scale-105"
+                  className="h-12 sm:h-14 w-auto object-contain filter grayscale opacity-75 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-default"
                 />
               </div>
             </div>

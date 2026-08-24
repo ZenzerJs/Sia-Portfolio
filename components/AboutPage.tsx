@@ -226,7 +226,7 @@ export function AboutPage() {
       <SiteHeader />
       <CursorDot />
 
-      <main id="main-content" className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 relative z-10">
+      <main id="main-content" className="w-full max-w-[1380px] mx-auto px-6 md:px-12 pt-28 pb-20 relative z-10">
         {/* Editorial Hero Statement (Centered Big Hero) */}
         <section
           ref={heroSectionRef}
@@ -329,27 +329,27 @@ export function AboutPage() {
               {experience.map((item, idx) => (
                 <div
                   key={idx}
-                  className="about-experience-card border-b border-gray-100/60 pb-10 last:border-0 last:pb-0 flex flex-col sm:flex-row gap-5 items-start"
+                  className="about-experience-card group/exp border-b border-gray-100/80 pb-12 last:border-0 last:pb-0 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start transition-all"
                 >
                   {item.logo && (
-                    <div className="w-12 h-12 rounded-xl bg-white border border-slate-200/80 shadow-sm p-1.5 flex items-center justify-center overflow-hidden flex-shrink-0 mt-1">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-slate-200/90 shadow-sm p-3 flex items-center justify-center overflow-hidden flex-shrink-0 mt-1 transition-all duration-300 group-hover/exp:scale-105 group-hover/exp:shadow-md group-hover/exp:border-[#1E3A5F]/40">
                       <img
                         src={item.logo}
                         alt={`${item.company} logo`}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain filter grayscale opacity-80 group-hover/exp:grayscale-0 group-hover/exp:opacity-100 transition-all duration-300"
                       />
                     </div>
                   )}
                   <div className="flex-1 w-full">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1.5">
-                      <h3 className="text-2xl md:text-3xl font-serif font-normal text-[#1E3A5F]">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                      <h3 className="text-2xl md:text-3xl font-serif font-normal text-[#1E3A5F] group-hover/exp:text-[#142A4A] transition-colors">
                         {item.role}
                       </h3>
-                      <span className="text-xs font-mono text-[#718096] uppercase tracking-wider">
+                      <span className="text-xs sm:text-sm font-mono text-[#718096] uppercase tracking-wider">
                         {item.period}
                       </span>
                     </div>
-                    <p className="text-xs font-mono text-[#1E3A5F]/85 uppercase tracking-widest mb-3 font-medium">
+                    <p className="text-xs sm:text-sm font-mono text-[#1E3A5F]/85 uppercase tracking-widest mb-3 font-semibold">
                       {item.company}
                     </p>
                     <p className="text-base md:text-lg text-[#4A5568] font-light leading-relaxed">
