@@ -13,6 +13,7 @@ import { initWorkSlider } from "@/lib/workSlider";
 import { projects } from "@/lib/projects";
 import { DeckViewerModal } from "@/components/ui/DeckViewerModal";
 import { LiveScreenPlayer } from "@/components/ui/LiveScreenPlayer";
+import { CASE_STUDIES, type CaseStudy } from "@/data/caseStudies";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -191,7 +192,15 @@ export function WorkPage() {
             </div>
 
             <div className="work-slider__stage">
-              {projects.map((project, index) => (
+              {projects.map((project, index) => {
+                const matchingCaseStudy = CASE_STUDIES.find(
+                  (cs) =>
+                    cs.id === project.slug ||
+                    (cs.id === "mass-culture" && project.slug.startsWith("mass-culture")) ||
+                    (cs.id === "cicu-showcase" && project.slug === "cicu-end-of-year-showcase")
+                );
+
+                return (
                 <div
                   key={project.slug}
                   className="work-slider__content"
@@ -205,6 +214,15 @@ export function WorkPage() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Highlighted Key Metric Badge */}
+                  {matchingCaseStudy?.keyMetric && (
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/90 border border-emerald-300/80 text-[11px] font-mono text-emerald-800 my-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="font-semibold uppercase tracking-wider text-[9px]">Impact</span>
+                      <span>{matchingCaseStudy.keyMetric}</span>
+                    </div>
+                  )}
 
                   {/* Project In-Page Meta Details */}
                   <div className="grid grid-cols-3 gap-2 my-3 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
@@ -267,6 +285,32 @@ export function WorkPage() {
                     {project.description}
                   </p>
 
+                  {/* Structured Problem-Process-Outcome-Reflection Framework */}
+                  {matchingCaseStudy && (
+                    <div className="mt-4 pt-3 border-t border-slate-200/80 space-y-2 text-left">
+                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Problem / Challenge</span>
+                        <p className="leading-snug text-slate-700">{matchingCaseStudy.challenge}</p>
+                      </div>
+                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Process</span>
+                        <ul className="list-disc list-inside space-y-0.5 text-slate-700 text-[11px]">
+                          {matchingCaseStudy.process.map((step, idx) => (
+                            <li key={idx} className="leading-snug">{step}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Outcome</span>
+                        <p className="leading-snug text-slate-700">{matchingCaseStudy.outcome}</p>
+                      </div>
+                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Reflection</span>
+                        <p className="italic text-slate-700 leading-snug">{matchingCaseStudy.reflection}</p>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex flex-wrap items-center gap-3 pt-3">
                     {project.slides && project.slides.length > 0 ? (
                       <button
@@ -290,7 +334,8 @@ export function WorkPage() {
                     )}
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
           </div>
 
