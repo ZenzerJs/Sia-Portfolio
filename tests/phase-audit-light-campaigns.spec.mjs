@@ -89,24 +89,28 @@ async function run() {
     }
     console.log("✓ Advanced to 04 / 13 (Mass Culture LinkedIn)");
 
-    // Direct jump via directory grid
-    console.log("Testing directory card jump...");
-    const card07 = page.locator("button:has-text('07')").first();
-    if ((await card07.count()) > 0) {
-      await card07.click();
-      await page.waitForTimeout(500);
-      const counter07 = page.locator("text=07 / 13");
-      if ((await counter07.count()) > 0) {
-        console.log("✓ Successfully jumped to Post 07 from directory");
-      }
+    // Verify Background SVG Shapes exist on campaigns page
+    const bgShapes = page.locator('main img[src*="shape-"]');
+    const shapeCount = await bgShapes.count();
+    console.log(`Background shapes on campaigns page: ${shapeCount}`);
+    if (shapeCount < 4) {
+      throw new Error(`Expected at least 4 background shapes, found ${shapeCount}`);
     }
+    console.log("✓ Editorial background shapes verified on /campaigns");
+
+    // Verify unbloated clean viewer: no bottom directory grid
+    const dirGrid = page.locator("text=Channel Directory, text=All Posts");
+    if ((await dirGrid.count()) > 0) {
+      throw new Error("Directory grid found, expected clean unbloated viewer");
+    }
+    console.log("✓ Verified clean unbloated viewer layout (no extra pills/grid)");
 
     // Capture Campaigns Page Screenshot
     const shotCampaigns = path.join(outDir, "light-campaigns-viewer.png");
     await page.screenshot({ path: shotCampaigns, fullPage: false });
     console.log(`✓ Screenshot saved: ${shotCampaigns}`);
 
-    // 2. Audit Home Page (Hero text cursor effect, removed badges, restored 3D MacbookLaptop)
+    // 2. Audit Home Page (Hero text shadow depth, removed badges, restored 3D MacbookLaptop)
     console.log(`\n2. Navigating to ${BASE}/ to verify Hero and Laptop ...`);
     await page.goto(`${BASE}/`, { waitUntil: "networkidle", timeout: 30000 });
     await page.waitForTimeout(1500);
@@ -120,21 +124,17 @@ async function run() {
     }
     console.log("✓ Hero floating badges successfully removed");
 
-    // Verify Interactive Hero Headline
+    // Verify Hero Headline has rich text-shadow depth
     const heroHeadline = page.locator(".hero-headline");
     if ((await heroHeadline.count()) === 0) {
       throw new Error("Hero headline not found");
     }
-    console.log("✓ Hero headline is present");
-
-    // Move mouse across hero to test cursor physics
-    await page.mouse.move(300, 300);
-    await page.waitForTimeout(200);
-    await page.mouse.move(700, 450);
-    await page.waitForTimeout(200);
-    await page.mouse.move(1100, 250);
-    await page.waitForTimeout(200);
-    console.log("✓ Mouse cursor moved across hero with 0 errors");
+    const textShadow = await heroHeadline.evaluate((el) => window.getComputedStyle(el).textShadow);
+    console.log(`Hero headline computed textShadow: "${textShadow}"`);
+    if (!textShadow || textShadow === "none") {
+      throw new Error("Hero headline is missing text-shadow depth effect");
+    }
+    console.log("✓ Hero headline has dimensional text-shadow styling");
 
     // Verify 3D MacbookLaptop in #work
     const macbook = page.locator(".work__macbook");
