@@ -112,26 +112,31 @@ export function SocialCampaignViewer() {
       
       {/* Clean Header Controls: Title & Direct Stepper */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 pb-4 border-b border-slate-200/70">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span
-              className="inline-flex items-center justify-center shrink-0 shadow-2xs rounded-md overflow-hidden"
-              title={activePost.platform === 'linkedin' ? 'LinkedIn' : 'Instagram'}
-            >
-              {activePost.platform === 'linkedin' ? (
-                <LinkedInIcon className="w-5 h-5 rounded-md" />
-              ) : (
-                <InstagramIcon className="w-5 h-5 rounded-md" />
-              )}
-            </span>
-            <span className="text-xs font-mono text-slate-500 font-medium">
-              {activePost.organization}
-            </span>
+        <div className="flex items-center gap-3.5 sm:gap-4 max-w-2xl">
+          {/* Prominent Platform Icon aligning the 2 lines of text */}
+          <div
+            className="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden shadow-xs flex items-center justify-center"
+            title={activePost.platform === 'linkedin' ? 'LinkedIn' : 'Instagram'}
+          >
+            {activePost.platform === 'linkedin' ? (
+              <LinkedInIcon className="w-full h-full" />
+            ) : (
+              <InstagramIcon className="w-full h-full" />
+            )}
           </div>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#1E3A5F] font-normal tracking-tight">
-            {activePost.title}
-          </h2>
+          {/* 2 lines of text aligned beside the icon */}
+          <div className="space-y-0.5 min-w-0">
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-500 font-medium truncate">
+              <span>{activePost.organization}</span>
+              <span className="text-slate-300">·</span>
+              <span className="text-[11px] text-slate-400">{activePost.topicTag}</span>
+            </div>
+
+            <h2 className="text-xl sm:text-2xl font-serif text-[#1E3A5F] font-normal tracking-tight leading-snug">
+              {activePost.title}
+            </h2>
+          </div>
         </div>
 
         {/* Stepper Navigation */}
