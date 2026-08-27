@@ -37,7 +37,7 @@ export function SocialCampaignViewer() {
 
   const verticalScrollVariants = {
     enter: (dir: number) => ({
-      y: shouldReduceMotion ? 0 : dir > 0 ? 140 : -140,
+      y: shouldReduceMotion ? 0 : dir > 0 ? '100%' : '-100%',
       opacity: 0,
       scale: shouldReduceMotion ? 1 : 0.98,
     }),
@@ -46,19 +46,19 @@ export function SocialCampaignViewer() {
       opacity: 1,
       scale: 1,
       transition: {
-        y: { type: 'spring' as const, stiffness: 260, damping: 28 },
-        opacity: { duration: 0.28 },
-        scale: { duration: 0.28 },
+        y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+        opacity: { duration: 0.45, ease: 'easeOut' as const },
+        scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
       },
     },
     exit: (dir: number) => ({
-      y: shouldReduceMotion ? 0 : dir > 0 ? -140 : 140,
+      y: shouldReduceMotion ? 0 : dir > 0 ? '-100%' : '100%',
       opacity: 0,
       scale: shouldReduceMotion ? 1 : 0.98,
       transition: {
-        y: { type: 'spring' as const, stiffness: 260, damping: 28 },
-        opacity: { duration: 0.22 },
-        scale: { duration: 0.22 },
+        y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+        opacity: { duration: 0.35, ease: 'easeIn' as const },
+        scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
       },
     }),
   };
@@ -128,7 +128,7 @@ export function SocialCampaignViewer() {
 
       {/* Main Full-Screen Frame with Spring Slide Swap Animation */}
       <div className="relative w-full rounded-3xl bg-white border border-slate-200/90 shadow-md p-4 sm:p-8 min-h-[580px] sm:min-h-[680px] flex items-center justify-center overflow-hidden">
-        <AnimatePresence initial={false} custom={direction} mode="wait">
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
             key={activePost.id}
             custom={direction}
