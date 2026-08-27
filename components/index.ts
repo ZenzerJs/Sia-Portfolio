@@ -18,3 +18,4 @@ export * from "./ui/CountUp";
 export * from "./ui/DeckViewerModal";
 export * from "./ui/BentoGrid";
 export * from "./ui/ShinyText";
+export * from "./TestimonialCarousel";

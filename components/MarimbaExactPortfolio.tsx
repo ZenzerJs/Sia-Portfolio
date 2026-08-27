@@ -8,7 +8,7 @@ import { initHeroExplode } from "@/lib/heroExplode";
 import { initOrbitEngine } from "@/lib/orbitEngine";
 import { initThemeScroll } from "@/lib/themeScroll";
 import { initSmoothScroll } from "@/lib/smoothScroll";
-import { initTestimonialRotator } from "@/lib/testimonialRotator";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ToolMarquee } from "@/components/ToolMarquee";
 import { MacbookLaptop } from "@/components/MacbookLaptop";
 import { siteConfig } from "@/lib/siteConfig";
@@ -110,7 +110,6 @@ export function MarimbaExactPortfolio() {
 
       const cleanupOrbit = initOrbitEngine();
       const cleanupTheme = initThemeScroll();
-      const cleanupTestimonials = initTestimonialRotator();
 
       // Ensure all page ScrollTriggers (including the Footer blue slide) recalculate with exact pinned layout
       setTimeout(() => {
@@ -123,7 +122,6 @@ export function MarimbaExactPortfolio() {
       cleanupStaged = () => {
         cleanupOrbit();
         cleanupTheme();
-        cleanupTestimonials();
       };
     });
 
@@ -375,91 +373,8 @@ export function MarimbaExactPortfolio() {
         {/* 6. What I Do: 5-Pillar Personalized Practice Areas */}
         <WhatIDoSection />
 
-        {/* 8. Testimonials */}
-        <section className="section testimonials" id="testimonials" aria-label="Kind words">
-          <div className="testimonials__inner">
-            <h2 className="testimonials__heading">Kind words</h2>
-            <div
-              className="testimonials__stage"
-              role="group"
-              aria-roledescription="carousel"
-              aria-label="Client testimonials"
-              tabIndex={0}
-            >
-              {siteConfig.testimonials.map((testimonial, i) => (
-                <figure
-                  key={i}
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={`${i + 1} of ${siteConfig.testimonials.length}`}
-                  className={`testimonial${i === 0 ? " is-active" : ""}`}
-                >
-                  <blockquote className="testimonial__quote">
-                    “{testimonial.quote}”
-                  </blockquote>
-                  <figcaption className="testimonial__author">
-                    {testimonial.author}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-            <div className="testimonials__controls">
-              <button
-                type="button"
-                className="testimonials__nav"
-                data-testimonial-prev
-                aria-label="Previous testimonial"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
-                  <path
-                    d="M15 4.5 7.5 12 15 19.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <span className="testimonials__counter" aria-live="polite">
-                <span className="testimonials__counter-current">1</span>
-                <span className="testimonials__counter-sep" aria-hidden="true">
-                  /{" "}
-                </span>
-                <span className="testimonials__counter-total">
-                  {siteConfig.testimonials.length}
-                </span>
-              </span>
-              <button
-                type="button"
-                className="testimonials__nav"
-                data-testimonial-next
-                aria-label="Next testimonial"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
-                  <path
-                    d="M9 4.5 16.5 12 9 19.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="testimonials__dots">
-              {siteConfig.testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  className={`testimonials__dot${i === 0 ? " is-active" : ""}`}
-                  aria-label={`Show testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* 8. Testimonials with Spring Physics and Clean ARIA */}
+        <TestimonialCarousel />
       </main>
 
       {/* Unified Midnight Blue Footer */}
