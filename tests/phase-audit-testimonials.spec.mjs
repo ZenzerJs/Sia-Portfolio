@@ -8,7 +8,7 @@ const outDir = path.resolve("./.antigravity/artifacts/phase-audit");
 fs.mkdirSync(outDir, { recursive: true });
 
 async function run() {
-  console.log("=== TESTIMONIALS (KIND WORDS) UI AUDIT ===");
+  console.log("=== TESTIMONIALS CENTER-ALIGNED POEM FORMAT AUDIT ===");
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
@@ -27,27 +27,30 @@ async function run() {
     await testimonialsSec.scrollIntoViewIfNeeded();
     await page.waitForTimeout(1000);
 
-    // 1. Verify Header Layout & Dimensions
+    // 1. Verify Heading is Centered
     const heading = page.locator("#testimonials-heading");
-    const headingBox = await heading.boundingBox();
-    console.log("Heading bounding box:", headingBox);
+    const headingAlign = await heading.evaluate((el) => window.getComputedStyle(el).textAlign);
+    console.log("Heading textAlign:", headingAlign);
 
-    const controls = testimonialsSec.locator('button[aria-label="Next testimonial"]');
-    const controlsBox = await controls.boundingBox();
-    console.log("Next button bounding box:", controlsBox);
-
-    if (!headingBox || !controlsBox) {
-      throw new Error("Could not compute bounding boxes for testimonials header");
+    // 2. Verify Quote (Poem) is Centered
+    const quote = testimonialsSec.locator("blockquote");
+    const quoteAlign = await quote.evaluate((el) => window.getComputedStyle(el).textAlign);
+    console.log("Quote textAlign:", quoteAlign);
+    if (quoteAlign !== "center") {
+      throw new Error(`Expected blockquote textAlign to be 'center', got '${quoteAlign}'`);
     }
+    console.log("✓ Quote is properly center-aligned in poem format");
 
-    const horizontalDistance = controlsBox.x - (headingBox.x + headingBox.width);
-    console.log(`Horizontal gap between 'Kind words' and controls: ${horizontalDistance}px`);
-    if (horizontalDistance < 200) {
-      throw new Error(`Header items still squished! Distance was only ${horizontalDistance}px`);
+    // 3. Verify Caption is Centered
+    const caption = testimonialsSec.locator("figcaption");
+    const captionAlign = await caption.evaluate((el) => window.getComputedStyle(el).textAlign);
+    console.log("Caption textAlign:", captionAlign);
+    if (captionAlign !== "center") {
+      throw new Error(`Expected figcaption textAlign to be 'center', got '${captionAlign}'`);
     }
-    console.log("✓ Header properly spaced with full-width justify-between layout");
+    console.log("✓ Attribution is properly center-aligned");
 
-    // 2. Verify Stepper Interaction
+    // 4. Verify Stepper Controls & Counter
     const counter = testimonialsSec.locator("text=01 / 03");
     if ((await counter.count()) === 0) {
       throw new Error("Initial '01 / 03' counter not found");
@@ -55,7 +58,8 @@ async function run() {
     console.log("✓ Initial '01 / 03' counter verified");
 
     // Click Next
-    await controls.click();
+    const nextBtn = testimonialsSec.locator('button[aria-label="Next testimonial"]');
+    await nextBtn.click();
     await page.waitForTimeout(500);
 
     const counter02 = testimonialsSec.locator("text=02 / 03");
@@ -64,7 +68,7 @@ async function run() {
     }
     console.log("✓ Successfully advanced to '02 / 03'");
 
-    // 3. Verify Pagination Pill Interaction
+    // 5. Verify Pagination Pill Interaction
     const pill3 = testimonialsSec.locator('button[aria-label="Go to testimonial 3"]');
     await pill3.click();
     await page.waitForTimeout(500);
@@ -75,8 +79,8 @@ async function run() {
     }
     console.log("✓ Successfully advanced to '03 / 03' via pill click");
 
-    // 4. Capture screenshot
-    const shotPath = path.join(outDir, "kind-words-fixed.png");
+    // 6. Capture screenshot
+    const shotPath = path.join(outDir, "kind-words-poem-format.png");
     await page.screenshot({ path: shotPath });
     console.log(`✓ Screenshot saved: ${shotPath}`);
 
@@ -89,7 +93,7 @@ async function run() {
       console.log("✓ Zero fatal console or runtime errors");
     }
 
-    console.log("\n=== ALL TESTIMONIAL AUDITS PASSED ===");
+    console.log("\n=== ALL POEM FORMAT AUDITS PASSED ===");
   } catch (err) {
     console.error("Test failed:", err);
     process.exit(1);

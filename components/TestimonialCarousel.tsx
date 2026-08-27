@@ -43,26 +43,28 @@ export function TestimonialCarousel() {
 
   const variants: Variants = {
     enter: (dir: number) => ({
-      x: shouldReduceMotion ? 0 : dir > 0 ? 60 : -60,
+      y: shouldReduceMotion ? 0 : dir > 0 ? 30 : -30,
       opacity: 0,
-      scale: shouldReduceMotion ? 1 : 0.98,
+      filter: 'blur(8px)',
     }),
     center: {
-      x: 0,
+      y: 0,
       opacity: 1,
-      scale: 1,
+      filter: 'blur(0px)',
       transition: {
-        x: { type: 'spring', stiffness: 260, damping: 26 },
-        opacity: { duration: 0.25 },
+        y: { type: 'spring', stiffness: 240, damping: 26 },
+        opacity: { duration: 0.3 },
+        filter: { duration: 0.25 },
       },
     },
     exit: (dir: number) => ({
-      x: shouldReduceMotion ? 0 : dir < 0 ? 60 : -60,
+      y: shouldReduceMotion ? 0 : dir < 0 ? 30 : -30,
       opacity: 0,
-      scale: shouldReduceMotion ? 1 : 0.98,
+      filter: 'blur(8px)',
       transition: {
-        x: { type: 'spring', stiffness: 260, damping: 26 },
+        y: { type: 'spring', stiffness: 240, damping: 26 },
         opacity: { duration: 0.2 },
+        filter: { duration: 0.2 },
       },
     }),
   };
@@ -71,52 +73,21 @@ export function TestimonialCarousel() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="w-full py-20 sm:py-28 px-6 sm:px-10 bg-[var(--bg-light)] relative z-10 border-t border-slate-200/60"
+      className="w-full py-24 sm:py-32 px-6 sm:px-10 bg-[var(--bg-light)] relative z-10 border-t border-slate-200/60"
     >
-      <div className="w-full max-w-5xl mx-auto">
-        {/* Full-width balanced header */}
-        <div className="w-full flex items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/80">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+        {/* Centered Heading */}
+        <div className="text-center mb-12 sm:mb-16">
           <h2
             id="testimonials-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#1E3A5F] tracking-tight font-normal"
           >
             Kind words
           </h2>
-
-          {/* Stepper Navigation & Controls */}
-          <div className="flex items-center gap-3 shrink-0">
-            <span
-              className="text-xs font-mono text-slate-500 font-medium tracking-wider"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <span className="sr-only">Testimonial </span>
-              {String(index + 1).padStart(2, '0')} / {String(TESTIMONIALS.length).padStart(2, '0')}
-            </span>
-
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={() => paginate(-1)}
-                aria-label="Previous testimonial"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 hover:border-[#1E3A5F] bg-white text-[#1E3A5F] hover:bg-slate-50 transition-all flex items-center justify-center cursor-pointer shadow-xs active:scale-95 focus-visible:outline-2 focus-visible:outline-[#1E3A5F]"
-              >
-                ←
-              </button>
-              <button
-                type="button"
-                onClick={() => paginate(1)}
-                aria-label="Next testimonial"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 hover:border-[#1E3A5F] bg-white text-[#1E3A5F] hover:bg-slate-50 transition-all flex items-center justify-center cursor-pointer shadow-xs active:scale-95 focus-visible:outline-2 focus-visible:outline-[#1E3A5F]"
-              >
-                →
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* Testimonial Quote Stage */}
-        <div className="relative min-h-[220px] sm:min-h-[190px] w-full overflow-hidden">
+        {/* Center-Aligned Poem / Verse Stage */}
+        <div className="relative min-h-[220px] sm:min-h-[190px] w-full flex items-center justify-center overflow-hidden">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.figure
               key={index}
@@ -125,19 +96,20 @@ export function TestimonialCarousel() {
               initial="enter"
               animate="center"
               exit="exit"
-              className="w-full flex flex-col justify-between"
+              className="w-full max-w-3xl mx-auto flex flex-col items-center text-center"
             >
-              <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-[#1E3A5F] leading-relaxed tracking-tight font-normal">
+              {/* Poem verse format */}
+              <blockquote className="text-2xl sm:text-3xl md:text-[34px] font-serif text-[#1E3A5F] leading-[1.6] tracking-tight font-normal text-center max-w-2xl sm:max-w-3xl">
                 “{TESTIMONIALS[index].quote}”
               </blockquote>
 
-              <figcaption className="mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3 text-sm font-sans">
-                <div className="w-8 h-[2px] bg-[#1E3A5F]/30" aria-hidden="true" />
+              {/* Centered Attribution */}
+              <figcaption className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-1.5 text-center">
+                <div className="w-10 h-[1.5px] bg-[#1E3A5F]/25 mb-1" aria-hidden="true" />
                 <strong className="text-[#1E3A5F] font-semibold text-base sm:text-lg tracking-tight">
                   {TESTIMONIALS[index].author}
                 </strong>
-                <span className="text-slate-300">·</span>
-                <span className="text-slate-600 font-mono text-xs sm:text-sm">
+                <span className="text-slate-500 font-mono text-xs sm:text-sm tracking-wider">
                   {TESTIMONIALS[index].title}
                 </span>
               </figcaption>
@@ -145,22 +117,54 @@ export function TestimonialCarousel() {
           </AnimatePresence>
         </div>
 
-        {/* Interactive Indicator Pills */}
-        <div className="flex items-center gap-2 mt-6 pt-4">
-          {TESTIMONIALS.map((_, i) => (
+        {/* Centered Stepper Controls & Dots */}
+        <div className="mt-12 sm:mt-14 flex flex-col items-center gap-4">
+          <div className="flex items-center justify-center gap-4">
             <button
-              key={i}
               type="button"
-              onClick={() => {
-                setDirection(i > index ? 1 : -1);
-                setIndex(i);
-              }}
-              aria-label={`Go to testimonial ${i + 1}`}
-              className={`h-2 rounded-full transition-all cursor-pointer ${
-                i === index ? 'w-8 bg-[#1E3A5F]' : 'w-2 bg-slate-200 hover:bg-slate-300'
-              }`}
-            />
-          ))}
+              onClick={() => paginate(-1)}
+              aria-label="Previous testimonial"
+              className="w-10 h-10 rounded-full border border-slate-200 hover:border-[#1E3A5F] bg-white text-[#1E3A5F] hover:bg-slate-50 transition-all flex items-center justify-center cursor-pointer shadow-xs active:scale-95 focus-visible:outline-2 focus-visible:outline-[#1E3A5F]"
+            >
+              ←
+            </button>
+
+            <span
+              className="text-xs font-mono text-slate-500 font-medium tracking-widest px-2"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span className="sr-only">Testimonial </span>
+              {String(index + 1).padStart(2, '0')} / {String(TESTIMONIALS.length).padStart(2, '0')}
+            </span>
+
+            <button
+              type="button"
+              onClick={() => paginate(1)}
+              aria-label="Next testimonial"
+              className="w-10 h-10 rounded-full border border-slate-200 hover:border-[#1E3A5F] bg-white text-[#1E3A5F] hover:bg-slate-50 transition-all flex items-center justify-center cursor-pointer shadow-xs active:scale-95 focus-visible:outline-2 focus-visible:outline-[#1E3A5F]"
+            >
+              →
+            </button>
+          </div>
+
+          {/* Centered Navigation Indicator Pills */}
+          <div className="flex items-center justify-center gap-2">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  setDirection(i > index ? 1 : -1);
+                  setIndex(i);
+                }}
+                aria-label={`Go to testimonial ${i + 1}`}
+                className={`h-2 rounded-full transition-all cursor-pointer ${
+                  i === index ? 'w-8 bg-[#1E3A5F]' : 'w-2 bg-slate-200 hover:bg-slate-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
