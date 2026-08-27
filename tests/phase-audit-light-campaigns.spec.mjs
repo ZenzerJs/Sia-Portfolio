@@ -36,12 +36,30 @@ async function run() {
       throw new Error(`Expected 'Social Campaigns', got '${h1}'`);
     }
 
+    // Verify Tacky Pill ("Digital Media & Campaign Showcase") is COMPLETELY GONE
+    const tackyPill = page.locator("text=Digital Media & Campaign Showcase");
+    const pillCount = await tackyPill.count();
+    console.log(`Tacky pill count: ${pillCount}`);
+    if (pillCount > 0) {
+      throw new Error("Tacky pill 'Digital Media & Campaign Showcase' still found in DOM");
+    }
+    console.log("✓ Tacky pill successfully removed");
+
     // Verify Light Background (not dark #0e1013)
     const mainBg = await page.evaluate(() => {
       const el = document.querySelector("#main-content");
       return window.getComputedStyle(el).backgroundColor;
     });
     console.log(`Main background computed: "${mainBg}"`);
+
+    // Verify ONLY the 2 astrix shapes have slow spin classes
+    const spinningShapes = page.locator('[class*="animate-spin-ultra-slow"]');
+    const spinCount = await spinningShapes.count();
+    console.log(`Slow spinning shape count: ${spinCount}`);
+    if (spinCount !== 2) {
+      throw new Error(`Expected exactly 2 slow spinning shapes, found ${spinCount}`);
+    }
+    console.log("✓ Verified ONLY astrix SVG shapes spin slowly (all other shapes static)");
 
     // Verify Initial Post Counter
     const counter = page.locator("text=01 / 13");

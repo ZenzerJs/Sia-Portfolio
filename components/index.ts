@@ -26,3 +26,4 @@ export * from "./BroadcastTVConsole";
 export * from "./HeroShowreelGSAP";
 export * from "./InteractiveHeroHeadline";
 export * from "./SocialCampaignViewer";
+export * from "./CampaignsMasthead";

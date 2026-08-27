@@ -3888,3 +3888,32 @@ main {
     border-color: #1E3A5F;
     box-shadow: 0 8px 20px -6px rgba(30, 58, 95, 0.12);
 }
+
+/* --- Ambient Ultra-Slow SVG Spin ------------------------------------------ */
+@keyframes spin-ultra-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-ultra-slow-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.animate-spin-ultra-slow {
+    animation: spin-ultra-slow 48s linear infinite;
+    will-change: transform;
+}
+
+.animate-spin-ultra-slow-reverse {
+    animation: spin-ultra-slow-reverse 56s linear infinite;
+    will-change: transform;
+}
