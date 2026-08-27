@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { siteConfig } from "@/lib/siteConfig";
@@ -13,12 +13,18 @@ import { siteConfig } from "@/lib/siteConfig";
 export function MacbookLaptop() {
   const rootRef = useRef<HTMLDivElement>(null);
   const lidRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  // Open the lid when the laptop scrolls into view and close it again when it
-  // leaves, so it re-opens every time you scroll back to the work section.
-  // Reduced-motion users still get it — the global CSS rule makes the
-  // transition instant for them.
+  const toggleLid = () => {
+    setIsOpen((prev) => {
+      const next = !prev;
+      lidRef.current?.classList.toggle("is-open", next);
+      return next;
+    });
+  };
+
+  // Open the lid when the laptop scrolls into view and close it when it leaves
   useEffect(() => {
     const root = rootRef.current;
     const lid = lidRef.current;
@@ -28,9 +34,10 @@ export function MacbookLaptop() {
       (entries) => {
         entries.forEach((entry) => {
           lid.classList.toggle("is-open", entry.isIntersecting);
+          setIsOpen(entry.isIntersecting);
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.35, rootMargin: "-40px 0px -40px 0px" }
     );
 
     observer.observe(root);
@@ -38,17 +45,21 @@ export function MacbookLaptop() {
   }, []);
 
   return (
-    <div
-      className="work__macbook cursor-pointer select-none"
-      ref={rootRef}
-      onClick={() => router.push("/work")}
-      role="link"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") router.push("/work");
-      }}
-      aria-label="Explore Selected Work"
-    >
+    <div className="flex flex-col items-center">
+      <div
+        className="work__macbook cursor-pointer select-none"
+        ref={rootRef}
+        onClick={toggleLid}
+        role="region"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleLid();
+          }
+        }}
+        aria-label="3D MacBook Pro Showreel Display"
+      >
       <div className="macbook-scene">
         <div className="laptop">
           <div className="lid" ref={lidRef}>
@@ -212,6 +223,33 @@ export function MacbookLaptop() {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+      {/* Interactive Open/Close Controls */}
+      <div className="mt-8 flex items-center gap-3 relative z-20">
+        <button
+          type="button"
+          onClick={toggleLid}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 hover:border-[#1E3A5F] text-[#1E3A5F] text-xs font-mono tracking-wider transition-all cursor-pointer shadow-xs active:scale-95"
+          aria-label={isOpen ? "Close MacBook display" : "Open MacBook display"}
+        >
+          <span
+            className={`w-2 h-2 rounded-full transition-colors ${
+              isOpen ? "bg-emerald-500 shadow-[0_0_6px_#10b981]" : "bg-amber-500 shadow-[0_0_6px_#f59e0b]"
+            }`}
+          />
+          <span>{isOpen ? "Close Display" : "Open Display"}</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => router.push("/work")}
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1E3A5F] hover:bg-[#152842] text-white text-xs font-mono tracking-wider transition-all cursor-pointer shadow-xs active:scale-95"
+        >
+          <span>Explore All Work</span>
+          <span>↗</span>
+        </button>
       </div>
     </div>
   );

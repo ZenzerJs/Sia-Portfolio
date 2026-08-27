@@ -754,13 +754,14 @@ main {
     will-change: transform;
     transform-style: preserve-3d;
     transform-origin: 50% 100%;
-    /* Resting state: slightly forward open */
-    transform: rotateX(-10deg);
-    transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Closed resting state: clamshell shut down flat against keyboard */
+    transform: rotateX(-88deg);
+    transition: transform 1.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .work__macbook .lid.is-open {
-    transform: rotateX(5deg);
+    /* Open state: display upright tilted slightly back */
+    transform: rotateX(2deg);
 }
 
 .work__macbook .lid .top {
