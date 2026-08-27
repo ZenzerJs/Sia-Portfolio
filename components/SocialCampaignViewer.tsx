@@ -5,6 +5,50 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { SOCIAL_POSTS, type SocialPost } from '@/data/socialPosts';
 
+function LinkedInIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="LinkedIn"
+    >
+      <rect width="24" height="24" rx="5" fill="#0A66C2" />
+      <path
+        d="M7.4 9H5V17H7.4V9ZM6.2 5.5C5.4 5.5 4.8 6.1 4.8 6.9C4.8 7.7 5.4 8.3 6.2 8.3C7 8.3 7.6 7.7 7.6 6.9C7.6 6.1 7 5.5 6.2 5.5ZM19 12.3C19 9.8 17.7 8.8 15.9 8.8C14.5 8.8 13.8 9.6 13.5 10.2V9H11.1C11.1 9.7 11.1 17 11.1 17H13.5V12.5C13.5 12.3 13.5 12 13.6 11.8C13.8 11.3 14.3 10.8 15 10.8C16 10.8 16.4 11.6 16.4 12.7V17H18.9L19 12.3Z"
+        fill="white"
+      />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Instagram"
+    >
+      <defs>
+        <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#f09433" />
+          <stop offset="25%" stopColor="#e6683c" />
+          <stop offset="50%" stopColor="#dc2743" />
+          <stop offset="75%" stopColor="#cc2366" />
+          <stop offset="100%" stopColor="#bc1888" />
+        </linearGradient>
+      </defs>
+      <rect width="24" height="24" rx="5.5" fill="url(#igGradient)" />
+      <rect x="5" y="5" width="14" height="14" rx="4" stroke="white" strokeWidth="1.6" fill="none" />
+      <circle cx="12" cy="12" r="3.2" stroke="white" strokeWidth="1.6" fill="none" />
+      <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
+    </svg>
+  );
+}
+
 export function SocialCampaignViewer() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -71,13 +115,14 @@ export function SocialCampaignViewer() {
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span
-              className={`text-[10px] font-mono font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                activePost.platform === 'linkedin'
-                  ? 'bg-[#0077B5]/10 text-[#0077B5] border border-[#0077B5]/20'
-                  : 'bg-pink-50 text-pink-700 border border-pink-200'
-              }`}
+              className="inline-flex items-center justify-center shrink-0 shadow-2xs rounded-md overflow-hidden"
+              title={activePost.platform === 'linkedin' ? 'LinkedIn' : 'Instagram'}
             >
-              {activePost.platform}
+              {activePost.platform === 'linkedin' ? (
+                <LinkedInIcon className="w-5 h-5 rounded-md" />
+              ) : (
+                <InstagramIcon className="w-5 h-5 rounded-md" />
+              )}
             </span>
             <span className="text-xs font-mono text-slate-500 font-medium">
               {activePost.organization}

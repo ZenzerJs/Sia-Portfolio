@@ -76,6 +76,13 @@ async function run() {
       throw new Error(`Expected Instagram embed on post 1, got '${iframeSrc}'`);
     }
 
+    // Verify Instagram SVG Icon on post 1
+    const igIcon = page.locator('svg[aria-label="Instagram"]');
+    if ((await igIcon.count()) === 0) {
+      throw new Error("Instagram SVG icon not found on post 1");
+    }
+    console.log("✓ Instagram SVG icon verified on post 1");
+
     // Next post button
     console.log("Testing Next post button...");
     const nextBtn = page.locator('button[aria-label="Next campaign post"]');
@@ -106,6 +113,13 @@ async function run() {
       throw new Error("Failed to advance to 04 / 13");
     }
     console.log("✓ Advanced to 04 / 13 (Mass Culture LinkedIn)");
+
+    // Verify LinkedIn SVG Icon on post 4
+    const liIcon = page.locator('svg[aria-label="LinkedIn"]');
+    if ((await liIcon.count()) === 0) {
+      throw new Error("LinkedIn SVG icon not found on post 4");
+    }
+    console.log("✓ LinkedIn SVG icon verified on post 4");
 
     // Verify Background SVG Shapes exist on campaigns page
     const bgShapes = page.locator('main img[src*="shape-"]');
