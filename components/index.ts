@@ -24,3 +24,5 @@ export * from "./HeroShowreelScroll";
 export * from "./SmoothScroll";
 export * from "./BroadcastTVConsole";
 export * from "./HeroShowreelGSAP";
+export * from "./InteractiveHeroHeadline";
+export * from "./SocialCampaignViewer";

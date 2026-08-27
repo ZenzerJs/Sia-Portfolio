@@ -12,9 +12,9 @@ import { initOrbitEngine } from "@/lib/orbitEngine";
 import { initThemeScroll } from "@/lib/themeScroll";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
-import { FloatingBadge } from "@/components/FloatingBadge";
+import { InteractiveHeroHeadline } from "@/components/InteractiveHeroHeadline";
 import { ToolMarquee } from "@/components/ToolMarquee";
-import { HeroShowreelGSAP } from "@/components/HeroShowreelGSAP";
+import { MacbookLaptop } from "@/components/MacbookLaptop";
 import { siteConfig } from "@/lib/siteConfig";
 import { DualScramble } from "@/components/ui/DualScramble";
 import { AccordionGallery, type AccordionGalleryItem } from "@/components/AccordionGallery";
@@ -318,35 +318,33 @@ export function MarimbaExactPortfolio() {
               <img src="/assets/shape-circle3.webp" alt="" className="shape-img" />
             </div>
           </div>
-          <div className="hero-content relative">
-            {/* Desktop Cursor Tracking Badges (guarded on touch / coarse devices) */}
-            <div className="hidden md:block pointer-events-none absolute -top-8 left-4 z-20">
-              <FloatingBadge label="Strategic Storytelling" depthFactor={22} />
-            </div>
-            <div className="hidden md:block pointer-events-none absolute -bottom-6 right-6 z-20">
-              <FloatingBadge label="Data Narrative & Arts" depthFactor={-18} />
-            </div>
-
+          <div className="hero-content">
             <div className="hero-tag">
               <span className="pill-button">
                 Communications · Marketing · Project Coordination
               </span>
             </div>
-            <h1 className="hero-headline font-normal leading-[1.14] text-center max-w-4xl mx-auto">
-              Connecting data, research, and community
-              <br className="hidden sm:inline" />
-              {" "}through strategic storytelling
-              <br className="hidden sm:inline" />
-              {" "}and digital media.
-            </h1>
+            <InteractiveHeroHeadline />
           </div>
         </section>
 
         {/* 2. Editorial About Section with Polaroid & Washi-Tape Collage */}
         <AboutSection />
 
-        {/* 3. Work Showcase — ScrollTrigger Pinned Showreel */}
-        <HeroShowreelGSAP />
+        {/* 3. Work Showcase — 3D MacBook with Motion Reels */}
+        <section className="section py-16 md:py-24" id="work" data-cursor="work">
+          <div className="section-content">
+            <div className="text-center mb-12">
+              <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+                Showreel
+              </span>
+              <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
+                Selected Work
+              </h2>
+            </div>
+            <MacbookLaptop />
+          </div>
+        </section>
 
         {/* 4. Running Tool Marquee with Key Skills Monospace Label */}
         <div className="mt-20 md:mt-32 mb-16 md:mb-24 py-6 w-full">
