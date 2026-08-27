@@ -35,29 +35,30 @@ export function SocialCampaignViewer() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [paginate]);
 
-  const slideVariants = {
+  const verticalScrollVariants = {
     enter: (dir: number) => ({
-      x: shouldReduceMotion ? 0 : dir > 0 ? 90 : -90,
+      y: shouldReduceMotion ? 0 : dir > 0 ? 140 : -140,
       opacity: 0,
-      scale: shouldReduceMotion ? 1 : 0.97,
+      scale: shouldReduceMotion ? 1 : 0.98,
     }),
     center: {
-      x: 0,
+      y: 0,
       opacity: 1,
       scale: 1,
       transition: {
-        x: { type: 'spring' as const, stiffness: 280, damping: 28 },
-        opacity: { duration: 0.26 },
-        scale: { duration: 0.26 },
+        y: { type: 'spring' as const, stiffness: 260, damping: 28 },
+        opacity: { duration: 0.28 },
+        scale: { duration: 0.28 },
       },
     },
     exit: (dir: number) => ({
-      x: shouldReduceMotion ? 0 : dir < 0 ? 90 : -90,
+      y: shouldReduceMotion ? 0 : dir > 0 ? -140 : 140,
       opacity: 0,
-      scale: shouldReduceMotion ? 1 : 0.97,
+      scale: shouldReduceMotion ? 1 : 0.98,
       transition: {
-        x: { type: 'spring' as const, stiffness: 280, damping: 28 },
-        opacity: { duration: 0.2 },
+        y: { type: 'spring' as const, stiffness: 260, damping: 28 },
+        opacity: { duration: 0.22 },
+        scale: { duration: 0.22 },
       },
     }),
   };
@@ -131,7 +132,7 @@ export function SocialCampaignViewer() {
           <motion.div
             key={activePost.id}
             custom={direction}
-            variants={slideVariants}
+            variants={verticalScrollVariants}
             initial="enter"
             animate="center"
             exit="exit"
