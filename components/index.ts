@@ -20,3 +20,4 @@ export * from "./ui/BentoGrid";
 export * from "./ui/ShinyText";
 export * from "./TestimonialCarousel";
 export * from "./FloatingBadge";
+export * from "./HeroShowreelScroll";

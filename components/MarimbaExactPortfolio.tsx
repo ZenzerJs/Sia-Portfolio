@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import { initCursor } from "@/lib/cursor";
 import { initHeroExplode } from "@/lib/heroExplode";
 import { initOrbitEngine } from "@/lib/orbitEngine";
@@ -11,7 +14,7 @@ import { initSmoothScroll } from "@/lib/smoothScroll";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { FloatingBadge } from "@/components/FloatingBadge";
 import { ToolMarquee } from "@/components/ToolMarquee";
-import { MacbookLaptop } from "@/components/MacbookLaptop";
+import { HeroShowreelScroll } from "@/components/HeroShowreelScroll";
 import { siteConfig } from "@/lib/siteConfig";
 import { DualScramble } from "@/components/ui/DualScramble";
 import { AccordionGallery, type AccordionGalleryItem } from "@/components/AccordionGallery";
@@ -342,20 +345,8 @@ export function MarimbaExactPortfolio() {
         {/* 2. Editorial About Section with Polaroid & Washi-Tape Collage */}
         <AboutSection />
 
-        {/* 3. Work Showcase — 3D MacBook with Motion Reels */}
-        <section className="section py-16 md:py-24" id="work" data-cursor="work">
-          <div className="section-content">
-            <div className="text-center mb-12">
-              <span className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] block mb-3">
-                Showreel
-              </span>
-              <h2 className="text-3xl md:text-5xl font-serif text-[var(--text-dark)]">
-                Selected Work
-              </h2>
-            </div>
-            <MacbookLaptop />
-          </div>
-        </section>
+        {/* 3. Work Showcase — Scroll-Linked Docking Showreel */}
+        <HeroShowreelScroll />
 
         {/* 4. Running Tool Marquee with Key Skills Monospace Label */}
         <div className="mt-20 md:mt-32 mb-16 md:mb-24 py-6 w-full">
