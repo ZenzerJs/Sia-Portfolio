@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Geist, Roboto_Mono, Bodoni_Moda, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { PageTransitionProvider } from "@/components/PageTransitionProvider";
 import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
@@ -105,9 +105,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className="bg-[var(--bg-light)] text-[#1E3A5F] font-sans antialiased selection:bg-[#1E3A5F] selection:text-[#FFFFFF]"
       >
-        <SmoothScrollProvider>
+        <SmoothScroll>
           <PageTransitionProvider>{children}</PageTransitionProvider>
-        </SmoothScrollProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

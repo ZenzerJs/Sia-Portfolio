@@ -14,7 +14,7 @@ import { initSmoothScroll } from "@/lib/smoothScroll";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { FloatingBadge } from "@/components/FloatingBadge";
 import { ToolMarquee } from "@/components/ToolMarquee";
-import { HeroShowreelScroll } from "@/components/HeroShowreelScroll";
+import { HeroShowreelGSAP } from "@/components/HeroShowreelGSAP";
 import { siteConfig } from "@/lib/siteConfig";
 import { DualScramble } from "@/components/ui/DualScramble";
 import { AccordionGallery, type AccordionGalleryItem } from "@/components/AccordionGallery";
@@ -345,8 +345,8 @@ export function MarimbaExactPortfolio() {
         {/* 2. Editorial About Section with Polaroid & Washi-Tape Collage */}
         <AboutSection />
 
-        {/* 3. Work Showcase — Scroll-Linked Docking Showreel */}
-        <HeroShowreelScroll />
+        {/* 3. Work Showcase — ScrollTrigger Pinned Showreel */}
+        <HeroShowreelGSAP />
 
         {/* 4. Running Tool Marquee with Key Skills Monospace Label */}
         <div className="mt-20 md:mt-32 mb-16 md:mb-24 py-6 w-full">

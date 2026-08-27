@@ -21,3 +21,6 @@ export * from "./ui/ShinyText";
 export * from "./TestimonialCarousel";
 export * from "./FloatingBadge";
 export * from "./HeroShowreelScroll";
+export * from "./SmoothScroll";
+export * from "./BroadcastTVConsole";
+export * from "./HeroShowreelGSAP";

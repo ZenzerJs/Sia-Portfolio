@@ -10,6 +10,7 @@ const pageNavItems = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
   { href: "/work", label: "Work", match: (p: string) => p === "/work" || p.startsWith("/work/") },
+  { href: "/campaigns", label: "Campaigns", match: (p: string) => p.startsWith("/campaigns") },
   { href: "/contact", label: "Contact", match: (p: string) => p === "/contact" },
 ];
 
@@ -17,6 +18,7 @@ const homeNavItems = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
   { href: "/work", label: "Work", match: (p: string) => p.startsWith("/work") },
+  { href: "/campaigns", label: "Campaigns", match: (p: string) => p.startsWith("/campaigns") },
   { href: "/contact", label: "Contact", match: (p: string) => p === "/contact" },
 ];
 
