@@ -9,6 +9,7 @@ import { initOrbitEngine } from "@/lib/orbitEngine";
 import { initThemeScroll } from "@/lib/themeScroll";
 import { initSmoothScroll } from "@/lib/smoothScroll";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { FloatingBadge } from "@/components/FloatingBadge";
 import { ToolMarquee } from "@/components/ToolMarquee";
 import { MacbookLaptop } from "@/components/MacbookLaptop";
 import { siteConfig } from "@/lib/siteConfig";
@@ -314,7 +315,15 @@ export function MarimbaExactPortfolio() {
               <img src="/assets/shape-circle3.webp" alt="" className="shape-img" />
             </div>
           </div>
-          <div className="hero-content">
+          <div className="hero-content relative">
+            {/* Desktop Cursor Tracking Badges (guarded on touch / coarse devices) */}
+            <div className="hidden md:block pointer-events-none absolute -top-8 left-4 z-20">
+              <FloatingBadge label="Strategic Storytelling" depthFactor={22} />
+            </div>
+            <div className="hidden md:block pointer-events-none absolute -bottom-6 right-6 z-20">
+              <FloatingBadge label="Data Narrative & Arts" depthFactor={-18} />
+            </div>
+
             <div className="hero-tag">
               <span className="pill-button">
                 Communications · Marketing · Project Coordination
