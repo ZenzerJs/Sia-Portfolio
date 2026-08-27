@@ -59,20 +59,20 @@ export function LiveScreenPlayer({
         {/* Right Status Badge */}
         <div className="flex items-center gap-2">
           {isVideoCurrent ? (
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[#0047FF] text-[10px] font-mono font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0047FF]"></span>
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/90 border border-slate-200 text-[#1E3A5F] text-[10px] font-mono font-medium shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E3A5F]"></span>
               <span>Video Finale</span>
             </div>
           ) : slides.length > 0 ? (
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/80 border border-[#D1D1D6] text-[#1D1D1F] text-[10px] font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/90 border border-slate-200 text-[#1E3A5F] text-[10px] font-mono shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E3A5F]"></span>
               <span>
                 Slide {currentSlideIndex + 1} of {slides.length}
               </span>
             </div>
           ) : project.media.type === "video" ? (
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/80 border border-[#D1D1D6] text-[#1D1D1F] text-[10px] font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0047FF]"></span>
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/90 border border-slate-200 text-[#1E3A5F] text-[10px] font-mono shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E3A5F]"></span>
               <span>HD Video</span>
             </div>
           ) : null}

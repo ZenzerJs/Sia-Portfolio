@@ -215,34 +215,25 @@ export function WorkPage() {
                     ))}
                   </div>
 
-                  {/* Highlighted Key Metric Badge */}
-                  {matchingCaseStudy?.keyMetric && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/90 border border-emerald-300/80 text-[11px] font-mono text-emerald-800 my-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                      <span className="font-semibold uppercase tracking-wider text-[9px]">Impact</span>
-                      <span>{matchingCaseStudy.keyMetric}</span>
-                    </div>
-                  )}
-
                   {/* Project In-Page Meta Details */}
-                  <div className="grid grid-cols-3 gap-2 my-2 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
+                  <div className="grid grid-cols-3 gap-3 my-2 text-[11px] font-mono text-slate-600 bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-slate-200/80 shadow-2xs w-full">
                     <div>
-                      <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Role</span>
-                      <span className="font-medium text-slate-800 truncate block">{project.role}</span>
+                      <span className="text-slate-400 uppercase tracking-wider block text-[9px] mb-0.5">Role</span>
+                      <span className="font-medium text-[#1E3A5F] truncate block">{project.role}</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Timeline</span>
-                      <span className="font-medium text-slate-800 truncate block">{project.timeline}</span>
+                      <span className="text-slate-400 uppercase tracking-wider block text-[9px] mb-0.5">Timeline</span>
+                      <span className="font-medium text-[#1E3A5F] truncate block">{project.timeline}</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Client / Scope</span>
-                      <span className="font-medium text-slate-800 truncate block">{project.client}</span>
+                      <span className="text-slate-400 uppercase tracking-wider block text-[9px] mb-0.5">Client / Scope</span>
+                      <span className="font-medium text-[#1E3A5F] truncate block">{project.client}</span>
                     </div>
                   </div>
 
                   {/* Project Tools & Technologies Strip */}
                   {project.tools && (
-                    <div className="flex flex-wrap items-center gap-1.5 mb-2">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-1">
                       {project.tools.split(",").map((toolStr) => {
                         const name = toolStr.trim();
                         let icon = "";
@@ -265,7 +256,7 @@ export function WorkPage() {
                         return (
                           <span
                             key={name}
-                            className="group/tool inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono text-slate-600 shadow-xs hover:border-[#1E3A5F] hover:text-[#1E3A5F] hover:bg-slate-50 transition-all cursor-default"
+                            className="group/tool inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-slate-200 text-[11px] font-mono text-slate-600 shadow-2xs hover:border-[#1E3A5F] hover:text-[#1E3A5F] hover:bg-slate-50 transition-all cursor-default"
                           >
                             {icon && (
                               <img
@@ -281,39 +272,12 @@ export function WorkPage() {
                     </div>
                   )}
 
-                  <p className="work-slider__description text-xs md:text-[13px] text-gray-600 leading-relaxed whitespace-pre-line">
+                  {/* Original clean description text in readable comfortable size */}
+                  <p className="work-slider__description text-sm sm:text-base text-slate-600 leading-relaxed font-sans whitespace-pre-line pt-1">
                     {project.description}
                   </p>
 
-                  {/* Structured Problem-Process-Outcome-Reflection Framework (2x2 Grid for compact layout) */}
-                  {matchingCaseStudy && (
-                    <div className="mt-3 pt-2.5 border-t border-slate-200/80 w-full text-left">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Problem / Challenge</span>
-                          <p className="leading-snug text-slate-700 text-[11px]">{matchingCaseStudy.challenge}</p>
-                        </div>
-                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Outcome</span>
-                          <p className="leading-snug text-slate-700 text-[11px]">{matchingCaseStudy.outcome}</p>
-                        </div>
-                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Process</span>
-                          <ul className="list-disc list-inside space-y-0.5 text-slate-700 text-[10.5px]">
-                            {matchingCaseStudy.process.map((step, idx) => (
-                              <li key={idx} className="leading-snug">{step}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Reflection</span>
-                          <p className="italic text-slate-700 leading-snug text-[11px]">{matchingCaseStudy.reflection}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex flex-wrap items-center gap-3 pt-3">
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
                     {project.slides && project.slides.length > 0 ? (
                       <button
                         type="button"
@@ -324,7 +288,7 @@ export function WorkPage() {
                             slides: project.slides!,
                           })
                         }
-                        className="work-slider__button inline-flex items-center gap-1.5"
+                        className="work-slider__button inline-flex items-center gap-2"
                       >
                         <span>Open Presentation Deck ({project.slides.length} Slides)</span>
                         <span>↗</span>
