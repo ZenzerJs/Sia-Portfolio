@@ -217,15 +217,15 @@ export function WorkPage() {
 
                   {/* Highlighted Key Metric Badge */}
                   {matchingCaseStudy?.keyMetric && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/90 border border-emerald-300/80 text-[11px] font-mono text-emerald-800 my-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/90 border border-emerald-300/80 text-[11px] font-mono text-emerald-800 my-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
                       <span className="font-semibold uppercase tracking-wider text-[9px]">Impact</span>
                       <span>{matchingCaseStudy.keyMetric}</span>
                     </div>
                   )}
 
                   {/* Project In-Page Meta Details */}
-                  <div className="grid grid-cols-3 gap-2 my-3 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
+                  <div className="grid grid-cols-3 gap-2 my-2 text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200/80">
                     <div>
                       <span className="text-slate-400 uppercase tracking-wider block text-[9px]">Role</span>
                       <span className="font-medium text-slate-800 truncate block">{project.role}</span>
@@ -242,7 +242,7 @@ export function WorkPage() {
 
                   {/* Project Tools & Technologies Strip */}
                   {project.tools && (
-                    <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-2">
                       {project.tools.split(",").map((toolStr) => {
                         const name = toolStr.trim();
                         let icon = "";
@@ -281,32 +281,34 @@ export function WorkPage() {
                     </div>
                   )}
 
-                  <p className="work-slider__description text-xs md:text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+                  <p className="work-slider__description text-xs md:text-[13px] text-gray-600 leading-relaxed whitespace-pre-line">
                     {project.description}
                   </p>
 
-                  {/* Structured Problem-Process-Outcome-Reflection Framework */}
+                  {/* Structured Problem-Process-Outcome-Reflection Framework (2x2 Grid for compact layout) */}
                   {matchingCaseStudy && (
-                    <div className="mt-4 pt-3 border-t border-slate-200/80 space-y-2 text-left">
-                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Problem / Challenge</span>
-                        <p className="leading-snug text-slate-700">{matchingCaseStudy.challenge}</p>
-                      </div>
-                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Process</span>
-                        <ul className="list-disc list-inside space-y-0.5 text-slate-700 text-[11px]">
-                          {matchingCaseStudy.process.map((step, idx) => (
-                            <li key={idx} className="leading-snug">{step}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Outcome</span>
-                        <p className="leading-snug text-slate-700">{matchingCaseStudy.outcome}</p>
-                      </div>
-                      <div className="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/70 text-xs">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Reflection</span>
-                        <p className="italic text-slate-700 leading-snug">{matchingCaseStudy.reflection}</p>
+                    <div className="mt-3 pt-2.5 border-t border-slate-200/80 w-full text-left">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Problem / Challenge</span>
+                          <p className="leading-snug text-slate-700 text-[11px]">{matchingCaseStudy.challenge}</p>
+                        </div>
+                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Outcome</span>
+                          <p className="leading-snug text-slate-700 text-[11px]">{matchingCaseStudy.outcome}</p>
+                        </div>
+                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Process</span>
+                          <ul className="list-disc list-inside space-y-0.5 text-slate-700 text-[10.5px]">
+                            {matchingCaseStudy.process.map((step, idx) => (
+                              <li key={idx} className="leading-snug">{step}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="bg-slate-50/90 rounded-lg p-2.5 border border-slate-200/70 text-xs">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-semibold block mb-0.5">Reflection</span>
+                          <p className="italic text-slate-700 leading-snug text-[11px]">{matchingCaseStudy.reflection}</p>
+                        </div>
                       </div>
                     </div>
                   )}
