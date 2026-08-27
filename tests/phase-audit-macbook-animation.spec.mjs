@@ -8,7 +8,7 @@ const outDir = path.resolve("./.antigravity/artifacts/phase-audit");
 fs.mkdirSync(outDir, { recursive: true });
 
 async function run() {
-  console.log("=== MACBOOK OPEN / CLOSE ANIMATION AUDIT ===");
+  console.log("=== MACBOOK SCROLL-ONLY OPEN / CLOSE AUDIT ===");
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
@@ -28,71 +28,81 @@ async function run() {
     await page.goto(`${BASE}/`, { waitUntil: "networkidle", timeout: 30000 });
     await page.waitForTimeout(1500);
 
+    // 1. Verify buttons are REMOVED
+    const closeBtn = page.locator('button:has-text("Close Display")');
+    const exploreBtn = page.locator('button:has-text("Explore All Work")');
+    const closeBtnCount = await closeBtn.count();
+    const exploreBtnCount = await exploreBtn.count();
+    console.log(`Buttons count: Close Display (${closeBtnCount}), Explore (${exploreBtnCount})`);
+    if (closeBtnCount > 0 || exploreBtnCount > 0) {
+      throw new Error("Manual toggle buttons are still present in DOM, expected them removed");
+    }
+    console.log("✓ Manual buttons successfully removed from MacBook display");
+
     const macbook = page.locator(".work__macbook");
     const lid = page.locator(".work__macbook .lid");
 
-    // Initially at top of page, laptop is not intersecting so lid should NOT have is-open
+    // 2. Initially at top (#home) — lid should be closed
     const initialIsOpen = await lid.evaluate((el) => el.classList.contains("is-open"));
     console.log(`Initial lid is-open state (at top of page): ${initialIsOpen}`);
-
-    // Scroll into the #work section
-    console.log("Scrolling into #work section...");
-    await macbook.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(1500); // Allow intersection observer & 1.3s transition to complete
-
-    const scrolledIsOpen = await lid.evaluate((el) => el.classList.contains("is-open"));
-    console.log(`Scrolled lid is-open state: ${scrolledIsOpen}`);
-    if (!scrolledIsOpen) {
-      throw new Error("MacBook lid failed to open automatically upon scrolling into view");
+    if (initialIsOpen) {
+      throw new Error("Lid should initially be closed at top of page");
     }
-    console.log("✓ MacBook lid successfully opened on scroll into view");
+    console.log("✓ MacBook lid initially closed at top");
 
-    // Capture open state screenshot
-    const shotOpen = path.join(outDir, "macbook-lid-open.png");
+    // 3. Scroll down into #work (from above) — lid should open
+    console.log("\n2. Scrolling down into #work from above...");
+    await macbook.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1500);
+
+    const openFromAbove = await lid.evaluate((el) => el.classList.contains("is-open"));
+    console.log(`Lid is-open after scrolling down into view: ${openFromAbove}`);
+    if (!openFromAbove) {
+      throw new Error("Lid failed to open upon scrolling into view from above");
+    }
+    console.log("✓ MacBook lid opened smoothly upon entering view from above");
+
+    // Capture screenshot in open state
+    const shotOpen = path.join(outDir, "macbook-scroll-open.png");
     await page.screenshot({ path: shotOpen });
     console.log(`✓ Open state screenshot saved: ${shotOpen}`);
 
-    // Test the interactive toggle button: click "Close Display"
-    console.log("Testing interactive toggle button: Close Display...");
-    const closeBtn = page.locator('button:has-text("Close Display")');
-    if ((await closeBtn.count()) === 0) {
-      throw new Error("Close Display toggle button not found");
+    // 4. Scroll past #work down into #gallery — lid should close
+    console.log("\n3. Scrolling past #work down into #gallery...");
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(1500);
+
+    const closedAfterLeavingDown = await lid.evaluate((el) => el.classList.contains("is-open"));
+    console.log(`Lid is-open after scrolling past into gallery/footer: ${closedAfterLeavingDown}`);
+    if (closedAfterLeavingDown) {
+      throw new Error("Lid failed to close after scrolling past the work section");
     }
-    await closeBtn.click();
-    await page.waitForTimeout(1400); // Allow 1.3s transition to complete
+    console.log("✓ MacBook lid closed smoothly after scrolling past below");
 
-    const afterCloseIsOpen = await lid.evaluate((el) => el.classList.contains("is-open"));
-    console.log(`After clicking close, lid is-open: ${afterCloseIsOpen}`);
-    if (afterCloseIsOpen) {
-      throw new Error("MacBook lid is still open after clicking Close Display");
+    // 5. Scroll back up into #work (from below) — lid should re-open
+    console.log("\n4. Scrolling back up into #work from below...");
+    await macbook.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1500);
+
+    const openFromBelow = await lid.evaluate((el) => el.classList.contains("is-open"));
+    console.log(`Lid is-open after scrolling back up into view: ${openFromBelow}`);
+    if (!openFromBelow) {
+      throw new Error("Lid failed to re-open upon scrolling back into view from below");
     }
-    console.log("✓ MacBook lid successfully closed via toggle button");
+    console.log("✓ MacBook lid re-opened smoothly upon entering view from below");
 
-    // Verify toggle button updated label
-    const openBtn = page.locator('button:has-text("Open Display")');
-    if ((await openBtn.count()) === 0) {
-      throw new Error("Toggle button label did not update to 'Open Display'");
+    // 6. Scroll back up to top (#home) — lid should close again
+    console.log("\n5. Scrolling back up to top of page (#home)...");
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(1500);
+
+    const closedAtTop = await lid.evaluate((el) => el.classList.contains("is-open"));
+    console.log(`Lid is-open after scrolling back to top: ${closedAtTop}`);
+    if (closedAtTop) {
+      throw new Error("Lid failed to close after scrolling back to top");
     }
-    console.log("✓ Button updated to 'Open Display'");
+    console.log("✓ MacBook lid closed smoothly after scrolling back to top");
 
-    // Capture closed state screenshot
-    const shotClosed = path.join(outDir, "macbook-lid-closed.png");
-    await page.screenshot({ path: shotClosed });
-    console.log(`✓ Closed state screenshot saved: ${shotClosed}`);
-
-    // Test clicking "Open Display"
-    console.log("Testing interactive toggle button: Open Display...");
-    await openBtn.click();
-    await page.waitForTimeout(1400);
-
-    const reOpenState = await lid.evaluate((el) => el.classList.contains("is-open"));
-    console.log(`After clicking open again, lid is-open: ${reOpenState}`);
-    if (!reOpenState) {
-      throw new Error("MacBook lid failed to re-open");
-    }
-    console.log("✓ MacBook lid successfully re-opened via toggle button");
-
-    // Filter non-fatal console warnings
     const fatalErrors = errors.filter(
       (e) => !e.includes("favicon") && !e.includes("Third-party cookie")
     );
@@ -102,7 +112,7 @@ async function run() {
       console.log("✓ Zero console or runtime errors");
     }
 
-    console.log("\n=== MACBOOK OPEN/CLOSE AUDIT PASSED ===");
+    console.log("\n=== ALL MACBOOK SCROLL TESTS PASSED ===");
   } catch (err) {
     console.error("Test failed:", err);
     process.exit(1);

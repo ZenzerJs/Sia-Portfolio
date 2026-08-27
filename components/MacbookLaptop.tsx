@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { siteConfig } from "@/lib/siteConfig";
@@ -8,36 +8,30 @@ import { siteConfig } from "@/lib/siteConfig";
 /**
  * 3D CSS MacBook Pro built from pure HTML/CSS elements (lid, Apple logo,
  * screen, keyboard, base, screws) — the portfolio showreel plays inside the
- * laptop screen. All styling lives in app/globals.css under `.work__macbook`.
+ * laptop screen. Automatically opens when scrolled into view from above or
+ * below, and closes when leaving the viewport.
  */
 export function MacbookLaptop() {
   const rootRef = useRef<HTMLDivElement>(null);
   const lidRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const toggleLid = () => {
-    setIsOpen((prev) => {
-      const next = !prev;
-      lidRef.current?.classList.toggle("is-open", next);
-      return next;
-    });
-  };
-
-  // Open the lid when the laptop scrolls into view and close it when it leaves
   useEffect(() => {
     const root = rootRef.current;
     const lid = lidRef.current;
     if (!root || !lid) return;
 
+    // Automatically open when becoming visible from above or below, and close when exiting
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           lid.classList.toggle("is-open", entry.isIntersecting);
-          setIsOpen(entry.isIntersecting);
         });
       },
-      { threshold: 0.35, rootMargin: "-40px 0px -40px 0px" }
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px 0px 0px",
+      }
     );
 
     observer.observe(root);
@@ -45,21 +39,17 @@ export function MacbookLaptop() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
-      <div
-        className="work__macbook cursor-pointer select-none"
-        ref={rootRef}
-        onClick={toggleLid}
-        role="region"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            toggleLid();
-          }
-        }}
-        aria-label="3D MacBook Pro Showreel Display"
-      >
+    <div
+      className="work__macbook cursor-pointer select-none"
+      ref={rootRef}
+      onClick={() => router.push("/work")}
+      role="link"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") router.push("/work");
+      }}
+      aria-label="Explore Selected Work"
+    >
       <div className="macbook-scene">
         <div className="laptop">
           <div className="lid" ref={lidRef}>
@@ -124,85 +114,52 @@ export function MacbookLaptop() {
                     <div key={i} className="key"></div>
                   ))}
                 </div>
+
                 <div className="keyboard-row">
-                  {Array.from({ length: 13 }, (_, i) => (
-                    <div key={i} className="key"></div>
-                  ))}
-                  <div className="key extra-size"></div>
-                </div>
-                <div className="keyboard-row">
-                  <div className="key extra-size"></div>
-                  {Array.from({ length: 13 }, (_, i) => (
+                  {Array.from({ length: 14 }, (_, i) => (
                     <div key={i} className="key"></div>
                   ))}
                 </div>
+
                 <div className="keyboard-row">
-                  <div className="key extra-size-two"></div>
+                  <div className="key caps"></div>
                   {Array.from({ length: 11 }, (_, i) => (
                     <div key={i} className="key"></div>
                   ))}
-                  <div className="key extra-size-two"></div>
+                  <div className="key enter"></div>
                 </div>
+
                 <div className="keyboard-row">
-                  <div className="key double-size"></div>
+                  <div className="key shift left"></div>
                   {Array.from({ length: 10 }, (_, i) => (
                     <div key={i} className="key"></div>
                   ))}
-                  <div className="key double-size"></div>
+                  <div className="key shift right"></div>
                 </div>
-                <div className="keyboard-row bottom-row">
-                  <div className="key"></div>
-                  <div className="key"></div>
-                  <div className="key"></div>
-                  <div className="key extra-size-two"></div>
-                  <div className="key space-bar"></div>
-                  <div className="key extra-size-two"></div>
-                  <div className="key"></div>
-                  <div className="arrows">
-                    <div className="key"></div>
-                    <div className="up-down">
-                      <div className="key"></div>
-                      <div className="key"></div>
-                    </div>
-                    <div className="key"></div>
+
+                <div className="keyboard-row">
+                  {Array.from({ length: 10 }, (_, i) => (
+                    <div key={i} className="key"></div>
+                  ))}
+                  <div className="key space"></div>
+                  {Array.from({ length: 3 }, (_, i) => (
+                    <div key={i} className="key"></div>
+                  ))}
+                  <div className="key arrows">
+                    <span className="up"></span>
+                    <span className="down"></span>
+                    <span className="left"></span>
+                    <span className="right"></span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="touchpad"></div>
+            <div className="trackpad"></div>
 
-            <span className="slit invert"></span>
+            <div className="notch"></div>
 
-            <div className="facet front">
-              <span className="slit"></span>
-            </div>
-            <div className="facet back">
-              <span className="hinges"></span>
-            </div>
-            <div className="facet left">
-              <span className="power"></span>
-              <span className="usb"></span>
-              <span className="usb"></span>
-            </div>
-            <div className="facet right">
-              <span className="usb"></span>
-              <span className="slot"></span>
-            </div>
-
-            <span className="corner fl"></span>
-            <span className="corner bl"></span>
-            <span className="corner ll"></span>
-            <span className="corner rl"></span>
-
-            <div className="bottom">
-              <span className="hinges"></span>
-
-              <span className="rubber-leg fl"></span>
-              <span className="rubber-leg fr"></span>
-              <span className="rubber-leg bl"></span>
-              <span className="rubber-leg br"></span>
-
+            <div className="screws">
               {/* Left side */}
               <i className="screw rl"></i>
               <i className="screw ml"></i>
@@ -223,33 +180,6 @@ export function MacbookLaptop() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-      {/* Interactive Open/Close Controls */}
-      <div className="mt-8 flex items-center gap-3 relative z-20">
-        <button
-          type="button"
-          onClick={toggleLid}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 hover:border-[#1E3A5F] text-[#1E3A5F] text-xs font-mono tracking-wider transition-all cursor-pointer shadow-xs active:scale-95"
-          aria-label={isOpen ? "Close MacBook display" : "Open MacBook display"}
-        >
-          <span
-            className={`w-2 h-2 rounded-full transition-colors ${
-              isOpen ? "bg-emerald-500 shadow-[0_0_6px_#10b981]" : "bg-amber-500 shadow-[0_0_6px_#f59e0b]"
-            }`}
-          />
-          <span>{isOpen ? "Close Display" : "Open Display"}</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => router.push("/work")}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1E3A5F] hover:bg-[#152842] text-white text-xs font-mono tracking-wider transition-all cursor-pointer shadow-xs active:scale-95"
-        >
-          <span>Explore All Work</span>
-          <span>↗</span>
-        </button>
       </div>
     </div>
   );
