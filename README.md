@@ -1,18 +1,48 @@
+<div align="center">
+
 # 🎨 Sia — Design Portfolio
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![GSAP](https://img.shields.io/badge/GSAP-3-88CE02?style=flat-square&logo=greensock&logoColor=white)](https://gsap.com/)
-[![Lenis](https://img.shields.io/badge/Smooth_Scroll-Lenis-black?style=flat-square)](https://lenis.darkroom.engineering/)
-[![Vercel](https://img.shields.io/badge/Deployment-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
+**An editorial portfolio for communications, marketing, and creative work.**
 
-> An award-style creative portfolio built with Next.js 15 App Router, React 19, GSAP ScrollTrigger, and Lenis smooth scrolling. Features editorial serif typography, a scroll-driven trigonometric orbit hero, organic conic-gradient process disks, and seamless reduced-motion accessibility.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=flat&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-3-88CE02?style=flat&logo=greensock&logoColor=white)](https://gsap.com/)
+[![Lenis](https://img.shields.io/badge/Smooth_Scroll-Lenis-black?style=flat)](https://lenis.darkroom.engineering/)
+[![Vercel](https://img.shields.io/badge/Deployment-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com/)
+
+**[Open live project](https://shanesia-portfolio.vercel.app/)**
+
+<img src="docs/images/screenshot.jpg" alt="Sia — Design Portfolio interface" width="900" />
+
+<sub>Current live homepage after the intro animation and artwork finished loading.</sub>
+
+</div>
 
 ---
 
-## 🌟 Key Features
+## 📋 Contents
+
+- [Overview](#-overview)
+- [Key Capabilities](#-key-capabilities)
+- [Architecture](#-architecture)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Verification](#-verification)
+- [Repository Layout](#-repository-layout)
+- [Configuration & Customization](#-configuration--customization)
+- [Architecture & Engineering Notes](#-architecture--engineering-notes)
+
+---
+
+## 💡 Overview
+
+An award-style creative portfolio built with Next.js 15 App Router, React 19, GSAP ScrollTrigger, and Lenis smooth scrolling. Features editorial serif typography, a scroll-driven trigonometric orbit hero, organic conic-gradient process disks, and seamless reduced-motion accessibility.
+
+---
+
+## ✨ Key Capabilities
 
 - **Scroll-Driven Motion & Animations**: Orchestrated using GSAP 3 and ScrollTrigger, featuring a trigonometric hero orbit convergence (`orbitEngine.ts`), conic-gradient process disks (`processStack.ts`), and Lenis smooth scrolling.
 - **Interactive Work & Case Studies**: Dynamic project showcases at `/work` with slider navigation and deep-dive case study layouts at `/work/[slug]`, driven centrally from `projects.ts`.
@@ -23,7 +53,72 @@
 
 ---
 
-## 🏗️ Repository Architecture
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    N0["Site configuration and projects"] --> N1["Next.js pages"]
+    N1["Next.js pages"] --> N2["GSAP and Lenis motion"]
+    N2["GSAP and Lenis motion"] --> N3["Work and case studies"]
+    N3["Work and case studies"]
+```
+
+---
+
+## 🧱 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | next ^15.1.0 |
+| UI | react ^19.0.0 |
+| Motion | gsap ^3.15.0 |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js**: `v18.17.0+`
+- **Package Manager**: `npm`, `pnpm`, or `yarn`
+
+---
+
+### Local Development Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ZenzerJs/Sia-Portfolio.git
+   cd Sia-Portfolio
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the local development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **View in browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 🧪 Verification
+
+| Command | Action |
+| :--- | :--- |
+| `npm run dev` | Starts local Next.js development server at port 3000 |
+| `npm run build` | Compiles optimized production bundle |
+| `npm run start` | Boots production build locally |
+| `npm run lint` | Runs ESLint analysis across TypeScript and React codebases |
+
+---
+
+## 📁 Repository Layout
 
 ```text
 sia-portfolio/
@@ -53,49 +148,6 @@ sia-portfolio/
 ├── tailwind.config.ts          # Custom Tailwind canvas, surface, & font configs
 └── vercel.json                 # Vercel production hosting configuration
 ```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js**: `v18.17.0+`
-- **Package Manager**: `npm`, `pnpm`, or `yarn`
-
----
-
-### Local Development Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/YourUsername/sia-portfolio.git
-   cd sia-portfolio
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Run the local development server**:
-   ```bash
-   npm run dev
-   ```
-
-4. **View in browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000).
-
----
-
-## 🛠️ Verification & Scripts
-
-| Command | Action |
-| :--- | :--- |
-| `npm run dev` | Starts local Next.js development server at port 3000 |
-| `npm run build` | Compiles optimized production bundle |
-| `npm run start` | Boots production build locally |
-| `npm run lint` | Runs ESLint analysis across TypeScript and React codebases |
 
 ---
 
@@ -141,6 +193,8 @@ Replace placeholder assets with your custom branding while keeping file names co
 - **Absolute Pin-Spacer Rule**: The hero section pins its backdrop using ScrollTrigger. Keep `.hero .pin-spacer { position: absolute !important; }` in `app/globals.css` to prevent content below the fold from being displaced.
 - **Reduced Motion Support**: Animations automatically detect system accessibility settings via `prefers-reduced-motion` and collapse complex physics into instant, clean transitions.
 
----
+<div align="center">
 
-*Designed & Developed for Sia.*
+*Designed and developed for Shanesia Saha by [@ZenzerJs](https://github.com/ZenzerJs).*
+
+</div>
